@@ -1,3 +1,5 @@
+@import "@/styles/mixins";
+
 .container {
   width: 100%;
   margin-inline: auto;
@@ -8,31 +10,37 @@
   padding-block: var(--spacing-md);
 }
 
-@media (min-width: 576px) {
+.withContentSpacing {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+@include media(sm) {
   .container {
     width: 576px;
   }
 }
 
-@media (min-width: 768px) {
+@include media(md) {
   .container {
     width: 768px;
   }
 }
 
-@media (min-width: 992px) {
+@include media(lg) {
   .container {
     width: 992px;
   }
 }
 
-@media (min-width: 1200px) {
+@include media(xl) {
   .container {
     width: 1200px;
   }
 }
 
-@media (min-width: 1400px) {
+@include media(2xl) {
   .container {
     width: 1400px;
   }

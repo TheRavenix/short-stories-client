@@ -5,11 +5,13 @@ import styles from "./Container.module.scss";
 
 interface Props extends ComponentProps<"div"> {
   withPaddingBlock?: boolean;
+  withContentSpacing?: boolean;
 }
 
 const Container: React.FC<Props> = ({
   className,
   withPaddingBlock = false,
+  withContentSpacing = false,
   ...rest
 }) => {
   return (
@@ -17,6 +19,7 @@ const Container: React.FC<Props> = ({
       className={clsx(
         styles.container,
         withPaddingBlock && styles.withPaddingBlock,
+        withContentSpacing && styles.withContentSpacing,
         className
       )}
       {...rest}
