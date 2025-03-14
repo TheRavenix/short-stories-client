@@ -1,17 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
 
+@import "@/styles";
+
 :root {
-  --background: #f7f9fc;
-  --foreground: #1a1a1a;
+  --background: #f1f5f9;
+  --foreground: #212529;
 
   --gray-foreground: #7a7a7a;
+  --heading-foreground: #555555;
 
-  --primary: #4c76f0;
+  --primary: #0075ff;
   --primary-foreground: #ffffff;
 
+  --secondary: #ffffff;
+  --secondary-foreground: #212529;
+
   --card: #ffffff;
-  --card-foreground: #1a1a1a;
+  --card-foreground: #212529;
 
   --destructive: #f44336;
   --destructive-foreground: #ffffff;
@@ -41,15 +47,19 @@
 }
 
 html[data-theme="dark"] {
-  --background: #1a1a26;
+  --background: #1a1d21;
   --foreground: #ffffff;
 
   --gray-foreground: #b3b3b3;
+  --heading-foreground: #ffffff;
 
-  --primary: #6a8df0;
+  --primary: #405189;
   --primary-foreground: #ffffff;
 
-  --card: #2a2a39;
+  --secondary: #292e32;
+  --secondary-foreground: #ffffff;
+
+  --card: #212529;
   --card-foreground: #ffffff;
 
   --destructive: #e53935;
@@ -75,7 +85,11 @@ h2,
 h3,
 h4,
 h5,
-h6,
+h6 {
+  font-family: "Inter", sans-serif;
+  color: var(--heading-foreground);
+}
+
 button {
   font-family: "Inter", sans-serif;
 }
