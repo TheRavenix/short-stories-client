@@ -1,0 +1,60 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  outline: 0;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.secondary {
+  background-color: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+.inverse {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.destructive {
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+.sm {
+  width: 120px;
+  height: 40px;
+}
+
+.md {
+  width: 160px;
+  height: 48px;
+}
+
+.lg {
+  width: 200px;
+  height: 56px;
+}
+
+.icon {
+  width: 42.5px;
+  height: 42.5px;
+}
+
+.rounded {
+  border-radius: var(--radius-lg);
+}

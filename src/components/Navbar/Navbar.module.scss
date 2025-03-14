@@ -1,0 +1,13 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--card);
+  height: var(--navbar-height);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
