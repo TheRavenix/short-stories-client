@@ -33,6 +33,16 @@
   color: var(--foreground);
 }
 
+.inverse {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.ghost {
+  background-color: transparent;
+  color: var(--foreground);
+}
+
 .destructive {
   background-color: var(--destructive);
   color: var(--destructive-foreground);

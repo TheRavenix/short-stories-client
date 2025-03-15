@@ -3,7 +3,13 @@ import clsx from "clsx";
 
 import styles from "./Button.module.scss";
 
-type ButtonVariant = "primary" | "secondary" | "page" | "destructive";
+type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "page"
+  | "inverse"
+  | "ghost"
+  | "destructive";
 
 type ButtonSize = "sm" | "md" | "lg" | "icon";
 

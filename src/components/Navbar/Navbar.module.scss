@@ -1,16 +1,139 @@
+@import "@/styles/mixins";
+
 .nav {
   position: fixed;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: var(--card);
   height: var(--navbar-height);
-  z-index: 9999;
+  z-index: 50;
+  padding-inline: var(--spacing-md);
 }
 
-.container {
+.startContent {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.endContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.link {
+  color: var(--card-foreground);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease-in-out;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:hover {
+    color: var(--primary);
+
+    &::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+
+  &[data-active="true"] {
+    color: var(--primary);
+
+    &::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+}
+
+.menuButtonContainer {
+  display: block;
+}
+
+.drawerContent {
+  width: 75vw;
+  height: 100dvh;
+}
+
+.drawerBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-inline: var(--spacing-md);
+}
+
+.drawerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.drawerButton {
+  width: 100% !important;
+}
+
+.drawerAuthContainer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-sm);
+}
+
+.drawerButton {
+  width: 100% !important;
+}
+
+.links {
+  display: none;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.searchAndThemeContainer {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.authContainer {
+  display: none;
+  gap: var(--spacing-sm);
+}
+
+@include media(md) {
+  .drawerContent {
+    width: 50vw;
+  }
+}
+
+@include media(lg) {
+  .links {
+    display: flex;
+  }
+
+  .searchAndThemeContainer {
+    gap: var(--spacing-sm);
+  }
+
+  .authContainer {
+    display: flex;
+  }
+
+  .menuButtonContainer {
+    display: none;
+  }
 }
