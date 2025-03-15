@@ -1,14 +1,21 @@
 @import "@/styles/mixins";
 
 .hero {
-  position: relative;
   min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.heroContent {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
+  z-index: 2;
 }
 
 .heroHeadline {
@@ -20,7 +27,7 @@
 
 @include media(sm) {
   .hero {
-    align-items: flex-start;
-    text-align: start;
+    // align-items: flex-start;
+    // text-align: start;
   }
 }
