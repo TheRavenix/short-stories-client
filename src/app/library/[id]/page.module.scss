@@ -1,0 +1,63 @@
+@import "@/styles/mixins";
+
+.main {
+  padding-top: var(--navbar-height);
+}
+
+.headline {
+  text-align: center;
+}
+
+.storyContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.previewCardContent,
+.reviewsCardContent {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: var(--spacing-sm);
+}
+
+.reviewsCardContentHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.reviews {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.5 * var(--spacing-sm));
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(0.25 * var(--spacing-sm));
+}
+
+@include media(md) {
+  .previewCardContent,
+  .reviewsCardContent {
+    text-align: start;
+  }
+
+  .review {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .reviewsCardContentHeader {
+    justify-content: space-between;
+    gap: 0;
+  }
+}
