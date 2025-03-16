@@ -1,0 +1,87 @@
+import { ComponentProps } from "react";
+import clsx from "clsx";
+
+import styles from "./Card.module.scss";
+import { P, ParagraphProps, Span, SpanProps } from "../Typography";
+
+type CardVariant = "default" | "primary";
+
+interface CardProps extends ComponentProps<"div"> {
+  variant?: CardVariant;
+  withPadding?: boolean;
+}
+
+const Card: React.FC<CardProps> = ({
+  className,
+  variant = "default",
+  withPadding = false,
+  ...rest
+}) => {
+  return (
+    <div
+      className={clsx(
+        styles.card,
+        styles[variant],
+        withPadding && styles.withPadding,
+        className
+      )}
+      {...rest}
+    />
+  );
+};
+
+interface CardTitleProps extends SpanProps {}
+
+const CardTitle: React.FC<CardTitleProps> = ({
+  className,
+  size = "lg",
+  weight = "bold",
+  transform = "capitalize",
+  ...rest
+}) => {
+  return (
+    <Span
+      size={size}
+      weight={weight}
+      transform={transform}
+      className={clsx(styles.cardTitle, className)}
+      {...rest}
+    />
+  );
+};
+
+interface CardDescriptionProps extends ParagraphProps {}
+
+const CardDescription: React.FC<CardDescriptionProps> = ({
+  className,
+  ...rest
+}) => {
+  return <P className={clsx(styles.cardDescription, className)} {...rest} />;
+};
+
+interface CardHeaderProps extends ComponentProps<"div"> {}
+
+const CardHeader: React.FC<CardHeaderProps> = ({ className, ...rest }) => {
+  return <div className={clsx(styles.cardHeader, className)} {...rest} />;
+};
+
+interface CardContentProps extends ComponentProps<"div"> {}
+
+const CardContent: React.FC<CardContentProps> = ({ className, ...rest }) => {
+  return <div className={clsx(styles.cardContent, className)} {...rest} />;
+};
+
+interface CardFooterProps extends ComponentProps<"div"> {}
+
+const CardFooter: React.FC<CardFooterProps> = ({ className, ...rest }) => {
+  return <div className={clsx(styles.cardFooter, className)} {...rest} />;
+};
+
+export {
+  Card,
+  CardTitle,
+  CardDescription,
+  CardHeader,
+  CardContent,
+  CardFooter,
+};
