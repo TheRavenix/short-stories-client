@@ -23,6 +23,7 @@ const HeroCanvas: React.FC<Props> = () => {
   const orbs = useRef<Orb[]>([]);
   const generateOrbInterval = useRef<NodeJS.Timeout>(null!);
   const orbsLength = useRef(0);
+  const resizeTimeout = useRef<NodeJS.Timeout>(null!);
 
   useEffect(() => {
     const ctx = canvas.current?.getContext("2d")!;
@@ -76,18 +77,30 @@ const HeroCanvas: React.FC<Props> = () => {
       animationId.current = requestAnimationFrame(animate);
     }
 
-    function init() {
+    function changeWidth(w: number) {
+      width.current = w;
+
+      if (canvas.current) {
+        canvas.current.width = w;
+      }
+    }
+
+    function changeHeight(h: number) {
+      height.current = h;
+
+      if (canvas.current) {
+        canvas.current.height = h;
+      }
+    }
+
+    function resetOrbs() {
       const root = document.documentElement;
       const primaryColor = getComputedStyle(root)
         .getPropertyValue("--primary")
         .trim();
 
-      width.current = window.innerWidth;
-      height.current = window.innerHeight;
-      canvas.current.width = width.current;
-      canvas.current.height = height.current;
-
       orbsLength.current = width.current > 576 ? 25 : 15;
+      orbs.current = [];
 
       for (let i = 0; i < orbsLength.current; i++) {
         orbs.current.push({
@@ -98,7 +111,24 @@ const HeroCanvas: React.FC<Props> = () => {
           speed: 100,
         });
       }
+    }
 
+    function handleOnResize() {
+      clearTimeout(resizeTimeout.current);
+
+      resizeTimeout.current = setTimeout(() => {
+        changeWidth(window.innerWidth);
+        changeHeight((80 * window.innerHeight) / 100);
+        resetOrbs();
+      }, 250);
+    }
+
+    function init() {
+      window.addEventListener("resize", handleOnResize);
+
+      changeWidth(window.innerWidth);
+      changeHeight((80 * window.innerHeight) / 100);
+      resetOrbs();
       animate();
     }
 
@@ -107,6 +137,8 @@ const HeroCanvas: React.FC<Props> = () => {
     return () => {
       cancelAnimationFrame(animationId.current);
       clearInterval(generateOrbInterval.current);
+      window.removeEventListener("resize", handleOnResize);
+      clearTimeout(resizeTimeout.current);
     };
   }, []);
 
