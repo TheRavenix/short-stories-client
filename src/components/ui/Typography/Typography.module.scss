@@ -1,0 +1,85 @@
+.h1 {
+  font-size: calc(2.5 * var(--font-size-base));
+  font-weight: 700;
+}
+
+.h2 {
+  font-size: calc(2 * var(--font-size-base));
+  font-weight: 600;
+}
+
+.h3 {
+  font-size: calc(1.75 * var(--font-size-base));
+  font-weight: 500;
+}
+
+.p {
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.span {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+}
+
+.base {
+  font-size: var(--font-size-base);
+}
+
+.sm {
+  font-size: var(--font-size-sm);
+}
+
+.md {
+  font-size: var(--font-size-md);
+}
+
+.lg {
+  font-size: var(--font-size-lg);
+}
+
+.xl {
+  font-size: var(--font-size-xl);
+}
+
+.normal {
+  font-weight: 400;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.semi-bold {
+  font-weight: 600;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.foreground {
+  color: var(--foreground);
+}
+
+.primary {
+  color: var(--primary);
+}
+
+.gray {
+  color: var(--gray-foreground);
+}
+
+.headingForeground {
+  color: var(--heading-foreground);
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
