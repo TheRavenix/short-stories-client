@@ -1,12 +1,13 @@
 import Link from "next/link";
+import { SearchIcon } from "lucide-react";
 
 import styles from "./Navbar.module.scss";
 
 import { ThemeToggle } from "../ThemeToggle";
 import { NavbarLink } from "./NavbarLink";
 import { Button } from "../ui/Button";
-import { SearchIcon } from "lucide-react";
 import { NavbarDrawer } from "./NavbarDrawer";
+import { P } from "../ui/Typography";
 
 interface Props {}
 
@@ -35,7 +36,9 @@ const Navbar: React.FC<Props> = () => {
       <div className={styles.startContent}>
         <NavbarDrawer />
         <Link href="/">
-          <h3>Short stories</h3>
+          <P size="lg" weight="bold">
+            Short stories
+          </P>
         </Link>
       </div>
       <div className={styles.endContent}>
