@@ -1,7 +1,7 @@
 @import "@/styles/mixins";
 
 .hero {
-  min-height: 100dvh;
+  height: 80dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,16 +18,24 @@
   z-index: 2;
 }
 
-.heroHeadline {
-  text-transform: capitalize;
+.featured {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
 }
 
-.heroTagline {
+.featuredHeadline {
+  text-align: center;
 }
 
-@include media(sm) {
-  .hero {
-    // align-items: flex-start;
-    // text-align: start;
-  }
+.featuredStories {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.featuredExploreMoreContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
