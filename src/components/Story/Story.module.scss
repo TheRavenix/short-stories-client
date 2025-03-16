@@ -1,0 +1,89 @@
+@import "@/styles/mixins";
+
+.story {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--spacing-sm);
+}
+
+.storyRating {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.coverImage {
+  flex-shrink: 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.actions > * {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.actionLink {
+  width: fit-content;
+}
+
+.genre {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.stats {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: calc(0.5 * var(--spacing-sm));
+}
+
+@include media(md) {
+  .story {
+    flex-direction: row;
+  }
+
+  .content {
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: start;
+  }
+
+  .genre {
+    position: absolute;
+    right: var(--spacing-md);
+    top: var(--spacing-md);
+  }
+
+  .stats {
+    position: absolute;
+    right: var(--spacing-md);
+    bottom: var(--spacing-md);
+  }
+}
