@@ -13,10 +13,10 @@ export default function Contact() {
         <form className={styles.form}>
           <div className={styles.nameAndEmail}>
             <Input label="Your name" />
-            <Input type="email" label="Email" />
+            <Input type="email" label="Email" required />
           </div>
           <Input label="Subject" />
-          <Input label="Message" />
+          <Input label="Message" required />
           <div className={styles.sendMessageContainer}>
             <Button>Send Message</Button>
           </div>

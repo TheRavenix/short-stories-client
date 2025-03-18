@@ -12,8 +12,8 @@ export default function SignIn() {
       <Container withPaddingBlock>
         <H1 className={styles.headline}>Sign In</H1>
         <form className={styles.form}>
-          <Input type="email" label="Email" />
-          <Input type="password" label="Password" />
+          <Input type="email" label="Email" required />
+          <Input type="password" label="Password" required />
           <div className={styles.endContent}>
             <Button>Sign in</Button>
             <P variant="gray">
