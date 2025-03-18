@@ -1,0 +1,36 @@
+@import "@/styles/mixins";
+
+.main {
+  padding-top: var(--navbar-height);
+}
+
+.headline {
+  text-align: center;
+}
+
+.form {
+  margin-top: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.endContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.signInLink {
+  color: var(--primary);
+}
+
+@include media(sm) {
+  .endContent {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+  }
+}
