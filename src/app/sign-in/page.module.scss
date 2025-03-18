@@ -15,20 +15,15 @@
   gap: var(--spacing-md);
 }
 
-.nameAndEmail {
+.endContent {
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
+  align-items: center;
+  justify-content: space-between;
 }
 
-.sendMessageContainer {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
+.signUpLink {
+  color: var(--primary);
 }
 
 @include media(md) {
-  .nameAndEmail {
-    flex-direction: row;
-  }
 }
