@@ -1,0 +1,46 @@
+.inputContainer {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: calc(1.25 * var(--spacing-sm)) 0;
+  font-size: var(--font-size-base);
+  background: transparent;
+  color: var(--foreground);
+  border: none;
+  border-bottom: 1px solid var(--border);
+  outline: none;
+  transition: border-color 0.3s;
+
+  &:focus {
+    border-bottom: 2px solid var(--primary);
+  }
+
+  &:focus + .label,
+  &:not(:placeholder-shown) + .label {
+    top: calc(1.25 * var(--spacing-sm) * -1);
+    font-size: var(--font-size-xs);
+    color: var(--primary);
+  }
+}
+
+.label {
+  position: absolute;
+  top: calc(1.25 * var(--spacing-sm));
+  left: 0;
+  font-size: var(--font-size-sm);
+  color: var(--gray-foreground);
+  pointer-events: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.inputDestructive {
+  border-color: var(--destructive);
+}
+
+.labelDestructive {
+  color: var(--destructive);
+}

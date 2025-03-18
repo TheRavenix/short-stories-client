@@ -9,23 +9,23 @@ interface SharedProps {
   transform?: Transform;
 }
 
-type HeadingColor = "foreground" | "primary" | "heading";
+type HeadingVariant = "foreground" | "primary" | "heading";
 
 interface H1Props extends ComponentProps<"h1">, SharedProps {
-  color?: HeadingColor;
+  variant?: HeadingVariant;
 }
 
 const H1: React.FC<H1Props> = ({
   className,
   transform,
-  color = "heading",
+  variant = "heading",
   ...rest
 }) => (
   <h1
     className={clsx(
       styles.h1,
       transform && styles[transform],
-      color === "heading" ? styles.headingForeground : styles[color],
+      variant === "heading" ? styles.headingForeground : styles[variant],
       className
     )}
     {...rest}
@@ -33,20 +33,20 @@ const H1: React.FC<H1Props> = ({
 );
 
 interface H2Props extends ComponentProps<"h2">, SharedProps {
-  color?: HeadingColor;
+  variant?: HeadingVariant;
 }
 
 const H2: React.FC<H2Props> = ({
   className,
   transform,
-  color = "foreground",
+  variant = "foreground",
   ...rest
 }) => (
   <h2
     className={clsx(
       styles.h2,
       transform && styles[transform],
-      color === "heading" ? styles.headingForeground : styles[color],
+      variant === "heading" ? styles.headingForeground : styles[variant],
       className
     )}
     {...rest}
@@ -54,20 +54,20 @@ const H2: React.FC<H2Props> = ({
 );
 
 interface H3Props extends ComponentProps<"h3">, SharedProps {
-  color?: HeadingColor;
+  variant?: HeadingVariant;
 }
 
 const H3: React.FC<H3Props> = ({
   className,
   transform,
-  color = "foreground",
+  variant = "foreground",
   ...rest
 }) => (
   <h3
     className={clsx(
       styles.h3,
       transform && styles[transform],
-      color === "heading" ? styles.headingForeground : styles[color],
+      variant === "heading" ? styles.headingForeground : styles[variant],
       className
     )}
     {...rest}
@@ -76,19 +76,19 @@ const H3: React.FC<H3Props> = ({
 
 type FontSize = "base" | "sm" | "md" | "lg" | "xl";
 type FontWeight = "normal" | "medium" | "semi-bold" | "bold";
-type TextColor = "foreground" | "primary" | "gray";
+type TextVariant = "foreground" | "primary" | "gray";
 
 interface ParagraphProps extends ComponentProps<"p">, SharedProps {
   size?: FontSize;
   weight?: FontWeight;
-  color?: TextColor;
+  variant?: TextVariant;
 }
 
 const P: React.FC<ParagraphProps> = ({
   className,
   size = "base",
   weight = "normal",
-  color = "foreground",
+  variant = "foreground",
   transform,
   ...rest
 }) => (
@@ -97,7 +97,7 @@ const P: React.FC<ParagraphProps> = ({
       styles.p,
       styles[size],
       styles[weight],
-      styles[color],
+      styles[variant],
       transform && styles[transform],
       className
     )}
@@ -108,14 +108,14 @@ const P: React.FC<ParagraphProps> = ({
 interface SpanProps extends ComponentProps<"span">, SharedProps {
   size?: FontSize;
   weight?: FontWeight;
-  color?: TextColor;
+  variant?: TextVariant;
 }
 
 const Span: React.FC<SpanProps> = ({
   className,
   size = "sm",
   weight = "normal",
-  color = "foreground",
+  variant = "foreground",
   transform,
   ...rest
 }) => (
@@ -124,7 +124,7 @@ const Span: React.FC<SpanProps> = ({
       styles.span,
       styles[size],
       styles[weight],
-      styles[color],
+      styles[variant],
       transform && styles[transform],
       className
     )}

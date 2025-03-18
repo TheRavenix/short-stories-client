@@ -73,7 +73,7 @@ const Story: React.FC<Props> = ({
           stars={reviews.reduce((a, b) => a + b.stars, 0) / reviews.length}
         />
         {shouldShowTitle && <CardTitle>{name}</CardTitle>}
-        <CardDescription color="gray">{description}</CardDescription>
+        <CardDescription variant="gray">{description}</CardDescription>
         <div className={styles.actions}>
           {shouldShowExploreLink && (
             <Link href={`/library/${id}`} className={styles.actionLink}>

@@ -30,7 +30,11 @@ export default async function StoryPage(props: PageProps) {
   return (
     <main className={styles.main}>
       <Container withPaddingBlock>
-        <H1 color="primary" transform="capitalize" className={styles.headline}>
+        <H1
+          variant="primary"
+          transform="capitalize"
+          className={styles.headline}
+        >
           {story.name}
         </H1>
         <div className={styles.storyContainer}>

@@ -1,0 +1,35 @@
+@import "@/styles/mixins";
+
+.main {
+  padding-top: var(--navbar-height);
+}
+
+.headline {
+  text-align: center;
+}
+
+.form {
+  margin-top: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-block: var(--spacing-sm);
+}
+
+.nameAndEmail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.sendMessageContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+@include media(md) {
+  .nameAndEmail {
+    flex-direction: row;
+  }
+}
