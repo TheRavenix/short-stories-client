@@ -18,16 +18,16 @@ export default function About() {
           </P>
 
           <div className={styles.section}>
-            <H3 transform="capitalize">Why we started</H3>
+            <H3>Why we started</H3>
             <div className={styles.descriptions}>
-              <P size="base">
+              <P>
                 It all began with a simple idea: to make great stories
                 accessible to everyone, no matter where they are or how much
                 time they have. Whether you’re looking to escape into a
                 thrilling adventure, unravel a mystery, or just enjoy a quick
                 read, this platform was created with you in mind.
               </P>
-              <P size="base">
+              <P>
                 We wanted to strip away the distractions and create a space
                 where you can focus on what really matters—the stories.
               </P>
@@ -35,19 +35,21 @@ export default function About() {
           </div>
 
           <div className={styles.section}>
-            <H3 transform="capitalize">How it works</H3>
+            <H3>How it works</H3>
             <div className={styles.descriptions}>
-              <P size="base">
+              <P>
                 1.{" "}
                 <Link href="/sign-up" className={styles.link}>
                   Sign up
                 </Link>{" "}
-                for an account and dive into our library.
+                for an account and dive into our{" "}
+                <Link href="/library" className={styles.link}>
+                  Library
+                </Link>
+                .
               </P>
-              <P size="base">
-                2. Pick a story that catches your eye and start reading.
-              </P>
-              <P size="base">
+              <P>2. Pick a story that catches your eye and start reading.</P>
+              <P>
                 3. Start reading free stories or unlock premium content for even
                 more options.
               </P>
@@ -55,9 +57,9 @@ export default function About() {
           </div>
 
           <div className={styles.section}>
-            <H3 transform="capitalize">Our mission</H3>
+            <H3>Our mission</H3>
             <div className={styles.descriptions}>
-              <P size="base">
+              <P>
                 At the heart of it all, our goal is simple: to bring you a wide
                 variety of high-quality short stories that you can enjoy
                 anytime, anywhere. We believe everyone deserves access to great
@@ -67,16 +69,14 @@ export default function About() {
           </div>
 
           <div className={styles.section}>
-            <H3 transform="capitalize">What we offer</H3>
+            <H3>What we offer</H3>
             <div className={styles.descriptions}>
-              <P size="base">
-                1. A diverse collection of stories across multiple genres.
-              </P>
-              <P size="base">
+              <P>1. A diverse collection of stories across multiple genres.</P>
+              <P>
                 2. Free stories for those who don't want to pay but still want
                 to read.
               </P>
-              <P size="base">
+              <P>
                 3. Exclusive access to premium stories and features for those
                 who want even more.
               </P>
@@ -84,13 +84,13 @@ export default function About() {
           </div>
 
           <div className={styles.section}>
-            <H3 transform="capitalize">Your privacy matters</H3>
+            <H3>Your privacy matters</H3>
             <div className={styles.descriptions}>
-              <P size="base">
+              <P>
                 1. We take your privacy seriously. Your data is yours, and we’ll
                 never share it with third parties.
               </P>
-              <P size="base">
+              <P>
                 2. For more details, check out our{" "}
                 <Link href="/terms" className={styles.link}>
                   Terms and Conditions
