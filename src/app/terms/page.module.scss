@@ -1,0 +1,43 @@
+.main {
+  padding-top: var(--navbar-height);
+}
+
+.headline {
+  text-align: center;
+}
+
+.content {
+  max-width: 800px;
+  margin-top: var(--spacing-lg);
+  margin-inline: auto;
+}
+
+.tagline {
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.section {
+  margin-bottom: var(--spacing-2xl);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  h3 {
+    text-transform: capitalize;
+  }
+}
+
+.descriptions {
+  margin-top: var(--spacing-md);
+
+  p {
+    margin-bottom: var(--spacing-md);
+    color: var(--gray-foreground);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
