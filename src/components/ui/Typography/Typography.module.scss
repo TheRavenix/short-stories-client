@@ -24,16 +24,16 @@
   font-weight: 400;
 }
 
-.base {
-  font-size: var(--font-size-base);
+.xs {
+  font-size: var(--font-size-xs);
 }
 
 .sm {
   font-size: var(--font-size-sm);
 }
 
-.md {
-  font-size: var(--font-size-md);
+.base {
+  font-size: var(--font-size-base);
 }
 
 .lg {
@@ -42,6 +42,10 @@
 
 .xl {
   font-size: var(--font-size-xl);
+}
+
+.xxl {
+  font-size: var(--font-size-2xl);
 }
 
 .normal {

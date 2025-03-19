@@ -17,7 +17,9 @@ export default function Home() {
         <div className={styles.hero}>
           <HeroCanvas />
           <div className={styles.heroContent}>
-            <H2 transform="capitalize">Discover amazing short stories</H2>
+            <H1 transform="capitalize" variant="primary">
+              Discover amazing short stories
+            </H1>
             <P>Read, imagine, and escape into worlds beyond your own.</P>
             <Link href="/library">
               <Button>Explore Stories</Button>

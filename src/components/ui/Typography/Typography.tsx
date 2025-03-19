@@ -74,7 +74,7 @@ const H3: React.FC<H3Props> = ({
   />
 );
 
-type FontSize = "base" | "sm" | "md" | "lg" | "xl";
+type FontSize = "xs" | "sm" | "base" | "lg" | "xl" | "xxl";
 type FontWeight = "normal" | "medium" | "semi-bold" | "bold";
 type TextVariant = "foreground" | "primary" | "gray";
 
