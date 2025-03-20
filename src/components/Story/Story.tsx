@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { EyeIcon } from "lucide-react";
+import { DownloadIcon, EyeIcon } from "lucide-react";
 
 import styles from "./Story.module.scss";
 
@@ -8,8 +8,9 @@ import { Card, CardDescription, CardTitle } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { Badge } from "../ui/Badge";
 import { StoryDownloadButton } from "./StoryDownloadButton";
-import { Span } from "../ui/Typography";
 import { StarRating } from "../StarRating";
+import { StoryReadButton } from "./StoryReadButton";
+import { Stats } from "../Stats";
 
 interface StoryReviewType {
   id: string;
@@ -22,10 +23,11 @@ interface StoryType {
   id: string;
   name: string;
   description: string;
-  preview: string;
+  preview: string[];
   genre: string[];
   coverImage: string;
   views: number;
+  downloads: number;
   reviews: StoryReviewType[];
   isFree: boolean;
   createdAt: Date;
@@ -35,6 +37,7 @@ interface StoryType {
 interface Props extends StoryType {
   shouldShowTitle?: boolean;
   shouldShowExploreLink?: boolean;
+  shouldShowReadButton?: boolean;
   shouldShowDownloadButton?: boolean;
   shouldShowStats?: boolean;
 }
@@ -46,10 +49,12 @@ const Story: React.FC<Props> = ({
   genre,
   coverImage,
   views,
+  downloads,
   reviews,
   isFree,
   shouldShowTitle = true,
   shouldShowExploreLink = true,
+  shouldShowReadButton = false,
   shouldShowDownloadButton = false,
   shouldShowStats = false,
 }) => {
@@ -80,17 +85,26 @@ const Story: React.FC<Props> = ({
               <Button>Explore</Button>
             </Link>
           )}
+          {shouldShowReadButton && <StoryReadButton id={id} isFree={isFree} />}
           {shouldShowDownloadButton && (
             <StoryDownloadButton isFree={isFree} coverImage={coverImage} />
           )}
         </div>
       </div>
       {shouldShowStats && (
-        <div className={styles.stats}>
-          <div className={styles.stat}>
-            <EyeIcon size={16} />
-            <Span weight="bold">{views}</Span>
-          </div>
+        <div className={styles.statsWrapper}>
+          <Stats
+            list={[
+              {
+                icon: <EyeIcon size={16} />,
+                value: views,
+              },
+              {
+                icon: <DownloadIcon size={16} />,
+                value: downloads,
+              },
+            ]}
+          />
         </div>
       )}
     </Card>

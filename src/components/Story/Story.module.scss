@@ -51,19 +51,6 @@
   gap: var(--spacing-sm);
 }
 
-.stats {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-}
-
-.stat {
-  display: flex;
-  align-items: center;
-  gap: calc(0.5 * var(--spacing-sm));
-}
-
 @include media(md) {
   .story {
     flex-direction: row;
@@ -81,7 +68,7 @@
     top: var(--spacing-md);
   }
 
-  .stats {
+  .statsWrapper {
     position: absolute;
     right: var(--spacing-md);
     bottom: var(--spacing-md);
