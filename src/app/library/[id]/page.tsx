@@ -4,27 +4,23 @@ import { PageProps } from "../../../../.next/types/app/page";
 import styles from "./page.module.scss";
 
 import { Container } from "@/components/ui/Container";
-import { Story } from "@/components/Story";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardTitle,
-} from "@/components/ui/Card";
+import { Story, StoryContent } from "@/components/Story";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { H1, P, Span } from "@/components/ui/Typography";
-
-import { stories } from "@/utils/stories";
 import { StarRating } from "@/components/StarRating";
 import { Separator } from "@/components/ui/Separator";
 import { Badge } from "@/components/ui/Badge";
+
+import { stories } from "@/utils/stories";
+import { Stats } from "@/components/Stats";
+import { MessageCircleIcon } from "lucide-react";
 
 export default async function StoryPage(props: PageProps) {
   const params = await props.params;
   const story = stories.find((s) => s.id === params.id);
 
   if (!story) {
-    redirect("/library");
-    return null;
+    return redirect("/library");
   }
 
   return (
@@ -42,35 +38,41 @@ export default async function StoryPage(props: PageProps) {
             {...story}
             shouldShowTitle={false}
             shouldShowExploreLink={false}
+            shouldShowReadButton={true}
             shouldShowDownloadButton={true}
             shouldShowStats={true}
           />
           <Card>
-            <CardContent className={styles.previewCardContent}>
+            <CardHeader>
               <CardTitle size="xl">{story.name}'s preview</CardTitle>
-              <CardDescription size="lg">{story.preview}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <StoryContent storyId={story.id} content={story.preview} />
             </CardContent>
           </Card>
           <Card>
-            <CardContent className={styles.reviewsCardContent}>
-              <div className={styles.reviewsCardContentHeader}>
-                <CardTitle size="xl">{story.name}'s reviews</CardTitle>
-                <Badge size="sm" vaiant="inverse">
-                  {story.reviews.length}
-                </Badge>
-              </div>
-              <div className={styles.reviews}>
-                {story.reviews.map((review) => (
-                  <div key={review.id} className={styles.review}>
-                    <Span size="lg" weight="bold">
-                      {review.userName}
-                    </Span>
-                    <StarRating stars={review.stars} />
-                    <P>{review.comment}</P>
-                    <Separator />
-                  </div>
-                ))}
-              </div>
+            <CardHeader className={styles.reviewsHeader}>
+              <CardTitle size="xl">{story.name}'s reviews</CardTitle>
+              <Stats
+                list={[
+                  {
+                    icon: <MessageCircleIcon size={16} />,
+                    value: story.reviews.length,
+                  },
+                ]}
+              />
+            </CardHeader>
+            <CardContent className={styles.reviewsContent}>
+              {story.reviews.map((review) => (
+                <div key={review.id} className={styles.review}>
+                  <Span size="lg" weight="bold">
+                    {review.userName}
+                  </Span>
+                  <StarRating stars={review.stars} />
+                  <P>{review.comment}</P>
+                  <Separator />
+                </div>
+              ))}
             </CardContent>
           </Card>
         </div>

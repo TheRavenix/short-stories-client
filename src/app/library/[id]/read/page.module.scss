@@ -1,0 +1,19 @@
+.main {
+  padding-top: var(--navbar-height);
+}
+
+.headline {
+  text-align: center;
+}
+
+.containerContent {
+  max-width: 800px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.backToStory {
+  width: fit-content;
+}
