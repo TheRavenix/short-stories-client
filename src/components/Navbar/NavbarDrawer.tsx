@@ -51,22 +51,24 @@ const NavbarDrawer: React.FC<Props> = () => {
               {navBarLinks.map((link, i) => (
                 <Link key={i} href={link.href} onClick={toggleOpen}>
                   <Button
-                    variant={pathName === link.href ? "page" : "ghost"}
+                    variant="ghost"
                     rounded={false}
                     className={styles.drawerButton}
                   >
-                    {link.name}
+                    <span
+                      className={
+                        pathName === link.href
+                          ? styles.drawerActiveLinkText
+                          : ""
+                      }
+                    >
+                      {link.name}
+                    </span>
                   </Button>
                 </Link>
               ))}
-            </div>
-            <div className={styles.drawerAuthContainer}>
               <Link href="/sign-in" onClick={toggleOpen}>
-                <Button
-                  size="sm"
-                  rounded={false}
-                  className={styles.drawerButton}
-                >
+                <Button size="sm" className={styles.drawerButton}>
                   Sign in
                 </Button>
               </Link>
@@ -74,7 +76,6 @@ const NavbarDrawer: React.FC<Props> = () => {
                 <Button
                   variant="inverse"
                   size="sm"
-                  rounded={false}
                   className={styles.drawerButton}
                 >
                   Sign up
