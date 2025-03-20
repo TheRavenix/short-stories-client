@@ -24,6 +24,7 @@ const HeroCanvas: React.FC<Props> = () => {
   const generateOrbInterval = useRef<NodeJS.Timeout>(null!);
   const orbsLength = useRef(0);
   const resizeTimeout = useRef<NodeJS.Timeout>(null!);
+  const prevWindowWidth = useRef<number>(null);
 
   useEffect(() => {
     const ctx = canvas.current?.getContext("2d")!;
@@ -114,16 +115,24 @@ const HeroCanvas: React.FC<Props> = () => {
     }
 
     function handleOnResize() {
-      clearTimeout(resizeTimeout.current);
+      const newWidth = window.innerWidth;
 
-      resizeTimeout.current = setTimeout(() => {
-        changeWidth(window.innerWidth);
-        changeHeight((80 * window.innerHeight) / 100);
-        resetOrbs();
-      }, 250);
+      if (newWidth !== prevWindowWidth.current) {
+        clearTimeout(resizeTimeout.current);
+
+        resizeTimeout.current = setTimeout(() => {
+          changeWidth(window.innerWidth);
+          changeHeight((80 * window.innerHeight) / 100);
+          resetOrbs();
+        }, 250);
+
+        prevWindowWidth.current = newWidth;
+      }
     }
 
     function init() {
+      prevWindowWidth.current = window.innerWidth;
+
       window.addEventListener("resize", handleOnResize);
 
       changeWidth(window.innerWidth);
