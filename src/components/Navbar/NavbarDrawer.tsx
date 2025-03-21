@@ -20,6 +20,7 @@ import {
 } from "../ui/Drawer";
 
 import { navBarLinks } from "./Navbar";
+import { authLinks } from "@/data/links";
 
 interface Props {}
 
@@ -67,20 +68,17 @@ const NavbarDrawer: React.FC<Props> = () => {
                   </Button>
                 </Link>
               ))}
-              <Link href="/sign-in" onClick={toggleOpen}>
-                <Button size="sm" className={styles.drawerButton}>
-                  Sign in
-                </Button>
-              </Link>
-              <Link href="/sign-up" onClick={toggleOpen}>
-                <Button
-                  variant="inverse"
-                  size="sm"
-                  className={styles.drawerButton}
-                >
-                  Sign up
-                </Button>
-              </Link>
+              {authLinks.map((link, i) => (
+                <Link key={i} href={link.href} onClick={toggleOpen}>
+                  <Button
+                    variant={link.href === "/sign-up" ? "inverse" : "primary"}
+                    size="sm"
+                    className={styles.drawerButton}
+                  >
+                    {link.name}
+                  </Button>
+                </Link>
+              ))}
             </div>
           </DrawerBody>
         </DrawerContent>
