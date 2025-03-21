@@ -1,13 +1,12 @@
 import styles from "./page.module.scss";
 
-import { Container } from "@/components/ui/Container";
+import { CompactContainer } from "@/components/ui/Container";
 import { H1, H3, P } from "@/components/ui/Typography";
-import Link from "next/link";
 
 export default function TermsAndConditions() {
   return (
     <main className={styles.main}>
-      <Container withPaddingBlock>
+      <CompactContainer withPaddingBlock>
         <H1 className={styles.headline}>Terms and Conditions</H1>
         <div className={styles.content}>
           <P size="xl" className={styles.tagline}>
@@ -56,7 +55,7 @@ export default function TermsAndConditions() {
             </div>
           </div>
         </div>
-      </Container>
+      </CompactContainer>
     </main>
   );
 }

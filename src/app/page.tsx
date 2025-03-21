@@ -6,9 +6,12 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { HeroCanvas } from "@/components/HeroCanvas";
 import { Story } from "@/components/Story";
-import { H1, H2, P } from "@/components/ui/Typography";
+import { H1, P } from "@/components/ui/Typography";
 
 import { stories } from "@/utils/stories";
+import { ContactForm } from "@/components/ContactForm";
+import { SignUpForm } from "@/components/SignUpForm";
+import { CompactContainer } from "@/components/ui/Container";
 
 export default function Home() {
   return (
@@ -27,7 +30,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.featured}>
-          <H1 transform="capitalize" className={styles.featuredHeadline}>
+          <H1 transform="capitalize" className={styles.headline}>
             Featured stories
           </H1>
           <div className={styles.featuredStories}>
@@ -42,6 +45,20 @@ export default function Home() {
           </div>
         </div>
       </Container>
+      <CompactContainer withPaddingBlock withContentSpacing>
+        <div className={styles.signUp}>
+          <H1 transform="capitalize" className={styles.headline}>
+            Sign up
+          </H1>
+          <SignUpForm />
+        </div>
+        <div className={styles.contact}>
+          <H1 transform="capitalize" className={styles.headline}>
+            Contact
+          </H1>
+          <ContactForm />
+        </div>
+      </CompactContainer>
     </main>
   );
 }

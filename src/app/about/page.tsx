@@ -1,13 +1,13 @@
 import styles from "./page.module.scss";
 
-import { Container } from "@/components/ui/Container";
+import { CompactContainer } from "@/components/ui/Container";
 import { H1, H3, P } from "@/components/ui/Typography";
 import Link from "next/link";
 
 export default function About() {
   return (
     <main className={styles.main}>
-      <Container withPaddingBlock>
+      <CompactContainer withPaddingBlock>
         <H1 className={styles.headline}>About Us</H1>
         <div className={styles.content}>
           <P size="xl" className={styles.tagline}>
@@ -100,7 +100,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      </Container>
+      </CompactContainer>
     </main>
   );
 }

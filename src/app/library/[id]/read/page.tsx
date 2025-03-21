@@ -4,7 +4,6 @@ import Link from "next/link";
 
 import styles from "./page.module.scss";
 
-import { Container } from "@/components/ui/Container";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { SeparatorHighlighter } from "@/components/SeparatorHighlighter";
 import { Button } from "@/components/ui/Button";
@@ -12,6 +11,7 @@ import { Button } from "@/components/ui/Button";
 import { stories } from "@/utils/stories";
 import { storiesContent } from "@/utils/stories-content";
 import { StoryContent, StoryContentType } from "@/components/Story";
+import { CompactContainer } from "@/components/ui/Container";
 
 const isPaidUser = false;
 
@@ -37,7 +37,7 @@ export default async function ReadStory(props: PageProps) {
     <>
       <SeparatorHighlighter />
       <main className={styles.main}>
-        <Container withPaddingBlock>
+        <CompactContainer withPaddingBlock>
           <div className={styles.containerContent}>
             <Link href={`/library/${story.id}`} className={styles.backToStory}>
               <Button>Back to Story</Button>
@@ -51,7 +51,7 @@ export default async function ReadStory(props: PageProps) {
               </CardContent>
             </Card>
           </div>
-        </Container>
+        </CompactContainer>
       </main>
     </>
   );

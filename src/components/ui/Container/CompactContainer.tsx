@@ -1,14 +1,12 @@
-import { ComponentProps } from "react";
 import clsx from "clsx";
 
 import styles from "./Container.module.scss";
 
-interface ContainerProps extends ComponentProps<"div"> {
-  withPaddingBlock?: boolean;
-  withContentSpacing?: boolean;
-}
+import { ContainerProps } from "./Container";
 
-const Container: React.FC<ContainerProps> = ({
+interface Props extends ContainerProps {}
+
+const CompactContainer: React.FC<Props> = ({
   className,
   withPaddingBlock = false,
   withContentSpacing = false,
@@ -17,7 +15,7 @@ const Container: React.FC<ContainerProps> = ({
   return (
     <div
       className={clsx(
-        styles.container,
+        styles.compactContainer,
         withPaddingBlock && styles.withPaddingBlock,
         withContentSpacing && styles.withContentSpacing,
         className
@@ -27,4 +25,4 @@ const Container: React.FC<ContainerProps> = ({
   );
 };
 
-export { Container, type ContainerProps };
+export { CompactContainer };

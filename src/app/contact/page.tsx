@@ -1,27 +1,16 @@
 import styles from "./page.module.scss";
 
-import { Container } from "@/components/ui/Container";
-import { Input } from "@/components/ui/Input";
 import { H1 } from "@/components/ui/Typography";
-import { Button } from "@/components/ui/Button";
+import { ContactForm } from "@/components/ContactForm";
+import { CompactContainer } from "@/components/ui/Container";
 
-export default function Contact() {
+export default function ContactPage() {
   return (
     <main className={styles.main}>
-      <Container withPaddingBlock>
+      <CompactContainer className={styles.mainContainer} withPaddingBlock>
         <H1 className={styles.headline}>Contact</H1>
-        <form className={styles.form}>
-          <div className={styles.nameAndEmail}>
-            <Input label="Your name" />
-            <Input type="email" label="Email" required />
-          </div>
-          <Input label="Subject" />
-          <Input label="Message" required />
-          <div className={styles.sendMessageContainer}>
-            <Button>Send Message</Button>
-          </div>
-        </form>
-      </Container>
+        <ContactForm />
+      </CompactContainer>
     </main>
   );
 }

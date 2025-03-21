@@ -18,14 +18,16 @@
   z-index: 2;
 }
 
-.featured {
+.headline {
+  text-align: center;
+}
+
+.featured,
+.signUp,
+.contact {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
-}
-
-.featuredHeadline {
-  text-align: center;
 }
 
 .featuredStories {

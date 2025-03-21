@@ -1,9 +1,17 @@
 @import "@/styles/mixins";
 
-.container {
-  width: 100%;
+.container,
+.compactContainer {
   margin-inline: auto;
   padding-inline: var(--spacing-md);
+}
+
+.container {
+  width: 100%;
+}
+
+.compactContainer {
+  max-width: 800px;
 }
 
 .withPaddingBlock {
