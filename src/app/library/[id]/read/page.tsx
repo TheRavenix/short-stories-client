@@ -6,8 +6,7 @@ import styles from "./page.module.scss";
 
 import { Container } from "@/components/ui/Container";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-
-import { SeparatorHighlighter } from "@/components/SeparatorHighlighter/SeparatorHighlighter";
+import { SeparatorHighlighter } from "@/components/SeparatorHighlighter";
 import { Button } from "@/components/ui/Button";
 
 import { stories } from "@/utils/stories";
