@@ -53,7 +53,7 @@ const Story: React.FC<Props> = ({
   shouldShowStats = false,
 }) => {
   const stars = storiesReviews
-    .filter((sr) => sr.id === id)
+    .filter((sr) => sr.storyId === id)
     .map((sr) => sr.stars)
     .reduce((a, b) => a + b, 0);
 
@@ -73,7 +73,7 @@ const Story: React.FC<Props> = ({
         height={200}
       />
       <div className={styles.content}>
-        {shouldShowStarRating && <StarRating stars={stars} />}
+        {shouldShowStarRating && stars > 0 && <StarRating stars={stars} />}
         {shouldShowTitle && <CardTitle>{name}</CardTitle>}
         <CardDescription variant="gray">{description}</CardDescription>
         <div className={styles.actions}>
