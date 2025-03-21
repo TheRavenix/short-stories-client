@@ -52,8 +52,14 @@ const Story: React.FC<Props> = ({
   shouldShowDownloadButton = false,
   shouldShowStats = false,
 }) => {
+  let reviewsLength = 0;
   const stars = storiesReviews
-    .filter((sr) => sr.storyId === id)
+    .filter((sr) => {
+      if (sr.storyId === id) {
+        reviewsLength++;
+        return sr;
+      }
+    })
     .map((sr) => sr.stars)
     .reduce((a, b) => a + b, 0);
 
@@ -73,7 +79,9 @@ const Story: React.FC<Props> = ({
         height={200}
       />
       <div className={styles.content}>
-        {shouldShowStarRating && stars > 0 && <StarRating stars={stars} />}
+        {shouldShowStarRating && stars > 0 && (
+          <StarRating stars={stars / reviewsLength} />
+        )}
         {shouldShowTitle && <CardTitle>{name}</CardTitle>}
         <CardDescription variant="gray">{description}</CardDescription>
         <div className={styles.actions}>
