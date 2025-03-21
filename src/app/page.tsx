@@ -5,13 +5,15 @@ import styles from "./page.module.scss";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { HeroCanvas } from "@/components/HeroCanvas";
-import { Story } from "@/components/Story";
+import { Story, StoryReview } from "@/components/Story";
 import { H1, P } from "@/components/ui/Typography";
 
 import { stories } from "@/utils/stories";
-import { ContactForm } from "@/components/ContactForm";
 import { SignUpForm } from "@/components/SignUpForm";
 import { CompactContainer } from "@/components/ui/Container";
+import { NewsletterSubForm } from "@/components/NewsletterSubForm";
+import { Card, CardContent } from "@/components/ui/Card";
+import { storiesReviews } from "@/utils/stories-reviews";
 
 export default function Home() {
   return (
@@ -29,19 +31,46 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className={styles.featured}>
+        <div className={styles.stories}>
           <H1 transform="capitalize" className={styles.headline}>
             Featured stories
           </H1>
-          <div className={styles.featuredStories}>
+          <div className={styles.storiesList}>
             {stories.map((story) => (
               <Story key={story.id} {...story} />
             ))}
           </div>
-          <div className={styles.featuredExploreMoreContainer}>
+          <div className={styles.storiesExploreMoreContainer}>
             <Link href="/library">
               <Button>Explore More</Button>
             </Link>
+          </div>
+        </div>
+        <div className={styles.reviews}>
+          <H1 transform="capitalize" className={styles.headline}>
+            Featured reviews
+          </H1>
+          <div className={styles.reviewsList}>
+            {stories.map((story) => {
+              const review = storiesReviews.find(
+                (sr) => sr.storyId === story.id
+              );
+
+              if (!review) return null;
+
+              return (
+                <Card key={story.id}>
+                  <CardContent className={styles.reviewsCardContent}>
+                    <StoryReview
+                      {...review}
+                      shouldShowSeparator={false}
+                      shouldShowStoryNameBadge={true}
+                      shouldShowReadMoreLink={true}
+                    />
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </Container>
@@ -52,11 +81,11 @@ export default function Home() {
           </H1>
           <SignUpForm />
         </div>
-        <div className={styles.contact}>
+        <div className={styles.newsletterSub}>
           <H1 transform="capitalize" className={styles.headline}>
-            Contact
+            Stay updated
           </H1>
-          <ContactForm />
+          <NewsletterSubForm />
         </div>
       </CompactContainer>
     </main>

@@ -11,13 +11,7 @@ import { StoryDownloadButton } from "./StoryDownloadButton";
 import { StarRating } from "../StarRating";
 import { StoryReadButton } from "./StoryReadButton";
 import { Stats } from "../Stats";
-
-interface StoryReviewType {
-  id: string;
-  userName: string;
-  stars: number;
-  comment: string;
-}
+import { storiesReviews } from "@/utils/stories-reviews";
 
 interface StoryType {
   id: string;
@@ -28,13 +22,13 @@ interface StoryType {
   coverImage: string;
   views: number;
   downloads: number;
-  reviews: StoryReviewType[];
   isFree: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
 
 interface Props extends StoryType {
+  shouldShowStarRating?: boolean;
   shouldShowTitle?: boolean;
   shouldShowExploreLink?: boolean;
   shouldShowReadButton?: boolean;
@@ -50,14 +44,19 @@ const Story: React.FC<Props> = ({
   coverImage,
   views,
   downloads,
-  reviews,
   isFree,
+  shouldShowStarRating = true,
   shouldShowTitle = true,
   shouldShowExploreLink = true,
   shouldShowReadButton = false,
   shouldShowDownloadButton = false,
   shouldShowStats = false,
 }) => {
+  const stars = storiesReviews
+    .filter((sr) => sr.id === id)
+    .map((sr) => sr.stars)
+    .reduce((a, b) => a + b, 0);
+
   return (
     <Card withPadding className={styles.story}>
       <div className={styles.genre}>
@@ -74,9 +73,7 @@ const Story: React.FC<Props> = ({
         height={200}
       />
       <div className={styles.content}>
-        <StarRating
-          stars={reviews.reduce((a, b) => a + b.stars, 0) / reviews.length}
-        />
+        {shouldShowStarRating && <StarRating stars={stars} />}
         {shouldShowTitle && <CardTitle>{name}</CardTitle>}
         <CardDescription variant="gray">{description}</CardDescription>
         <div className={styles.actions}>

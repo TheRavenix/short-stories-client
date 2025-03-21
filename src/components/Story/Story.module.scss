@@ -51,6 +51,28 @@
   gap: var(--spacing-sm);
 }
 
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.5 * var(--spacing-sm));
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.25 * var(--spacing-sm));
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reviewLink {
+  width: fit-content;
+}
+
 @include media(md) {
   .story {
     flex-direction: row;

@@ -1,27 +1,33 @@
 import { redirect } from "next/navigation";
 import { PageProps } from "../../../../.next/types/app/page";
+import { MessageCircleIcon } from "lucide-react";
 
 import styles from "./page.module.scss";
 
 import { Container } from "@/components/ui/Container";
-import { Story, StoryContent } from "@/components/Story";
+import {
+  Story,
+  StoryContent,
+  StoryReview,
+  StoryReviewType,
+} from "@/components/Story";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import { H1, P, Span } from "@/components/ui/Typography";
-import { StarRating } from "@/components/StarRating";
-import { Separator } from "@/components/ui/Separator";
-import { Badge } from "@/components/ui/Badge";
+import { H1 } from "@/components/ui/Typography";
+import { Stats } from "@/components/Stats";
 
 import { stories } from "@/utils/stories";
-import { Stats } from "@/components/Stats";
-import { MessageCircleIcon } from "lucide-react";
+import { storiesReviews } from "@/utils/stories-reviews";
 
 export default async function StoryPage(props: PageProps) {
   const params = await props.params;
   const story = stories.find((s) => s.id === params.id);
+  let reviews: StoryReviewType[];
 
   if (!story) {
     return redirect("/library");
   }
+
+  reviews = storiesReviews.filter((sr) => sr.storyId === story.id);
 
   return (
     <main className={styles.main}>
@@ -57,21 +63,14 @@ export default async function StoryPage(props: PageProps) {
                 list={[
                   {
                     icon: <MessageCircleIcon size={16} />,
-                    value: story.reviews.length,
+                    value: reviews.length,
                   },
                 ]}
               />
             </CardHeader>
             <CardContent className={styles.reviewsContent}>
-              {story.reviews.map((review) => (
-                <div key={review.id} className={styles.review}>
-                  <Span size="lg" weight="bold">
-                    {review.userName}
-                  </Span>
-                  <StarRating stars={review.stars} />
-                  <P>{review.comment}</P>
-                  <Separator />
-                </div>
+              {reviews.map((review) => (
+                <StoryReview key={review.id} {...review} />
               ))}
             </CardContent>
           </Card>
