@@ -10,12 +10,12 @@
   background: transparent;
   color: var(--foreground);
   border: none;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--border);
   outline: none;
   transition: border-color 0.3s;
 
   &:focus {
-    border-bottom: 2px solid var(--primary);
+    border-color: var(--primary);
   }
 
   &:focus + .label,
