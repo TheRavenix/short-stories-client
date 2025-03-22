@@ -1,0 +1,72 @@
+.selectTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-rounded);
+  background-color: var(--card);
+  color: var(--card-foreground);
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.selectIcon {
+  margin-left: 0.5rem;
+}
+
+.selectContent {
+  width: var(--radix-select-trigger-width);
+  max-height: var(--radix-select-content-available-height);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-rounded);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.selectViewport {
+  padding: 0.5rem;
+}
+
+.selectItem {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+.selectItemIndicator {
+  margin-left: auto;
+}
+
+.selectLabel {
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
+
+.selectSeparator {
+  height: 1px;
+  background-color: var(--border);
+  margin: 0.5rem 0;
+}
+
+.selectScrollButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
