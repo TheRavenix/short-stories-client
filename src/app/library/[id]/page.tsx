@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { PageProps } from "../../../../.next/types/app/page";
-import { MessageCircleIcon } from "lucide-react";
+import { EyeIcon, MessageCircleIcon } from "lucide-react";
 
 import styles from "./page.module.scss";
 
@@ -17,6 +17,8 @@ import { Stats } from "@/components/Stats";
 
 import { stories } from "@/utils/stories";
 import { storiesReviews } from "@/utils/stories-reviews";
+import { Show } from "@/components/Show";
+import { EmptyState } from "@/components/EmptyState";
 
 export default async function StoryPage(props: PageProps) {
   const params = await props.params;
@@ -53,7 +55,17 @@ export default async function StoryPage(props: PageProps) {
               <CardTitle size="xl">{story.name}'s preview</CardTitle>
             </CardHeader>
             <CardContent>
-              <StoryContent storyId={story.id} content={story.preview} />
+              <Show
+                when={story.preview.length > 0}
+                fallback={
+                  <EmptyState
+                    icon={<EyeIcon />}
+                    message="No preview to show."
+                  />
+                }
+              >
+                <StoryContent storyId={story.id} content={story.preview} />
+              </Show>
             </CardContent>
           </Card>
           <Card>
@@ -69,9 +81,19 @@ export default async function StoryPage(props: PageProps) {
               />
             </CardHeader>
             <CardContent className={styles.reviewsContent}>
-              {reviews.map((review) => (
-                <StoryReview key={review.id} {...review} />
-              ))}
+              <Show
+                when={reviews.length > 0}
+                fallback={
+                  <EmptyState
+                    icon={<MessageCircleIcon />}
+                    message="No reviews to show."
+                  />
+                }
+              >
+                {reviews.map((review) => (
+                  <StoryReview key={review.id} {...review} />
+                ))}
+              </Show>
             </CardContent>
           </Card>
         </div>

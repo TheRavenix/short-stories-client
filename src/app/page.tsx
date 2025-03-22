@@ -14,6 +14,9 @@ import { CompactContainer } from "@/components/ui/Container";
 import { NewsletterSubForm } from "@/components/NewsletterSubForm";
 import { Card, CardContent } from "@/components/ui/Card";
 import { storiesReviews } from "@/utils/stories-reviews";
+import { EmptyState } from "@/components/EmptyState";
+import { BookIcon, MessageCircleIcon } from "lucide-react";
+import { Show } from "@/components/Show";
 
 export default function Home() {
   return (
@@ -35,43 +38,60 @@ export default function Home() {
           <H1 transform="capitalize" className={styles.headline}>
             Featured stories
           </H1>
-          <div className={styles.storiesList}>
-            {stories.map((story) => (
-              <Story key={story.id} {...story} />
-            ))}
-          </div>
-          <div className={styles.storiesExploreMoreContainer}>
-            <Link href="/library">
-              <Button>Explore More</Button>
-            </Link>
-          </div>
+          <Show
+            when={stories.length > 0}
+            fallback={
+              <EmptyState icon={<BookIcon />} message="No stories to show." />
+            }
+          >
+            <div className={styles.storiesList}>
+              {stories.map((story) => (
+                <Story key={story.id} {...story} />
+              ))}
+            </div>
+            <div className={styles.storiesExploreMoreContainer}>
+              <Link href="/library">
+                <Button>Explore More</Button>
+              </Link>
+            </div>
+          </Show>
         </div>
         <div className={styles.reviews}>
           <H1 transform="capitalize" className={styles.headline}>
             Featured reviews
           </H1>
-          <div className={styles.reviewsList}>
-            {stories.map((story) => {
-              const review = storiesReviews.find(
-                (sr) => sr.storyId === story.id
-              );
+          <Show
+            when={stories.length > 0}
+            fallback={
+              <EmptyState
+                icon={<MessageCircleIcon />}
+                message="No reviews to show."
+              />
+            }
+          >
+            <div className={styles.reviewsList}>
+              {stories.map((story) => {
+                const review = storiesReviews.find(
+                  (sr) => sr.storyId === story.id
+                );
 
-              if (!review) return null;
+                if (!review) return null;
 
-              return (
-                <Card key={story.id}>
-                  <CardContent className={styles.reviewsCardContent}>
-                    <StoryReview
-                      {...review}
-                      shouldShowSeparator={false}
-                      shouldShowStoryNameBadge={true}
-                      shouldShowReadMoreLink={true}
-                    />
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+                return (
+                  <Card key={story.id}>
+                    <CardContent className={styles.reviewsCardContent}>
+                      <StoryReview
+                        {...review}
+                        shouldShowSeparator={false}
+                        shouldShowStoryNameBadge={true}
+                        shouldShowReadMoreLink={true}
+                      />
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          </Show>
         </div>
       </Container>
       <CompactContainer withPaddingBlock withContentSpacing>

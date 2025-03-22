@@ -1,0 +1,28 @@
+.emptyState {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--spacing-md);
+}
+
+.icon {
+  color: var(--gray-foreground);
+}
+
+.start {
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: start;
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.end {
+  align-items: flex-end;
+  justify-content: flex-end;
+  text-align: end;
+}

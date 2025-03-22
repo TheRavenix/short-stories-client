@@ -6,8 +6,13 @@
   text-align: center;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
 .stories {
-  margin-top: var(--spacing-lg);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
