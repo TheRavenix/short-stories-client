@@ -3,8 +3,8 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 40;
+  background-color: var(--overlay);
+  z-index: 60;
 }
 
 .drawerContent {
@@ -15,7 +15,7 @@
   flex-direction: column;
   max-height: 100dvh;
   background-color: var(--card);
-  z-index: 50;
+  z-index: 70;
 }
 
 .drawerHandle {

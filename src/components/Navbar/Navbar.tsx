@@ -11,6 +11,7 @@ import { P } from "../ui/Typography";
 
 import { authLinks, navBarLinks } from "@/data/links";
 import { Container } from "../ui/Container";
+import { NavbarSearch } from "./NavbarSearch";
 
 interface Props {}
 
@@ -35,9 +36,7 @@ const Navbar: React.FC<Props> = () => {
             ))}
           </div>
           <div className={styles.searchAndThemeContainer}>
-            <Button variant="inverse" size="icon">
-              <SearchIcon size={20} />
-            </Button>
+            <NavbarSearch />
             <ThemeToggle />
           </div>
           <div className={styles.authContainer}>

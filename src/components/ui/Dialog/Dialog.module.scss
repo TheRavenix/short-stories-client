@@ -1,0 +1,43 @@
+.dialogTrigger {
+  cursor: pointer;
+}
+
+.dialogOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+
+.dialogContent {
+  position: relative;
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border-radius: var(--radius-rounded);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 450px;
+}
+
+.dialogTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.dialogDescription {
+  font-size: 0.875rem;
+  color: var(--gray-foreground);
+  margin-bottom: 1.5rem;
+}
+
+.dialogClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
