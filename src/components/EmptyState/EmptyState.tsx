@@ -4,13 +4,13 @@ import styles from "./EmptyState.module.scss";
 
 import { P } from "../ui/Typography";
 
-type EmptyStateProps = {
+type Props = {
   message?: string;
   icon?: React.ReactNode;
   position?: "start" | "center" | "end";
 };
 
-const EmptyState: React.FC<EmptyStateProps> = ({
+const EmptyState: React.FC<Props> = ({
   message = "No items found.",
   icon,
   position = "center",

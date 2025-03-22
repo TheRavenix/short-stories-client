@@ -71,3 +71,11 @@
 .rounded {
   border-radius: var(--radius-rounded);
 }
+
+.squared {
+  border-radius: 0;
+}
+
+.circle {
+  border-radius: var(--radius-circle);
+}

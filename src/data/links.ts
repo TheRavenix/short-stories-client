@@ -1,4 +1,9 @@
-const navBarLinks = [
+type LinkType = {
+  name: string;
+  href: string;
+};
+
+const navBarLinks: LinkType[] = [
   {
     name: "Home",
     href: "/",
@@ -17,7 +22,7 @@ const navBarLinks = [
   },
 ];
 
-const authLinks = [
+const authLinks: LinkType[] = [
   {
     name: "Sign in",
     href: "/sign-in",
@@ -28,4 +33,12 @@ const authLinks = [
   },
 ];
 
-export { navBarLinks, authLinks };
+const footerLinks: LinkType[] = [
+  ...navBarLinks,
+  {
+    name: "Terms and Conditions",
+    href: "/terms",
+  },
+];
+
+export { navBarLinks, authLinks, footerLinks };

@@ -1,8 +1,44 @@
+@import "@/styles/mixins";
+
 .footer {
+  margin-top: var(--footer-safearea);
+  padding-block: var(--spacing-md);
+}
+
+.footerContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.footerLeftSection {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: var(--footer-height);
-  background-color: var(--card);
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.followLinks {
+  display: flex;
+  gap: calc(1.25 * var(--spacing-sm));
+}
+
+.titleLink {
+  width: fit-content;
+}
+
+.followLink {
+  width: fit-content;
+  height: fit-content;
+}
+
+@include media(md) {
+  .footerContainer {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }

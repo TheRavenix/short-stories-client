@@ -13,17 +13,19 @@ type ButtonVariant =
 
 type ButtonSize = "sm" | "md" | "lg" | "icon";
 
+type ButtonShape = "rounded" | "squared" | "circle";
+
 interface Props extends ComponentProps<"button"> {
   variant?: ButtonVariant;
   size?: ButtonSize;
-  rounded?: boolean;
+  shape?: ButtonShape;
 }
 
 const Button: React.FC<Props> = ({
   className,
   variant = "primary",
   size = "md",
-  rounded = true,
+  shape = "rounded",
   ...rest
 }) => {
   return (
@@ -32,7 +34,7 @@ const Button: React.FC<Props> = ({
         styles.button,
         styles[variant],
         styles[size],
-        rounded && styles.rounded,
+        styles[shape],
         className
       )}
       {...rest}
