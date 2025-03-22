@@ -16,7 +16,11 @@ const StoryDownloadButton: React.FC<Props> = ({ coverImage, isFree }) => {
     downloadFile(`${window.location.origin}${coverImage}`);
   }
 
-  return <Button onClick={handleDownload}>Download</Button>;
+  return (
+    <Button variant="inverse" onClick={handleDownload}>
+      Download
+    </Button>
+  );
 };
 
 export { StoryDownloadButton };

@@ -8,19 +8,19 @@ type BadgeVariant = "primary" | "secondary" | "page" | "inverse";
 type BadgeSize = "sm" | "md" | "lg";
 
 interface Props extends ComponentProps<"div"> {
-  vaiant?: BadgeVariant;
+  variant?: BadgeVariant;
   size?: BadgeSize;
 }
 
 const Badge: React.FC<Props> = ({
   className,
-  vaiant = "primary",
+  variant = "primary",
   size = "md",
   ...rest
 }) => {
   return (
     <div
-      className={clsx(styles.badge, styles[vaiant], styles[size], className)}
+      className={clsx(styles.badge, styles[variant], styles[size], className)}
       {...rest}
     />
   );

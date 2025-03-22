@@ -12,6 +12,7 @@ import { stories } from "@/utils/stories";
 import { storiesContent } from "@/utils/stories-content";
 import { StoryContent, StoryContentType } from "@/components/Story";
 import { CompactContainer } from "@/components/ui/Container";
+import { ArrowLeftIcon } from "lucide-react";
 
 const isPaidUser = false;
 
@@ -40,9 +41,11 @@ export default async function ReadStory(props: PageProps) {
         <CompactContainer withPaddingBlock>
           <div className={styles.containerContent}>
             <Link href={`/library/${story.id}`} className={styles.backToStory}>
-              <Button>Back to Story</Button>
+              <Button variant="ghost" size="icon">
+                <ArrowLeftIcon />
+              </Button>
             </Link>
-            <Card className={styles.card}>
+            <Card>
               <CardHeader>
                 <CardTitle variant="primary">{story.name}</CardTitle>
               </CardHeader>

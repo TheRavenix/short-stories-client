@@ -71,14 +71,16 @@ export default async function StoryPage(props: PageProps) {
           <Card>
             <CardHeader className={styles.reviewsHeader}>
               <CardTitle size="xl">{story.name}'s reviews</CardTitle>
-              <Stats
-                list={[
-                  {
-                    icon: <MessageCircleIcon size={16} />,
-                    value: reviews.length,
-                  },
-                ]}
-              />
+              {reviews.length > 0 && (
+                <Stats
+                  list={[
+                    {
+                      icon: <MessageCircleIcon size={16} />,
+                      value: reviews.length,
+                    },
+                  ]}
+                />
+              )}
             </CardHeader>
             <CardContent className={styles.reviewsContent}>
               <Show

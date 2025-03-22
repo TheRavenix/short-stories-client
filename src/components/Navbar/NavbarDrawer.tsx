@@ -51,11 +51,7 @@ const NavbarDrawer: React.FC<Props> = () => {
             <div className={styles.drawerLinks}>
               {navBarLinks.map((link, i) => (
                 <Link key={i} href={link.href} onClick={toggleOpen}>
-                  <Button
-                    variant="ghost"
-                    rounded={false}
-                    className={styles.drawerButton}
-                  >
+                  <Button variant="ghost" className={styles.drawerButton}>
                     <span
                       className={
                         pathName === link.href

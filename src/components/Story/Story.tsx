@@ -66,7 +66,7 @@ const Story: React.FC<Props> = ({
   return (
     <Card withPadding className={styles.story}>
       <div className={styles.genre}>
-        <Badge vaiant="inverse">{isFree ? "Free" : "Paid"}</Badge>
+        <Badge variant="inverse">{isFree ? "Free" : "Paid"}</Badge>
         {genre.map((item) => (
           <Badge key={item}>{item}</Badge>
         ))}
@@ -79,8 +79,10 @@ const Story: React.FC<Props> = ({
         height={200}
       />
       <div className={styles.content}>
-        {shouldShowStarRating && stars > 0 && (
+        {shouldShowStarRating && stars > 0 ? (
           <StarRating stars={stars / reviewsLength} />
+        ) : (
+          <Badge variant="inverse">Not Rated</Badge>
         )}
         {shouldShowTitle && <CardTitle>{name}</CardTitle>}
         <CardDescription variant="gray">{description}</CardDescription>

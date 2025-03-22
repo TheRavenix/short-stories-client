@@ -45,7 +45,9 @@ const StoryReview: React.FC<Props> = ({
       <P>{comment}</P>
       {shouldShowReadMoreLink && (
         <Link href={`/library/${storyId}`} className={styles.reviewLink}>
-          <Button size="sm">Read more</Button>
+          <Button size="sm" variant="inverse">
+            Read more
+          </Button>
         </Link>
       )}
       {shouldShowSeparator && <Separator />}
