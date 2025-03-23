@@ -1,18 +1,19 @@
 import { redirect } from "next/navigation";
 import { PageProps } from "../../../../../.next/types/app/page";
 import Link from "next/link";
+import { ArrowLeftIcon } from "lucide-react";
 
 import styles from "./page.module.scss";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Card, CardContent } from "@/components/ui/Card";
 import { SeparatorHighlighter } from "@/components/SeparatorHighlighter";
 import { Button } from "@/components/ui/Button";
+import { StoryContent, StoryContentType } from "@/components/Story";
+import { CompactContainer } from "@/components/ui/Container";
+import { H1 } from "@/components/ui/Typography";
 
 import { stories } from "@/utils/stories";
 import { storiesContent } from "@/utils/stories-content";
-import { StoryContent, StoryContentType } from "@/components/Story";
-import { CompactContainer } from "@/components/ui/Container";
-import { ArrowLeftIcon } from "lucide-react";
 
 const isPaidUser = false;
 
@@ -45,10 +46,14 @@ export default async function ReadStory(props: PageProps) {
                 <ArrowLeftIcon />
               </Button>
             </Link>
+            <H1
+              variant="primary"
+              transform="capitalize"
+              className={styles.headline}
+            >
+              {story.name}
+            </H1>
             <Card>
-              <CardHeader>
-                <CardTitle variant="primary">{story.name}</CardTitle>
-              </CardHeader>
               <CardContent>
                 <StoryContent {...storyContent} />
               </CardContent>
