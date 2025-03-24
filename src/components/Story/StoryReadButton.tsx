@@ -9,13 +9,13 @@ interface Props {
   isFree: boolean;
 }
 
-const isPaidUser = false;
+const isProUser = false;
 
 const StoryReadButton: React.FC<Props> = ({ id, isFree }) => {
   const router = useRouter();
 
   function handleRead() {
-    if (!isFree && !isPaidUser) return;
+    if (!isFree && !isProUser) return;
 
     router.push(`/library/${id}/read`);
   }

@@ -41,7 +41,10 @@ export default function Home() {
           <Show
             when={stories.length > 0}
             fallback={
-              <EmptyState icon={<BookIcon />} message="No stories to show." />
+              <EmptyState
+                icon={<BookIcon />}
+                message="No featured stories at the moment. Stay tuned for exciting tales!"
+              />
             }
           >
             <div className={styles.storiesList}>
@@ -65,7 +68,7 @@ export default function Home() {
             fallback={
               <EmptyState
                 icon={<MessageCircleIcon />}
-                message="No reviews to show."
+                message="No reviews available yet. Be the first to share your thoughts!"
               />
             }
           >

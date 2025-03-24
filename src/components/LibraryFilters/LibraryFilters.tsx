@@ -91,7 +91,7 @@ const LibraryFilters: React.FC<Props> = ({}) => {
             <SelectGroup>
               <SelectItem value="all-types">All Types</SelectItem>
               <SelectItem value="free">Free</SelectItem>
-              <SelectItem value="paid">Paid</SelectItem>
+              <SelectItem value="pro">Pro</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>

@@ -1,6 +1,12 @@
 import { redirect } from "next/navigation";
 import { PageProps } from "../../../../.next/types/app/page";
-import { EyeIcon, MessageCircleIcon } from "lucide-react";
+import {
+  CircleAlertIcon,
+  EyeIcon,
+  InfoIcon,
+  MessageCircleIcon,
+} from "lucide-react";
+import Link from "next/link";
 
 import styles from "./page.module.scss";
 
@@ -11,14 +17,22 @@ import {
   StoryReview,
   StoryReviewType,
 } from "@/components/Story";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/Card";
 import { H1 } from "@/components/ui/Typography";
 import { Stats } from "@/components/Stats";
 
-import { stories } from "@/utils/stories";
-import { storiesReviews } from "@/utils/stories-reviews";
 import { Show } from "@/components/Show";
 import { EmptyState } from "@/components/EmptyState";
+import { Button } from "@/components/ui/Button";
+
+import { stories } from "@/utils/stories";
+import { storiesReviews } from "@/utils/stories-reviews";
 
 export default async function StoryPage(props: PageProps) {
   const params = await props.params;
@@ -26,7 +40,21 @@ export default async function StoryPage(props: PageProps) {
   let reviews: StoryReviewType[];
 
   if (!story) {
-    return redirect("/library");
+    return (
+      <main className={styles.noStoryMain}>
+        <Container withPaddingBlock>
+          <div className={styles.noStoryContent}>
+            <EmptyState
+              icon={<CircleAlertIcon />}
+              message="This story hasn’t been written yet… or maybe it got lost!"
+            />
+            <Link href="/library">
+              <Button>Back to Library</Button>
+            </Link>
+          </div>
+        </Container>
+      </main>
+    );
   }
 
   reviews = storiesReviews.filter((sr) => sr.storyId === story.id);
@@ -52,6 +80,28 @@ export default async function StoryPage(props: PageProps) {
           />
           <Card>
             <CardHeader>
+              <CardTitle size="xl">{story.name}'s about</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Show
+                when={story.about.length > 0}
+                fallback={
+                  <EmptyState
+                    icon={<InfoIcon />}
+                    message="The author hasn't shared more details yet, but the story awaits!"
+                  />
+                }
+              >
+                <div className={styles.aboutDescriptions}>
+                  {story.about.map((item, i) => (
+                    <CardDescription key={i}>{item}</CardDescription>
+                  ))}
+                </div>
+              </Show>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
               <CardTitle size="xl">{story.name}'s preview</CardTitle>
             </CardHeader>
             <CardContent>
@@ -60,7 +110,7 @@ export default async function StoryPage(props: PageProps) {
                 fallback={
                   <EmptyState
                     icon={<EyeIcon />}
-                    message="No preview to show."
+                    message="No preview available. Start reading to explore the story!"
                   />
                 }
               >
@@ -88,7 +138,7 @@ export default async function StoryPage(props: PageProps) {
                 fallback={
                   <EmptyState
                     icon={<MessageCircleIcon />}
-                    message="No reviews to show."
+                    message="No reviews yet. Be the first to share your thoughts!"
                   />
                 }
               >

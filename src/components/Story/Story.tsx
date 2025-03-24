@@ -17,6 +17,7 @@ interface StoryType {
   id: string;
   name: string;
   description: string;
+  about: string[];
   preview: string[];
   genre: string[];
   coverImage: string;
@@ -66,7 +67,7 @@ const Story: React.FC<Props> = ({
   return (
     <Card withPadding className={styles.story}>
       <div className={styles.genre}>
-        <Badge variant="inverse">{isFree ? "Free" : "Paid"}</Badge>
+        <Badge variant="inverse">{isFree ? "Free" : "Pro"}</Badge>
         {genre.map((item) => (
           <Badge key={item}>{item}</Badge>
         ))}

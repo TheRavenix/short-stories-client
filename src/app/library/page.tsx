@@ -5,11 +5,11 @@ import styles from "./page.module.scss";
 import { Container } from "@/components/ui/Container";
 import { Story } from "@/components/Story";
 import { H1 } from "@/components/ui/Typography";
-
-import { stories } from "@/utils/stories";
 import { Show } from "@/components/Show";
 import { EmptyState } from "@/components/EmptyState";
 import { LibraryFilters } from "@/components/LibraryFilters";
+
+import { stories } from "@/utils/stories";
 
 export default function Library() {
   return (
@@ -20,7 +20,10 @@ export default function Library() {
           <Show
             when={stories.length > 0}
             fallback={
-              <EmptyState icon={<BookIcon />} message="No stories to show." />
+              <EmptyState
+                icon={<BookIcon />}
+                message="No stories available yet. Check back later for new adventures!"
+              />
             }
           >
             <LibraryFilters />

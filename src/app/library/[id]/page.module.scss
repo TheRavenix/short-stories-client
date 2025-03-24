@@ -1,5 +1,20 @@
 @import "@/styles/mixins";
 
+.noStoryMain {
+  height: 80dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.noStoryContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
 .main {
   padding-top: var(--navbar-height);
 }
@@ -15,6 +30,12 @@
   margin-top: var(--spacing-lg);
 }
 
+.aboutDescriptions {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.5 * var(--spacing-sm));
+}
+
 .reviewsHeader {
   display: flex;
   align-items: center;
@@ -25,10 +46,4 @@
   display: flex;
   flex-direction: column;
   gap: calc(0.5 * var(--spacing-sm));
-}
-
-.review {
-  display: flex;
-  flex-direction: column;
-  gap: calc(0.25 * var(--spacing-sm));
 }
