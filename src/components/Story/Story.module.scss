@@ -73,6 +73,24 @@
   width: fit-content;
 }
 
+.aboutCardDescriptions {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.5 * var(--spacing-sm));
+}
+
+.reviewsCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reviewsCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.5 * var(--spacing-sm));
+}
+
 @include media(md) {
   .story {
     flex-direction: row;

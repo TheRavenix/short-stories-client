@@ -29,7 +29,7 @@ const NavbarSearchDrawer: React.FC<Props> = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <Drawer open={open} onOpenChange={setOpen} autoFocus={true}>
+    <Drawer open={open} onOpenChange={setOpen} autoFocus>
       <DrawerTrigger asChild>
         <Button variant="inverse" size="icon">
           <SearchIcon size={20} />

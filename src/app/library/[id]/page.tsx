@@ -1,41 +1,33 @@
-import { redirect } from "next/navigation";
-import { PageProps } from "../../../../.next/types/app/page";
-import {
-  CircleAlertIcon,
-  EyeIcon,
-  InfoIcon,
-  MessageCircleIcon,
-} from "lucide-react";
-import Link from "next/link";
-
 import styles from "./page.module.scss";
 
 import { Container } from "@/components/ui/Container";
 import {
   Story,
-  StoryContent,
-  StoryReview,
+  StoryAboutCard,
+  StoryPreviewCard,
+  StoryReviewsCard,
   StoryReviewType,
+  StoryViewToggle,
 } from "@/components/Story";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/Card";
 import { H1 } from "@/components/ui/Typography";
-import { Stats } from "@/components/Stats";
-
+import { SearchParamTabs } from "@/components/SearchParamTabs";
+import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import { Show } from "@/components/Show";
-import { EmptyState } from "@/components/EmptyState";
-import { Button } from "@/components/ui/Button";
 
 import { stories } from "@/utils/stories";
 import { storiesReviews } from "@/utils/stories-reviews";
+import { Callout } from "@/components/Callout";
 
-export default async function StoryPage(props: PageProps) {
+interface Props {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ view: string; tab: string }>;
+}
+
+export default async function StoryPage(props: Props) {
   const params = await props.params;
+  const searchParams = await props.searchParams;
+  const view = searchParams.view || "grid";
+  const tab = searchParams.tab || "about";
   const story = stories.find((s) => s.id === params.id);
   let reviews: StoryReviewType[];
 
@@ -43,15 +35,11 @@ export default async function StoryPage(props: PageProps) {
     return (
       <main className={styles.noStoryMain}>
         <Container withPaddingBlock>
-          <div className={styles.noStoryContent}>
-            <EmptyState
-              icon={<CircleAlertIcon />}
-              message="This story hasn’t been written yet… or maybe it got lost!"
-            />
-            <Link href="/library">
-              <Button>Back to Library</Button>
-            </Link>
-          </div>
+          <Callout
+            message="This story hasn’t been written yet… or maybe it got lost!"
+            href="/library"
+            buttonText="Back to Library"
+          />
         </Container>
       </main>
     );
@@ -74,80 +62,47 @@ export default async function StoryPage(props: PageProps) {
             {...story}
             shouldShowTitle={false}
             shouldShowExploreLink={false}
-            shouldShowReadButton={true}
-            shouldShowDownloadButton={true}
-            shouldShowStats={true}
+            shouldShowReadButton
+            shouldShowDownloadButton
+            shouldShowStats
           />
-          <Card>
-            <CardHeader>
-              <CardTitle size="xl">{story.name}'s about</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Show
-                when={story.about.length > 0}
-                fallback={
-                  <EmptyState
-                    icon={<InfoIcon />}
-                    message="The author hasn't shared more details yet, but the story awaits!"
-                  />
-                }
-              >
-                <div className={styles.aboutDescriptions}>
-                  {story.about.map((item, i) => (
-                    <CardDescription key={i}>{item}</CardDescription>
-                  ))}
-                </div>
-              </Show>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle size="xl">{story.name}'s preview</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Show
-                when={story.preview.length > 0}
-                fallback={
-                  <EmptyState
-                    icon={<EyeIcon />}
-                    message="No preview available. Start reading to explore the story!"
-                  />
-                }
-              >
-                <StoryContent storyId={story.id} content={story.preview} />
-              </Show>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className={styles.reviewsHeader}>
-              <CardTitle size="xl">{story.name}'s reviews</CardTitle>
-              {reviews.length > 0 && (
-                <Stats
-                  list={[
-                    {
-                      icon: <MessageCircleIcon size={16} />,
-                      value: reviews.length,
-                    },
-                  ]}
+          <StoryViewToggle id={story.id} currentView={view} />
+          <Show
+            when={view === "tabs"}
+            fallback={
+              <>
+                <StoryAboutCard name={story.name} about={story.about} />
+                <StoryPreviewCard
+                  id={story.id}
+                  name={story.name}
+                  preview={story.preview}
                 />
-              )}
-            </CardHeader>
-            <CardContent className={styles.reviewsContent}>
-              <Show
-                when={reviews.length > 0}
-                fallback={
-                  <EmptyState
-                    icon={<MessageCircleIcon />}
-                    message="No reviews yet. Be the first to share your thoughts!"
-                  />
-                }
-              >
-                {reviews.map((review) => (
-                  <StoryReview key={review.id} {...review} />
-                ))}
-              </Show>
-            </CardContent>
-          </Card>
+                <StoryReviewsCard name={story.name} reviews={reviews} />
+              </>
+            }
+          >
+            <SearchParamTabs defaultValue={tab}>
+              <TabsList fullWidth>
+                <TabsTrigger value="about">About</TabsTrigger>
+                <TabsTrigger value="preview">Preview</TabsTrigger>
+                <TabsTrigger value="reviews">Reviews</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="about">
+                <StoryAboutCard name={story.name} about={story.about} />
+              </TabsContent>
+              <TabsContent value="preview">
+                <StoryPreviewCard
+                  id={story.id}
+                  name={story.name}
+                  preview={story.preview}
+                />
+              </TabsContent>
+              <TabsContent value="reviews">
+                <StoryReviewsCard name={story.name} reviews={reviews} />
+              </TabsContent>
+            </SearchParamTabs>
+          </Show>
         </div>
       </Container>
     </main>

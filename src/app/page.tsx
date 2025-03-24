@@ -86,8 +86,8 @@ export default function Home() {
                       <StoryReview
                         {...review}
                         shouldShowSeparator={false}
-                        shouldShowStoryNameBadge={true}
-                        shouldShowReadMoreLink={true}
+                        shouldShowStoryNameBadge
+                        shouldShowReadMoreLink
                       />
                     </CardContent>
                   </Card>

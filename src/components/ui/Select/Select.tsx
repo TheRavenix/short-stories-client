@@ -19,7 +19,7 @@ const SelectTrigger = React.forwardRef<
   >
     {children}
     <SelectPrimitive.Icon className={styles.selectIcon}>
-      <ChevronDownIcon size={20} />
+      <ChevronDownIcon size={18} />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ));
@@ -39,13 +39,13 @@ const SelectContent = React.forwardRef<
       {...props}
     >
       <SelectPrimitive.ScrollUpButton className={styles.selectScrollButton}>
-        <ChevronUpIcon size={20} />
+        <ChevronUpIcon size={18} />
       </SelectPrimitive.ScrollUpButton>
       <SelectPrimitive.Viewport className={styles.selectViewport}>
         {children}
       </SelectPrimitive.Viewport>
       <SelectPrimitive.ScrollDownButton className={styles.selectScrollButton}>
-        <ChevronDownIcon size={20} />
+        <ChevronDownIcon size={18} />
       </SelectPrimitive.ScrollDownButton>
     </SelectPrimitive.Content>
   </SelectPrimitive.Portal>
@@ -63,7 +63,7 @@ const SelectItem = React.forwardRef<
   >
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
     <SelectPrimitive.ItemIndicator className={styles.selectItemIndicator}>
-      <CheckIcon size={20} />
+      <CheckIcon size={18} />
     </SelectPrimitive.ItemIndicator>
   </SelectPrimitive.Item>
 ));

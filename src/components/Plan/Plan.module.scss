@@ -1,0 +1,38 @@
+.card {
+}
+
+.cardHeader,
+.cardContent {
+  text-align: center;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.planFeature {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.xIcon {
+  color: var(--destructive);
+}
+
+.checkIcon {
+  color: var(--primary);
+}
+
+.suffixContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.joinButton {
+  width: 100% !important;
+  text-transform: uppercase;
+}

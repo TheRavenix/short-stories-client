@@ -12,6 +12,7 @@ import { StarRating } from "../StarRating";
 import { StoryReadButton } from "./StoryReadButton";
 import { Stats } from "../Stats";
 import { storiesReviews } from "@/utils/stories-reviews";
+import { StoryViewLink } from "./StoryView/StoryViewLink";
 
 interface StoryType {
   id: string;
@@ -89,9 +90,12 @@ const Story: React.FC<Props> = ({
         <CardDescription variant="gray">{description}</CardDescription>
         <div className={styles.actions}>
           {shouldShowExploreLink && (
-            <Link href={`/library/${id}`} className={styles.actionLink}>
+            <StoryViewLink
+              href={`/library/${id}`}
+              className={styles.actionLink}
+            >
               <Button>Explore</Button>
-            </Link>
+            </StoryViewLink>
           )}
           {shouldShowReadButton && <StoryReadButton id={id} isFree={isFree} />}
           {shouldShowDownloadButton && (

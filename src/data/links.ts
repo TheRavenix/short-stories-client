@@ -13,12 +13,20 @@ const navBarLinks: LinkType[] = [
     href: "/library",
   },
   {
+    name: "Plans",
+    href: "/plans",
+  },
+  {
     name: "About",
     href: "/about",
   },
   {
     name: "Contact",
     href: "/contact",
+  },
+  {
+    name: "Settings",
+    href: "/settings",
   },
 ];
 

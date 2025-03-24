@@ -1,6 +1,4 @@
 import { redirect } from "next/navigation";
-import { PageProps } from "../../../../../.next/types/app/page";
-import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
 
 import styles from "./page.module.scss";
@@ -8,18 +6,28 @@ import styles from "./page.module.scss";
 import { Card, CardContent } from "@/components/ui/Card";
 import { SeparatorHighlighter } from "@/components/SeparatorHighlighter";
 import { Button } from "@/components/ui/Button";
-import { StoryContent, StoryContentType } from "@/components/Story";
+import {
+  StoryContent,
+  StoryContentType,
+  StoryViewLink,
+} from "@/components/Story";
 import { CompactContainer } from "@/components/ui/Container";
-import { H1, P } from "@/components/ui/Typography";
+import { H1 } from "@/components/ui/Typography";
 import { Show } from "@/components/Show";
 import { EmptyState } from "@/components/EmptyState";
+import { Callout } from "@/components/Callout";
 
 import { stories } from "@/utils/stories";
 import { storiesContent } from "@/utils/stories-content";
+import { PlanType } from "@/components/Plan";
 
-const isProUser = false;
+interface Props {
+  params: Promise<{ id: string }>;
+}
 
-export default async function ReadStory(props: PageProps) {
+const userPlan: PlanType = "free";
+
+export default async function ReadStory(props: Props) {
   const params = await props.params;
   const story = stories.find((s) => s.id === params.id);
   let storyContent: StoryContentType | undefined;
@@ -36,11 +44,14 @@ export default async function ReadStory(props: PageProps) {
       <main className={styles.main}>
         <CompactContainer withPaddingBlock>
           <div className={styles.containerContent}>
-            <Link href={`/library/${story.id}`} className={styles.backToStory}>
+            <StoryViewLink
+              href={`/library/${story.id}`}
+              className={styles.backToStory}
+            >
               <Button variant="ghost" size="icon">
                 <ArrowLeftIcon />
               </Button>
-            </Link>
+            </StoryViewLink>
             <H1
               variant="primary"
               transform="capitalize"
@@ -58,19 +69,14 @@ export default async function ReadStory(props: PageProps) {
               }
             >
               <Show
-                when={
-                  (story.isFree && !isProUser) || (!story.isFree && isProUser)
-                }
+                when={story.isFree || (!story.isFree && userPlan !== "pro")}
                 fallback={
-                  <div className={styles.proStoryContainer}>
-                    <P size="xl">
-                      This story is for Pro members. Subscribe to unlock and
-                      start reading!
-                    </P>
-                    <Link href="/plans">
-                      <Button>Upgrade to Pro</Button>
-                    </Link>
-                  </div>
+                  <Callout
+                    message="This story is for Pro members. Subscribe to unlock and
+                      start reading!"
+                    href="/plans"
+                    buttonText="Upgrade to Pro"
+                  />
                 }
               >
                 <Card>

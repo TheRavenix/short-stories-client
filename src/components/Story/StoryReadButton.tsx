@@ -4,18 +4,20 @@ import { useRouter } from "next/navigation";
 
 import { Button } from "../ui/Button";
 
+import { PlanType } from "../Plan";
+
 interface Props {
   id: string;
   isFree: boolean;
 }
 
-const isProUser = false;
+const userPlan: PlanType = "free";
 
 const StoryReadButton: React.FC<Props> = ({ id, isFree }) => {
   const router = useRouter();
 
   function handleRead() {
-    if (!isFree && !isProUser) return;
+    if (!isFree && userPlan !== "pro") return;
 
     router.push(`/library/${id}/read`);
   }
