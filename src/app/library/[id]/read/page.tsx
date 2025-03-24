@@ -69,7 +69,7 @@ export default async function ReadStory(props: Props) {
               }
             >
               <Show
-                when={story.isFree || (!story.isFree && userPlan !== "pro")}
+                when={story.isFree || (!story.isFree && userPlan === "pro")}
                 fallback={
                   <Callout
                     message="This story is for Pro members. Subscribe to unlock and
