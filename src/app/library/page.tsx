@@ -1,4 +1,5 @@
 import { BookIcon } from "lucide-react";
+import { Suspense } from "react";
 
 import styles from "./page.module.scss";
 
@@ -26,7 +27,9 @@ export default function Library() {
               />
             }
           >
-            <LibraryFilters />
+            <Suspense>
+              <LibraryFilters />
+            </Suspense>
             <div className={styles.stories}>
               {stories.map((story) => (
                 <Story key={story.id} {...story} />
