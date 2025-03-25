@@ -1,30 +1,7 @@
-@import "@/styles/mixins";
-
 .main {
   padding-top: var(--navbar-height);
 }
 
 .headline {
   text-align: center;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  margin-top: var(--spacing-lg);
-}
-
-.tabs {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--spacing-md);
-
-  button {
-    width: 100%;
-  }
-}
-
-.activeTabText {
-  color: var(--primary);
 }

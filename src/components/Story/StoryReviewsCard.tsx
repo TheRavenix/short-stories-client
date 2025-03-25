@@ -7,6 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/Card";
 import { Show } from "../Show";
 import { EmptyState } from "../EmptyState";
 import { StoryReview, StoryReviewType } from "./StoryReview";
+import { Button } from "../ui/Button";
+import { StoryLeaveReview } from "./StoryLeaveReview";
 
 interface Props {
   name: string;
@@ -30,6 +32,7 @@ const StoryReviewsCard: React.FC<Props> = ({ name, reviews }) => {
         )}
       </CardHeader>
       <CardContent className={styles.reviewsCardContent}>
+        <StoryLeaveReview />
         <Show
           when={reviews.length > 0}
           fallback={
@@ -39,9 +42,11 @@ const StoryReviewsCard: React.FC<Props> = ({ name, reviews }) => {
             />
           }
         >
-          {reviews.map((review) => (
-            <StoryReview key={review.id} {...review} />
-          ))}
+          <div className={styles.reviewsCardList}>
+            {reviews.map((review) => (
+              <StoryReview key={review.id} {...review} />
+            ))}
+          </div>
         </Show>
       </CardContent>
     </Card>

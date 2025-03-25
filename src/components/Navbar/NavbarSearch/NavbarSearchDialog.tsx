@@ -2,7 +2,6 @@
 
 import { SearchIcon, XIcon } from "lucide-react";
 import { useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import styles from "./NavbarSearch.module.scss";
 
@@ -14,15 +13,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../../ui/Dialog";
-import { Input } from "../../ui/Input";
 
-import { useNavbarSearch } from "./use-navbar-search";
+import { NavbarSearchContent } from "./NavbarSearchContent";
 
 interface Props {}
 
 const NavbarSearchDialog: React.FC<Props> = () => {
-  const pathName = usePathname();
-  const { query, setQuery, handleSearch } = useNavbarSearch();
   const [open, setOpen] = useState(false);
 
   return (
@@ -34,17 +30,7 @@ const NavbarSearchDialog: React.FC<Props> = () => {
       </DialogTrigger>
       <DialogContent>
         <DialogTitle>Search Stories</DialogTitle>
-        <form onSubmit={(e) => handleSearch(e, () => setOpen(false))}>
-          <Input
-            label="Enter a Keyword"
-            required={pathName !== "/library"}
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <Button type="submit" className={styles.searchButton}>
-            Search
-          </Button>
-        </form>
+        <NavbarSearchContent setOpen={setOpen} />
         <DialogClose asChild>
           <XIcon size={20} />
         </DialogClose>

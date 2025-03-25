@@ -1,10 +1,10 @@
-.storyRating {
+.starRating {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
 }
 
-.storyRatingStars {
+.starRatingStars {
   display: flex;
   align-items: center;
   gap: calc(0.5 * var(--spacing-sm));
@@ -13,4 +13,8 @@
 .icon {
   color: var(--star);
   fill: var(--star);
+}
+
+.starRatingFixedWidth {
+  width: 150px;
 }

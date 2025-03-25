@@ -1,0 +1,29 @@
+.drawerContent {
+  width: 100vw;
+  height: 65dvh;
+}
+
+.drawerBody {
+  padding: var(--spacing-sm);
+}
+
+.content,
+.contentForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  gap: var(--spacing-md);
+}
+
+.contentForm {
+  gap: var(--spacing-sm);
+}
+
+.contentRatingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}

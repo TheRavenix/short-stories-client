@@ -1,9 +1,4 @@
-"use client";
-
-import { SearchIcon } from "lucide-react";
-import { useState } from "react";
-
-import styles from "./NavbarSearch.module.scss";
+import styles from "./StoryLeaveReview.module.scss";
 
 import { Button } from "@/components/ui/Button";
 import {
@@ -16,28 +11,24 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/Drawer";
-import { NavbarSearchContent } from "./NavbarSearchContent";
+import { StoryLeaveReviewContent } from "./StoryLeaveReviewContent";
 
 interface Props {}
 
-const NavbarSearchDrawer: React.FC<Props> = () => {
-  const [open, setOpen] = useState(false);
-
+const StoryLeaveReviewDrawer: React.FC<Props> = () => {
   return (
-    <Drawer open={open} onOpenChange={setOpen} autoFocus>
+    <Drawer autoFocus>
       <DrawerTrigger asChild>
-        <Button variant="inverse" size="icon">
-          <SearchIcon size={20} />
-        </Button>
+        <Button>Leave a Review</Button>
       </DrawerTrigger>
       <DrawerPortal>
         <DrawerOverlay />
         <DrawerContent className={styles.drawerContent}>
           <DrawerHeader>
-            <DrawerTitle>Search Stories</DrawerTitle>
+            <DrawerTitle>Leave a Review</DrawerTitle>
           </DrawerHeader>
           <DrawerBody className={styles.drawerBody}>
-            <NavbarSearchContent setOpen={setOpen} />
+            <StoryLeaveReviewContent />
           </DrawerBody>
         </DrawerContent>
       </DrawerPortal>
@@ -45,4 +36,4 @@ const NavbarSearchDrawer: React.FC<Props> = () => {
   );
 };
 
-export { NavbarSearchDrawer };
+export { StoryLeaveReviewDrawer };
