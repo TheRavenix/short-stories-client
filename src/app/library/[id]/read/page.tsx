@@ -74,7 +74,7 @@ export default async function ReadStory(props: Props) {
                   <Callout
                     message="This story is for Pro members. Subscribe to unlock and
                       start reading!"
-                    href="/plans"
+                    href="/plans?plan=pro"
                     buttonText="Upgrade to Pro"
                   />
                 }
