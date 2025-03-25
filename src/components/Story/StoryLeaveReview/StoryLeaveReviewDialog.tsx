@@ -17,10 +17,12 @@ interface Props {}
 const StoryLeaveReviewDialog: React.FC<Props> = () => {
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button>Leave a Review</Button>
-      </DialogTrigger>
-      <DialogContent className={styles.dialogContent}>
+      <div className={styles.triggerWrapper}>
+        <DialogTrigger asChild>
+          <Button>Leave a Review</Button>
+        </DialogTrigger>
+      </div>
+      <DialogContent>
         <DialogTitle>Leave a Review</DialogTitle>
         <StoryLeaveReviewContent />
         <DialogClose asChild>

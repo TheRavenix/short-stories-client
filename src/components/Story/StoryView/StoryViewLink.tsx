@@ -5,7 +5,7 @@ import { ComponentProps, useEffect, useState } from "react";
 
 type Props = LinkProps & ComponentProps<"a"> & {};
 
-const StoryViewLink: React.FC<Props> = ({ className, href, ...rest }) => {
+const StoryViewLink: React.FC<Props> = ({ href, ...rest }) => {
   const [viewHref, setViewHref] = useState(href);
 
   useEffect(() => {

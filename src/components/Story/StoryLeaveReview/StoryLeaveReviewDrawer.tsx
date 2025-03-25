@@ -18,9 +18,11 @@ interface Props {}
 const StoryLeaveReviewDrawer: React.FC<Props> = () => {
   return (
     <Drawer autoFocus>
-      <DrawerTrigger asChild>
-        <Button>Leave a Review</Button>
-      </DrawerTrigger>
+      <div className={styles.triggerWrapper}>
+        <DrawerTrigger asChild>
+          <Button>Leave a Review</Button>
+        </DrawerTrigger>
+      </div>
       <DrawerPortal>
         <DrawerOverlay />
         <DrawerContent className={styles.drawerContent}>

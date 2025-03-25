@@ -1,3 +1,11 @@
+@use "@/styles/mixins" as mixins;
+
+.triggerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .drawerContent {
   width: 100vw;
   height: 65dvh;
@@ -26,4 +34,11 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-md);
+}
+
+@include mixins.media(md) {
+  .triggerWrapper {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 }

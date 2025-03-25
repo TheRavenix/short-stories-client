@@ -27,20 +27,22 @@ const StoryViewToggle: React.FC<Props> = ({ id, currentView }) => {
       <Span weight="bold" transform="uppercase">
         View
       </Span>
-      <Button
-        size="sm"
-        variant={currentView === "grid" ? "primary" : "inverse"}
-        onClick={() => handleOnClick("grid")}
-      >
-        Grid
-      </Button>
-      <Button
-        size="sm"
-        variant={currentView === "tabs" ? "primary" : "inverse"}
-        onClick={() => handleOnClick("tabs")}
-      >
-        Tabs
-      </Button>
+      <div className={styles.toggleActions}>
+        <Button
+          size="sm"
+          variant={currentView === "grid" ? "primary" : "inverse"}
+          onClick={() => handleOnClick("grid")}
+        >
+          Grid
+        </Button>
+        <Button
+          size="sm"
+          variant={currentView === "tabs" ? "primary" : "inverse"}
+          onClick={() => handleOnClick("tabs")}
+        >
+          Tabs
+        </Button>
+      </div>
     </div>
   );
 };

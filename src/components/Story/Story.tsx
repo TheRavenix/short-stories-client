@@ -97,7 +97,11 @@ const Story: React.FC<Props> = ({
               <Button>Explore</Button>
             </StoryViewLink>
           )}
-          {shouldShowReadButton && <StoryReadButton id={id} isFree={isFree} />}
+          {shouldShowReadButton && (
+            <Link href={`/library/${id}/read`}>
+              <Button>Read</Button>
+            </Link>
+          )}
           {shouldShowDownloadButton && (
             <StoryDownloadButton isFree={isFree} coverImage={coverImage} />
           )}

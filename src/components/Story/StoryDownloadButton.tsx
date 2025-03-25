@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { Button } from "../ui/Button";
 
 import { downloadFile } from "@/utils/download-file";
@@ -10,8 +12,13 @@ interface Props {
 }
 
 const StoryDownloadButton: React.FC<Props> = ({ coverImage, isFree }) => {
+  const router = useRouter();
+
   function handleDownload() {
-    if (!isFree) return;
+    if (!isFree) {
+      router.push("/plans?plan=pro");
+      return;
+    }
 
     downloadFile(`${window.location.origin}${coverImage}`);
   }

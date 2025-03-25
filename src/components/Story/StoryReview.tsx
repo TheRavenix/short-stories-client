@@ -4,8 +4,8 @@ import { StarRating } from "../StarRating";
 import { Separator } from "../ui/Separator";
 import { P, Span } from "../ui/Typography";
 import { Button } from "../ui/Button";
-import Link from "next/link";
 import { Badge } from "../ui/Badge";
+import { StoryViewLink } from "./StoryView";
 
 interface StoryReviewType {
   id: string;
@@ -44,11 +44,14 @@ const StoryReview: React.FC<Props> = ({
       <StarRating stars={stars} />
       <P>{comment}</P>
       {shouldShowReadMoreLink && (
-        <Link href={`/library/${storyId}`} className={styles.reviewLink}>
+        <StoryViewLink
+          href={`/library/${storyId}`}
+          className={styles.reviewLink}
+        >
           <Button size="sm" variant="inverse">
             Read more
           </Button>
-        </Link>
+        </StoryViewLink>
       )}
       {shouldShowSeparator && <Separator />}
     </div>
