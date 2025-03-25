@@ -1,4 +1,4 @@
-@import "@/styles/mixins";
+@use "@/styles/mixins" as mixins;
 
 .container {
   display: flex;
@@ -18,7 +18,7 @@
   gap: var(--spacing-sm);
 }
 
-@include media(md) {
+@include mixins.media(md) {
   .selects {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }

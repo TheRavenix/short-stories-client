@@ -1,4 +1,4 @@
-@import "@/styles/mixins";
+@use "@/styles/mixins" as mixins;
 
 .container,
 .compactContainer {
@@ -24,31 +24,31 @@
   gap: var(--spacing-xl);
 }
 
-@include media(sm) {
+@include mixins.media(sm) {
   .container {
     width: 576px;
   }
 }
 
-@include media(md) {
+@include mixins.media(md) {
   .container {
     width: 768px;
   }
 }
 
-@include media(lg) {
+@include mixins.media(lg) {
   .container {
     width: 992px;
   }
 }
 
-@include media(xl) {
+@include mixins.media(xl) {
   .container {
     width: 1200px;
   }
 }
 
-@include media(2xl) {
+@include mixins.media(2xl) {
   .container {
     width: 1400px;
   }

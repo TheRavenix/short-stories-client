@@ -1,4 +1,4 @@
-@import "@/styles/mixins";
+@use "@/styles/mixins" as mixins;
 
 .footer {
   margin-top: var(--footer-safearea);
@@ -37,7 +37,7 @@
   height: fit-content;
 }
 
-@include media(md) {
+@include mixins.media(md) {
   .footerContainer {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }

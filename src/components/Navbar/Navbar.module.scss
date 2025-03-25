@@ -1,4 +1,4 @@
-@import "@/styles/mixins";
+@use "@/styles/mixins" as mixins;
 
 .nav {
   position: fixed;
@@ -115,13 +115,13 @@
   gap: var(--spacing-sm);
 }
 
-@include media(md) {
+@include mixins.media(md) {
   .drawerContent {
     width: 50vw;
   }
 }
 
-@include media(lg) {
+@include mixins.media(lg) {
   .links {
     display: flex;
   }

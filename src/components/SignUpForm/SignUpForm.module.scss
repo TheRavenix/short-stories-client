@@ -1,4 +1,4 @@
-@import "@/styles/mixins";
+@use "@/styles/mixins" as mixins;
 
 .form {
   margin-top: var(--spacing-lg);
@@ -19,7 +19,7 @@
   color: var(--primary);
 }
 
-@include media(sm) {
+@include mixins.media(sm) {
   .endContent {
     flex-direction: row;
     justify-content: space-between;

@@ -1,4 +1,4 @@
-@import "@/styles/mixins";
+@use "@/styles/mixins" as mixins;
 
 .main {
   padding-top: var(--navbar-height);
@@ -27,7 +27,7 @@
   color: var(--primary);
 }
 
-@include media(sm) {
+@include mixins.media(sm) {
   .endContent {
     flex-direction: row;
     justify-content: space-between;
