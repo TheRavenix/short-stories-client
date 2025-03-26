@@ -1,6 +1,6 @@
 import { CheckIcon, XIcon } from "lucide-react";
 
-import styles from "./Plan.module.scss";
+import styles from "./Plans.module.scss";
 
 import { Card, CardContent, CardHeader } from "../ui/Card";
 import { H2, H3, P, Span } from "../ui/Typography";
@@ -27,13 +27,13 @@ const Plan: React.FC<Props> = ({
   planFeatures,
 }) => {
   return (
-    <Card className={styles.card}>
-      <CardHeader className={styles.cardHeader}>
+    <Card>
+      <CardHeader className={styles.planCardHeader}>
         <H2 variant="primary" transform="capitalize">
           {type}
         </H2>
       </CardHeader>
-      <CardContent className={styles.cardContent}>
+      <CardContent className={styles.planCardContent}>
         <H3>${price.toFixed(2)}</H3>
         {typeof duration !== "undefined" && <P>{duration}</P>}
         {planFeatures.map((feature) => {
@@ -52,7 +52,7 @@ const Plan: React.FC<Props> = ({
                     <CheckIcon size={18} className={styles.checkIcon} />
                   }
                 >
-                  <div className={styles.suffixContainer}>
+                  <div className={styles.planSuffixContainer}>
                     <CheckIcon size={18} className={styles.checkIcon} />
                     <Span variant="primary">{feature.suffix}</Span>
                   </div>
@@ -62,7 +62,7 @@ const Plan: React.FC<Props> = ({
           );
         })}
         <Show when={!currentPlan} fallback={<P>This is your current plan.</P>}>
-          <Button className={styles.joinButton}>Join Now</Button>
+          <Button className={styles.planJoinButton}>Join Now</Button>
         </Show>
       </CardContent>
     </Card>
