@@ -5,15 +5,19 @@ import styles from "./Input.module.scss";
 
 type Variant = "default" | "destructive";
 
-interface Props extends ComponentProps<"input"> {
+type Size = "default" | "sm" | "md" | "lg";
+
+interface Props extends Omit<ComponentProps<"input">, "size"> {
   label: string;
   variant?: Variant;
+  size?: Size;
 }
 
 const Input: React.FC<Props> = ({
   className,
   label,
   variant = "default",
+  size = "default",
   ...rest
 }) => {
   return (
@@ -22,6 +26,7 @@ const Input: React.FC<Props> = ({
         className={clsx(
           styles.input,
           variant === "destructive" && styles.inputDestructive,
+          styles[size],
           className
         )}
         placeholder=" "

@@ -1,0 +1,14 @@
+.drawerContent {
+  width: 100vw;
+  height: 65dvh;
+}
+
+.drawerBody {
+  padding: var(--spacing-sm);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}

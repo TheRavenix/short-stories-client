@@ -2,15 +2,10 @@ import { InfoIcon } from "lucide-react";
 
 import { EmptyState } from "../EmptyState";
 import { Show } from "../Show";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../ui/Card";
+import { Card, CardContent, CardHeader } from "../ui/Card";
 
 import styles from "./Story.module.scss";
+import { H3, P } from "../ui/Typography";
 
 interface Props {
   name: string;
@@ -21,7 +16,9 @@ const StoryAboutCard: React.FC<Props> = ({ name, about }) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle size="xl">{name}'s about</CardTitle>
+        <P size="xl" weight="semi-bold" transform="capitalize">
+          {name}'s about
+        </P>
       </CardHeader>
       <CardContent>
         <Show
@@ -35,7 +32,7 @@ const StoryAboutCard: React.FC<Props> = ({ name, about }) => {
         >
           <div className={styles.aboutCardDescriptions}>
             {about.map((item, i) => (
-              <CardDescription key={i}>{item}</CardDescription>
+              <P key={i}>{item}</P>
             ))}
           </div>
         </Show>

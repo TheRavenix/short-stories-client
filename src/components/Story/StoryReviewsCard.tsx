@@ -3,12 +3,12 @@ import { MessageCircleIcon } from "lucide-react";
 import styles from "./Story.module.scss";
 
 import { Stats } from "../Stats";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/Card";
+import { Card, CardContent, CardHeader } from "../ui/Card";
 import { Show } from "../Show";
 import { EmptyState } from "../EmptyState";
 import { StoryReview, StoryReviewType } from "./StoryReview";
-import { Button } from "../ui/Button";
 import { StoryLeaveReview } from "./StoryLeaveReview";
+import { P } from "../ui/Typography";
 
 interface Props {
   name: string;
@@ -19,7 +19,9 @@ const StoryReviewsCard: React.FC<Props> = ({ name, reviews }) => {
   return (
     <Card>
       <CardHeader className={styles.reviewsCardHeader}>
-        <CardTitle size="xl">{name}'s reviews</CardTitle>
+        <P size="xl" weight="semi-bold" transform="capitalize">
+          {name}'s reviews
+        </P>
         {reviews.length > 0 && (
           <Stats
             list={[

@@ -87,7 +87,7 @@ const Story: React.FC<Props> = ({
           <Badge variant="inverse">Not Rated</Badge>
         )}
         {shouldShowTitle && <CardTitle>{name}</CardTitle>}
-        <CardDescription variant="gray">{description}</CardDescription>
+        <CardDescription>{description}</CardDescription>
         <div className={styles.actions}>
           {shouldShowExploreLink && (
             <StoryViewLink

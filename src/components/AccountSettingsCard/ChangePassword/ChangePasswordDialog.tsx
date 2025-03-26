@@ -1,0 +1,36 @@
+import { XIcon } from "lucide-react";
+
+import styles from "./ChangePassword.module.scss";
+
+import { Button } from "../../ui/Button";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "../../ui/Dialog";
+import { ChangePasswordContent } from "./ChangePasswordContent";
+
+interface Props {}
+
+const ChangePasswordDialog: React.FC<Props> = () => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button size="sm" variant="inverse">
+          Change
+        </Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogTitle>Change Your Password</DialogTitle>
+        <ChangePasswordContent />
+        <DialogClose asChild>
+          <XIcon size={20} />
+        </DialogClose>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+export { ChangePasswordDialog };

@@ -4,8 +4,9 @@ import styles from "./Story.module.scss";
 
 import { EmptyState } from "../EmptyState";
 import { Show } from "../Show";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/Card";
+import { Card, CardContent, CardHeader } from "../ui/Card";
 import { StoryContent } from "./StoryContent";
+import { P } from "../ui/Typography";
 
 interface Props {
   id: string;
@@ -17,7 +18,9 @@ const StoryPreviewCard: React.FC<Props> = ({ id, name, preview }) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle size="xl">{name}'s preview</CardTitle>
+        <P size="xl" weight="semi-bold" transform="capitalize">
+          {name}'s preview
+        </P>
       </CardHeader>
       <CardContent>
         <Show

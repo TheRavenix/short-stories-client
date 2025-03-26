@@ -30,33 +30,33 @@ const Card: React.FC<CardProps> = ({
   );
 };
 
-interface CardTitleProps extends SpanProps {}
+interface CardTitleProps extends ComponentProps<"span"> {}
 
-const CardTitle: React.FC<CardTitleProps> = ({
-  className,
-  size = "lg",
-  weight = "bold",
-  transform = "capitalize",
-  ...rest
-}) => {
+const CardTitle: React.FC<CardTitleProps> = ({ className, ...rest }) => {
   return (
     <Span
-      size={size}
-      weight={weight}
-      transform={transform}
+      size="lg"
+      weight="bold"
+      transform="capitalize"
       className={clsx(styles.cardTitle, className)}
       {...rest}
     />
   );
 };
 
-interface CardDescriptionProps extends ParagraphProps {}
+interface CardDescriptionProps extends ComponentProps<"p"> {}
 
 const CardDescription: React.FC<CardDescriptionProps> = ({
   className,
   ...rest
 }) => {
-  return <P className={clsx(styles.cardDescription, className)} {...rest} />;
+  return (
+    <P
+      variant="gray"
+      className={clsx(styles.cardDescription, className)}
+      {...rest}
+    />
+  );
 };
 
 interface CardHeaderProps extends ComponentProps<"div"> {}
