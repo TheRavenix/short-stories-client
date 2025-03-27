@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+
 import "./globals.scss";
+
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ThemeToggleProvider } from "@/components/ThemeToggle";
+import { QueryProvider } from "@/components/QueryProvider";
+import { ProfileProvider } from "@/components/ProfileProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,11 +21,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeToggleProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </ThemeToggleProvider>
+        <QueryProvider>
+          <ProfileProvider>
+            <ThemeToggleProvider>
+              <Navbar />
+              {children}
+              <Footer />
+            </ThemeToggleProvider>
+          </ProfileProvider>
+        </QueryProvider>
       </body>
     </html>
   );

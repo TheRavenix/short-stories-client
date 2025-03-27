@@ -19,7 +19,7 @@ import { Callout } from "@/components/Callout";
 
 import { stories } from "@/utils/stories";
 import { storiesContent } from "@/utils/stories-content";
-import { PlanType } from "@/components/Plan";
+import { PlanType } from "@/components/Plans";
 
 interface Props {
   params: Promise<{ id: string }>;

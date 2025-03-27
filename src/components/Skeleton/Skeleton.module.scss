@@ -1,0 +1,63 @@
+@use "@/styles/mixins" as mixins;
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--overlay),
+      transparent
+    );
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+.card {
+  border-radius: var(--radius-rounded);
+  height: 150px;
+}
+
+.image {
+  aspect-ratio: 16/9;
+}
+
+.text {
+  height: 1em;
+  border-radius: var(--radius-rounded);
+
+  &:last-child {
+    width: 80%;
+  }
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.button {
+  border-radius: var(--radius-pill);
+  width: 120px;
+}
+
+@include mixins.media(md) {
+  .card {
+    height: 200px;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

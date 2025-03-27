@@ -1,4 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 
 import styles from "./SignUpForm.module.scss";
 
@@ -6,16 +11,65 @@ import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { P } from "../ui/Typography";
 
+import { service } from "@/service";
+import { SignUpData } from "@/service/auth";
+
 interface Props {}
 
 const SignUpForm: React.FC<Props> = () => {
+  const [formData, setFormData] = useState<SignUpData>({
+    name: undefined,
+    email: "",
+    password: "",
+  });
+
+  const mutation = useMutation({
+    mutationFn: service.auth.signUp,
+    onSuccess(data) {
+      window.location.replace("/");
+    },
+    onError(error: AxiosError<{ message: string }>) {
+      alert(error.response?.data.message);
+    },
+  });
+
+  function handleSignUp(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    mutation.mutate(formData);
+  }
+
   return (
-    <form className={styles.form}>
-      <Input label="Your Name (Optional)" />
-      <Input type="email" label="Email" required />
-      <Input type="password" label="Password" required />
+    <form className={styles.form} onSubmit={handleSignUp}>
+      <Input
+        label="Your Name (Optional)"
+        value={formData.name}
+        onChange={(e) =>
+          setFormData((prev) => ({ ...prev, name: e.target.value }))
+        }
+      />
+      <Input
+        type="email"
+        label="Email"
+        required
+        value={formData.email}
+        onChange={(e) =>
+          setFormData((prev) => ({ ...prev, email: e.target.value }))
+        }
+      />
+      <Input
+        type="password"
+        label="Password"
+        required
+        value={formData.password}
+        onChange={(e) =>
+          setFormData((prev) => ({ ...prev, password: e.target.value }))
+        }
+      />
       <div className={styles.endContent}>
-        <Button>Sign up</Button>
+        <Button type="submit" disabled={mutation.isPending}>
+          {mutation.isPending ? "Loading..." : "Sign up"}
+        </Button>
         <P variant="gray">
           You already have an account?{" "}
           <Link href="/sign-in" className={styles.signInLink}>

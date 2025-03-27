@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 import { Button } from "../ui/Button";
 
-import { PlanType } from "../Plan";
+import { PlanType } from "../Plans";
 
 interface Props {
   id: string;

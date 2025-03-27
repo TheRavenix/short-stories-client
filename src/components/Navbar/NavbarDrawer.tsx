@@ -20,13 +20,17 @@ import {
 } from "../ui/Drawer";
 
 import { navBarLinks } from "./Navbar";
-import { authLinks } from "@/data/links";
+import { NavbarDrawerAuthLinks } from "./NavbarDrawerAuthLinks";
+import { useAuthStore } from "@/stores/auth";
+import { useUserStore } from "@/stores/user";
 
 interface Props {}
 
 const NavbarDrawer: React.FC<Props> = () => {
   const pathName = usePathname();
   const [open, setOpen] = useState(false);
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  const userRole = useUserStore((s) => s.role);
 
   function toggleOpen() {
     setOpen((prev) => !prev);
@@ -49,6 +53,21 @@ const NavbarDrawer: React.FC<Props> = () => {
           </DrawerHeader>
           <DrawerBody className={styles.drawerBody}>
             <div className={styles.drawerLinks}>
+              {isAuthenticated && userRole === "admin" && (
+                <Link href="/dashboard" onClick={toggleOpen}>
+                  <Button variant="ghost" className={styles.drawerButton}>
+                    <span
+                      className={
+                        pathName === "/dashboard"
+                          ? styles.drawerActiveLinkText
+                          : ""
+                      }
+                    >
+                      Dashboard
+                    </span>
+                  </Button>
+                </Link>
+              )}
               {navBarLinks.map((link, i) => (
                 <Link key={i} href={link.href} onClick={toggleOpen}>
                   <Button variant="ghost" className={styles.drawerButton}>
@@ -64,17 +83,22 @@ const NavbarDrawer: React.FC<Props> = () => {
                   </Button>
                 </Link>
               ))}
-              {authLinks.map((link, i) => (
-                <Link key={i} href={link.href} onClick={toggleOpen}>
-                  <Button
-                    variant={link.href === "/sign-up" ? "inverse" : "primary"}
-                    size="sm"
-                    className={styles.drawerButton}
-                  >
-                    {link.name}
+              {isAuthenticated && (
+                <Link href="/settings" onClick={toggleOpen}>
+                  <Button variant="ghost" className={styles.drawerButton}>
+                    <span
+                      className={
+                        pathName === "/settings"
+                          ? styles.drawerActiveLinkText
+                          : ""
+                      }
+                    >
+                      Settings
+                    </span>
                   </Button>
                 </Link>
-              ))}
+              )}
+              <NavbarDrawerAuthLinks toggleOpen={toggleOpen} />
             </div>
           </DrawerBody>
         </DrawerContent>

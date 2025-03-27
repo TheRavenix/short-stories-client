@@ -24,10 +24,6 @@ const navBarLinks: LinkType[] = [
     name: "Contact",
     href: "/contact",
   },
-  {
-    name: "Settings",
-    href: "/settings",
-  },
 ];
 
 const authLinks: LinkType[] = [

@@ -1,11 +1,11 @@
 import styles from "./AccountSettingsCard.module.scss";
 
-import { Button } from "../ui/Button";
 import { SettingsCard, SettingsCardRow } from "../SettingsCard";
 import { EditName } from "./EditName";
 import { EditEmail } from "./EditEmail";
 import { ChangePassword } from "./ChangePassword";
 import { DeleteAccount } from "./DeleteAccount";
+import { SignOut } from "./SignOut";
 
 interface Props {}
 
@@ -23,6 +23,9 @@ const AccountSettingsCard: React.FC<Props> = () => {
       </SettingsCardRow>
       <SettingsCardRow label="Change your Password">
         <ChangePassword />
+      </SettingsCardRow>
+      <SettingsCardRow label="Sign out from current Session">
+        <SignOut />
       </SettingsCardRow>
       <SettingsCardRow label="Delete your Account">
         <DeleteAccount />

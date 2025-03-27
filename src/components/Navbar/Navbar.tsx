@@ -1,17 +1,18 @@
 import Link from "next/link";
-import { SearchIcon } from "lucide-react";
 
 import styles from "./Navbar.module.scss";
 
 import { ThemeToggle } from "../ThemeToggle";
 import { NavbarLink } from "./NavbarLink";
-import { Button } from "../ui/Button";
 import { NavbarDrawer } from "./NavbarDrawer";
 import { P } from "../ui/Typography";
-
-import { authLinks, navBarLinks } from "@/data/links";
 import { Container } from "../ui/Container";
 import { NavbarSearch } from "./NavbarSearch";
+import { NavbarAuthActions } from "./NavbarAuthActions";
+import { NavbarSettingsLink } from "./NavbarSettingsLink";
+import { NavbarDashboardLink } from "./NavbarDashboardLink";
+
+import { navBarLinks } from "@/data/links";
 
 interface Props {}
 
@@ -29,28 +30,19 @@ const Navbar: React.FC<Props> = () => {
         </div>
         <div className={styles.endContent}>
           <div className={styles.links}>
+            <NavbarDashboardLink />
             {navBarLinks.map((link, i) => (
               <NavbarLink key={i} href={link.href}>
                 {link.name}
               </NavbarLink>
             ))}
+            <NavbarSettingsLink />
           </div>
           <div className={styles.searchAndThemeContainer}>
             <NavbarSearch />
             <ThemeToggle />
           </div>
-          <div className={styles.authContainer}>
-            {authLinks.map((link, i) => (
-              <Link key={i} href={link.href}>
-                <Button
-                  variant={link.href === "/sign-up" ? "inverse" : "primary"}
-                  size="sm"
-                >
-                  {link.name}
-                </Button>
-              </Link>
-            ))}
-          </div>
+          <NavbarAuthActions />
         </div>
       </Container>
     </nav>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BookIcon, MessageCircleIcon } from "lucide-react";
 
 import styles from "./page.module.scss";
 
@@ -7,16 +8,15 @@ import { Container } from "@/components/ui/Container";
 import { HeroCanvas } from "@/components/HeroCanvas";
 import { Story, StoryReview } from "@/components/Story";
 import { H1, P } from "@/components/ui/Typography";
-
-import { stories } from "@/utils/stories";
-import { SignUpForm } from "@/components/SignUpForm";
 import { CompactContainer } from "@/components/ui/Container";
 import { NewsletterSubForm } from "@/components/NewsletterSubForm";
 import { Card, CardContent } from "@/components/ui/Card";
-import { storiesReviews } from "@/utils/stories-reviews";
 import { EmptyState } from "@/components/EmptyState";
-import { BookIcon, MessageCircleIcon } from "lucide-react";
 import { Show } from "@/components/Show";
+import { HomeSignUp } from "@/components/HomeSignUp";
+
+import { storiesReviews } from "@/utils/stories-reviews";
+import { stories } from "@/utils/stories";
 
 export default function Home() {
   return (
@@ -98,12 +98,7 @@ export default function Home() {
         </div>
       </Container>
       <CompactContainer withPaddingBlock withContentSpacing>
-        <div className={styles.signUp}>
-          <H1 transform="capitalize" className={styles.headline}>
-            Sign up
-          </H1>
-          <SignUpForm />
-        </div>
+        <HomeSignUp />
         <div className={styles.newsletterSub}>
           <H1 transform="capitalize" className={styles.headline}>
             Stay updated

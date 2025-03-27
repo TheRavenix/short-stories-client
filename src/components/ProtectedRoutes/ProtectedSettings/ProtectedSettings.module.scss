@@ -1,0 +1,15 @@
+.main {
+  padding-top: var(--navbar-height);
+}
+
+.skeletonHeadline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skeletonCards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}

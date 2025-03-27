@@ -4,13 +4,13 @@ import { create } from "zustand";
 
 type Theme = "light" | "dark";
 
-interface UseThemeStoreState {
+interface StoreState {
   theme: Theme;
   setTheme(theme: Theme): void;
   toggleTheme(): void;
 }
 
-const useThemeStore = create<UseThemeStoreState>((set) => ({
+const useThemeStore = create<StoreState>((set) => ({
   theme: "light",
 
   setTheme(theme) {

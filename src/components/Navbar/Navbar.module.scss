@@ -110,7 +110,7 @@
   gap: var(--spacing-md);
 }
 
-.authContainer {
+.authActions {
   display: none;
   gap: var(--spacing-sm);
 }
@@ -130,7 +130,7 @@
     gap: var(--spacing-sm);
   }
 
-  .authContainer {
+  .authActions {
     display: flex;
   }
 

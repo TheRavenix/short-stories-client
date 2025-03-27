@@ -2,12 +2,12 @@
 
 import { create } from "zustand";
 
-interface UseSearchStoreState {
+interface StoreState {
   libraryQuery: string;
   setLibraryQuery(q: string): void;
 }
 
-const useSearchStore = create<UseSearchStoreState>((set) => ({
+const useSearchStore = create<StoreState>((set) => ({
   libraryQuery: "",
 
   setLibraryQuery(q) {

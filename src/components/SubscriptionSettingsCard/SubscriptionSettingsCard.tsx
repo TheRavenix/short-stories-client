@@ -1,8 +1,8 @@
 import styles from "./SubscriptionSettingsCard.module.scss";
 
 import { SettingsCard, SettingsCardRow } from "../SettingsCard";
-import { Button } from "../ui/Button";
-import { Badge } from "../ui/Badge";
+import { SubscriptionPlanBadge } from "./SubscriptionPlanBadge";
+import { CancelSubscriptionCardRow } from "./CancelSubscriptionCardRow";
 
 interface Props {}
 
@@ -13,13 +13,9 @@ const SubscriptionSettingsCard: React.FC<Props> = () => {
       description="Here you can change your subscription settings"
     >
       <SettingsCardRow label="Current Subscription Plan">
-        <Badge>Free</Badge>
+        <SubscriptionPlanBadge />
       </SettingsCardRow>
-      <SettingsCardRow label="Cancel your Subscription">
-        <Button size="sm" variant="inverse">
-          Cancel
-        </Button>
-      </SettingsCardRow>
+      <CancelSubscriptionCardRow />
     </SettingsCard>
   );
 };
