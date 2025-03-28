@@ -1,4 +1,7 @@
+"use client";
+
 import { XIcon } from "lucide-react";
+import { useState } from "react";
 
 import styles from "./EditName.module.scss";
 
@@ -15,8 +18,10 @@ import { EditNameContent } from "./EditNameContent";
 interface Props {}
 
 const EditNameDialog: React.FC<Props> = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button size="sm" variant="inverse">
           Edit
@@ -24,7 +29,7 @@ const EditNameDialog: React.FC<Props> = () => {
       </DialogTrigger>
       <DialogContent>
         <DialogTitle>Edit Your Name</DialogTitle>
-        <EditNameContent />
+        <EditNameContent setOpen={setOpen} />
         <DialogClose asChild>
           <XIcon size={20} />
         </DialogClose>

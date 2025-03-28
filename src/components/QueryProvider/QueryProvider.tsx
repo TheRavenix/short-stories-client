@@ -14,11 +14,6 @@ const queryClient = new QueryClient({
       refetchOnWindowFocus: true,
       refetchOnReconnect: "always",
       refetchOnMount: true,
-      retry: 1,
-      retryDelay: (attempt) => Math.min(attempt * 1000, 3000),
-    },
-    mutations: {
-      retry: 1,
     },
   },
 });

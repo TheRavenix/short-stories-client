@@ -1,4 +1,7 @@
+"use client";
+
 import styles from "./EditName.module.scss";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/Button";
 import {
@@ -16,8 +19,10 @@ import { EditNameContent } from "./EditNameContent";
 interface Props {}
 
 const EditNameDrawer: React.FC<Props> = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Drawer autoFocus>
+    <Drawer open={open} onOpenChange={setOpen} autoFocus>
       <DrawerTrigger asChild>
         <Button size="sm" variant="inverse">
           Edit
@@ -30,7 +35,7 @@ const EditNameDrawer: React.FC<Props> = () => {
             <DrawerTitle>Edit Your Name</DrawerTitle>
           </DrawerHeader>
           <DrawerBody className={styles.drawerBody}>
-            <EditNameContent />
+            <EditNameContent setOpen={setOpen} />
           </DrawerBody>
         </DrawerContent>
       </DrawerPortal>
