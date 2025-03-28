@@ -43,6 +43,11 @@ class UserService {
     const response = await axiosClient.post("users/change-password", data);
     return response.data;
   }
+
+  async deleteOne(id: string): Promise<MessageResponse> {
+    const response = await axiosClient.delete(`users/${id}`);
+    return response.data;
+  }
 }
 
 export { UserService, type EditEmailData, type ChangePasswordData };

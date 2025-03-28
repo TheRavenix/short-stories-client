@@ -1,4 +1,7 @@
+"use client";
+
 import { XIcon } from "lucide-react";
+import { useState } from "react";
 
 import styles from "./DeleteAccount.module.scss";
 
@@ -16,8 +19,10 @@ import { DeleteAccountContent } from "./DeleteAccountContent";
 interface Props {}
 
 const DeleteAccountDialog: React.FC<Props> = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button size="sm" variant="destructive">
           Delete
@@ -29,7 +34,7 @@ const DeleteAccountDialog: React.FC<Props> = () => {
           This action will delete your account permanently, and cannot be
           undone.
         </DialogDescription>
-        <DeleteAccountContent />
+        <DeleteAccountContent setOpen={setOpen} />
         <DialogClose asChild>
           <XIcon size={20} />
         </DialogClose>

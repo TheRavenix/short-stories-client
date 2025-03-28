@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 import styles from "./DeleteAccount.module.scss";
 
 import { Button } from "@/components/ui/Button";
@@ -17,8 +21,10 @@ import { DeleteAccountContent } from "./DeleteAccountContent";
 interface Props {}
 
 const DeleteAccountDrawer: React.FC<Props> = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Drawer autoFocus>
+    <Drawer open={open} onOpenChange={setOpen} autoFocus>
       <DrawerTrigger asChild>
         <Button size="sm" variant="destructive">
           Delete
@@ -35,7 +41,7 @@ const DeleteAccountDrawer: React.FC<Props> = () => {
             </DrawerDescription>
           </DrawerHeader>
           <DrawerBody className={styles.drawerBody}>
-            <DeleteAccountContent />
+            <DeleteAccountContent setOpen={setOpen} />
           </DrawerBody>
         </DrawerContent>
       </DrawerPortal>
