@@ -8,6 +8,16 @@ interface StatusResponse {
   role: UserRoleType;
 }
 
+interface EditEmailData {
+  currentEmail: string;
+  newEmail: string;
+}
+
+interface ChangePasswordData {
+  currentPassword: string;
+  newPassword: string;
+}
+
 class UserService {
   async getProfile(): Promise<UserType> {
     const response = await axiosClient.get("users/profile");
@@ -23,6 +33,16 @@ class UserService {
     const response = await axiosClient.post("users/edit-name", { name });
     return response.data;
   }
+
+  async editEmail(data: EditEmailData): Promise<MessageResponse> {
+    const response = await axiosClient.post("users/edit-email", data);
+    return response.data;
+  }
+
+  async changePassword(data: ChangePasswordData): Promise<MessageResponse> {
+    const response = await axiosClient.post("users/change-password", data);
+    return response.data;
+  }
 }
 
-export { UserService };
+export { UserService, type EditEmailData, type ChangePasswordData };

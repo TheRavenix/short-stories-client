@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 import styles from "./ChangePassword.module.scss";
 
 import { Button } from "@/components/ui/Button";
@@ -16,8 +20,10 @@ import { ChangePasswordContent } from "./ChangePasswordContent";
 interface Props {}
 
 const ChangePasswordDrawer: React.FC<Props> = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Drawer autoFocus>
+    <Drawer open={open} onOpenChange={setOpen} autoFocus>
       <DrawerTrigger asChild>
         <Button size="sm" variant="inverse">
           Change
@@ -30,7 +36,7 @@ const ChangePasswordDrawer: React.FC<Props> = () => {
             <DrawerTitle>Change Your Password</DrawerTitle>
           </DrawerHeader>
           <DrawerBody className={styles.drawerBody}>
-            <ChangePasswordContent />
+            <ChangePasswordContent setOpen={setOpen} />
           </DrawerBody>
         </DrawerContent>
       </DrawerPortal>

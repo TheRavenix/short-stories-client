@@ -1,4 +1,7 @@
+"use client";
+
 import { XIcon } from "lucide-react";
+import { useState } from "react";
 
 import styles from "./EditEmail.module.scss";
 
@@ -15,8 +18,10 @@ import { EditEmailContent } from "./EditEmailContent";
 interface Props {}
 
 const EditEmailDialog: React.FC<Props> = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button size="sm" variant="inverse">
           Edit
@@ -24,7 +29,7 @@ const EditEmailDialog: React.FC<Props> = () => {
       </DialogTrigger>
       <DialogContent>
         <DialogTitle>Edit Your Email</DialogTitle>
-        <EditEmailContent />
+        <EditEmailContent setOpen={setOpen} />
         <DialogClose asChild>
           <XIcon size={20} />
         </DialogClose>

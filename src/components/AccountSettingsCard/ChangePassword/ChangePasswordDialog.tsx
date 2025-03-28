@@ -1,4 +1,7 @@
+"use client";
+
 import { XIcon } from "lucide-react";
+import { useState } from "react";
 
 import styles from "./ChangePassword.module.scss";
 
@@ -15,8 +18,10 @@ import { ChangePasswordContent } from "./ChangePasswordContent";
 interface Props {}
 
 const ChangePasswordDialog: React.FC<Props> = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button size="sm" variant="inverse">
           Change
@@ -24,7 +29,7 @@ const ChangePasswordDialog: React.FC<Props> = () => {
       </DialogTrigger>
       <DialogContent>
         <DialogTitle>Change Your Password</DialogTitle>
-        <ChangePasswordContent />
+        <ChangePasswordContent setOpen={setOpen} />
         <DialogClose asChild>
           <XIcon size={20} />
         </DialogClose>

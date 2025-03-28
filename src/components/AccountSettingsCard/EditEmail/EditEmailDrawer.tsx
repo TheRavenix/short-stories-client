@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 import styles from "./EditEmail.module.scss";
 
 import { Button } from "@/components/ui/Button";
@@ -16,8 +20,10 @@ import { EditEmailContent } from "./EditEmailContent";
 interface Props {}
 
 const EditEmailDrawer: React.FC<Props> = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Drawer autoFocus>
+    <Drawer open={open} onOpenChange={setOpen} autoFocus>
       <DrawerTrigger asChild>
         <Button size="sm" variant="inverse">
           Edit
@@ -30,7 +36,7 @@ const EditEmailDrawer: React.FC<Props> = () => {
             <DrawerTitle>Edit Your Email</DrawerTitle>
           </DrawerHeader>
           <DrawerBody className={styles.drawerBody}>
-            <EditEmailContent />
+            <EditEmailContent setOpen={setOpen} />
           </DrawerBody>
         </DrawerContent>
       </DrawerPortal>
