@@ -1,6 +1,7 @@
 "use client";
 
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 type Theme = "light" | "dark";
 
@@ -10,18 +11,25 @@ interface StoreState {
   toggleTheme(): void;
 }
 
-const useThemeStore = create<StoreState>((set) => ({
-  theme: "light",
+const useThemeStore = create(
+  persist<StoreState>(
+    (set) => ({
+      theme: "light",
 
-  setTheme(theme) {
-    set((state) => ({ ...state, theme }));
-  },
-  toggleTheme() {
-    set((state) => ({
-      ...state,
-      theme: state.theme === "light" ? "dark" : "light",
-    }));
-  },
-}));
+      setTheme(theme) {
+        set((state) => ({ ...state, theme }));
+      },
+      toggleTheme() {
+        set((state) => ({
+          ...state,
+          theme: state.theme === "light" ? "dark" : "light",
+        }));
+      },
+    }),
+    {
+      name: "theme_store",
+    }
+  )
+);
 
 export { useThemeStore, type Theme };

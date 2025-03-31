@@ -4,7 +4,7 @@ import "./globals.scss";
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ThemeToggleProvider } from "@/components/ThemeToggle";
+import { ThemeProvider } from "@/components/Theme";
 import { QueryProvider } from "@/components/QueryProvider";
 import { ProfileProvider } from "@/components/ProfileProvider";
 import { ProThemesProvider } from "@/components/ProThemesProvider";
@@ -25,11 +25,11 @@ export default function RootLayout({
         <QueryProvider>
           <ProfileProvider>
             <ProThemesProvider>
-              <ThemeToggleProvider>
+              <ThemeProvider>
                 <Navbar />
                 {children}
                 <Footer />
-              </ThemeToggleProvider>
+              </ThemeProvider>
             </ProThemesProvider>
           </ProfileProvider>
         </QueryProvider>

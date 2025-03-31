@@ -1,7 +1,7 @@
 import styles from "./ReadingPreferencesCard.module.scss";
 
 import { SettingsCard, SettingsCardItem } from "../SettingsCard";
-import { ThemeToggleSelect } from "../ThemeToggle";
+import { ThemeToggleSelect } from "../Theme";
 
 interface Props {}
 

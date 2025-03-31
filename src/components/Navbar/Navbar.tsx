@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import styles from "./Navbar.module.scss";
 
-import { ThemeToggle } from "../ThemeToggle";
+import { ThemeToggle } from "../Theme";
 import { NavbarLink } from "./NavbarLink";
 import { NavbarDrawer } from "./NavbarDrawer";
 import { P } from "../ui/Typography";
