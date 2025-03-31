@@ -1,6 +1,6 @@
 import styles from "./SubscriptionSettingsCard.module.scss";
 
-import { SettingsCard, SettingsCardRow } from "../SettingsCard";
+import { SettingsCard, SettingsCardItem } from "../SettingsCard";
 import { SubscriptionPlanBadge } from "./SubscriptionPlanBadge";
 import { CancelSubscriptionCardRow } from "./CancelSubscriptionCardRow";
 
@@ -12,9 +12,9 @@ const SubscriptionSettingsCard: React.FC<Props> = () => {
       title="Subscription Settings"
       description="Here you can change your subscription settings"
     >
-      <SettingsCardRow label="Current Subscription Plan">
+      <SettingsCardItem label="Current subscription plan">
         <SubscriptionPlanBadge />
-      </SettingsCardRow>
+      </SettingsCardItem>
       <CancelSubscriptionCardRow />
     </SettingsCard>
   );

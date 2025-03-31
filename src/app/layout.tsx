@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { ThemeToggleProvider } from "@/components/ThemeToggle";
 import { QueryProvider } from "@/components/QueryProvider";
 import { ProfileProvider } from "@/components/ProfileProvider";
+import { ProThemesProvider } from "@/components/ProThemesProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,11 +24,13 @@ export default function RootLayout({
       <body>
         <QueryProvider>
           <ProfileProvider>
-            <ThemeToggleProvider>
-              <Navbar />
-              {children}
-              <Footer />
-            </ThemeToggleProvider>
+            <ProThemesProvider>
+              <ThemeToggleProvider>
+                <Navbar />
+                {children}
+                <Footer />
+              </ThemeToggleProvider>
+            </ProThemesProvider>
           </ProfileProvider>
         </QueryProvider>
       </body>

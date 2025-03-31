@@ -1,2 +1,2 @@
 export * from "./SettingsCard";
-export * from "./SettingsCardRow";
+export * from "./SettingsCardItem";

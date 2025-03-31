@@ -1,6 +1,6 @@
 import styles from "./AccountSettingsCard.module.scss";
 
-import { SettingsCard, SettingsCardRow } from "../SettingsCard";
+import { SettingsCard, SettingsCardItem } from "../SettingsCard";
 import { EditName } from "./EditName";
 import { EditEmail } from "./EditEmail";
 import { ChangePassword } from "./ChangePassword";
@@ -15,21 +15,21 @@ const AccountSettingsCard: React.FC<Props> = () => {
       title="Account Settings"
       description="Here you can change your account settings"
     >
-      <SettingsCardRow label="Edit your Name">
+      <SettingsCardItem label="Edit your name">
         <EditName />
-      </SettingsCardRow>
-      <SettingsCardRow label="Edit your Email">
+      </SettingsCardItem>
+      <SettingsCardItem label="Edit your email">
         <EditEmail />
-      </SettingsCardRow>
-      <SettingsCardRow label="Change your Password">
+      </SettingsCardItem>
+      <SettingsCardItem label="Change your password">
         <ChangePassword />
-      </SettingsCardRow>
-      <SettingsCardRow label="Sign out from current Session">
+      </SettingsCardItem>
+      <SettingsCardItem label="Sign out from current session">
         <SignOut />
-      </SettingsCardRow>
-      <SettingsCardRow label="Delete your Account">
+      </SettingsCardItem>
+      <SettingsCardItem label="Delete your account">
         <DeleteAccount />
-      </SettingsCardRow>
+      </SettingsCardItem>
     </SettingsCard>
   );
 };

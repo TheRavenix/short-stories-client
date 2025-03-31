@@ -6,6 +6,7 @@ import { AccountSettingsCard } from "@/components/AccountSettingsCard";
 import { ReadingPreferencesCard } from "@/components/ReadingPreferencesCard";
 import { SubscriptionSettingsCard } from "@/components/SubscriptionSettingsCard";
 import { ProtectedSettings } from "@/components/ProtectedRoutes";
+import { SitePreferencesCard } from "@/components/SitePreferencesCard";
 
 export default function Settings() {
   return (
@@ -14,8 +15,9 @@ export default function Settings() {
         <CompactContainer withPaddingBlock withContentSpacing>
           <H1 className={styles.headline}>Settings</H1>
           <div className={styles.sections}>
-            <AccountSettingsCard />
+            <SitePreferencesCard />
             <ReadingPreferencesCard />
+            <AccountSettingsCard />
             <SubscriptionSettingsCard />
           </div>
         </CompactContainer>

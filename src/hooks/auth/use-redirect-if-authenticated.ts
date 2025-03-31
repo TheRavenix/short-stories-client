@@ -18,7 +18,6 @@ function useRedirectIfAuthenticated(options?: Options) {
     queryFn: service.user.getStatus,
     staleTime: 0,
     gcTime: 0,
-    retry: false,
   });
 
   useEffect(() => {

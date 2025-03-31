@@ -2,7 +2,7 @@
 
 import styles from "./CancelSubscription.module.scss";
 
-import { SettingsCardRow } from "@/components/SettingsCard";
+import { SettingsCardItem } from "@/components/SettingsCard";
 import { Button } from "@/components/ui/Button";
 import { useUserStore } from "@/stores/user";
 
@@ -14,11 +14,11 @@ const CancelSubscriptionCardRow: React.FC<Props> = () => {
   if (plan !== "pro") return null;
 
   return (
-    <SettingsCardRow label="Cancel your Subscription">
+    <SettingsCardItem label="Cancel your subscription">
       <Button size="sm" variant="inverse">
         Cancel
       </Button>
-    </SettingsCardRow>
+    </SettingsCardItem>
   );
 };
 

@@ -13,9 +13,8 @@ const ProfileProvider: React.FC<Props> = ({ children }) => {
   const profileQuery = useQuery({
     queryKey: ["profile"],
     queryFn: service.user.getProfile,
-    staleTime: 0,
-    gcTime: 0,
-    retry: false,
+    staleTime: Infinity,
+    gcTime: Infinity,
   });
   const setFromProfile = useUserStore((s) => s.setFromProfile);
   const setIsAuthenticated = useAuthStore((s) => s.setIsAuthenticated);
