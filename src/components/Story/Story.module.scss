@@ -97,6 +97,10 @@
   gap: calc(0.5 * var(--spacing-sm));
 }
 
+.uiFont {
+  font-family: var(--ui-font);
+}
+
 @include mixins.media(md) {
   .story {
     flex-direction: row;

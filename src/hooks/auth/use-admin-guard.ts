@@ -11,7 +11,7 @@ interface Options {
   onError?: () => void;
 }
 
-function useAdminGuard(options?: Options) {
+export function useAdminGuard(options?: Options) {
   const router = useRouter();
   const query = useQuery({
     queryKey: ["admin-guard"],
@@ -35,5 +35,3 @@ function useAdminGuard(options?: Options) {
     refetch: query.refetch,
   };
 }
-
-export { useAdminGuard };

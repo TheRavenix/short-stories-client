@@ -4,9 +4,9 @@ import { create } from "zustand";
 
 import { PlanType } from "@/components/Plans";
 
-type UserRoleType = "user" | "admin";
+export type UserRoleType = "user" | "admin";
 
-type UserType = {
+export type UserType = {
   _id: string;
   name: string;
   email: string;
@@ -21,7 +21,7 @@ interface StoreState extends UserType {
   clearUser(): void;
 }
 
-const useUserStore = create<StoreState>((set) => ({
+export const useUserStore = create<StoreState>((set) => ({
   _id: "",
   name: "",
   email: "",
@@ -46,5 +46,3 @@ const useUserStore = create<StoreState>((set) => ({
     }));
   },
 }));
-
-export { useUserStore, type UserType, type UserRoleType };

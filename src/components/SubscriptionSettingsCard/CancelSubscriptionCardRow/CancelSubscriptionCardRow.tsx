@@ -2,14 +2,16 @@
 
 import styles from "./CancelSubscription.module.scss";
 
+import { queryClient } from "@/components/QueryProvider";
 import { SettingsCardItem } from "@/components/SettingsCard";
 import { Button } from "@/components/ui/Button";
-import { useUserStore } from "@/stores/user";
+
+import { ProfileType } from "@/service/user";
 
 interface Props {}
 
 const CancelSubscriptionCardRow: React.FC<Props> = () => {
-  const plan = useUserStore((s) => s.plan);
+  const plan = queryClient.getQueryData<ProfileType>(["profile"])?.plan;
 
   if (plan !== "pro") return null;
 

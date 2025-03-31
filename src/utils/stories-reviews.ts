@@ -1,6 +1,6 @@
 import { StoryReviewType } from "@/components/Story";
 
-const storiesReviews: StoryReviewType[] = [
+export const storiesReviews: StoryReviewType[] = [
   {
     id: "1",
     storyId: "1",
@@ -50,5 +50,3 @@ const storiesReviews: StoryReviewType[] = [
     comment: "Good story",
   },
 ];
-
-export { storiesReviews };

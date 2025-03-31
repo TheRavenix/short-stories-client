@@ -11,7 +11,7 @@ interface Options {
   onSuccess?: () => void;
 }
 
-function useRedirectIfAuthenticated(options?: Options) {
+export function useRedirectIfAuthenticated(options?: Options) {
   const router = useRouter();
   const query = useQuery({
     queryKey: ["redirect-if-authenticated"],
@@ -35,5 +35,3 @@ function useRedirectIfAuthenticated(options?: Options) {
     refetch: query.refetch,
   };
 }
-
-export { useRedirectIfAuthenticated };

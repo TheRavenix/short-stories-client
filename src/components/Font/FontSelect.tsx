@@ -1,6 +1,6 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { SelectProps } from "@radix-ui/react-select";
 
 import {
   Select,
@@ -13,37 +13,34 @@ import {
 } from "../ui/Select";
 import { queryClient } from "../QueryProvider";
 
-import { useThemeStore } from "@/stores/theme";
-
+import { ProFontType } from "@/service/pro-font";
 import { removeHyphen } from "@/utils/remove-hyphen";
 import { capitalize } from "@/utils/capitalize";
-import { ProThemeResponse } from "@/service/pro-theme";
 import { ProfileType } from "@/service/user";
 
-interface Props {}
+interface Props extends SelectProps {
+  proSelectItems: ProFontType | undefined;
+}
 
-const ThemeSelect: React.FC<Props> = () => {
-  const theme = useThemeStore((s) => s.theme);
-  const setTheme = useThemeStore((s) => s.setTheme);
+const FontSelect: React.FC<Props> = (props) => {
   const userPlan = queryClient.getQueryData<ProfileType>(["profile"])?.plan;
-  const proThemes = queryClient.getQueryData<ProThemeResponse>(["pro-themes"]);
 
   return (
-    <Select value={theme} onValueChange={setTheme}>
+    <Select {...props}>
       <SelectTrigger size="sm">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Free</SelectLabel>
-          <SelectItem value="light">Light</SelectItem>
-          <SelectItem value="dark">Dark</SelectItem>
+          <SelectItem value="inter">Inter</SelectItem>
+          <SelectItem value="source-sans3">Source Sans 3</SelectItem>
         </SelectGroup>
         {userPlan === "pro" && (
           <SelectGroup>
             <SelectLabel>Pro</SelectLabel>
-            {proThemes &&
-              Object.keys(proThemes).map((name) => {
+            {props.proSelectItems &&
+              Object.keys(props.proSelectItems).map((name) => {
                 return (
                   <SelectItem key={name} value={name}>
                     {removeHyphen(capitalize(name))}
@@ -57,4 +54,4 @@ const ThemeSelect: React.FC<Props> = () => {
   );
 };
 
-export { ThemeSelect };
+export { FontSelect };

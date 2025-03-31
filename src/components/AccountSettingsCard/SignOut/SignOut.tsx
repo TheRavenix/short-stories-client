@@ -12,6 +12,7 @@ const SignOut: React.FC<Props> = () => {
   const mutation = useMutation({
     mutationFn: service.auth.signOut,
     onSuccess(data) {
+      localStorage.clear();
       window.location.replace("/sign-in");
     },
   });

@@ -8,12 +8,10 @@ interface StoreState {
   setIsAuthenticated(isAuth: boolean): void;
 }
 
-const useAuthStore = create<StoreState>((set) => ({
+export const useAuthStore = create<StoreState>((set) => ({
   isAuthenticated: false,
 
   setIsAuthenticated(isAuth) {
     set((state) => ({ ...state, isAuthenticated: isAuth }));
   },
 }));
-
-export { useAuthStore };

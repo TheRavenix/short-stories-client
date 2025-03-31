@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import { PropsWithChildren, useEffect } from "react";
 
 import { service } from "@/service";
-import { useUserStore } from "@/stores/user";
 import { useAuthStore } from "@/stores/auth";
 
 interface Props extends PropsWithChildren {}
@@ -16,15 +15,13 @@ const ProfileProvider: React.FC<Props> = ({ children }) => {
     staleTime: Infinity,
     gcTime: Infinity,
   });
-  const setFromProfile = useUserStore((s) => s.setFromProfile);
   const setIsAuthenticated = useAuthStore((s) => s.setIsAuthenticated);
 
   useEffect(() => {
     if (profileQuery.isSuccess) {
-      setFromProfile(profileQuery.data);
       setIsAuthenticated(true);
     }
-  }, [profileQuery.data, profileQuery.isSuccess]);
+  }, [profileQuery]);
 
   return <>{children}</>;
 };

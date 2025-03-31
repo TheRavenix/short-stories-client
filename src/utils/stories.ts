@@ -1,6 +1,6 @@
 import { StoryType } from "@/components/Story";
 
-const stories: StoryType[] = [
+export const stories: StoryType[] = [
   {
     id: "1",
     name: "The Lost City",
@@ -103,5 +103,3 @@ const stories: StoryType[] = [
     updatedAt: new Date("2024-02-28"),
   },
 ];
-
-export { stories };

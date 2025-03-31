@@ -2,8 +2,6 @@
 
 import { MoonIcon, SunIcon } from "lucide-react";
 
-import styles from "./ThemeToggle.module.scss";
-
 import { Button } from "../ui/Button";
 
 import { useThemeStore } from "@/stores/theme";

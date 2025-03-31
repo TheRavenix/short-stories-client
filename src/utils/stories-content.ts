@@ -1,6 +1,6 @@
 import { StoryContentType } from "@/components/Story";
 
-const storiesContent: StoryContentType[] = [
+export const storiesContent: StoryContentType[] = [
   {
     id: "1",
     storyId: "1",
@@ -68,5 +68,3 @@ const storiesContent: StoryContentType[] = [
     ],
   },
 ];
-
-export { storiesContent };

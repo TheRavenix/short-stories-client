@@ -18,11 +18,13 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "../ui/Drawer";
-
 import { navBarLinks } from "./Navbar";
 import { NavbarDrawerAuthLinks } from "./NavbarDrawerAuthLinks";
+import { queryClient } from "../QueryProvider";
+
 import { useAuthStore } from "@/stores/auth";
-import { useUserStore } from "@/stores/user";
+
+import { ProfileType } from "@/service/user";
 
 interface Props {}
 
@@ -30,7 +32,7 @@ const NavbarDrawer: React.FC<Props> = () => {
   const pathName = usePathname();
   const [open, setOpen] = useState(false);
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
-  const userRole = useUserStore((s) => s.role);
+  const userRole = queryClient.getQueryData<ProfileType>(["profile"])?.role;
 
   function toggleOpen() {
     setOpen((prev) => !prev);

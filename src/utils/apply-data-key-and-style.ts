@@ -1,13 +1,14 @@
-function applyThemes(
-  themes: Record<string, Record<string, string>>,
+export function applyDataKeyAndStyle(
+  key: string,
+  data: Record<string, Record<string, string>>,
   styleTagId: string
 ) {
   let css = "";
 
-  for (const themeName in themes) {
-    css += `html[data-theme="${themeName}"] {`;
-    for (const prop in themes[themeName]) {
-      css += `--${prop}: ${themes[themeName][prop]};`;
+  for (const dataItem in data) {
+    css += `html[data-${key}="${dataItem}"] {`;
+    for (const prop in data[dataItem]) {
+      css += `--${prop}: ${data[dataItem][prop]};`;
     }
     css += `}`;
   }
@@ -22,5 +23,3 @@ function applyThemes(
 
   styleTag.textContent = css;
 }
-
-export { applyThemes };

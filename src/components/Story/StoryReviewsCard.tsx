@@ -19,7 +19,12 @@ const StoryReviewsCard: React.FC<Props> = ({ name, reviews }) => {
   return (
     <Card>
       <CardHeader className={styles.reviewsCardHeader}>
-        <P size="xl" weight="semi-bold" transform="capitalize">
+        <P
+          size="xl"
+          weight="semi-bold"
+          transform="capitalize"
+          className={styles.uiFont}
+        >
           {name}'s reviews
         </P>
         {reviews.length > 0 && (

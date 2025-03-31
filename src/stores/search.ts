@@ -7,12 +7,10 @@ interface StoreState {
   setLibraryQuery(q: string): void;
 }
 
-const useSearchStore = create<StoreState>((set) => ({
+export const useSearchStore = create<StoreState>((set) => ({
   libraryQuery: "",
 
   setLibraryQuery(q) {
     set((state) => ({ ...state, libraryQuery: q }));
   },
 }));
-
-export { useSearchStore };

@@ -8,6 +8,8 @@ import { ThemeProvider } from "@/components/Theme";
 import { QueryProvider } from "@/components/QueryProvider";
 import { ProfileProvider } from "@/components/ProfileProvider";
 import { ProThemesProvider } from "@/components/ProThemesProvider";
+import { FontProvider } from "@/components/Font";
+import { ProFontsProvider } from "@/components/ProFontsProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,11 +27,15 @@ export default function RootLayout({
         <QueryProvider>
           <ProfileProvider>
             <ProThemesProvider>
-              <ThemeProvider>
-                <Navbar />
-                {children}
-                <Footer />
-              </ThemeProvider>
+              <ProFontsProvider>
+                <ThemeProvider>
+                  <FontProvider>
+                    <Navbar />
+                    {children}
+                    <Footer />
+                  </FontProvider>
+                </ThemeProvider>
+              </ProFontsProvider>
             </ProThemesProvider>
           </ProfileProvider>
         </QueryProvider>

@@ -1,11 +1,22 @@
 import { PlanType } from "@/components/Plans";
-import { UserRoleType, UserType } from "@/stores/user";
 import { MessageResponse } from "@/types/response";
 import { axiosClient } from "@/utils/axios-client";
 
+type ProfileRoleType = "user" | "admin";
+
+type ProfileType = {
+  _id: string;
+  name: string;
+  email: string;
+  plan: PlanType;
+  role: ProfileRoleType;
+  createdAt: number;
+  updatedAt: number;
+};
+
 interface StatusResponse {
   plan: PlanType;
-  role: UserRoleType;
+  role: ProfileRoleType;
 }
 
 interface EditEmailData {
@@ -19,7 +30,7 @@ interface ChangePasswordData {
 }
 
 class UserService {
-  async getProfile(): Promise<UserType> {
+  async getProfile(): Promise<ProfileType> {
     const response = await axiosClient.get("users/profile");
     return response.data;
   }
@@ -50,4 +61,10 @@ class UserService {
   }
 }
 
-export { UserService, type EditEmailData, type ChangePasswordData };
+export {
+  UserService,
+  type ProfileRoleType,
+  type ProfileType,
+  type EditEmailData,
+  type ChangePasswordData,
+};

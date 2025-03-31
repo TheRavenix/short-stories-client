@@ -3,14 +3,14 @@
 import styles from "./SubscriptionSettingsCard.module.scss";
 
 import { Badge } from "../ui/Badge";
+import { queryClient } from "../QueryProvider";
 
-import { useUserStore } from "@/stores/user";
+import { ProfileType } from "@/service/user";
 
 interface Props {}
 
 const SubscriptionPlanBadge: React.FC<Props> = () => {
-  const plan = useUserStore((s) => s.plan);
-
+  const plan = queryClient.getQueryData<ProfileType>(["profile"])?.plan;
   return <Badge className={styles.planBadge}>{plan}</Badge>;
 };
 

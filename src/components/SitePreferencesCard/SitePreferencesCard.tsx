@@ -1,7 +1,7 @@
 import styles from "./ReadingPreferencesCard.module.scss";
 
 import { SettingsCard, SettingsCardItem } from "../SettingsCard";
-import { ThemeToggleSelect } from "../Theme";
+import { ThemeSelect } from "../Theme";
 
 interface Props {}
 
@@ -12,7 +12,7 @@ const SitePreferencesCard: React.FC<Props> = () => {
       description="Here you can change the site preferences"
     >
       <SettingsCardItem label="Preferred theme">
-        <ThemeToggleSelect />
+        <ThemeSelect />
       </SettingsCardItem>
     </SettingsCard>
   );

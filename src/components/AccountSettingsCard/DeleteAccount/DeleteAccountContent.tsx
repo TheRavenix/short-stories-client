@@ -10,8 +10,9 @@ import styles from "./DeleteAccount.module.scss";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { P, Span } from "@/components/ui/Typography";
+import { queryClient } from "@/components/QueryProvider";
 
-import { useUserStore } from "@/stores/user";
+import { ProfileType } from "@/service/user";
 
 interface Props {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,7 +21,7 @@ interface Props {
 const DeleteAccountContent: React.FC<Props> = ({ setOpen }) => {
   const mustType = "DELETE MY ACCOUNT";
   const [confirmMessage, setConfirmMessage] = useState("");
-  const userId = useUserStore((s) => s._id);
+  const userId = queryClient.getQueryData<ProfileType>(["profile"])?._id || "";
 
   const mutation = useMutation({
     mutationFn: service.user.deleteOne,

@@ -5,7 +5,8 @@ import { Show } from "../Show";
 import { Card, CardContent, CardHeader } from "../ui/Card";
 
 import styles from "./Story.module.scss";
-import { H3, P } from "../ui/Typography";
+
+import { P } from "../ui/Typography";
 
 interface Props {
   name: string;
@@ -16,7 +17,12 @@ const StoryAboutCard: React.FC<Props> = ({ name, about }) => {
   return (
     <Card>
       <CardHeader>
-        <P size="xl" weight="semi-bold" transform="capitalize">
+        <P
+          size="xl"
+          weight="semi-bold"
+          transform="capitalize"
+          className={styles.uiFont}
+        >
           {name}'s about
         </P>
       </CardHeader>

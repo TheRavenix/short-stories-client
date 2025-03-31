@@ -18,7 +18,7 @@ const StoryViewToggle: React.FC<Props> = ({ id, currentView }) => {
   function handleOnClick(view: string) {
     if (view !== currentView) {
       router.push(`/library/${id}?view=${view}`);
-      localStorage.setItem("story-view", view);
+      localStorage.setItem("story_view", view);
     }
   }
 

@@ -28,6 +28,9 @@
 
   --overlay: rgba(0, 0, 0, 0.5);
 
+  --reading-font: "Source Sans 3", sans-serif;
+  --ui-font: "Inter", sans-serif;
+
   --radius-sharp: 0;
   --radius-rounded: 8px;
   --radius-pill: 20rem;
@@ -75,6 +78,22 @@ html[data-theme="dark"] {
   --border: #40404d;
 }
 
+html[data-ui-font="inter"] {
+  --ui-font: "Inter", sans-serif;
+}
+
+html[data-ui-font="source-sans3"] {
+  --ui-font: "Source Sans 3", sans-serif;
+}
+
+html[data-reading-font="inter"] {
+  --reading-font: "Inter", sans-serif;
+}
+
+html[data-reading-font="source-sans3"] {
+  --reading-font: "Source Sans 3", sans-serif;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -86,7 +105,7 @@ html[data-theme="dark"] {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: "Source Sans 3", sans-serif;
+  font-family: var(--reading-font);
   overflow-x: hidden;
 }
 
@@ -111,7 +130,7 @@ h4,
 h5,
 h6,
 button {
-  font-family: "Inter", sans-serif;
+  font-family: var(--ui-font);
 }
 
 a {

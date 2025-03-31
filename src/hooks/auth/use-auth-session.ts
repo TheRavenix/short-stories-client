@@ -11,7 +11,7 @@ interface Options {
   onError?: () => void;
 }
 
-function useAuthSession(options?: Options) {
+export function useAuthSession(options?: Options) {
   const router = useRouter();
   const query = useQuery({
     queryKey: ["auth-session"],
@@ -35,5 +35,3 @@ function useAuthSession(options?: Options) {
     refetch: query.refetch,
   };
 }
-
-export { useAuthSession };

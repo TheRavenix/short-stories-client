@@ -23,7 +23,7 @@ const Navbar: React.FC<Props> = () => {
         <div className={styles.startContent}>
           <NavbarDrawer />
           <Link href="/">
-            <P size="lg" weight="bold">
+            <P size="lg" weight="bold" className={styles.title}>
               Short stories
             </P>
           </Link>

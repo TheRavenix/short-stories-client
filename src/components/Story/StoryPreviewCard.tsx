@@ -18,7 +18,12 @@ const StoryPreviewCard: React.FC<Props> = ({ id, name, preview }) => {
   return (
     <Card>
       <CardHeader>
-        <P size="xl" weight="semi-bold" transform="capitalize">
+        <P
+          size="xl"
+          weight="semi-bold"
+          transform="capitalize"
+          className={styles.uiFont}
+        >
           {name}'s preview
         </P>
       </CardHeader>

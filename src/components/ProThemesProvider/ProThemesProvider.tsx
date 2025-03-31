@@ -4,7 +4,7 @@ import { PropsWithChildren, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { service } from "@/service";
-import { applyThemes } from "@/utils/apply-themes";
+import { applyDataKeyAndStyle } from "@/utils/apply-data-key-and-style";
 
 interface Props extends PropsWithChildren {}
 
@@ -18,7 +18,7 @@ const ProThemesProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     if (proThemesQuery.data) {
-      applyThemes(proThemesQuery.data, "pro_themes_style");
+      applyDataKeyAndStyle("theme", proThemesQuery.data, "pro_themes_style");
     }
   }, [proThemesQuery]);
 

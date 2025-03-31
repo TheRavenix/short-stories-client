@@ -24,6 +24,10 @@
   gap: var(--spacing-md);
 }
 
+.title {
+  font-family: var(--ui-font);
+}
+
 .endContent {
   display: flex;
   align-items: center;
