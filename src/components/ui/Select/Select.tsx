@@ -69,13 +69,18 @@ const SelectItem = React.forwardRef<
 ));
 SelectItem.displayName = SelectPrimitive.Item.displayName;
 
+interface SelectLabelProps
+  extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label> {
+  variant?: "default" | "primary";
+}
+
 const SelectLabel = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Label>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
->(({ className, ...props }, ref) => (
+  SelectLabelProps
+>(({ className, variant = "default", ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={clsx(styles.selectLabel, className)}
+    className={clsx(styles.selectLabel, styles[variant], className)}
     {...props}
   />
 ));

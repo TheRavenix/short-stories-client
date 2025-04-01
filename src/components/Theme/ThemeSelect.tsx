@@ -35,13 +35,13 @@ const ThemeSelect: React.FC<Props> = () => {
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Free</SelectLabel>
+          <SelectLabel variant="primary">Free</SelectLabel>
           <SelectItem value="light">Light</SelectItem>
           <SelectItem value="dark">Dark</SelectItem>
         </SelectGroup>
         {userPlan === "pro" && (
           <SelectGroup>
-            <SelectLabel>Pro</SelectLabel>
+            <SelectLabel variant="primary">Pro</SelectLabel>
             {proThemes &&
               Object.keys(proThemes).map((name) => {
                 return (

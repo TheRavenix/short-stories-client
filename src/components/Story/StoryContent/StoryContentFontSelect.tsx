@@ -37,13 +37,13 @@ const StoryContentFontSelect: React.FC<Props> = (props) => {
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Free</SelectLabel>
+          <SelectLabel variant="primary">Free</SelectLabel>
           <SelectItem value="inter">Inter</SelectItem>
           <SelectItem value="source-sans3">Source Sans 3</SelectItem>
         </SelectGroup>
         {userPlan === "pro" && (
           <SelectGroup>
-            <SelectLabel>Pro</SelectLabel>
+            <SelectLabel variant="primary">Pro</SelectLabel>
             {proReadingFonts &&
               Object.keys(proReadingFonts).map((name) => {
                 return (
