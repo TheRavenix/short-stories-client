@@ -27,7 +27,7 @@ const FontSelect: React.FC<Props> = (props) => {
 
   return (
     <Select {...props}>
-      <SelectTrigger size="sm">
+      <SelectTrigger>
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

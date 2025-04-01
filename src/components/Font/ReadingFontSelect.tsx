@@ -14,6 +14,7 @@ const ReadingFontSelect: React.FC<Props> = () => {
   const proReadingFonts = queryClient.getQueryData<ProFontResponse>([
     "pro-fonts",
   ])?.reading;
+
   return (
     <FontSelect
       value={readingFont}

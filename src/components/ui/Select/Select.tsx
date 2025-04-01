@@ -8,20 +8,13 @@ import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 
 const Select = SelectPrimitive.Root;
 
-type SelectTriggerSize = "default" | "sm" | "md" | "lg";
-
-interface SelectTriggerProps
-  extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> {
-  size?: SelectTriggerSize;
-}
-
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  SelectTriggerProps
->(({ className, children, size = "default", ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
-    className={clsx(styles.selectTrigger, styles[size], className)}
+    className={clsx(styles.selectTrigger, className)}
     {...props}
   >
     {children}

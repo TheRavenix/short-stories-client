@@ -23,9 +23,7 @@ const SettingsCardItem: React.FC<Props> = ({
       )}
     >
       <P>{label}</P>
-      <div className={clsx(direction === "row" && styles.shrinkZero)}>
-        {children}
-      </div>
+      <div>{children}</div>
     </div>
   );
 };

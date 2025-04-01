@@ -12,13 +12,17 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  & > div {
+    width: 120px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-shrink: 0;
+  }
 }
 
 .cardItemCol {
   flex-direction: column;
   gap: var(--spacing-sm);
-}
-
-.shrinkZero {
-  flex-shrink: 0;
 }

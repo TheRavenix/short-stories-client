@@ -8,6 +8,7 @@
   background-color: var(--card);
   color: var(--card-foreground);
   cursor: pointer;
+  width: 100%;
 
   &:hover {
     opacity: 0.9;
@@ -69,16 +70,4 @@
   &:hover {
     opacity: 0.9;
   }
-}
-
-.sm {
-  width: 120px;
-}
-
-.md {
-  width: 150px;
-}
-
-.lg {
-  width: 175px;
 }

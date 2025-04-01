@@ -30,7 +30,7 @@ const ThemeSelect: React.FC<Props> = () => {
 
   return (
     <Select value={theme} onValueChange={setTheme}>
-      <SelectTrigger size="sm">
+      <SelectTrigger>
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

@@ -9,7 +9,7 @@ const StoryViewLink: React.FC<Props> = ({ href, ...rest }) => {
   const [viewHref, setViewHref] = useState(href);
 
   useEffect(() => {
-    const storyView = localStorage.getItem("story-view");
+    const storyView = localStorage.getItem("story_view");
     setViewHref(storyView !== null ? `${href}?view=${storyView}` : href);
   }, [href]);
 
