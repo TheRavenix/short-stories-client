@@ -8,7 +8,7 @@ import { ThemeProvider } from "@/components/Theme";
 import { QueryProvider } from "@/components/QueryProvider";
 import { ProfileProvider } from "@/components/ProfileProvider";
 import { ProThemesProvider } from "@/components/ProThemesProvider";
-import { FontProvider } from "@/components/Font";
+import { FontProvider } from "@/components/FontProvider";
 import { ProFontsProvider } from "@/components/ProFontsProvider";
 
 export const metadata: Metadata = {

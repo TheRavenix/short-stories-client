@@ -2,7 +2,7 @@ import styles from "./SubscriptionSettingsCard.module.scss";
 
 import { SettingsCard, SettingsCardItem } from "../SettingsCard";
 import { SubscriptionPlanBadge } from "./SubscriptionPlanBadge";
-import { CancelSubscriptionCardRow } from "./CancelSubscriptionCardRow";
+import { CancelSubscriptionCardItem } from "./CancelSubscriptionCardItem";
 
 interface Props {}
 
@@ -15,7 +15,7 @@ const SubscriptionSettingsCard: React.FC<Props> = () => {
       <SettingsCardItem label="Current subscription plan">
         <SubscriptionPlanBadge />
       </SettingsCardItem>
-      <CancelSubscriptionCardRow />
+      <CancelSubscriptionCardItem />
     </SettingsCard>
   );
 };

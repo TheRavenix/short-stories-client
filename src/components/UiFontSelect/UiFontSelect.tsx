@@ -10,23 +10,28 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "../ui/Select";
-import { queryClient } from "../QueryProvider";
+} from "@/components/ui/Select";
+import { queryClient } from "@/components/QueryProvider";
 
-import { ProFontType } from "@/service/pro-font";
+import { useFontStore } from "@/stores/font";
+
 import { removeHyphen } from "@/utils/remove-hyphen";
 import { capitalize } from "@/utils/capitalize";
 import { ProfileType } from "@/service/user";
+import { ProFontResponse } from "@/service/pro-font";
 
-interface Props extends SelectProps {
-  proSelectItems: ProFontType | undefined;
-}
+interface Props extends SelectProps {}
 
-const FontSelect: React.FC<Props> = (props) => {
+const UiFontSelect: React.FC<Props> = (props) => {
   const userPlan = queryClient.getQueryData<ProfileType>(["profile"])?.plan;
+  const uiFont = useFontStore((s) => s.uiFont);
+  const setUiFont = useFontStore((s) => s.setUiFont);
+  const proUiFonts = queryClient.getQueryData<ProFontResponse>([
+    "pro-fonts",
+  ])?.ui;
 
   return (
-    <Select {...props}>
+    <Select value={uiFont} onValueChange={setUiFont}>
       <SelectTrigger>
         <SelectValue />
       </SelectTrigger>
@@ -39,8 +44,8 @@ const FontSelect: React.FC<Props> = (props) => {
         {userPlan === "pro" && (
           <SelectGroup>
             <SelectLabel>Pro</SelectLabel>
-            {props.proSelectItems &&
-              Object.keys(props.proSelectItems).map((name) => {
+            {proUiFonts &&
+              Object.keys(proUiFonts).map((name) => {
                 return (
                   <SelectItem key={name} value={name}>
                     {removeHyphen(capitalize(name))}
@@ -54,4 +59,4 @@ const FontSelect: React.FC<Props> = (props) => {
   );
 };
 
-export { FontSelect };
+export { UiFontSelect };

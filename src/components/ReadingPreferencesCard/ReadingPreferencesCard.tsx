@@ -1,8 +1,7 @@
 import styles from "./ReadingPreferencesCard.module.scss";
 
 import { SettingsCard, SettingsCardItem } from "../SettingsCard";
-import { Input } from "../ui/Input";
-import { ReadingFontSelect } from "../Font";
+import { StoryContentFontSelect, StoryContentFontSizeSelect } from "../Story";
 
 interface Props {}
 
@@ -13,10 +12,10 @@ const ReadingPreferencesCard: React.FC<Props> = () => {
       description="Here you can change your reading preferences"
     >
       <SettingsCardItem label="Reading font">
-        <ReadingFontSelect />
+        <StoryContentFontSelect />
       </SettingsCardItem>
       <SettingsCardItem label="Text size adjustments">
-        <Input label="Size" type="number" />
+        <StoryContentFontSizeSelect />
       </SettingsCardItem>
     </SettingsCard>
   );

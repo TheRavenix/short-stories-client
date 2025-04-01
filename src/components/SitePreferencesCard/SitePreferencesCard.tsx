@@ -2,7 +2,7 @@ import styles from "./ReadingPreferencesCard.module.scss";
 
 import { SettingsCard, SettingsCardItem } from "../SettingsCard";
 import { ThemeSelect } from "../Theme";
-import { UiFontSelect } from "../Font";
+import { UiFontSelect } from "../UiFontSelect";
 
 interface Props {}
 
