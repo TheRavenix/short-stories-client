@@ -10,4 +10,4 @@ class Service {
   readonly proFont = new ProFontService();
 }
 
-export const service = new Service();
+export const services = new Service();

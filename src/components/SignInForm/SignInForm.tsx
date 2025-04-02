@@ -11,8 +11,8 @@ import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { P } from "../ui/Typography";
 
-import { SignInData } from "@/service/auth";
-import { service } from "@/service";
+import { SignInData } from "@/services/auth";
+import { services } from "@/services";
 
 interface Props {}
 
@@ -23,7 +23,7 @@ const SignInForm: React.FC<Props> = () => {
   });
 
   const mutation = useMutation({
-    mutationFn: service.auth.signIn,
+    mutationFn: services.auth.signIn,
     onSuccess(data) {
       window.location.replace("/");
     },

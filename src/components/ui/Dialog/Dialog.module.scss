@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 60;
+  z-index: calc(10 + var(--z-index-navbar));
 }
 
 .dialogContent {

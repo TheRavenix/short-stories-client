@@ -3,35 +3,32 @@
 import { PropsWithChildren, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import { service } from "@/service";
 import { applyDataKeyAndStyle } from "@/utils/apply-data-key-and-style";
 import { applyImportUrlAndStyle } from "@/utils/apply-import-url-and-style";
+
+import { services } from "@/services";
 
 interface Props extends PropsWithChildren {}
 
 const ProFontsProvider: React.FC<Props> = ({ children }) => {
-  const proFontsQuery = useQuery({
+  const { data } = useQuery({
     queryKey: ["pro-fonts"],
-    queryFn: service.proFont.getAll,
-    staleTime: Infinity,
-    gcTime: Infinity,
+    queryFn: services.proFont.getAll,
+    staleTime: 1000 * 60 * 30,
+    gcTime: 1000 * 60 * 60 * 24,
   });
 
   useEffect(() => {
-    if (proFontsQuery.data) {
-      applyImportUrlAndStyle(proFontsQuery.data.src, "pro_fonts_src");
-      applyDataKeyAndStyle(
-        "ui-font",
-        proFontsQuery.data.ui,
-        "pro_ui_font_style"
-      );
+    if (data) {
+      applyImportUrlAndStyle(data.src, "pro_fonts_src");
+      applyDataKeyAndStyle("ui-font", data.ui, "pro_ui_font_style");
       applyDataKeyAndStyle(
         "reading-font",
-        proFontsQuery.data.reading,
+        data.reading,
         "pro_reading_font_style"
       );
     }
-  }, [proFontsQuery]);
+  }, [data]);
 
   return <>{children}</>;
 };

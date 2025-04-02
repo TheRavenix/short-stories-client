@@ -1,6 +1,7 @@
 "use client";
 
 import { SelectProps } from "@radix-ui/react-select";
+import { useQuery } from "@tanstack/react-query";
 
 import {
   Select,
@@ -11,24 +12,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/Select";
-import { queryClient } from "@/components/QueryProvider";
 
 import { useFontStore } from "@/stores/font";
+import { useProfile } from "@/hooks/profile";
 
 import { removeHyphen } from "@/utils/remove-hyphen";
 import { capitalize } from "@/utils/capitalize";
-import { ProfileType } from "@/service/user";
-import { ProFontResponse } from "@/service/pro-font";
+import { services } from "@/services";
 
 interface Props extends SelectProps {}
 
 const StoryContentFontSelect: React.FC<Props> = (props) => {
-  const userPlan = queryClient.getQueryData<ProfileType>(["profile"])?.plan;
   const readingFont = useFontStore((s) => s.readingFont);
   const setReadingFont = useFontStore((s) => s.setReadingFont);
-  const proReadingFonts = queryClient.getQueryData<ProFontResponse>([
-    "pro-fonts",
-  ])?.reading;
+  const { profile } = useProfile();
+  const { data: proFonts } = useQuery({
+    queryKey: ["pro-fonts"],
+    queryFn: services.proFont.getAll,
+  });
 
   return (
     <Select value={readingFont} onValueChange={setReadingFont}>
@@ -41,11 +42,11 @@ const StoryContentFontSelect: React.FC<Props> = (props) => {
           <SelectItem value="inter">Inter</SelectItem>
           <SelectItem value="source-sans3">Source Sans 3</SelectItem>
         </SelectGroup>
-        {userPlan === "pro" && (
+        {profile?.plan === "pro" && (
           <SelectGroup>
             <SelectLabel variant="primary">Pro</SelectLabel>
-            {proReadingFonts &&
-              Object.keys(proReadingFonts).map((name) => {
+            {proFonts?.reading &&
+              Object.keys(proFonts?.reading).map((name) => {
                 return (
                   <SelectItem key={name} value={name}>
                     {removeHyphen(capitalize(name))}

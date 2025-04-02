@@ -8,8 +8,11 @@ import styles from "./EditEmail.module.scss";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { service } from "@/service";
-import { EditEmailData } from "@/service/user";
+
+import { useProfile } from "@/hooks/profile";
+
+import { EditEmailData } from "@/services/user";
+import { services } from "@/services";
 
 interface Props {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,12 +23,14 @@ const EditEmailContent: React.FC<Props> = ({ setOpen }) => {
     currentEmail: "",
     newEmail: "",
   });
+  const { refetch } = useProfile();
 
   const mutation = useMutation({
-    mutationFn: service.user.editEmail,
+    mutationFn: services.user.editEmail,
     onSuccess(data, variables) {
       console.log(data.message);
       setOpen(false);
+      refetch();
     },
     onError(error: AxiosError<{ message: string }>) {
       alert(error.response?.data.message);

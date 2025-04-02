@@ -2,14 +2,16 @@
 
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
+import { useState } from "react";
 
 import styles from "./EditName.module.scss";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 
-import { service } from "@/service";
-import { useState } from "react";
+import { useProfile } from "@/hooks/profile";
+
+import { services } from "@/services";
 
 interface Props {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -17,12 +19,14 @@ interface Props {
 
 const EditNameContent: React.FC<Props> = ({ setOpen }) => {
   const [name, setName] = useState("");
+  const { refetch } = useProfile();
 
   const mutation = useMutation({
-    mutationFn: service.user.editName,
+    mutationFn: services.user.editName,
     onSuccess(data, variables) {
       console.log(data.message);
       setOpen(false);
+      refetch();
     },
     onError(error: AxiosError<{ message: string }>) {
       alert(error.response?.data.message);

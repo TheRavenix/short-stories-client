@@ -11,22 +11,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/Select";
-import { queryClient } from "../QueryProvider";
 
 import { useThemeStore } from "@/stores/theme";
+import { useProfile } from "@/hooks/profile";
 
 import { removeHyphen } from "@/utils/remove-hyphen";
 import { capitalize } from "@/utils/capitalize";
-import { ProThemeResponse } from "@/service/pro-theme";
-import { ProfileType } from "@/service/user";
+import { services } from "@/services";
 
 interface Props {}
 
 const ThemeSelect: React.FC<Props> = () => {
   const theme = useThemeStore((s) => s.theme);
   const setTheme = useThemeStore((s) => s.setTheme);
-  const userPlan = queryClient.getQueryData<ProfileType>(["profile"])?.plan;
-  const proThemes = queryClient.getQueryData<ProThemeResponse>(["pro-themes"]);
+  const { profile } = useProfile();
+  const { data: proThemes } = useQuery({
+    queryKey: ["pro-themes"],
+    queryFn: services.proTheme.getAll,
+  });
 
   return (
     <Select value={theme} onValueChange={setTheme}>
@@ -39,7 +41,7 @@ const ThemeSelect: React.FC<Props> = () => {
           <SelectItem value="light">Light</SelectItem>
           <SelectItem value="dark">Dark</SelectItem>
         </SelectGroup>
-        {userPlan === "pro" && (
+        {profile?.plan === "pro" && (
           <SelectGroup>
             <SelectLabel variant="primary">Pro</SelectLabel>
             {proThemes &&

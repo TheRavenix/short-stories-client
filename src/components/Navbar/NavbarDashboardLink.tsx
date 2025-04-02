@@ -7,10 +7,9 @@ import { usePathname } from "next/navigation";
 import styles from "./Navbar.module.scss";
 
 import { NavbarLink } from "./NavbarLink";
-import { queryClient } from "../QueryProvider";
 
 import { useAuthStore } from "@/stores/auth";
-import { ProfileType } from "@/service/user";
+import { useProfile } from "@/hooks/profile";
 
 type Props = Omit<LinkProps, "href"> &
   Omit<ComponentProps<"a">, "children"> & {};
@@ -18,9 +17,9 @@ type Props = Omit<LinkProps, "href"> &
 const NavbarDashboardLink: React.FC<Props> = ({ className, href, ...rest }) => {
   const pathName = usePathname();
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
-  const userRole = queryClient.getQueryData<ProfileType>(["profile"])?.role;
+  const { profile } = useProfile();
 
-  if (!isAuthenticated || userRole !== "admin") return null;
+  if (!isAuthenticated || profile?.role !== "admin") return null;
 
   return (
     <NavbarLink

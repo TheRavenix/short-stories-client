@@ -18,13 +18,12 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "../ui/Drawer";
-import { navBarLinks } from "./Navbar";
 import { NavbarDrawerAuthLinks } from "./NavbarDrawerAuthLinks";
-import { queryClient } from "../QueryProvider";
 
 import { useAuthStore } from "@/stores/auth";
+import { useProfile } from "@/hooks/profile";
 
-import { ProfileType } from "@/service/user";
+import { navBarLinks } from "./Navbar";
 
 interface Props {}
 
@@ -32,7 +31,7 @@ const NavbarDrawer: React.FC<Props> = () => {
   const pathName = usePathname();
   const [open, setOpen] = useState(false);
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
-  const userRole = queryClient.getQueryData<ProfileType>(["profile"])?.role;
+  const { profile } = useProfile();
 
   function toggleOpen() {
     setOpen((prev) => !prev);
@@ -55,7 +54,7 @@ const NavbarDrawer: React.FC<Props> = () => {
           </DrawerHeader>
           <DrawerBody className={styles.drawerBody}>
             <div className={styles.drawerLinks}>
-              {isAuthenticated && userRole === "admin" && (
+              {isAuthenticated && profile?.role === "admin" && (
                 <Link href="/dashboard" onClick={toggleOpen}>
                   <Button variant="ghost" className={styles.drawerButton}>
                     <span

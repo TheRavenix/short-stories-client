@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import styles from "./Navbar.module.scss";
 
-import { ThemeToggle } from "../Theme";
 import { NavbarLink } from "./NavbarLink";
 import { NavbarDrawer } from "./NavbarDrawer";
 import { P } from "../ui/Typography";
@@ -13,6 +12,7 @@ import { NavbarSettingsLink } from "./NavbarSettingsLink";
 import { NavbarDashboardLink } from "./NavbarDashboardLink";
 
 import { navBarLinks } from "@/data/links";
+import { NavbarTheme } from "./NavbarTheme";
 
 interface Props {}
 
@@ -40,7 +40,7 @@ const Navbar: React.FC<Props> = () => {
           </div>
           <div className={styles.searchAndThemeContainer}>
             <NavbarSearch />
-            <ThemeToggle />
+            <NavbarTheme />
           </div>
           <NavbarAuthActions />
         </div>

@@ -4,13 +4,13 @@ import { useMutation } from "@tanstack/react-query";
 
 import { Button } from "@/components/ui/Button";
 
-import { service } from "@/service";
+import { services } from "@/services";
 
 interface Props {}
 
 const SignOut: React.FC<Props> = () => {
   const mutation = useMutation({
-    mutationFn: service.auth.signOut,
+    mutationFn: services.auth.signOut,
     onSuccess(data) {
       localStorage.clear();
       window.location.replace("/sign-in");

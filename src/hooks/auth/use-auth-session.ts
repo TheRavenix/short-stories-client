@@ -2,9 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
 
-import { service } from "@/service";
+import { useProfileStatus } from "../profile";
 
 interface Options {
   redirectTo?: string;
@@ -13,25 +12,13 @@ interface Options {
 
 export function useAuthSession(options?: Options) {
   const router = useRouter();
-  const query = useQuery({
-    queryKey: ["auth-session"],
-    queryFn: service.user.getStatus,
-    staleTime: 0,
-    gcTime: 0,
-  });
+  const profileStatus = useProfileStatus();
 
   useEffect(() => {
-    if (query.isError) {
+    if (profileStatus.isError) {
       options?.onError?.() || router.replace(options?.redirectTo || "/sign-in");
     }
-  }, [query.isError]);
+  }, [profileStatus.isError]);
 
-  return {
-    isLoading: query.isLoading,
-    isError: query.isError,
-    isAuthenticated: query.isSuccess,
-    error: query.error,
-    data: query.data,
-    refetch: query.refetch,
-  };
+  return profileStatus;
 }

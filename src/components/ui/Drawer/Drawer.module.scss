@@ -4,7 +4,7 @@
   position: fixed;
   inset: 0;
   background-color: var(--overlay);
-  z-index: 60;
+  z-index: calc(10 + var(--z-index-navbar));
 }
 
 .drawerContent {
@@ -15,7 +15,7 @@
   flex-direction: column;
   max-height: 100dvh;
   background-color: var(--card);
-  z-index: 70;
+  z-index: calc(20 + var(--z-index-navbar));
 }
 
 .drawerHandle {

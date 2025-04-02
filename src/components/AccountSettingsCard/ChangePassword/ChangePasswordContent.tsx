@@ -8,8 +8,8 @@ import styles from "./ChangePassword.module.scss";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { ChangePasswordData } from "@/service/user";
-import { service } from "@/service";
+import { ChangePasswordData } from "@/services/user";
+import { services } from "@/services";
 
 interface Props {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,7 +22,7 @@ const ChangePasswordContent: React.FC<Props> = ({ setOpen }) => {
   });
 
   const mutation = useMutation({
-    mutationFn: service.user.changePassword,
+    mutationFn: services.user.changePassword,
     onSuccess(data, variables) {
       console.log(data.message);
       setOpen(false);

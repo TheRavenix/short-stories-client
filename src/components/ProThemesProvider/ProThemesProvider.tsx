@@ -3,24 +3,24 @@
 import { PropsWithChildren, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import { service } from "@/service";
 import { applyDataKeyAndStyle } from "@/utils/apply-data-key-and-style";
+import { services } from "@/services";
 
 interface Props extends PropsWithChildren {}
 
 const ProThemesProvider: React.FC<Props> = ({ children }) => {
-  const proThemesQuery = useQuery({
+  const { data } = useQuery({
     queryKey: ["pro-themes"],
-    queryFn: service.proTheme.getAll,
-    staleTime: Infinity,
-    gcTime: Infinity,
+    queryFn: services.proTheme.getAll,
+    staleTime: 1000 * 60 * 30,
+    gcTime: 1000 * 60 * 60 * 24,
   });
 
   useEffect(() => {
-    if (proThemesQuery.data) {
-      applyDataKeyAndStyle("theme", proThemesQuery.data, "pro_themes_style");
+    if (data) {
+      applyDataKeyAndStyle("theme", data, "pro_themes_style");
     }
-  }, [proThemesQuery]);
+  }, [data]);
 
   return <>{children}</>;
 };

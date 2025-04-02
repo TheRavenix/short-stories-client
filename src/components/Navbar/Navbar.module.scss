@@ -9,7 +9,7 @@
   background-color: var(--background);
   color: var(--foreground);
   height: var(--navbar-height);
-  z-index: 50;
+  z-index: var(--z-index-navbar);
 }
 
 .navContainer {
@@ -111,12 +111,17 @@
 
 .searchAndThemeContainer {
   display: flex;
+  align-items: center;
   gap: var(--spacing-md);
 }
 
 .authActions {
   display: none;
   gap: var(--spacing-sm);
+}
+
+.themeSelectContainer {
+  width: 120px;
 }
 
 @include mixins.media(md) {
