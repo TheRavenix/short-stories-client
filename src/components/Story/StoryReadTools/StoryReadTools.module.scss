@@ -1,0 +1,13 @@
+@use "@/styles/mixins" as mixins;
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+@include mixins.media(md) {
+  .container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

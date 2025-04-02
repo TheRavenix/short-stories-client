@@ -7,6 +7,8 @@ import styles from "./StoryView.module.scss";
 import { Span } from "../../ui/Typography";
 import { Button } from "../../ui/Button";
 
+import { useStoryStore } from "@/stores/story";
+
 interface Props {
   id: string;
   currentView: string;
@@ -14,11 +16,12 @@ interface Props {
 
 const StoryViewToggle: React.FC<Props> = ({ id, currentView }) => {
   const router = useRouter();
+  const setStoryView = useStoryStore((s) => s.setStoryView);
 
   function handleOnClick(view: string) {
     if (view !== currentView) {
       router.push(`/library/${id}?view=${view}`);
-      localStorage.setItem("story_view", view);
+      setStoryView(view);
     }
   }
 

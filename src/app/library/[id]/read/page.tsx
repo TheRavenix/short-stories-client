@@ -1,14 +1,16 @@
-import { redirect } from "next/navigation";
+"use client";
+
+import { redirect, useParams } from "next/navigation";
 import { ArrowLeftIcon } from "lucide-react";
 
 import styles from "./page.module.scss";
 
-import { Card, CardContent } from "@/components/ui/Card";
 import { SeparatorHighlighter } from "@/components/SeparatorHighlighter";
 import { Button } from "@/components/ui/Button";
 import {
-  StoryContent,
   StoryContentType,
+  StoryLayout,
+  StoryReadTools,
   StoryViewLink,
 } from "@/components/Story";
 import { CompactContainer } from "@/components/ui/Container";
@@ -17,18 +19,14 @@ import { Show } from "@/components/Show";
 import { EmptyState } from "@/components/EmptyState";
 import { Callout } from "@/components/Callout";
 
+import { useProfile } from "@/hooks/profile";
+
 import { stories } from "@/utils/stories";
 import { storiesContent } from "@/utils/stories-content";
-import { PlanType } from "@/components/Plans";
 
-interface Props {
-  params: Promise<{ id: string }>;
-}
-
-const userPlan: PlanType = "free";
-
-export default async function ReadStory(props: Props) {
-  const params = await props.params;
+export default function ReadStory() {
+  const params = useParams<{ id: string }>();
+  const { profile } = useProfile();
   const story = stories.find((s) => s.id === params.id);
   let storyContent: StoryContentType | undefined;
 
@@ -69,7 +67,9 @@ export default async function ReadStory(props: Props) {
               }
             >
               <Show
-                when={story.isFree || (!story.isFree && userPlan === "pro")}
+                when={
+                  story.isFree || (!story.isFree && profile?.plan === "pro")
+                }
                 fallback={
                   <Callout
                     message="This story is for Pro members. Subscribe to unlock and
@@ -79,11 +79,8 @@ export default async function ReadStory(props: Props) {
                   />
                 }
               >
-                <Card>
-                  <CardContent>
-                    <StoryContent {...storyContent} />
-                  </CardContent>
-                </Card>
+                <StoryReadTools />
+                <StoryLayout storyId={story.id} storyContent={storyContent} />
               </Show>
             </Show>
           </div>

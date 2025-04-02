@@ -35,7 +35,7 @@ const Plans: React.FC<Props> = () => {
       <TabsContent value="pro">
         <Plan
           type="pro"
-          price={3.99}
+          price={2.99}
           planFeatures={proPlanFeatures}
           duration="Monthly"
         />

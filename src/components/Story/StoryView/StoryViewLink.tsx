@@ -3,14 +3,16 @@
 import Link, { LinkProps } from "next/link";
 import { ComponentProps, useEffect, useState } from "react";
 
+import { useStoryStore } from "@/stores/story";
+
 type Props = LinkProps & ComponentProps<"a"> & {};
 
 const StoryViewLink: React.FC<Props> = ({ href, ...rest }) => {
   const [viewHref, setViewHref] = useState(href);
+  const storyView = useStoryStore((s) => s.storyView);
 
   useEffect(() => {
-    const storyView = localStorage.getItem("story_view");
-    setViewHref(storyView !== null ? `${href}?view=${storyView}` : href);
+    setViewHref(Boolean(storyView) ? `${href}?view=${storyView}` : href);
   }, [href]);
 
   return <Link href={viewHref} {...rest} />;

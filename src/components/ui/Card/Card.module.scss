@@ -1,6 +1,7 @@
 $cardPadding: var(--spacing-md);
 
 .card {
+  position: relative;
   width: 100%;
   border-radius: var(--radius-rounded);
   border: 1px solid var(--border);
