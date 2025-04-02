@@ -55,6 +55,14 @@ class UserService {
     return response.data;
   }
 
+  // TODO: This needs to be deleted
+  async generatePdf(): Promise<unknown> {
+    const response = await axiosClient.post("users/generate-pdf", {
+      responseType: "blob",
+    });
+    return response.data;
+  }
+
   async deleteOne(id: string): Promise<MessageResponse> {
     const response = await axiosClient.delete(`users/${id}`);
     return response.data;

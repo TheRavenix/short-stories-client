@@ -102,9 +102,7 @@ const Story: React.FC<Props> = ({
               <Button>Read</Button>
             </Link>
           )}
-          {shouldShowDownloadButton && (
-            <StoryDownloadButton isFree={isFree} coverImage={coverImage} />
-          )}
+          {shouldShowDownloadButton && <StoryDownloadButton name={name} />}
         </div>
       </div>
       {shouldShowStats && (
