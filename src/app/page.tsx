@@ -6,7 +6,12 @@ import styles from "./page.module.scss";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { HeroCanvas } from "@/components/HeroCanvas";
-import { Story, StoryReview } from "@/components/Story";
+import {
+  Story,
+  StoryReview,
+  StoryReviewType,
+  StoryType,
+} from "@/components/Story";
 import { H1, P } from "@/components/ui/Typography";
 import { CompactContainer } from "@/components/ui/Container";
 import { NewsletterSubForm } from "@/components/NewsletterSubForm";
@@ -15,10 +20,9 @@ import { EmptyState } from "@/components/EmptyState";
 import { Show } from "@/components/Show";
 import { HomeSignUp } from "@/components/HomeSignUp";
 
-import { storiesReviews } from "@/utils/stories-reviews";
-import { stories } from "@/utils/stories";
-
 export default function Home() {
+  const stories: StoryType[] = [];
+
   return (
     <main>
       <Container withPaddingBlock withContentSpacing>
@@ -49,7 +53,7 @@ export default function Home() {
           >
             <div className={styles.storiesList}>
               {stories.map((story) => (
-                <Story key={story.id} {...story} />
+                <Story key={story._id} {...story} />
               ))}
             </div>
             <div className={styles.storiesExploreMoreContainer}>
@@ -74,17 +78,15 @@ export default function Home() {
           >
             <div className={styles.reviewsList}>
               {stories.map((story) => {
-                const review = storiesReviews.find(
-                  (sr) => sr.storyId === story.id
-                );
+                const review: StoryReviewType | null = null;
 
                 if (!review) return null;
 
                 return (
-                  <Card key={story.id}>
+                  <Card key={story._id}>
                     <CardContent className={styles.reviewsCardContent}>
                       <StoryReview
-                        {...review}
+                        {...(review as StoryReviewType)}
                         shouldShowSeparator={false}
                         shouldShowStoryNameBadge
                         shouldShowReadMoreLink

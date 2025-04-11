@@ -1,6 +1,3 @@
-"use client";
-
-import { redirect, useParams } from "next/navigation";
 import { ArrowLeftIcon } from "lucide-react";
 
 import styles from "./page.module.scss";
@@ -17,24 +14,17 @@ import { CompactContainer } from "@/components/ui/Container";
 import { H1 } from "@/components/ui/Typography";
 import { Show } from "@/components/Show";
 import { EmptyState } from "@/components/EmptyState";
-import { Callout } from "@/components/Callout";
 
-import { useProfile } from "@/hooks/profile";
+import { getStoryBySlugAndId } from "@/lib/data/story";
 
-import { stories } from "@/utils/stories";
-import { storiesContent } from "@/utils/stories-content";
+interface Props {
+  params: Promise<{ slugAndId: string }>;
+}
 
-export default function ReadStory() {
-  const params = useParams<{ id: string }>();
-  const { profile } = useProfile();
-  const story = stories.find((s) => s.id === params.id);
-  let storyContent: StoryContentType | undefined;
-
-  if (!story) {
-    return redirect(`/library/${params.id}`);
-  }
-
-  storyContent = storiesContent.find((sc) => sc.storyId === story.id)!;
+export default async function ReadStory(props: Props) {
+  const params = await props.params;
+  const story = await getStoryBySlugAndId(params.slugAndId);
+  let storyContent: StoryContentType;
 
   return (
     <>
@@ -43,7 +33,7 @@ export default function ReadStory() {
         <CompactContainer withPaddingBlock>
           <div className={styles.containerContent}>
             <StoryViewLink
-              href={`/library/${story.id}`}
+              href={`/library/${params.slugAndId}`}
               className={styles.backToStory}
             >
               <Button variant="ghost" size="icon">
@@ -55,20 +45,21 @@ export default function ReadStory() {
               transform="capitalize"
               className={styles.headline}
             >
-              {story.name}
+              {story?.name}
             </H1>
             <Show
               when={
                 typeof storyContent !== "undefined" &&
-                storyContent.content.length > 0
+                storyContent?.content.length > 0
               }
               fallback={
                 <EmptyState message="A story was supposed to be here... Perhaps the author is still writing?" />
               }
             >
-              <Show
+              {/* <Show
                 when={
-                  story.isFree || (!story.isFree && profile?.plan === "pro")
+                  story?.plan === "free" ||
+                  (story?.plan === "pro" && profile?.plan === "pro")
                 }
                 fallback={
                   <Callout
@@ -80,8 +71,10 @@ export default function ReadStory() {
                 }
               >
                 <StoryReadTools />
-                <StoryLayout storyId={story.id} storyContent={storyContent} />
-              </Show>
+                <StoryLayout storyId={story?._id} storyContent={storyContent} />
+              </Show> */}
+              <StoryReadTools />
+              <StoryLayout storyId={story?._id} storyContent={storyContent} />
             </Show>
           </div>
         </CompactContainer>

@@ -9,18 +9,23 @@ import { Button } from "../../ui/Button";
 
 import { useStoryStore } from "@/stores/story";
 
+import { slugify } from "@/utils/slugify";
+
 interface Props {
   id: string;
+  name: string;
   currentView: string;
 }
 
-const StoryViewToggle: React.FC<Props> = ({ id, currentView }) => {
+const StoryViewToggle: React.FC<Props> = ({ id, name, currentView }) => {
   const router = useRouter();
   const setStoryView = useStoryStore((s) => s.setStoryView);
 
   function handleOnClick(view: string) {
     if (view !== currentView) {
-      router.push(`/library/${id}?view=${view}`);
+      router.push(`/library/${slugify(name)}-${id}?view=${view}`, {
+        scroll: false,
+      });
       setStoryView(view);
     }
   }

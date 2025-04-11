@@ -2,7 +2,7 @@ import { ComponentProps } from "react";
 import clsx from "clsx";
 
 import styles from "./Card.module.scss";
-import { P, ParagraphProps, Span, SpanProps } from "../Typography";
+import { P, Span } from "../Typography";
 
 type CardVariant = "default" | "primary";
 

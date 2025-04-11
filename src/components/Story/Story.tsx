@@ -9,13 +9,14 @@ import { Button } from "../ui/Button";
 import { Badge } from "../ui/Badge";
 import { StoryDownloadButton } from "./StoryDownloadButton";
 import { StarRating } from "../StarRating";
-import { StoryReadButton } from "./StoryReadButton";
 import { Stats } from "../Stats";
-import { storiesReviews } from "@/utils/stories-reviews";
 import { StoryViewLink } from "./StoryView/StoryViewLink";
 
+import { PlanType } from "../Plans";
+import { slugify } from "@/utils/slugify";
+
 interface StoryType {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   about: string[];
@@ -24,7 +25,7 @@ interface StoryType {
   coverImage: string;
   views: number;
   downloads: number;
-  isFree: boolean;
+  plan: PlanType;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -39,14 +40,14 @@ interface Props extends StoryType {
 }
 
 const Story: React.FC<Props> = ({
-  id,
+  _id,
   name,
   description,
   genre,
   coverImage,
   views,
   downloads,
-  isFree,
+  plan,
   shouldShowStarRating = true,
   shouldShowTitle = true,
   shouldShowExploreLink = true,
@@ -54,28 +55,20 @@ const Story: React.FC<Props> = ({
   shouldShowDownloadButton = false,
   shouldShowStats = false,
 }) => {
-  let reviewsLength = 0;
-  const stars = storiesReviews
-    .filter((sr) => {
-      if (sr.storyId === id) {
-        reviewsLength++;
-        return sr;
-      }
-    })
-    .map((sr) => sr.stars)
-    .reduce((a, b) => a + b, 0);
+  const reviewsLength = 0;
+  const stars = 0;
 
   return (
     <Card withPadding className={styles.story}>
       <div className={styles.genre}>
-        <Badge variant="inverse">{isFree ? "Free" : "Pro"}</Badge>
+        <Badge variant="inverse">{plan}</Badge>
         {genre.map((item) => (
           <Badge key={item}>{item}</Badge>
         ))}
       </div>
       <Image
         className={styles.coverImage}
-        src={coverImage}
+        src={`${process.env.NEXT_PUBLIC_SERVER_URL}/images/${coverImage}`}
         alt={`${name} Cover`}
         width={178.5}
         height={200}
@@ -91,14 +84,14 @@ const Story: React.FC<Props> = ({
         <div className={styles.actions}>
           {shouldShowExploreLink && (
             <StoryViewLink
-              href={`/library/${id}`}
+              href={`/library/${slugify(name)}-${_id}`}
               className={styles.actionLink}
             >
               <Button>Explore</Button>
             </StoryViewLink>
           )}
           {shouldShowReadButton && (
-            <Link href={`/library/${id}/read`}>
+            <Link href={`/library/${slugify(name)}-${_id}/read`}>
               <Button>Read</Button>
             </Link>
           )}

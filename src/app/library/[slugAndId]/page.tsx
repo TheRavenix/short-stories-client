@@ -13,13 +13,12 @@ import { H1 } from "@/components/ui/Typography";
 import { SearchParamTabs } from "@/components/SearchParamTabs";
 import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import { Show } from "@/components/Show";
-
-import { stories } from "@/utils/stories";
-import { storiesReviews } from "@/utils/stories-reviews";
 import { Callout } from "@/components/Callout";
 
+import { getStoryBySlugAndId } from "@/lib/data/story";
+
 interface Props {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slugAndId: string }>;
   searchParams: Promise<{ view: string; tab: string }>;
 }
 
@@ -28,8 +27,8 @@ export default async function StoryPage(props: Props) {
   const searchParams = await props.searchParams;
   const view = searchParams.view || "grid";
   const tab = searchParams.tab || "about";
-  const story = stories.find((s) => s.id === params.id);
-  let reviews: StoryReviewType[];
+  const story = await getStoryBySlugAndId(params.slugAndId);
+  const reviews: StoryReviewType[] = [];
 
   if (!story) {
     return (
@@ -44,8 +43,6 @@ export default async function StoryPage(props: Props) {
       </main>
     );
   }
-
-  reviews = storiesReviews.filter((sr) => sr.storyId === story.id);
 
   return (
     <main className={styles.main}>
@@ -66,14 +63,18 @@ export default async function StoryPage(props: Props) {
             shouldShowDownloadButton
             shouldShowStats
           />
-          <StoryViewToggle id={story.id} currentView={view} />
+          <StoryViewToggle
+            id={story._id}
+            name={story.name}
+            currentView={view}
+          />
           <Show
             when={view === "tabs"}
             fallback={
               <>
                 <StoryAboutCard name={story.name} about={story.about} />
                 <StoryPreviewCard
-                  id={story.id}
+                  id={story._id}
                   name={story.name}
                   preview={story.preview}
                 />
@@ -93,7 +94,7 @@ export default async function StoryPage(props: Props) {
               </TabsContent>
               <TabsContent value="preview">
                 <StoryPreviewCard
-                  id={story.id}
+                  id={story._id}
                   name={story.name}
                   preview={story.preview}
                 />
