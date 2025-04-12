@@ -9,10 +9,7 @@ export async function getLibraryStories(
 ): Promise<GetLibraryStoriesResponse> {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/stories/library?skip=${query.skip}&limit=${query.limit}&q=${query.q}&plan=${query.plan}&genre=${query.genre}`,
-      {
-        next: { revalidate: 60 },
-      }
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/stories/library?skip=${query.skip}&limit=${query.limit}&q=${query.q}&plan=${query.plan}&genre=${query.genre}`
     );
 
     if (!response.ok) {
@@ -36,8 +33,7 @@ export async function getStoryBySlugAndId(
   slugAndId: string
 ): Promise<StoryType> {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/stories/${slugAndId}`,
-    { next: { revalidate: 10 } }
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/stories/${slugAndId}`
   );
 
   if (!response.ok) throw new Error("Failed to fetch story");

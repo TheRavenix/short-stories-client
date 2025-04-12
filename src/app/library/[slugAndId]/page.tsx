@@ -13,7 +13,6 @@ import { H1 } from "@/components/ui/Typography";
 import { SearchParamTabs } from "@/components/SearchParamTabs";
 import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import { Show } from "@/components/Show";
-import { Callout } from "@/components/Callout";
 
 import { getStoryBySlugAndId } from "@/lib/data/story";
 
@@ -29,20 +28,6 @@ export default async function StoryPage(props: Props) {
   const tab = searchParams.tab || "about";
   const story = await getStoryBySlugAndId(params.slugAndId);
   const reviews: StoryReviewType[] = [];
-
-  if (!story) {
-    return (
-      <main className={styles.noStoryMain}>
-        <Container withPaddingBlock>
-          <Callout
-            message="This story hasn’t been written yet… or maybe it got lost!"
-            href="/library"
-            buttonText="Back to Library"
-          />
-        </Container>
-      </main>
-    );
-  }
 
   return (
     <main className={styles.main}>

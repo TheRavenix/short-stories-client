@@ -1,3 +1,3 @@
 export const PAGINATION_DEFAULT_LIMIT = 5;
 
-export const FILTER_DEFAULT_TIMEOUT = 1000;
+export const FILTER_DEFAULT_TIMEOUT = 500;
