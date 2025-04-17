@@ -13,10 +13,6 @@ const navBarLinks: LinkType[] = [
     href: "/library",
   },
   {
-    name: "Plans",
-    href: "/plans",
-  },
-  {
     name: "About",
     href: "/about",
   },

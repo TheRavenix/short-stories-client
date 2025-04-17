@@ -56,23 +56,6 @@ export default async function ReadStory(props: Props) {
                 <EmptyState message="A story was supposed to be here... Perhaps the author is still writing?" />
               }
             >
-              {/* <Show
-                when={
-                  story?.plan === "free" ||
-                  (story?.plan === "pro" && profile?.plan === "pro")
-                }
-                fallback={
-                  <Callout
-                    message="This story is for Pro members. Subscribe to unlock and
-                      start reading!"
-                    href="/plans?plan=pro"
-                    buttonText="Upgrade to Pro"
-                  />
-                }
-              >
-                <StoryReadTools />
-                <StoryLayout storyId={story?._id} storyContent={storyContent} />
-              </Show> */}
               <StoryReadTools />
               <StoryLayout storyId={story?._id} storyContent={storyContent} />
             </Show>

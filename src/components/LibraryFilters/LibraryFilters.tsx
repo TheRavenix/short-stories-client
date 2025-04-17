@@ -26,7 +26,6 @@ const LibraryFilters: React.FC<Props> = ({}) => {
   const searchParams = useSearchParams();
   const query = useSearchStore((s) => s.libraryQuery);
   const setQuery = useSearchStore((s) => s.setLibraryQuery);
-  const [plan, setPlan] = useState(searchParams.get("plan") || "all-plans");
   const [genre, setGenre] = useState(searchParams.get("genre") || "all-genres");
   const [order, setOrder] = useState(searchParams.get("order") || "random");
   const filterTimoutRef = useRef<NodeJS.Timeout>(null!);
@@ -44,14 +43,6 @@ const LibraryFilters: React.FC<Props> = ({}) => {
         updateSearchParams("q", query);
       }
     }, FILTER_DEFAULT_TIMEOUT);
-  }
-
-  function handleOnPlanChange(value: string) {
-    setPlan(value);
-
-    if (value !== searchParams.get("plan")) {
-      updateSearchParams("plan", value);
-    }
   }
 
   function handleOnGenreChange(value: string) {
@@ -81,18 +72,6 @@ const LibraryFilters: React.FC<Props> = ({}) => {
   return (
     <div className={styles.container}>
       <div className={styles.selects}>
-        <Select value={plan} onValueChange={handleOnPlanChange}>
-          <SelectTrigger>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectItem value="all-plans">All Plans</SelectItem>
-              <SelectItem value="free">Free</SelectItem>
-              <SelectItem value="pro">Pro</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
         <Select value={genre} onValueChange={handleOnGenreChange}>
           <SelectTrigger>
             <SelectValue />

@@ -4,7 +4,6 @@ import { CompactContainer } from "@/components/ui/Container";
 import { H1 } from "@/components/ui/Typography";
 import { AccountSettingsCard } from "@/components/AccountSettingsCard";
 import { ReadingPreferencesCard } from "@/components/ReadingPreferencesCard";
-import { SubscriptionSettingsCard } from "@/components/SubscriptionSettingsCard";
 import { ProtectedSettings } from "@/components/ProtectedRoutes";
 import { SitePreferencesCard } from "@/components/SitePreferencesCard";
 
@@ -18,7 +17,6 @@ export default function Settings() {
             <SitePreferencesCard />
             <ReadingPreferencesCard />
             <AccountSettingsCard />
-            <SubscriptionSettingsCard />
           </div>
         </CompactContainer>
       </main>

@@ -20,7 +20,7 @@
 
   &:focus + .label,
   &:not(:placeholder-shown) + .label {
-    top: calc(1.25 * var(--spacing-sm) * -1);
+    top: calc(0.35 * var(--spacing-md) * -1);
     font-size: var(--font-size-xs);
     color: var(--primary);
   }

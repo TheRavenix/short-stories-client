@@ -61,7 +61,6 @@ const Story: React.FC<Props> = ({
   return (
     <Card withPadding className={styles.story}>
       <div className={styles.genre}>
-        <Badge variant="inverse">{plan}</Badge>
         {genre.map((item) => (
           <Badge key={item}>{item}</Badge>
         ))}
