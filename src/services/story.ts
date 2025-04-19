@@ -10,11 +10,16 @@ interface GetLibraryStoriesQuery {
 }
 
 interface GetLibraryStoriesResponse {
-  success: boolean;
+  success: true;
   data: {
     stories: StoryType[];
     count: number;
   };
+}
+
+interface GetStoryBySlugAndIdResponse {
+  success: true;
+  data: StoryType;
 }
 
 class StoryService {
@@ -27,7 +32,9 @@ class StoryService {
     return response.data;
   }
 
-  async findOneBySlugAndId(slugAndId: string): Promise<StoryType> {
+  async findOneBySlugAndId(
+    slugAndId: string
+  ): Promise<GetStoryBySlugAndIdResponse> {
     const response = await axiosClient.get(`/stories/${slugAndId}`);
     return response.data;
   }
@@ -37,4 +44,5 @@ export {
   StoryService,
   type GetLibraryStoriesQuery,
   type GetLibraryStoriesResponse,
+  type GetStoryBySlugAndIdResponse,
 };

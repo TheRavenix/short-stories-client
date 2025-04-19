@@ -26,7 +26,7 @@ export default async function StoryPage(props: Props) {
   const searchParams = await props.searchParams;
   const view = searchParams.view || "grid";
   const tab = searchParams.tab || "about";
-  const story = await getStoryBySlugAndId(params.slugAndId);
+  const storyResponse = await getStoryBySlugAndId(params.slugAndId);
   const reviews: StoryReviewType[] = [];
 
   return (
@@ -37,11 +37,11 @@ export default async function StoryPage(props: Props) {
           transform="capitalize"
           className={styles.headline}
         >
-          {story.name}
+          {storyResponse.data.name}
         </H1>
         <div className={styles.storyContainer}>
           <Story
-            {...story}
+            {...storyResponse.data}
             shouldShowTitle={false}
             shouldShowExploreLink={false}
             shouldShowReadButton
@@ -49,21 +49,27 @@ export default async function StoryPage(props: Props) {
             shouldShowStats
           />
           <StoryViewToggle
-            id={story._id}
-            name={story.name}
+            id={storyResponse.data._id}
+            name={storyResponse.data.name}
             currentView={view}
           />
           <Show
             when={view === "tabs"}
             fallback={
               <>
-                <StoryAboutCard name={story.name} about={story.about} />
-                <StoryPreviewCard
-                  id={story._id}
-                  name={story.name}
-                  preview={story.preview}
+                <StoryAboutCard
+                  name={storyResponse.data.name}
+                  about={storyResponse.data.about}
                 />
-                <StoryReviewsCard name={story.name} reviews={reviews} />
+                <StoryPreviewCard
+                  id={storyResponse.data._id}
+                  name={storyResponse.data.name}
+                  preview={storyResponse.data.preview}
+                />
+                <StoryReviewsCard
+                  name={storyResponse.data.name}
+                  reviews={reviews}
+                />
               </>
             }
           >
@@ -75,17 +81,23 @@ export default async function StoryPage(props: Props) {
               </TabsList>
 
               <TabsContent value="about">
-                <StoryAboutCard name={story.name} about={story.about} />
+                <StoryAboutCard
+                  name={storyResponse.data.name}
+                  about={storyResponse.data.about}
+                />
               </TabsContent>
               <TabsContent value="preview">
                 <StoryPreviewCard
-                  id={story._id}
-                  name={story.name}
-                  preview={story.preview}
+                  id={storyResponse.data._id}
+                  name={storyResponse.data.name}
+                  preview={storyResponse.data.preview}
                 />
               </TabsContent>
               <TabsContent value="reviews">
-                <StoryReviewsCard name={story.name} reviews={reviews} />
+                <StoryReviewsCard
+                  name={storyResponse.data.name}
+                  reviews={reviews}
+                />
               </TabsContent>
             </SearchParamTabs>
           </Show>

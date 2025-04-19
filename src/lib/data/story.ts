@@ -1,42 +1,25 @@
-import { StoryType } from "@/components/Story";
 import {
   GetLibraryStoriesQuery,
   GetLibraryStoriesResponse,
+  GetStoryBySlugAndIdResponse,
 } from "@/services/story";
 
-export async function getLibraryStories(
+async function getLibraryStories(
   query: GetLibraryStoriesQuery
 ): Promise<GetLibraryStoriesResponse> {
-  try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/stories/library?skip=${query.skip}&limit=${query.limit}&q=${query.q}&plan=${query.plan}&genre=${query.genre}`
-    );
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message);
-    }
-
-    return response.json();
-  } catch (error: any) {
-    if (error.message === "fetch failed") {
-      throw new Error("Service unavailable. Please try again later.");
-    }
-
-    throw new Error(
-      error.message || "Service unavailable. Please try again later."
-    );
-  }
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/stories/library?skip=${query.skip}&limit=${query.limit}&q=${query.q}&plan=${query.plan}&genre=${query.genre}`
+  );
+  return response.json();
 }
 
-export async function getStoryBySlugAndId(
+async function getStoryBySlugAndId(
   slugAndId: string
-): Promise<StoryType> {
+): Promise<GetStoryBySlugAndIdResponse> {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/api/stories/${slugAndId}`
   );
-
-  if (!response.ok) throw new Error("Failed to fetch story");
-
   return response.json();
 }
+
+export { getLibraryStories, getStoryBySlugAndId };

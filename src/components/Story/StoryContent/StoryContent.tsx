@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/Separator";
 import { StoryContentText } from "./StoryContentText";
 
 type StoryContentType = {
-  id?: string;
+  _id: string;
   storyId: string;
   content: string[];
 };
