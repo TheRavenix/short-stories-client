@@ -1,6 +1,5 @@
 import styles from "./StoryContent.module.scss";
 
-import { P } from "@/components/ui/Typography";
 import { Separator } from "@/components/ui/Separator";
 import { StoryContentText } from "./StoryContentText";
 
@@ -17,7 +16,9 @@ const StoryContent: React.FC<Props> = ({ content }) => {
     <div className={styles.content}>
       {content.map((sc, index) => (
         <div key={index} className={styles.item}>
-          <StoryContentText>{sc}</StoryContentText>
+          <StoryContentText>
+            {index + 1}. {sc}
+          </StoryContentText>
           <Separator />
         </div>
       ))}

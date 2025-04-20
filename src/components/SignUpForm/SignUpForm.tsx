@@ -70,12 +70,20 @@ const SignUpForm: React.FC<Props> = () => {
         <Button type="submit" disabled={mutation.isPending}>
           {mutation.isPending ? "Loading..." : "Sign up"}
         </Button>
-        <P variant="gray">
-          You already have an account?{" "}
-          <Link href="/sign-in" className={styles.signInLink}>
-            Sign in
-          </Link>
-        </P>
+        <div className={styles.linksContainer}>
+          <P variant="gray">
+            You already have an account?{" "}
+            <Link href="/sign-in" className={styles.signInLink}>
+              Sign in
+            </Link>
+          </P>
+          <P variant="gray">
+            By creating an account you agree to our{" "}
+            <Link href="/terms" className={styles.signInLink}>
+              Terms & Conditions
+            </Link>
+          </P>
+        </div>
       </div>
     </form>
   );
