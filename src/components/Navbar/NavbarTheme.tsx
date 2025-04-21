@@ -4,13 +4,14 @@ import styles from "./Navbar.module.scss";
 
 import { ThemeSelect, ThemeToggle } from "../Theme";
 
-import { useProfile } from "@/hooks/profile";
+import { useAuthStore } from "@/stores/auth";
 
 interface Props {}
 
 const NavbarTheme: React.FC<Props> = () => {
-  const { profile } = useProfile();
-  return profile?.plan === "pro" ? (
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+
+  return isAuthenticated ? (
     <div className={styles.themeSelectContainer}>
       <ThemeSelect />
     </div>

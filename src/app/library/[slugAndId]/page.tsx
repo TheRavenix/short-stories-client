@@ -15,6 +15,7 @@ import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import { Show } from "@/components/Show";
 
 import { getStoryBySlugAndId } from "@/lib/data/story";
+import { getStoryReviewsByStoryId } from "@/lib/data/story-review";
 
 interface Props {
   params: Promise<{ slugAndId: string }>;
@@ -23,11 +24,14 @@ interface Props {
 
 export default async function StoryPage(props: Props) {
   const params = await props.params;
+  const storyId = params.slugAndId.split("-").pop();
   const searchParams = await props.searchParams;
   const view = searchParams.view || "grid";
   const tab = searchParams.tab || "about";
-  const storyResponse = await getStoryBySlugAndId(params.slugAndId);
-  const reviews: StoryReviewType[] = [];
+  const [storyResponse, storyReviewsResponse] = await Promise.all([
+    getStoryBySlugAndId(params.slugAndId),
+    getStoryReviewsByStoryId(storyId!),
+  ]);
 
   return (
     <main className={styles.main}>
@@ -67,8 +71,9 @@ export default async function StoryPage(props: Props) {
                   preview={storyResponse.data.preview}
                 />
                 <StoryReviewsCard
+                  id={storyResponse.data._id}
                   name={storyResponse.data.name}
-                  reviews={reviews}
+                  reviews={storyReviewsResponse.data}
                 />
               </>
             }
@@ -95,8 +100,9 @@ export default async function StoryPage(props: Props) {
               </TabsContent>
               <TabsContent value="reviews">
                 <StoryReviewsCard
+                  id={storyResponse.data._id}
                   name={storyResponse.data.name}
-                  reviews={reviews}
+                  reviews={storyReviewsResponse.data}
                 />
               </TabsContent>
             </SearchParamTabs>

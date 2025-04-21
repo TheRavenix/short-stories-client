@@ -6,16 +6,17 @@ import { Stats } from "../Stats";
 import { Card, CardContent, CardHeader } from "../ui/Card";
 import { Show } from "../Show";
 import { EmptyState } from "../EmptyState";
-import { StoryReview, StoryReviewType } from "./StoryReview";
+import { StoryReview, StoryReviewWithDetails } from "./StoryReview";
 import { StoryLeaveReview } from "./StoryLeaveReview";
 import { P } from "../ui/Typography";
 
 interface Props {
+  id: string;
   name: string;
-  reviews: StoryReviewType[];
+  reviews: StoryReviewWithDetails[];
 }
 
-const StoryReviewsCard: React.FC<Props> = ({ name, reviews }) => {
+const StoryReviewsCard: React.FC<Props> = ({ id, name, reviews }) => {
   return (
     <Card>
       <CardHeader className={styles.reviewsCardHeader}>
@@ -39,7 +40,7 @@ const StoryReviewsCard: React.FC<Props> = ({ name, reviews }) => {
         )}
       </CardHeader>
       <CardContent className={styles.reviewsCardContent}>
-        <StoryLeaveReview />
+        <StoryLeaveReview storyId={id} />
         <Show
           when={reviews.length > 0}
           fallback={
@@ -51,7 +52,7 @@ const StoryReviewsCard: React.FC<Props> = ({ name, reviews }) => {
         >
           <div className={styles.reviewsCardList}>
             {reviews.map((review) => (
-              <StoryReview key={review.id} {...review} />
+              <StoryReview key={review._id} {...review} />
             ))}
           </div>
         </Show>

@@ -12,14 +12,38 @@ import {
   StarRating,
 } from "@/components/StarRating";
 import { Input } from "@/components/ui/Input";
+import { useMutation } from "@tanstack/react-query";
+import { services } from "@/services";
+import { AxiosError } from "axios";
+import { ErrorResponse } from "@/types/response";
 
-interface Props {}
+interface Props {
+  storyId: string;
+}
 
-const StoryLeaveReviewContent: React.FC<Props> = () => {
+const StoryLeaveReviewContent: React.FC<Props> = ({ storyId }) => {
   const [rating, setRating] = useState(STAR_RATING_MAX);
+  const [comment, setComment] = useState("");
+
+  const mutation = useMutation({
+    mutationKey: ["post-review"],
+    mutationFn: services.storyReview.createStoryReview,
+    onSuccess(data, variables, context) {},
+    onError(error: AxiosError<ErrorResponse>, variables, context) {
+      if (error) {
+        alert(error.response?.data.message);
+      }
+    },
+  });
 
   function handleReview(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    mutation.mutate({
+      stars: rating,
+      comment,
+      storyId,
+    });
   }
 
   function decreaseRating() {
@@ -42,9 +66,18 @@ const StoryLeaveReviewContent: React.FC<Props> = () => {
         </Button>
       </div>
       <form className={styles.contentForm} onSubmit={handleReview}>
-        <Input label="Your Comment" required />
-        <Button type="submit" className={styles.postButton}>
-          Post
+        <Input
+          label="Your Comment"
+          required
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+        />
+        <Button
+          type="submit"
+          className={styles.postButton}
+          disabled={mutation.isPending}
+        >
+          {mutation.isPending ? "Loading..." : "Post"}
         </Button>
       </form>
     </div>

@@ -13,9 +13,11 @@ import {
 } from "@/components/ui/Drawer";
 import { StoryLeaveReviewContent } from "./StoryLeaveReviewContent";
 
-interface Props {}
+interface Props {
+  storyId: string;
+}
 
-const StoryLeaveReviewDrawer: React.FC<Props> = () => {
+const StoryLeaveReviewDrawer: React.FC<Props> = ({ storyId }) => {
   return (
     <Drawer autoFocus>
       <div className={styles.triggerWrapper}>
@@ -30,7 +32,7 @@ const StoryLeaveReviewDrawer: React.FC<Props> = () => {
             <DrawerTitle>Leave a Review</DrawerTitle>
           </DrawerHeader>
           <DrawerBody className={styles.drawerBody}>
-            <StoryLeaveReviewContent />
+            <StoryLeaveReviewContent storyId={storyId} />
           </DrawerBody>
         </DrawerContent>
       </DrawerPortal>

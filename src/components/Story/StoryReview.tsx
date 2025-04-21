@@ -8,26 +8,30 @@ import { Badge } from "../ui/Badge";
 import { StoryViewLink } from "./StoryView";
 
 interface StoryReviewType {
-  id: string;
-  userName: string;
+  _id: string;
+  userId: string;
+  storyId: string;
   stars: number;
   comment: string;
-  storyId: string;
+}
+
+interface StoryReviewWithDetails extends StoryReviewType {
+  userName: string;
   storyName: string;
 }
 
-interface Props extends StoryReviewType {
+interface Props extends StoryReviewWithDetails {
   shouldShowStoryNameBadge?: boolean;
   shouldShowReadMoreLink?: boolean;
   shouldShowSeparator?: boolean;
 }
 
 const StoryReview: React.FC<Props> = ({
-  id,
-  userName,
+  _id,
   comment,
   stars,
   storyId,
+  userName,
   storyName,
   shouldShowStoryNameBadge = false,
   shouldShowReadMoreLink = false,
@@ -58,4 +62,4 @@ const StoryReview: React.FC<Props> = ({
   );
 };
 
-export { StoryReview, type StoryReviewType };
+export { StoryReview, type StoryReviewType, type StoryReviewWithDetails };

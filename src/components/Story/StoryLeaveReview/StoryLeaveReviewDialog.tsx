@@ -12,9 +12,11 @@ import {
 } from "../../ui/Dialog";
 import { StoryLeaveReviewContent } from "./StoryLeaveReviewContent";
 
-interface Props {}
+interface Props {
+  storyId: string;
+}
 
-const StoryLeaveReviewDialog: React.FC<Props> = () => {
+const StoryLeaveReviewDialog: React.FC<Props> = ({ storyId }) => {
   return (
     <Dialog>
       <div className={styles.triggerWrapper}>
@@ -24,7 +26,7 @@ const StoryLeaveReviewDialog: React.FC<Props> = () => {
       </div>
       <DialogContent>
         <DialogTitle>Leave a Review</DialogTitle>
-        <StoryLeaveReviewContent />
+        <StoryLeaveReviewContent storyId={storyId} />
         <DialogClose asChild>
           <XIcon size={20} />
         </DialogClose>
