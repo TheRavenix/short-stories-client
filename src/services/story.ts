@@ -38,6 +38,11 @@ class StoryService {
     const response = await axiosClient.get(`/stories/${slugAndId}`);
     return response.data;
   }
+
+  async readStory(storyId: string) {
+    const response = await axiosClient.post(`/stories/read/${storyId}`);
+    return response.data;
+  }
 }
 
 export {

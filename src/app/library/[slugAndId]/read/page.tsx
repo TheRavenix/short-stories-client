@@ -3,7 +3,11 @@ import { ArrowLeftIcon } from "lucide-react";
 import styles from "./page.module.scss";
 
 import { Button } from "@/components/ui/Button";
-import { StoryContent, StoryViewLink } from "@/components/Story";
+import {
+  StoryContent,
+  StoryReadTracker,
+  StoryViewLink,
+} from "@/components/Story";
 import { CompactContainer } from "@/components/ui/Container";
 import { H1 } from "@/components/ui/Typography";
 import { Show } from "@/components/Show";
@@ -28,6 +32,7 @@ export default async function ReadStory(props: Props) {
   return (
     <>
       <SeparatorHighlighter />
+      <StoryReadTracker storyId={storyId!} />
       <main className={styles.main}>
         <CompactContainer withPaddingBlock>
           <div className={styles.containerContent}>
