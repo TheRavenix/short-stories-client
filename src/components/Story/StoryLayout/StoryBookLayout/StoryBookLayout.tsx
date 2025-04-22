@@ -19,11 +19,12 @@ import {
 import { chunkArray } from "@/utils/chunk-array";
 
 interface Props {
+  id: string;
   storyId: string;
   storyContent: StoryContentType;
 }
 
-const StoryBookLayout: React.FC<Props> = ({ storyId, storyContent }) => {
+const StoryBookLayout: React.FC<Props> = ({ id, storyId, storyContent }) => {
   const [page, setPage] = useState(0);
   const contentList = chunkArray(storyContent.content, 3);
 
@@ -47,7 +48,7 @@ const StoryBookLayout: React.FC<Props> = ({ storyId, storyContent }) => {
         </Button>
       </div>
       <div className={styles.page}>
-        <StoryContent storyId={storyId} content={contentList[page]} />
+        <StoryContent content={contentList[page]} />
       </div>
       <div className={styles.pageProgress}>
         <P variant="gray">

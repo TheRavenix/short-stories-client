@@ -9,7 +9,9 @@ type StoryContentType = {
   content: string[];
 };
 
-interface Props extends StoryContentType {}
+interface Props {
+  content: string[];
+}
 
 const StoryContent: React.FC<Props> = ({ content }) => {
   return (

@@ -93,7 +93,9 @@ const Story: React.FC<Props> = ({
               <Button>Read</Button>
             </Link>
           )}
-          {shouldShowDownloadButton && <StoryDownloadButton name={name} />}
+          {shouldShowDownloadButton && (
+            <StoryDownloadButton id={_id} name={name} />
+          )}
         </div>
       </div>
       {shouldShowStats && (

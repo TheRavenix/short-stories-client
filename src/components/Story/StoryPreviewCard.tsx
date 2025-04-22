@@ -37,7 +37,7 @@ const StoryPreviewCard: React.FC<Props> = ({ id, name, preview }) => {
             />
           }
         >
-          <StoryContent storyId={id} content={preview} />
+          <StoryContent content={preview} />
         </Show>
       </CardContent>
     </Card>

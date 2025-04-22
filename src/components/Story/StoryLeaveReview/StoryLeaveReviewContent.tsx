@@ -2,6 +2,9 @@
 
 import { MinusIcon, PlusIcon } from "lucide-react";
 import { useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { AxiosError } from "axios";
+import { useMutation } from "@tanstack/react-query";
 
 import styles from "./StoryLeaveReview.module.scss";
 
@@ -12,23 +15,38 @@ import {
   StarRating,
 } from "@/components/StarRating";
 import { Input } from "@/components/ui/Input";
-import { useMutation } from "@tanstack/react-query";
+
 import { services } from "@/services";
-import { AxiosError } from "axios";
 import { ErrorResponse } from "@/types/response";
 
 interface Props {
   storyId: string;
+  onOpenChange: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const StoryLeaveReviewContent: React.FC<Props> = ({ storyId }) => {
+const StoryLeaveReviewContent: React.FC<Props> = ({
+  storyId,
+  onOpenChange,
+}) => {
+  const router = useRouter();
+  const pathName = usePathname();
+  const searchParams = useSearchParams();
   const [rating, setRating] = useState(STAR_RATING_MAX);
   const [comment, setComment] = useState("");
 
   const mutation = useMutation({
     mutationKey: ["post-review"],
     mutationFn: services.storyReview.createStoryReview,
-    onSuccess(data, variables, context) {},
+    onSuccess(data, variables, context) {
+      let href = `${pathName}?view=${searchParams.get("view")}`;
+
+      if (searchParams.get("view") === "tabs") {
+        href += `&tab=${searchParams.get("tab")}`;
+      }
+
+      router.push(href, { scroll: false });
+      onOpenChange(false);
+    },
     onError(error: AxiosError<ErrorResponse>, variables, context) {
       if (error) {
         alert(error.response?.data.message);

@@ -6,12 +6,7 @@ import styles from "./page.module.scss";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { HeroCanvas } from "@/components/HeroCanvas";
-import {
-  Story,
-  StoryReview,
-  StoryReviewType,
-  StoryType,
-} from "@/components/Story";
+import { Story, StoryReview, StoryType } from "@/components/Story";
 import { H1, P } from "@/components/ui/Typography";
 import { CompactContainer } from "@/components/ui/Container";
 import { NewsletterSubForm } from "@/components/NewsletterSubForm";
@@ -78,15 +73,17 @@ export default function Home() {
           >
             <div className={styles.reviewsList}>
               {stories.map((story) => {
-                const review: StoryReviewType | null = null;
-
-                if (!review) return null;
-
                 return (
                   <Card key={story._id}>
                     <CardContent className={styles.reviewsCardContent}>
                       <StoryReview
-                        {...(review as StoryReviewType)}
+                        _id=""
+                        comment=""
+                        stars={0}
+                        storyId=""
+                        storyName=""
+                        userId=""
+                        userName=""
                         shouldShowSeparator={false}
                         shouldShowStoryNameBadge
                         shouldShowReadMoreLink

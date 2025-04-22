@@ -5,6 +5,7 @@ import {
   Story,
   StoryAboutCard,
   StoryPreviewCard,
+  StoryReviewHighlighter,
   StoryReviewsCard,
   StoryViewToggle,
 } from "@/components/Story";
@@ -33,81 +34,84 @@ export default async function StoryPage(props: Props) {
   ]);
 
   return (
-    <main className={styles.main}>
-      <Container withPaddingBlock>
-        <H1
-          variant="primary"
-          transform="capitalize"
-          className={styles.headline}
-        >
-          {storyResponse.data.name}
-        </H1>
-        <div className={styles.storyContainer}>
-          <Story
-            {...storyResponse.data}
-            shouldShowTitle={false}
-            shouldShowExploreLink={false}
-            shouldShowReadButton
-            shouldShowDownloadButton
-            shouldShowStats
-          />
-          <StoryViewToggle
-            id={storyResponse.data._id}
-            name={storyResponse.data.name}
-            currentView={view}
-          />
-          <Show
-            when={view === "tabs"}
-            fallback={
-              <>
-                <StoryAboutCard
-                  name={storyResponse.data.name}
-                  about={storyResponse.data.about}
-                />
-                <StoryPreviewCard
-                  id={storyResponse.data._id}
-                  name={storyResponse.data.name}
-                  preview={storyResponse.data.preview}
-                />
-                <StoryReviewsCard
-                  id={storyResponse.data._id}
-                  name={storyResponse.data.name}
-                  reviews={storyReviewsResponse.data}
-                />
-              </>
-            }
+    <>
+      <StoryReviewHighlighter storyReviewsResponse={storyReviewsResponse} />
+      <main className={styles.main}>
+        <Container withPaddingBlock>
+          <H1
+            variant="primary"
+            transform="capitalize"
+            className={styles.headline}
           >
-            <SearchParamTabs defaultValue={tab}>
-              <TabsList fullWidth>
-                <TabsTrigger value="about">About</TabsTrigger>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="reviews">Reviews</TabsTrigger>
-              </TabsList>
+            {storyResponse.data.name}
+          </H1>
+          <div className={styles.storyContainer}>
+            <Story
+              {...storyResponse.data}
+              shouldShowTitle={false}
+              shouldShowExploreLink={false}
+              shouldShowReadButton
+              shouldShowDownloadButton
+              shouldShowStats
+            />
+            <StoryViewToggle
+              id={storyResponse.data._id}
+              name={storyResponse.data.name}
+              currentView={view}
+            />
+            <Show
+              when={view === "tabs"}
+              fallback={
+                <>
+                  <StoryAboutCard
+                    name={storyResponse.data.name}
+                    about={storyResponse.data.about}
+                  />
+                  <StoryPreviewCard
+                    id={storyResponse.data._id}
+                    name={storyResponse.data.name}
+                    preview={storyResponse.data.preview}
+                  />
+                  <StoryReviewsCard
+                    id={storyResponse.data._id}
+                    name={storyResponse.data.name}
+                    reviews={storyReviewsResponse.data}
+                  />
+                </>
+              }
+            >
+              <SearchParamTabs defaultValue={tab}>
+                <TabsList fullWidth>
+                  <TabsTrigger value="about">About</TabsTrigger>
+                  <TabsTrigger value="preview">Preview</TabsTrigger>
+                  <TabsTrigger value="reviews">Reviews</TabsTrigger>
+                </TabsList>
 
-              <TabsContent value="about">
-                <StoryAboutCard
-                  name={storyResponse.data.name}
-                  about={storyResponse.data.about}
-                />
-              </TabsContent>
-              <TabsContent value="preview">
-                <StoryPreviewCard
-                  id={storyResponse.data._id}
-                  name={storyResponse.data.name}
-                  preview={storyResponse.data.preview}
-                />
-              </TabsContent>
-              <TabsContent value="reviews">
-                <StoryReviewsCard
-                  id={storyResponse.data._id}
-                  name={storyResponse.data.name}
-                  reviews={storyReviewsResponse.data}
-                />
-              </TabsContent>
-            </SearchParamTabs>
-          </Show>
-        </div>
-      </Container>
-    </main>
+                <TabsContent value="about">
+                  <StoryAboutCard
+                    name={storyResponse.data.name}
+                    about={storyResponse.data.about}
+                  />
+                </TabsContent>
+                <TabsContent value="preview">
+                  <StoryPreviewCard
+                    id={storyResponse.data._id}
+                    name={storyResponse.data.name}
+                    preview={storyResponse.data.preview}
+                  />
+                </TabsContent>
+                <TabsContent value="reviews">
+                  <StoryReviewsCard
+                    id={storyResponse.data._id}
+                    name={storyResponse.data.name}
+                    reviews={storyReviewsResponse.data}
+                  />
+                </TabsContent>
+              </SearchParamTabs>
+            </Show>
+          </div>
+        </Container>
+      </main>
+    </>
   );
 }

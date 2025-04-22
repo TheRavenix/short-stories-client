@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 import styles from "./StoryLeaveReview.module.scss";
 
 import { Button } from "@/components/ui/Button";
@@ -18,8 +22,10 @@ interface Props {
 }
 
 const StoryLeaveReviewDrawer: React.FC<Props> = ({ storyId }) => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Drawer autoFocus>
+    <Drawer open={open} onOpenChange={setOpen} autoFocus>
       <div className={styles.triggerWrapper}>
         <DrawerTrigger asChild>
           <Button>Leave a Review</Button>
@@ -32,7 +38,7 @@ const StoryLeaveReviewDrawer: React.FC<Props> = ({ storyId }) => {
             <DrawerTitle>Leave a Review</DrawerTitle>
           </DrawerHeader>
           <DrawerBody className={styles.drawerBody}>
-            <StoryLeaveReviewContent storyId={storyId} />
+            <StoryLeaveReviewContent storyId={storyId} onOpenChange={setOpen} />
           </DrawerBody>
         </DrawerContent>
       </DrawerPortal>

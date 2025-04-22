@@ -1,4 +1,7 @@
+"use client";
+
 import { XIcon } from "lucide-react";
+import { useState } from "react";
 
 import styles from "./StoryLeaveReview.module.scss";
 
@@ -17,8 +20,10 @@ interface Props {
 }
 
 const StoryLeaveReviewDialog: React.FC<Props> = ({ storyId }) => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <div className={styles.triggerWrapper}>
         <DialogTrigger asChild>
           <Button>Leave a Review</Button>
@@ -26,7 +31,7 @@ const StoryLeaveReviewDialog: React.FC<Props> = ({ storyId }) => {
       </div>
       <DialogContent>
         <DialogTitle>Leave a Review</DialogTitle>
-        <StoryLeaveReviewContent storyId={storyId} />
+        <StoryLeaveReviewContent storyId={storyId} onOpenChange={setOpen} />
         <DialogClose asChild>
           <XIcon size={20} />
         </DialogClose>

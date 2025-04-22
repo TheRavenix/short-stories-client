@@ -1,11 +1,11 @@
-import styles from "./Story.module.scss";
+import styles from "./StoryReview.module.scss";
 
-import { StarRating } from "../StarRating";
-import { Separator } from "../ui/Separator";
-import { P, Span } from "../ui/Typography";
-import { Button } from "../ui/Button";
-import { Badge } from "../ui/Badge";
-import { StoryViewLink } from "./StoryView";
+import { StarRating } from "../../StarRating";
+import { Separator } from "../../ui/Separator";
+import { P, Span } from "../../ui/Typography";
+import { Button } from "../../ui/Button";
+import { Badge } from "../../ui/Badge";
+import { StoryViewLink } from "../StoryView";
 
 interface StoryReviewType {
   _id: string;
@@ -32,6 +32,7 @@ const StoryReview: React.FC<Props> = ({
   stars,
   storyId,
   userName,
+  userId,
   storyName,
   shouldShowStoryNameBadge = false,
   shouldShowReadMoreLink = false,
@@ -40,7 +41,13 @@ const StoryReview: React.FC<Props> = ({
   return (
     <div className={styles.review}>
       <div className={styles.reviewHeader}>
-        <Span size="lg" weight="bold">
+        <Span
+          size="lg"
+          weight="bold"
+          data-review-user-id={userId}
+          data-highlighted={false}
+          className={styles.reviewUserName}
+        >
           {userName}
         </Span>
         {shouldShowStoryNameBadge && <Badge>{storyName}</Badge>}

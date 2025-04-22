@@ -10,11 +10,12 @@ import { StoryContentType } from "../StoryContent";
 import { StoryCardLayout } from "./StoryCardLayout";
 
 interface Props {
+  id: string;
   storyId: string;
   storyContent: StoryContentType;
 }
 
-const StoryLayout: React.FC<Props> = ({ storyId, storyContent }) => {
+const StoryLayout: React.FC<Props> = ({ id, storyId, storyContent }) => {
   const { profile } = useProfile();
   const storyLayout = useStoryStore((s) => s.storyLayout);
 
@@ -27,7 +28,11 @@ const StoryLayout: React.FC<Props> = ({ storyId, storyContent }) => {
         when={storyLayout === "book"}
         fallback={<StoryCardLayout storyContent={storyContent} />}
       >
-        <StoryBookLayout storyId={storyId} storyContent={storyContent} />
+        <StoryBookLayout
+          id={id}
+          storyId={storyId}
+          storyContent={storyContent}
+        />
       </Show>
     </Show>
   );

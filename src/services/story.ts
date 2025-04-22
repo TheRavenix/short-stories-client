@@ -10,7 +10,7 @@ interface GetLibraryStoriesQuery {
 }
 
 interface GetLibraryStoriesResponse {
-  success: true;
+  success: boolean;
   data: {
     stories: StoryType[];
     count: number;
@@ -18,8 +18,13 @@ interface GetLibraryStoriesResponse {
 }
 
 interface GetStoryBySlugAndIdResponse {
-  success: true;
+  success: boolean;
   data: StoryType;
+}
+
+interface DownloadStoryResponse {
+  success: boolean;
+  data: Buffer<ArrayBuffer>;
 }
 
 class StoryService {
@@ -41,6 +46,11 @@ class StoryService {
 
   async readStory(storyId: string) {
     const response = await axiosClient.post(`/stories/read/${storyId}`);
+    return response.data;
+  }
+
+  async downloadStory(storyId: string): Promise<DownloadStoryResponse> {
+    const response = await axiosClient.post(`/stories/download/${storyId}`);
     return response.data;
   }
 }
