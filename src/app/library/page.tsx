@@ -6,7 +6,7 @@ import styles from "./page.module.scss";
 
 import { Container } from "@/components/ui/Container";
 import { Story } from "@/components/Story";
-import { H1, P } from "@/components/ui/Typography";
+import { H1 } from "@/components/ui/Typography";
 import { Show } from "@/components/Show";
 import { EmptyState } from "@/components/EmptyState";
 import { LibraryFilters } from "@/components/LibraryFilters";

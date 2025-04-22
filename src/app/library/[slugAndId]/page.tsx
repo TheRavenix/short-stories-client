@@ -6,7 +6,6 @@ import {
   StoryAboutCard,
   StoryPreviewCard,
   StoryReviewsCard,
-  StoryReviewType,
   StoryViewToggle,
 } from "@/components/Story";
 import { H1 } from "@/components/ui/Typography";

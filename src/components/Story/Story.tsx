@@ -26,6 +26,7 @@ interface StoryType {
   views: number;
   downloads: number;
   plan: PlanType;
+  rating: number;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -48,6 +49,7 @@ const Story: React.FC<Props> = ({
   views,
   downloads,
   plan,
+  rating,
   shouldShowStarRating = true,
   shouldShowTitle = true,
   shouldShowExploreLink = true,
@@ -55,9 +57,6 @@ const Story: React.FC<Props> = ({
   shouldShowDownloadButton = false,
   shouldShowStats = false,
 }) => {
-  const reviewsLength = 0;
-  const stars = 0;
-
   return (
     <Card withPadding className={styles.story}>
       <div className={styles.genre}>
@@ -73,8 +72,8 @@ const Story: React.FC<Props> = ({
         height={200}
       />
       <div className={styles.content}>
-        {shouldShowStarRating && stars > 0 ? (
-          <StarRating stars={stars / reviewsLength} />
+        {shouldShowStarRating && rating > 0 ? (
+          <StarRating stars={rating} />
         ) : (
           <Badge variant="inverse">Not Rated</Badge>
         )}
