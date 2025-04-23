@@ -16,9 +16,19 @@ type ProfileType = {
   updatedAt: number;
 };
 
-interface StatusResponse {
+interface GetProfileResponse {
+  success: boolean;
+  data: ProfileType;
+}
+
+interface StatusType {
   plan: PlanType;
   role: ProfileRoleType;
+}
+
+interface GetStatusResponse {
+  success: boolean;
+  data: StatusType;
 }
 
 interface EditEmailData {
@@ -32,7 +42,7 @@ interface ChangePasswordData {
 }
 
 class UserService {
-  async getProfile(): Promise<ProfileType> {
+  async getProfile(): Promise<GetProfileResponse> {
     try {
       const response = await axiosClient.get("users/profile");
       return response.data;
@@ -50,7 +60,7 @@ class UserService {
     }
   }
 
-  async getStatus(): Promise<StatusResponse> {
+  async getStatus(): Promise<GetStatusResponse> {
     try {
       const response = await axiosClient.get("users/status");
       return response.data;

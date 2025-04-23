@@ -11,5 +11,5 @@ export function useProfile() {
     staleTime: 1000 * 60 * 30, // 30 minutes fresh
     gcTime: 1000 * 60 * 60 * 24, // 24 hours cache
   });
-  return { profile: data, isLoading: isPending, isSuccess, refetch };
+  return { profile: data?.data, isLoading: isPending, isSuccess, refetch };
 }
