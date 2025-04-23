@@ -1,5 +1,7 @@
 import { StoryType } from "@/components/Story";
+import { NETWORK_ERROR, UNEXPECTED_ERROR } from "@/constants/error";
 import { axiosClient } from "@/utils/axios-client";
+import { isNetworkError } from "@/utils/error";
 
 interface GetLibraryStoriesQuery {
   skip: number;
@@ -28,30 +30,40 @@ interface DownloadStoryResponse {
 }
 
 class StoryService {
-  async getLibraryStories(
-    query: GetLibraryStoriesQuery
-  ): Promise<GetLibraryStoriesResponse> {
-    const response = await axiosClient.get(
-      `/stories/library?skip=${query.skip}&limit=${query.limit}&q=${query.q}&plan=${query.plan}&genre=${query.genre}`
-    );
-    return response.data;
-  }
-
-  async findOneBySlugAndId(
-    slugAndId: string
-  ): Promise<GetStoryBySlugAndIdResponse> {
-    const response = await axiosClient.get(`/stories/${slugAndId}`);
-    return response.data;
-  }
-
   async readStory(storyId: string) {
-    const response = await axiosClient.post(`/stories/read/${storyId}`);
-    return response.data;
+    try {
+      const response = await axiosClient.post(`/stories/read/${storyId}`);
+      return response.data;
+    } catch (error: any) {
+      if (isNetworkError(error)) {
+        throw new Error(NETWORK_ERROR);
+      }
+      if (error.response) {
+        throw new Error(
+          error.response.data?.message || "Failed to read this story"
+        );
+      }
+
+      throw new Error(UNEXPECTED_ERROR);
+    }
   }
 
   async downloadStory(storyId: string): Promise<DownloadStoryResponse> {
-    const response = await axiosClient.post(`/stories/download/${storyId}`);
-    return response.data;
+    try {
+      const response = await axiosClient.post(`/stories/download/${storyId}`);
+      return response.data;
+    } catch (error: any) {
+      if (isNetworkError(error)) {
+        throw new Error(NETWORK_ERROR);
+      }
+      if (error.response) {
+        throw new Error(
+          error.response.data?.message || "Failed to download this story"
+        );
+      }
+
+      throw new Error(UNEXPECTED_ERROR);
+    }
   }
 }
 

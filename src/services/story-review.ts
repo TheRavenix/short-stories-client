@@ -1,5 +1,7 @@
 import { StoryReviewWithDetails } from "@/components/Story";
+import { NETWORK_ERROR, UNEXPECTED_ERROR } from "@/constants/error";
 import { axiosClient } from "@/utils/axios-client";
+import { isNetworkError } from "@/utils/error";
 
 interface GetStoryReviewsByStoryIdResponse {
   success: boolean;
@@ -18,18 +20,24 @@ interface CreateStoryReviewData {
 }
 
 class StoryReviewService {
-  async getStoryReviewsByStoryId(
-    storyId: string
-  ): Promise<GetStoryReviewsByStoryIdResponse> {
-    const response = await axiosClient.get(`/story-reviews/${storyId}`);
-    return response.data;
-  }
-
   async createStoryReview(
     data: CreateStoryReviewData
   ): Promise<CreateStoryReviewResponse> {
-    const response = await axiosClient.post("/story-reviews", data);
-    return response.data;
+    try {
+      const response = await axiosClient.post("/story-reviews", data);
+      return response.data;
+    } catch (error: any) {
+      if (isNetworkError(error)) {
+        throw new Error(NETWORK_ERROR);
+      }
+      if (error.response) {
+        throw new Error(
+          error.response.data?.message || "Failed to post your review"
+        );
+      }
+
+      throw new Error(UNEXPECTED_ERROR);
+    }
   }
 }
 

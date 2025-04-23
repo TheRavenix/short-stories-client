@@ -3,13 +3,19 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { AxiosError } from "axios";
+import { XIcon } from "lucide-react";
 
 import styles from "./SignInForm.module.scss";
 
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { P } from "../ui/Typography";
+import {
+  ToastAction,
+  ToastDescription,
+  ToastRoot,
+  ToastTitle,
+} from "@/components/ui/Toast";
 
 import { SignInData } from "@/services/auth";
 import { services } from "@/services";
@@ -27,9 +33,6 @@ const SignInForm: React.FC<Props> = () => {
     onSuccess(data) {
       window.location.replace("/");
     },
-    onError(error: AxiosError<{ message: string }>) {
-      alert(error.response?.data.message);
-    },
   });
 
   function handleSignIn(e: React.FormEvent<HTMLFormElement>) {
@@ -39,37 +42,52 @@ const SignInForm: React.FC<Props> = () => {
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSignIn}>
-      <Input
-        type="email"
-        label="Email"
-        required
-        value={formData.email}
-        onChange={(e) =>
-          setFormData((prev) => ({ ...prev, email: e.target.value }))
-        }
-      />
-      <Input
-        type="password"
-        label="Password"
-        required
-        value={formData.password}
-        onChange={(e) =>
-          setFormData((prev) => ({ ...prev, password: e.target.value }))
-        }
-      />
-      <div className={styles.endContent}>
-        <Button type="submit" disabled={mutation.isPending}>
-          {mutation.isPending ? "Loading..." : "Sign in"}
-        </Button>
-        <P variant="gray">
-          You don't have an account?{" "}
-          <Link href="/sign-up" className={styles.signUpLink}>
-            Sign up
-          </Link>
-        </P>
-      </div>
-    </form>
+    <>
+      <form className={styles.form} onSubmit={handleSignIn}>
+        <Input
+          type="email"
+          label="Email"
+          required
+          value={formData.email}
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, email: e.target.value }))
+          }
+        />
+        <Input
+          type="password"
+          label="Password"
+          required
+          value={formData.password}
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, password: e.target.value }))
+          }
+        />
+        <div className={styles.endContent}>
+          <Button type="submit" disabled={mutation.isPending}>
+            {mutation.isPending ? "Loading..." : "Sign in"}
+          </Button>
+          <P variant="gray">
+            You don't have an account?{" "}
+            <Link href="/sign-up" className={styles.signUpLink}>
+              Sign up
+            </Link>
+          </P>
+        </div>
+      </form>
+      {mutation.isError && (
+        <ToastRoot>
+          <ToastTitle>Error sign in</ToastTitle>
+          <ToastDescription variant="error">
+            {mutation.error?.message}
+          </ToastDescription>
+          <ToastAction altText="Action" asChild>
+            <Button size="icon" variant="ghost">
+              <XIcon size={20} />
+            </Button>
+          </ToastAction>
+        </ToastRoot>
+      )}
+    </>
   );
 };
 

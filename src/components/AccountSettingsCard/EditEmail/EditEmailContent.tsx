@@ -2,12 +2,18 @@
 
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { AxiosError } from "axios";
+import { XIcon } from "lucide-react";
 
 import styles from "./EditEmail.module.scss";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import {
+  ToastAction,
+  ToastDescription,
+  ToastRoot,
+  ToastTitle,
+} from "@/components/ui/Toast";
 
 import { useProfile } from "@/hooks/profile";
 
@@ -28,12 +34,7 @@ const EditEmailContent: React.FC<Props> = ({ setOpen }) => {
   const mutation = useMutation({
     mutationFn: services.user.editEmail,
     onSuccess(data, variables) {
-      console.log(data.message);
-      setOpen(false);
       refetch();
-    },
-    onError(error: AxiosError<{ message: string }>) {
-      alert(error.response?.data.message);
     },
   });
 
@@ -44,29 +45,55 @@ const EditEmailContent: React.FC<Props> = ({ setOpen }) => {
   }
 
   return (
-    <form className={styles.form} onSubmit={handleEdit}>
-      <Input
-        type="email"
-        label="Current Email"
-        required
-        value={formData.currentEmail}
-        onChange={(e) =>
-          setFormData((prev) => ({ ...prev, currentEmail: e.target.value }))
-        }
-      />
-      <Input
-        type="email"
-        label="New Email"
-        required
-        value={formData.newEmail}
-        onChange={(e) =>
-          setFormData((prev) => ({ ...prev, newEmail: e.target.value }))
-        }
-      />
-      <Button type="submit" disabled={mutation.isPending}>
-        Save
-      </Button>
-    </form>
+    <>
+      <form className={styles.form} onSubmit={handleEdit}>
+        <Input
+          type="email"
+          label="Current Email"
+          required
+          value={formData.currentEmail}
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, currentEmail: e.target.value }))
+          }
+        />
+        <Input
+          type="email"
+          label="New Email"
+          required
+          value={formData.newEmail}
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, newEmail: e.target.value }))
+          }
+        />
+        <Button type="submit" disabled={mutation.isPending}>
+          Save
+        </Button>
+      </form>
+      {mutation.isError && (
+        <ToastRoot>
+          <ToastTitle>Error edit email</ToastTitle>
+          <ToastDescription variant="error">
+            {mutation.error?.message}
+          </ToastDescription>
+          <ToastAction altText="Action" asChild>
+            <Button size="icon" variant="ghost">
+              <XIcon size={20} />
+            </Button>
+          </ToastAction>
+        </ToastRoot>
+      )}
+      {mutation.isSuccess && (
+        <ToastRoot>
+          <ToastTitle>Edit email</ToastTitle>
+          <ToastDescription>{mutation.data.message}</ToastDescription>
+          <ToastAction altText="Action" asChild>
+            <Button size="icon" variant="ghost">
+              <XIcon size={20} />
+            </Button>
+          </ToastAction>
+        </ToastRoot>
+      )}
+    </>
   );
 };
 

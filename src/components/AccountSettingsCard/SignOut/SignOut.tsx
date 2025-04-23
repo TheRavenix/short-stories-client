@@ -1,8 +1,15 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
+import { XIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import {
+  ToastAction,
+  ToastDescription,
+  ToastRoot,
+  ToastTitle,
+} from "@/components/ui/Toast";
 
 import { services } from "@/services";
 
@@ -18,14 +25,29 @@ const SignOut: React.FC<Props> = () => {
   });
 
   return (
-    <Button
-      size="sm"
-      variant="destructive"
-      onClick={() => mutation.mutate()}
-      disabled={mutation.isPending}
-    >
-      Sign out
-    </Button>
+    <>
+      <Button
+        size="sm"
+        variant="destructive"
+        onClick={() => mutation.mutate()}
+        disabled={mutation.isPending}
+      >
+        Sign out
+      </Button>
+      {mutation.isError && (
+        <ToastRoot>
+          <ToastTitle>Error sign out</ToastTitle>
+          <ToastDescription variant="error">
+            {mutation.error?.message}
+          </ToastDescription>
+          <ToastAction altText="Action" asChild>
+            <Button size="icon" variant="ghost">
+              <XIcon size={20} />
+            </Button>
+          </ToastAction>
+        </ToastRoot>
+      )}
+    </>
   );
 };
 

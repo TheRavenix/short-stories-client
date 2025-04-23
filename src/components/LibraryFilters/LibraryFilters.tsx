@@ -17,7 +17,7 @@ import {
 
 import { useSearchStore } from "@/stores/search";
 
-import { FILTER_DEFAULT_TIMEOUT } from "@/constants/filters";
+import { FILTER_DEFAULT_TIMEOUT } from "@/constants/filter";
 
 interface Props {}
 

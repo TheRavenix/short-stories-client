@@ -2,12 +2,19 @@
 
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { AxiosError } from "axios";
+import { XIcon } from "lucide-react";
 
 import styles from "./ChangePassword.module.scss";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import {
+  ToastAction,
+  ToastDescription,
+  ToastRoot,
+  ToastTitle,
+} from "@/components/ui/Toast";
+
 import { ChangePasswordData } from "@/services/user";
 import { services } from "@/services";
 
@@ -23,13 +30,6 @@ const ChangePasswordContent: React.FC<Props> = ({ setOpen }) => {
 
   const mutation = useMutation({
     mutationFn: services.user.changePassword,
-    onSuccess(data, variables) {
-      console.log(data.message);
-      setOpen(false);
-    },
-    onError(error: AxiosError<{ message: string }>) {
-      alert(error.response?.data.message);
-    },
   });
 
   function handleChange(e: React.FormEvent<HTMLFormElement>) {
@@ -39,29 +39,58 @@ const ChangePasswordContent: React.FC<Props> = ({ setOpen }) => {
   }
 
   return (
-    <form className={styles.form} onSubmit={handleChange}>
-      <Input
-        type="password"
-        label="Current Password"
-        required
-        value={formData.currentPassword}
-        onChange={(e) =>
-          setFormData((prev) => ({ ...prev, currentPassword: e.target.value }))
-        }
-      />
-      <Input
-        type="password"
-        label="New Password"
-        required
-        value={formData.newPassword}
-        onChange={(e) =>
-          setFormData((prev) => ({ ...prev, newPassword: e.target.value }))
-        }
-      />
-      <Button type="submit" disabled={mutation.isPending}>
-        Save
-      </Button>
-    </form>
+    <>
+      <form className={styles.form} onSubmit={handleChange}>
+        <Input
+          type="password"
+          label="Current Password"
+          required
+          value={formData.currentPassword}
+          onChange={(e) =>
+            setFormData((prev) => ({
+              ...prev,
+              currentPassword: e.target.value,
+            }))
+          }
+        />
+        <Input
+          type="password"
+          label="New Password"
+          required
+          value={formData.newPassword}
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, newPassword: e.target.value }))
+          }
+        />
+        <Button type="submit" disabled={mutation.isPending}>
+          Save
+        </Button>
+      </form>
+      {mutation.isError && (
+        <ToastRoot>
+          <ToastTitle>Error change password</ToastTitle>
+          <ToastDescription variant="error">
+            {mutation.error?.message}
+          </ToastDescription>
+          <ToastAction altText="Action" asChild>
+            <Button size="icon" variant="ghost">
+              <XIcon size={20} />
+            </Button>
+          </ToastAction>
+        </ToastRoot>
+      )}
+      {mutation.isSuccess && (
+        <ToastRoot>
+          <ToastTitle>Change password</ToastTitle>
+          <ToastDescription>{mutation.data.message}</ToastDescription>
+          <ToastAction altText="Action" asChild>
+            <Button size="icon" variant="ghost">
+              <XIcon size={20} />
+            </Button>
+          </ToastAction>
+        </ToastRoot>
+      )}
+    </>
   );
 };
 

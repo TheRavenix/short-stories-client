@@ -1,9 +1,8 @@
 "use client";
 
-import { MinusIcon, PlusIcon } from "lucide-react";
+import { MinusIcon, PlusIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 
 import styles from "./StoryLeaveReview.module.scss";
@@ -15,9 +14,14 @@ import {
   StarRating,
 } from "@/components/StarRating";
 import { Input } from "@/components/ui/Input";
+import {
+  ToastAction,
+  ToastDescription,
+  ToastRoot,
+  ToastTitle,
+} from "@/components/ui/Toast";
 
 import { services } from "@/services";
-import { ErrorResponse } from "@/types/response";
 
 interface Props {
   storyId: string;
@@ -45,12 +49,6 @@ const StoryLeaveReviewContent: React.FC<Props> = ({
       }
 
       router.push(href, { scroll: false });
-      onOpenChange(false);
-    },
-    onError(error: AxiosError<ErrorResponse>, variables, context) {
-      if (error) {
-        alert(error.response?.data.message);
-      }
     },
   });
 
@@ -73,32 +71,58 @@ const StoryLeaveReviewContent: React.FC<Props> = ({
   }
 
   return (
-    <div className={styles.content}>
-      <div className={styles.contentRatingContainer}>
-        <Button variant="inverse" size="icon" onClick={decreaseRating}>
-          <MinusIcon size={18} />
-        </Button>
-        <StarRating stars={rating} fixedWidth />
-        <Button variant="inverse" size="icon" onClick={increaseRating}>
-          <PlusIcon size={18} />
-        </Button>
+    <>
+      <div className={styles.content}>
+        <div className={styles.contentRatingContainer}>
+          <Button variant="inverse" size="icon" onClick={decreaseRating}>
+            <MinusIcon size={18} />
+          </Button>
+          <StarRating stars={rating} fixedWidth />
+          <Button variant="inverse" size="icon" onClick={increaseRating}>
+            <PlusIcon size={18} />
+          </Button>
+        </div>
+        <form className={styles.contentForm} onSubmit={handleReview}>
+          <Input
+            label="Your Comment"
+            required
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+          <Button
+            type="submit"
+            className={styles.postButton}
+            disabled={mutation.isPending}
+          >
+            {mutation.isPending ? "Loading..." : "Post"}
+          </Button>
+        </form>
       </div>
-      <form className={styles.contentForm} onSubmit={handleReview}>
-        <Input
-          label="Your Comment"
-          required
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-        />
-        <Button
-          type="submit"
-          className={styles.postButton}
-          disabled={mutation.isPending}
-        >
-          {mutation.isPending ? "Loading..." : "Post"}
-        </Button>
-      </form>
-    </div>
+      {mutation.isError && (
+        <ToastRoot>
+          <ToastTitle>Error post review</ToastTitle>
+          <ToastDescription variant="error">
+            {mutation.error.message}
+          </ToastDescription>
+          <ToastAction altText="Action" asChild>
+            <Button size="icon" variant="ghost">
+              <XIcon size={20} />
+            </Button>
+          </ToastAction>
+        </ToastRoot>
+      )}
+      {mutation.isSuccess && (
+        <ToastRoot>
+          <ToastTitle>Post review</ToastTitle>
+          <ToastDescription>{mutation.data.message}</ToastDescription>
+          <ToastAction altText="Action" asChild>
+            <Button size="icon" variant="ghost">
+              <XIcon size={20} />
+            </Button>
+          </ToastAction>
+        </ToastRoot>
+      )}
+    </>
   );
 };
 

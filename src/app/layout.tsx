@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/Theme";
 import { QueryProvider } from "@/components/QueryProvider";
 import { ProfileProvider } from "@/components/ProfileProvider";
 import { FontProvider } from "@/components/FontProvider";
+import { Toast, ToastViewport } from "@/components/ui/Toast";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,7 +28,10 @@ export default function RootLayout({
             <ThemeProvider>
               <FontProvider>
                 <Navbar />
-                {children}
+                <Toast>
+                  {children}
+                  <ToastViewport />
+                </Toast>
                 <Footer />
               </FontProvider>
             </ThemeProvider>

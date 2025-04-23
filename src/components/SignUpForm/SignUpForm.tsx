@@ -3,13 +3,19 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { AxiosError } from "axios";
+import { XIcon } from "lucide-react";
 
 import styles from "./SignUpForm.module.scss";
 
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { P } from "../ui/Typography";
+import {
+  ToastAction,
+  ToastDescription,
+  ToastRoot,
+  ToastTitle,
+} from "../ui/Toast";
 
 import { SignUpData } from "@/services/auth";
 import { services } from "@/services";
@@ -28,9 +34,6 @@ const SignUpForm: React.FC<Props> = () => {
     onSuccess(data) {
       window.location.replace("/");
     },
-    onError(error: AxiosError<{ message: string }>) {
-      alert(error.response?.data.message);
-    },
   });
 
   function handleSignUp(e: React.FormEvent<HTMLFormElement>) {
@@ -40,52 +43,67 @@ const SignUpForm: React.FC<Props> = () => {
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSignUp}>
-      <Input
-        label="Your Name (Optional)"
-        value={formData.name}
-        onChange={(e) =>
-          setFormData((prev) => ({ ...prev, name: e.target.value }))
-        }
-      />
-      <Input
-        type="email"
-        label="Email"
-        required
-        value={formData.email}
-        onChange={(e) =>
-          setFormData((prev) => ({ ...prev, email: e.target.value }))
-        }
-      />
-      <Input
-        type="password"
-        label="Password"
-        required
-        value={formData.password}
-        onChange={(e) =>
-          setFormData((prev) => ({ ...prev, password: e.target.value }))
-        }
-      />
-      <div className={styles.endContent}>
-        <Button type="submit" disabled={mutation.isPending}>
-          {mutation.isPending ? "Loading..." : "Sign up"}
-        </Button>
-        <div className={styles.linksContainer}>
-          <P variant="gray">
-            You already have an account?{" "}
-            <Link href="/sign-in" className={styles.signInLink}>
-              Sign in
-            </Link>
-          </P>
-          <P variant="gray">
-            By creating an account you agree to our{" "}
-            <Link href="/terms" className={styles.signInLink}>
-              Terms & Conditions
-            </Link>
-          </P>
+    <>
+      <form className={styles.form} onSubmit={handleSignUp}>
+        <Input
+          label="Your Name (Optional)"
+          value={formData.name}
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, name: e.target.value }))
+          }
+        />
+        <Input
+          type="email"
+          label="Email"
+          required
+          value={formData.email}
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, email: e.target.value }))
+          }
+        />
+        <Input
+          type="password"
+          label="Password"
+          required
+          value={formData.password}
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, password: e.target.value }))
+          }
+        />
+        <div className={styles.endContent}>
+          <Button type="submit" disabled={mutation.isPending}>
+            {mutation.isPending ? "Loading..." : "Sign up"}
+          </Button>
+          <div className={styles.linksContainer}>
+            <P variant="gray">
+              You already have an account?{" "}
+              <Link href="/sign-in" className={styles.signInLink}>
+                Sign in
+              </Link>
+            </P>
+            <P variant="gray">
+              By creating an account you agree to our{" "}
+              <Link href="/terms" className={styles.signInLink}>
+                Terms & Conditions
+              </Link>
+            </P>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+      {mutation.isError && (
+        <ToastRoot>
+          <ToastTitle>Error sign up</ToastTitle>
+          <ToastDescription variant="error">
+            {mutation.error?.message}
+          </ToastDescription>
+          <ToastAction altText="Action" asChild>
+            <Button size="icon" variant="ghost">
+              <XIcon size={20} />
+            </Button>
+          </ToastAction>
+        </ToastRoot>
+      )}
+    </>
   );
 };
 
