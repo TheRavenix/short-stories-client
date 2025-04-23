@@ -1,4 +1,4 @@
-import { StoryType } from "@/components/Story";
+import { StoryReviewWithDetails, StoryType } from "@/components/Story";
 import { NETWORK_ERROR, UNEXPECTED_ERROR } from "@/constants/error";
 import { axiosClient } from "@/utils/axios-client";
 import { isNetworkError } from "@/utils/error";
@@ -16,6 +16,14 @@ interface GetLibraryStoriesResponse {
   data: {
     stories: StoryType[];
     count: number;
+  };
+}
+
+interface GetFeaturedStoriesResponse {
+  success: boolean;
+  data: {
+    stories: StoryType[];
+    reviews: StoryReviewWithDetails[];
   };
 }
 
@@ -72,4 +80,5 @@ export {
   type GetLibraryStoriesQuery,
   type GetLibraryStoriesResponse,
   type GetStoryBySlugAndIdResponse,
+  type GetFeaturedStoriesResponse,
 };

@@ -1,5 +1,6 @@
 import { NETWORK_ERROR } from "@/constants/error";
 import {
+  GetFeaturedStoriesResponse,
   GetLibraryStoriesQuery,
   GetLibraryStoriesResponse,
   GetStoryBySlugAndIdResponse,
@@ -15,6 +16,28 @@ async function getLibraryStories(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/api/stories/library?skip=${query.skip}&limit=${query.limit}&q=${query.q}&plan=${query.plan}&genre=${query.genre}`
     );
     const responseData: GetLibraryStoriesResponse & ErrorResponse =
+      await response.json();
+
+    if (!response.ok || !responseData.success) {
+      throw new Error(responseData.message);
+    }
+
+    return responseData;
+  } catch (error) {
+    if (isNextJSFetchError(error)) {
+      throw new Error(NETWORK_ERROR);
+    }
+
+    throw error;
+  }
+}
+
+async function getFeaturedStories(): Promise<GetFeaturedStoriesResponse> {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/stories/featured`
+    );
+    const responseData: GetFeaturedStoriesResponse & ErrorResponse =
       await response.json();
 
     if (!response.ok || !responseData.success) {
@@ -55,4 +78,4 @@ async function getStoryBySlugAndId(
   }
 }
 
-export { getLibraryStories, getStoryBySlugAndId };
+export { getLibraryStories, getFeaturedStories, getStoryBySlugAndId };
