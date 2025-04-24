@@ -1,33 +1,16 @@
 "use client";
 
-import { Button } from "../ui/Button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../ui/Card";
+import { BugIcon } from "lucide-react";
 
-interface Props {
+import { EmptyState } from "../EmptyState";
+
+interface ErrorFallbackProps {
   error: Error;
   reset?: () => void;
 }
 
-const ErrorFallback: React.FC<Props> = ({ error, reset }) => {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Something went wrong!</CardTitle>
-        <CardDescription>{error.message}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Button variant="destructive" size="sm" onClick={reset}>
-          Try again
-        </Button>
-      </CardContent>
-    </Card>
-  );
+const ErrorFallback: React.FC<ErrorFallbackProps> = ({ error, reset }) => {
+  return <EmptyState icon={<BugIcon />} message={error.message} />;
 };
 
-export { ErrorFallback };
+export { ErrorFallback, type ErrorFallbackProps };

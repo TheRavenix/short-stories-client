@@ -1,55 +1,19 @@
-import { BookIcon } from "lucide-react";
 import { Suspense } from "react";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 
 import styles from "./page.module.scss";
 
 import { Container } from "@/components/ui/Container";
-import { Story } from "@/components/Story";
 import { H1 } from "@/components/ui/Typography";
-import { Show } from "@/components/Show";
-import { EmptyState } from "@/components/EmptyState";
 import { LibraryFilters } from "@/components/LibraryFilters";
-import { LibraryLoadMoreButton } from "@/components/buttons";
-import { ErrorFallback } from "@/components/ErrorFallback";
-import { Skeleton } from "@/components/Skeleton";
+import {
+  LibraryStoriesSection,
+  LibraryStoriesSectionError,
+  LibraryStoriesSectionLoading,
+} from "@/components/sections";
 
 import { PAGINATION_DEFAULT_LIMIT } from "@/constants/filter";
-import { getLibraryStories, GetLibraryStoriesQuery } from "@/lib/data/story";
-
-interface LibraryStoriesProps extends GetLibraryStoriesQuery {}
-
-async function LibraryStories(props: LibraryStoriesProps) {
-  const libraryStories = await getLibraryStories({
-    skip: props.skip,
-    limit: props.limit,
-    q: props.q ?? "",
-    plan: props.plan ?? "all-plans",
-    genre: props.genre ?? "all-genres",
-  });
-
-  return (
-    <Show
-      when={libraryStories.data.stories.length > 0}
-      fallback={
-        <EmptyState
-          icon={<BookIcon />}
-          message="No stories available yet. Check back later for new adventures!"
-        />
-      }
-    >
-      <div className={styles.stories}>
-        {libraryStories.data.stories.map((story) => (
-          <Story key={story._id} {...story} />
-        ))}
-      </div>
-      <LibraryLoadMoreButton
-        limit={props.limit}
-        count={libraryStories.data.count}
-      />
-    </Show>
-  );
-}
+import { GetLibraryStoriesQuery } from "@/lib/data/story";
 
 interface Props {
   searchParams: Promise<
@@ -73,11 +37,9 @@ export default async function Library(props: Props) {
           <Suspense>
             <LibraryFilters />
           </Suspense>
-          <ErrorBoundary errorComponent={ErrorFallback}>
-            <Suspense
-              fallback={<Skeleton type="card" count={5} height="250px" />}
-            >
-              <LibraryStories
+          <ErrorBoundary errorComponent={LibraryStoriesSectionError}>
+            <Suspense fallback={<LibraryStoriesSectionLoading />}>
+              <LibraryStoriesSection
                 skip={0}
                 limit={limit}
                 q={searchParams.q}

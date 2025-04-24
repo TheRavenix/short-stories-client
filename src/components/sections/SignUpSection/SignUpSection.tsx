@@ -1,15 +1,15 @@
 "use client";
 
-import styles from "./HomeSignUp.module.scss";
+import styles from "./SignUpSection.module.scss";
 
-import { SignUpForm } from "../forms";
-import { H1 } from "../ui/Typography";
+import { SignUpForm } from "../../forms";
+import { H1 } from "../../ui/Typography";
 
 import { useAuthStore } from "@/stores/auth";
 
 interface Props {}
 
-const HomeSignUp: React.FC<Props> = () => {
+const SignUpSection: React.FC<Props> = () => {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
 
   if (isAuthenticated) return null;
@@ -24,4 +24,4 @@ const HomeSignUp: React.FC<Props> = () => {
   );
 };
 
-export { HomeSignUp };
+export { SignUpSection };
