@@ -2,10 +2,12 @@ import styles from "./page.module.scss";
 
 import { CompactContainer } from "@/components/ui/Container";
 import { H1 } from "@/components/ui/Typography";
-import { AccountSettingsCard } from "@/components/AccountSettingsCard";
-import { ReadingPreferencesCard } from "@/components/ReadingPreferencesCard";
-import { ProtectedSettings } from "@/components/ProtectedRoutes";
-import { SitePreferencesCard } from "@/components/SitePreferencesCard";
+import { ProtectedSettings } from "@/components/protected-routes";
+import {
+  SitePreferencesCard,
+  ReadingPreferencesCard,
+  AccountSettingsCard,
+} from "@/components/cards";
 
 export default function Settings() {
   return (

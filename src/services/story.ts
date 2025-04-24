@@ -1,36 +1,6 @@
-import { StoryReviewWithDetails, StoryType } from "@/components/Story";
 import { NETWORK_ERROR, UNEXPECTED_ERROR } from "@/constants/error";
 import { axiosClient } from "@/utils/axios-client";
 import { isNetworkError } from "@/utils/error";
-
-interface GetLibraryStoriesQuery {
-  skip: number;
-  limit: number;
-  q: string;
-  plan: string;
-  genre: string;
-}
-
-interface GetLibraryStoriesResponse {
-  success: boolean;
-  data: {
-    stories: StoryType[];
-    count: number;
-  };
-}
-
-interface GetFeaturedStoriesResponse {
-  success: boolean;
-  data: {
-    stories: StoryType[];
-    reviews: StoryReviewWithDetails[];
-  };
-}
-
-interface GetStoryBySlugAndIdResponse {
-  success: boolean;
-  data: StoryType;
-}
 
 interface DownloadStoryResponse {
   success: boolean;
@@ -75,10 +45,4 @@ class StoryService {
   }
 }
 
-export {
-  StoryService,
-  type GetLibraryStoriesQuery,
-  type GetLibraryStoriesResponse,
-  type GetStoryBySlugAndIdResponse,
-  type GetFeaturedStoriesResponse,
-};
+export { StoryService };

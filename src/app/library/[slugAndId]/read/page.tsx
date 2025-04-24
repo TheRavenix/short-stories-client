@@ -12,10 +12,10 @@ import { CompactContainer } from "@/components/ui/Container";
 import { H1 } from "@/components/ui/Typography";
 import { Show } from "@/components/Show";
 import { EmptyState } from "@/components/EmptyState";
+import { SeparatorHighlighter } from "@/components/SeparatorHighlighter";
 
 import { getStoryBySlugAndId } from "@/lib/data/story";
 import { getStoryContentByStoryId } from "@/lib/data/story-content";
-import { SeparatorHighlighter } from "@/components/SeparatorHighlighter";
 
 interface Props {
   params: Promise<{ slugAndId: string }>;

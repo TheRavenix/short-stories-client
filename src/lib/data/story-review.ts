@@ -1,9 +1,14 @@
+import { StoryReviewWithDetails } from "@/components/Story";
 import { NETWORK_ERROR } from "@/constants/error";
-import { GetStoryReviewsByStoryIdResponse } from "@/services/story-review";
 import { ErrorResponse } from "@/types/response";
 import { isNextJSFetchError } from "@/utils/error";
 
-export async function getStoryReviewsByStoryId(
+interface GetStoryReviewsByStoryIdResponse {
+  success: boolean;
+  data: StoryReviewWithDetails[];
+}
+
+async function getStoryReviewsByStoryId(
   storyId: string
 ): Promise<GetStoryReviewsByStoryIdResponse> {
   try {
@@ -26,3 +31,5 @@ export async function getStoryReviewsByStoryId(
     throw error;
   }
 }
+
+export { getStoryReviewsByStoryId, type GetStoryReviewsByStoryIdResponse };

@@ -9,7 +9,7 @@ import { HeroCanvas } from "@/components/HeroCanvas";
 import { Story, StoryReview } from "@/components/Story";
 import { H1, P } from "@/components/ui/Typography";
 import { CompactContainer } from "@/components/ui/Container";
-import { NewsletterSubForm } from "@/components/NewsletterSubForm";
+import { NewsletterSubForm } from "@/components/forms";
 import { Card, CardContent } from "@/components/ui/Card";
 import { EmptyState } from "@/components/EmptyState";
 import { Show } from "@/components/Show";
@@ -110,7 +110,7 @@ export default async function Home() {
                   Featured stories
                 </H1>
                 <div className={styles.storiesList}>
-                  <Skeleton type="card" count={6} />
+                  <Skeleton type="card" count={6} height="250px" />
                 </div>
               </div>
               <div className={styles.reviews}>

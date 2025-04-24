@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useProfile } from "@/hooks/profile";
 import { useAuthStore } from "@/stores/auth";
 
-import { GetStoryReviewsByStoryIdResponse } from "@/services/story-review";
+import { GetStoryReviewsByStoryIdResponse } from "@/lib/data/story-review";
 
 interface Props {
   storyReviewsResponse: GetStoryReviewsByStoryIdResponse;

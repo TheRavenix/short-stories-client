@@ -5,9 +5,7 @@ import "./globals.scss";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ThemeProvider } from "@/components/Theme";
-import { QueryProvider } from "@/components/QueryProvider";
-import { ProfileProvider } from "@/components/ProfileProvider";
-import { FontProvider } from "@/components/FontProvider";
+import { QueryProvider, ProfileProvider } from "@/components/providers";
 import { Toast, ToastViewport } from "@/components/ui/Toast";
 
 export const metadata: Metadata = {
@@ -26,14 +24,12 @@ export default function RootLayout({
         <QueryProvider>
           <ProfileProvider>
             <ThemeProvider>
-              <FontProvider>
-                <Navbar />
-                <Toast>
-                  {children}
-                  <ToastViewport />
-                </Toast>
-                <Footer />
-              </FontProvider>
+              <Navbar />
+              <Toast>
+                {children}
+                <ToastViewport />
+              </Toast>
+              <Footer />
             </ThemeProvider>
           </ProfileProvider>
         </QueryProvider>

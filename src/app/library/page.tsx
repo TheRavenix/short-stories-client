@@ -10,13 +10,12 @@ import { H1 } from "@/components/ui/Typography";
 import { Show } from "@/components/Show";
 import { EmptyState } from "@/components/EmptyState";
 import { LibraryFilters } from "@/components/LibraryFilters";
-import { LibraryLoadMoreButton } from "@/components/LibraryLoadMoreButton";
+import { LibraryLoadMoreButton } from "@/components/buttons";
 import { ErrorFallback } from "@/components/ErrorFallback";
 import { Skeleton } from "@/components/Skeleton";
 
-import { GetLibraryStoriesQuery } from "@/services/story";
 import { PAGINATION_DEFAULT_LIMIT } from "@/constants/filter";
-import { getLibraryStories } from "@/lib/data/story";
+import { getLibraryStories, GetLibraryStoriesQuery } from "@/lib/data/story";
 
 interface LibraryStoriesProps extends GetLibraryStoriesQuery {}
 

@@ -2,7 +2,7 @@
 
 import styles from "./HomeSignUp.module.scss";
 
-import { SignUpForm } from "../SignUpForm";
+import { SignUpForm } from "../forms";
 import { H1 } from "../ui/Typography";
 
 import { useAuthStore } from "@/stores/auth";

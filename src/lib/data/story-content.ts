@@ -1,7 +1,12 @@
+import { StoryContentType } from "@/components/Story";
 import { NETWORK_ERROR } from "@/constants/error";
-import { GetStoryContentByStoryIdResponse } from "@/services/story-content";
 import { ErrorResponse } from "@/types/response";
 import { isNextJSFetchError } from "@/utils/error";
+
+interface GetStoryContentByStoryIdResponse {
+  success: boolean;
+  data: StoryContentType;
+}
 
 export async function getStoryContentByStoryId(
   storyId: string

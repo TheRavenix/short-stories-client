@@ -1,22 +1,10 @@
-@use "@/styles/mixins" as mixins;
-
 .toggleContainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-sm);
+  justify-content: flex-end;
 }
 
 .toggleActions {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-}
-
-@include mixins.media(md) {
-  .toggleContainer {
-    flex-direction: row;
-    justify-content: flex-end;
-  }
 }

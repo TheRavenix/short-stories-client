@@ -1,12 +1,23 @@
+import { StoryReviewWithDetails, StoryType } from "@/components/Story";
 import { NETWORK_ERROR } from "@/constants/error";
-import {
-  GetFeaturedStoriesResponse,
-  GetLibraryStoriesQuery,
-  GetLibraryStoriesResponse,
-  GetStoryBySlugAndIdResponse,
-} from "@/services/story";
 import { ErrorResponse } from "@/types/response";
 import { isNextJSFetchError } from "@/utils/error";
+
+interface GetLibraryStoriesQuery {
+  skip: number;
+  limit: number;
+  q: string;
+  plan: string;
+  genre: string;
+}
+
+interface GetLibraryStoriesResponse {
+  success: boolean;
+  data: {
+    stories: StoryType[];
+    count: number;
+  };
+}
 
 async function getLibraryStories(
   query: GetLibraryStoriesQuery
@@ -32,6 +43,14 @@ async function getLibraryStories(
   }
 }
 
+interface GetFeaturedStoriesResponse {
+  success: boolean;
+  data: {
+    stories: StoryType[];
+    reviews: StoryReviewWithDetails[];
+  };
+}
+
 async function getFeaturedStories(): Promise<GetFeaturedStoriesResponse> {
   try {
     const response = await fetch(
@@ -52,6 +71,11 @@ async function getFeaturedStories(): Promise<GetFeaturedStoriesResponse> {
 
     throw error;
   }
+}
+
+interface GetStoryBySlugAndIdResponse {
+  success: boolean;
+  data: StoryType;
 }
 
 async function getStoryBySlugAndId(
@@ -78,4 +102,9 @@ async function getStoryBySlugAndId(
   }
 }
 
-export { getLibraryStories, getFeaturedStories, getStoryBySlugAndId };
+export {
+  getLibraryStories,
+  getFeaturedStories,
+  getStoryBySlugAndId,
+  type GetLibraryStoriesQuery,
+};

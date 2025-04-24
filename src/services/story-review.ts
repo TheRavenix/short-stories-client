@@ -1,12 +1,6 @@
-import { StoryReviewWithDetails } from "@/components/Story";
 import { NETWORK_ERROR, UNEXPECTED_ERROR } from "@/constants/error";
 import { axiosClient } from "@/utils/axios-client";
 import { isNetworkError } from "@/utils/error";
-
-interface GetStoryReviewsByStoryIdResponse {
-  success: boolean;
-  data: StoryReviewWithDetails[];
-}
 
 interface CreateStoryReviewResponse {
   success: boolean;
@@ -41,8 +35,4 @@ class StoryReviewService {
   }
 }
 
-export {
-  StoryReviewService,
-  type GetStoryReviewsByStoryIdResponse,
-  type CreateStoryReviewData,
-};
+export { StoryReviewService, type CreateStoryReviewData };

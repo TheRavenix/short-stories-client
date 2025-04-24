@@ -1,7 +1,7 @@
 import styles from "./page.module.scss";
 
 import { H1 } from "@/components/ui/Typography";
-import { ContactForm } from "@/components/ContactForm";
+import { ContactForm } from "@/components/forms";
 import { CompactContainer } from "@/components/ui/Container";
 
 export default function ContactPage() {

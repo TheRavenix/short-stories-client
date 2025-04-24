@@ -5,7 +5,7 @@ import { Separator } from "../../ui/Separator";
 import { P, Span } from "../../ui/Typography";
 import { Button } from "../../ui/Button";
 import { Badge } from "../../ui/Badge";
-import { StoryViewLink } from "../StoryView";
+import Link from "next/link";
 
 interface StoryReviewType {
   _id: string;
@@ -55,14 +55,14 @@ const StoryReview: React.FC<Props> = ({
       <StarRating stars={stars} />
       <P>{comment}</P>
       {shouldShowReadMoreLink && (
-        <StoryViewLink
-          href={`/library/${storyId}`}
+        <Link
+          href={`/library/${storyId}?view=tabs&tab=reviews`}
           className={styles.reviewLink}
         >
           <Button size="sm" variant="inverse">
             Read more
           </Button>
-        </StoryViewLink>
+        </Link>
       )}
       {shouldShowSeparator && <Separator />}
     </div>

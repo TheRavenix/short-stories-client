@@ -1,10 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { LayoutPanelTopIcon, TableOfContentsIcon } from "lucide-react";
 
 import styles from "./StoryView.module.scss";
 
-import { Span } from "../../ui/Typography";
 import { Button } from "../../ui/Button";
 
 import { useStoryStore } from "@/stores/story";
@@ -32,23 +32,20 @@ const StoryViewToggle: React.FC<Props> = ({ id, name, currentView }) => {
 
   return (
     <div className={styles.toggleContainer}>
-      <Span weight="bold" transform="uppercase">
-        View
-      </Span>
       <div className={styles.toggleActions}>
         <Button
-          size="sm"
+          size="icon"
           variant={currentView === "grid" ? "primary" : "inverse"}
           onClick={() => handleOnClick("grid")}
         >
-          Grid
+          <TableOfContentsIcon size={20} />
         </Button>
         <Button
-          size="sm"
+          size="icon"
           variant={currentView === "tabs" ? "primary" : "inverse"}
           onClick={() => handleOnClick("tabs")}
         >
-          Tabs
+          <LayoutPanelTopIcon size={20} />
         </Button>
       </div>
     </div>
