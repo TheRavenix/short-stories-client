@@ -10,7 +10,7 @@ import { Badge } from "../ui/Badge";
 import { StoryDownloadButton } from "./StoryDownloadButton";
 import { StarRating } from "../StarRating";
 import { Stats } from "../Stats";
-import { StoryViewLink } from "./StoryView/StoryViewLink";
+import { StoryViewLink } from "./story-view/StoryViewLink";
 
 import { PlanType } from "../Plans";
 import { slugify } from "@/utils/slugify";
