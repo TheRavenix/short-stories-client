@@ -13,6 +13,7 @@ import { H1 } from "@/components/ui/Typography";
 import { Show } from "@/components/Show";
 import { EmptyState } from "@/components/EmptyState";
 import { SeparatorHighlighter } from "@/components/SeparatorHighlighter";
+import { ToggleNavbarFixed } from "@/components/Navbar";
 
 import { getStoryBySlugAndId } from "@/lib/data/story";
 import { getStoryContentByStoryId } from "@/lib/data/story-content";
@@ -33,6 +34,7 @@ export default async function ReadStory(props: Props) {
     <>
       <SeparatorHighlighter />
       <StoryReadTracker storyId={storyId!} />
+      <ToggleNavbarFixed />
       <main className={styles.main}>
         <CompactContainer withPaddingBlock>
           <div className={styles.containerContent}>

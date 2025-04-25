@@ -1,7 +1,7 @@
 @use "@/styles/mixins" as mixins;
 
 .nav {
-  position: fixed;
+  position: absolute;
   width: 100%;
   display: flex;
   align-items: center;
@@ -10,6 +10,10 @@
   color: var(--foreground);
   height: var(--navbar-height);
   z-index: var(--z-index-navbar);
+
+  &[data-nav-fixed="true"] {
+    position: fixed;
+  }
 }
 
 .navContainer {
@@ -50,36 +54,6 @@
   }
 }
 
-.menuButtonContainer {
-  display: block;
-}
-
-.drawerContent {
-  width: 75vw;
-  height: 100dvh;
-}
-
-.drawerBody {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  padding-inline: var(--spacing-md);
-}
-
-.drawerLinks {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-}
-
-.drawerActiveLinkText {
-  color: var(--primary);
-}
-
-.drawerButton {
-  width: 100% !important;
-}
-
 .links {
   display: none;
   align-items: center;
@@ -101,12 +75,6 @@
   width: 120px;
 }
 
-@include mixins.media(md) {
-  .drawerContent {
-    width: 50vw;
-  }
-}
-
 @include mixins.media(lg) {
   .links {
     display: flex;
@@ -118,9 +86,5 @@
 
   .authActions {
     display: flex;
-  }
-
-  .menuButtonContainer {
-    display: none;
   }
 }

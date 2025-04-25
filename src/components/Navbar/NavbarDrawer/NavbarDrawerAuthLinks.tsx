@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import styles from "./Navbar.module.scss";
+import styles from "./NavbarDrawer.module.scss";
 
-import { Button } from "../ui/Button";
+import { Button } from "@/components/ui/Button";
 
 import { authLinks } from "@/data/links";
 import { useAuthStore } from "@/stores/auth";

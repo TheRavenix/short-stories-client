@@ -1,0 +1,43 @@
+@use "@/styles/mixins" as mixins;
+
+.menuButtonContainer {
+  display: block;
+}
+
+.drawerContent {
+  width: 75vw;
+  height: 100dvh;
+}
+
+.drawerBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-inline: var(--spacing-md);
+}
+
+.drawerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.drawerActiveLinkText {
+  color: var(--primary);
+}
+
+.drawerButton {
+  width: 100% !important;
+}
+
+@include mixins.media(md) {
+  .drawerContent {
+    width: 50vw;
+  }
+}
+
+@include mixins.media(lg) {
+  .menuButtonContainer {
+    display: none;
+  }
+}

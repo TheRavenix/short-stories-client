@@ -18,7 +18,7 @@ interface Props {}
 
 const Navbar: React.FC<Props> = () => {
   return (
-    <nav className={styles.nav}>
+    <nav className={styles.nav} data-nav-fixed="true">
       <Container className={styles.navContainer}>
         <div className={styles.startContent}>
           <NavbarDrawer />

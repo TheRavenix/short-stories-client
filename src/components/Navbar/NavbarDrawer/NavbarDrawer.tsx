@@ -5,9 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-import styles from "./Navbar.module.scss";
+import styles from "./NavbarDrawer.module.scss";
 
-import { Button } from "../ui/Button";
+import { Button } from "@/components/ui/Button";
 import {
   Drawer,
   DrawerBody,
@@ -17,13 +17,13 @@ import {
   DrawerPortal,
   DrawerTitle,
   DrawerTrigger,
-} from "../ui/Drawer";
+} from "@/components/ui/Drawer";
 import { NavbarDrawerAuthLinks } from "./NavbarDrawerAuthLinks";
 
 import { useAuthStore } from "@/stores/auth";
 import { useProfile } from "@/hooks/profile";
 
-import { navBarLinks } from "./Navbar";
+import { navBarLinks } from "../Navbar";
 
 interface Props {}
 
