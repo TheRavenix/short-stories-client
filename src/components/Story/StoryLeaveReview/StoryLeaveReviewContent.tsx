@@ -48,6 +48,8 @@ const StoryLeaveReviewContent: React.FC<Props> = ({
         href += `&tab=${searchParams.get("tab")}`;
       }
 
+      setRating(STAR_RATING_MAX);
+      setComment("");
       router.push(href, { scroll: false });
     },
   });

@@ -30,6 +30,7 @@ const EditNameContent: React.FC<Props> = ({ setOpen }) => {
   const mutation = useMutation({
     mutationFn: services.user.editName,
     onSuccess(data, variables) {
+      setName("");
       refetch();
     },
   });

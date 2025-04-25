@@ -34,6 +34,7 @@ const EditEmailContent: React.FC<Props> = ({ setOpen }) => {
   const mutation = useMutation({
     mutationFn: services.user.editEmail,
     onSuccess(data, variables) {
+      setFormData({ currentEmail: "", newEmail: "" });
       refetch();
     },
   });

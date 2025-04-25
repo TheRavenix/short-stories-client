@@ -30,6 +30,9 @@ const ChangePasswordContent: React.FC<Props> = ({ setOpen }) => {
 
   const mutation = useMutation({
     mutationFn: services.user.changePassword,
+    onSuccess() {
+      setFormData({ currentPassword: "", newPassword: "" });
+    },
   });
 
   function handleChange(e: React.FormEvent<HTMLFormElement>) {
