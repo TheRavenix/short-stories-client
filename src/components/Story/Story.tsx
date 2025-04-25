@@ -7,7 +7,7 @@ import styles from "./Story.module.scss";
 import { Card, CardDescription, CardTitle } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { Badge } from "../ui/Badge";
-import { StoryDownloadButton } from "./StoryDownloadButton";
+import { StoryDownloadButton } from "./buttons";
 import { StarRating } from "../StarRating";
 import { Stats } from "../Stats";
 import { StoryViewLink } from "./story-view/StoryViewLink";

@@ -15,7 +15,6 @@ interface SkeletonProps {
   rounded?: boolean;
 }
 
-// Default heights for different skeleton types
 const getDefaultHeight = (type: SkeletonType) => {
   switch (type) {
     case "card":
@@ -41,7 +40,6 @@ const Skeleton: React.FC<SkeletonProps> = ({
   className = "",
   rounded = false,
 }) => {
-  // Handle dynamic sizing
   const style = {
     width,
     height: height || getDefaultHeight(type),
