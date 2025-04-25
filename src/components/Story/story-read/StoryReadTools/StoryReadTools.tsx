@@ -1,16 +1,14 @@
 import {
   StoryContentFontSelect,
   StoryContentFontSizeSelect,
-} from "../StoryContent";
-import { StoryLayoutSelect } from "../StoryLayout";
-
-import styles from "./StoryReadTools.module.scss";
+} from "../../StoryContent";
+import { StoryLayoutSelect } from "../../StoryLayout";
 
 interface Props {}
 
 const StoryReadTools: React.FC<Props> = () => {
   return (
-    <div className={styles.container}>
+    <div>
       <StoryLayoutSelect />
       <StoryContentFontSelect />
       <StoryContentFontSizeSelect />
