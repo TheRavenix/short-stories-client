@@ -1,0 +1,9 @@
+.uiFont {
+  font-family: var(--ui-font);
+}
+
+.aboutCardDescriptions {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.5 * var(--spacing-sm));
+}

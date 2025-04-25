@@ -1,14 +1,14 @@
 import { MessageCircleIcon } from "lucide-react";
 
-import styles from "./Story.module.scss";
+import styles from "./StoryReviewsCard.module.scss";
 
-import { Stats } from "../Stats";
-import { Card, CardContent, CardHeader } from "../ui/Card";
-import { Show } from "../Show";
-import { EmptyState } from "../EmptyState";
-import { StoryReview, StoryReviewWithDetails } from "./StoryReview";
-import { StoryLeaveReview } from "./StoryLeaveReview";
-import { P } from "../ui/Typography";
+import { EmptyState } from "@/components/EmptyState";
+import { Show } from "@/components/Show";
+import { Card, CardContent, CardHeader } from "@/components/ui/Card";
+import { P } from "@/components/ui/Typography";
+import { Stats } from "@/components/Stats";
+import { StoryLeaveReview } from "../../StoryLeaveReview";
+import { StoryReview, StoryReviewWithDetails } from "../../StoryReview";
 
 interface Props {
   id: string;

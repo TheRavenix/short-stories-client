@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { XIcon } from "lucide-react";
 
-import { Button } from "../ui/Button";
+import { Button } from "@/components/ui/Button";
 import {
   ToastAction,
   ToastDescription,

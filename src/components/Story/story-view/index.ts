@@ -1,2 +1,2 @@
-export * from "./StoryViewToggle";
+export * from "./StoryViewToggle/StoryViewToggle";
 export * from "./StoryViewLink";

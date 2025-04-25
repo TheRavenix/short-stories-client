@@ -1,12 +1,12 @@
 import { EyeIcon } from "lucide-react";
 
-import styles from "./Story.module.scss";
+import styles from "./StoryPreviewCard.module.scss";
 
-import { EmptyState } from "../EmptyState";
-import { Show } from "../Show";
-import { Card, CardContent, CardHeader } from "../ui/Card";
-import { StoryContent } from "./StoryContent";
-import { P } from "../ui/Typography";
+import { EmptyState } from "@/components/EmptyState";
+import { Show } from "@/components/Show";
+import { Card, CardContent, CardHeader } from "@/components/ui/Card";
+import { P } from "@/components/ui/Typography";
+import { StoryContent } from "../../StoryContent";
 
 interface Props {
   id: string;

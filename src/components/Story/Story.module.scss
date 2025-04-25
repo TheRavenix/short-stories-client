@@ -57,30 +57,6 @@
   gap: calc(0.5 * var(--spacing-sm));
 }
 
-.aboutCardDescriptions {
-  display: flex;
-  flex-direction: column;
-  gap: calc(0.5 * var(--spacing-sm));
-}
-
-.reviewsCardHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.reviewsCardContent {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-}
-
-.reviewsCardList {
-  display: flex;
-  flex-direction: column;
-  gap: calc(0.5 * var(--spacing-sm));
-}
-
 .uiFont {
   font-family: var(--ui-font);
 }
