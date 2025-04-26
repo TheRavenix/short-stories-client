@@ -11,6 +11,7 @@ import {
   LibraryStoriesSectionError,
   LibraryStoriesSectionLoading,
 } from "@/components/sections";
+import { BackTopButton } from "@/components/buttons";
 
 import { PAGINATION_DEFAULT_LIMIT } from "@/constants/filter";
 import { GetLibraryStoriesQuery } from "@/lib/data/story";
@@ -49,6 +50,7 @@ export default async function Library(props: Props) {
             </Suspense>
           </ErrorBoundary>
         </div>
+        <BackTopButton />
       </Container>
     </main>
   );

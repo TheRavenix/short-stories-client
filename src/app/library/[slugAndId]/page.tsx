@@ -13,6 +13,7 @@ import { H1 } from "@/components/ui/Typography";
 import { SearchParamTabs } from "@/components/SearchParamTabs";
 import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import { Show } from "@/components/Show";
+import { BackTopButton } from "@/components/buttons";
 
 import { getStoryBySlugAndId } from "@/lib/data/story";
 import { getStoryReviewsByStoryId } from "@/lib/data/story-review";
@@ -110,6 +111,7 @@ export default async function StoryPage(props: Props) {
               </SearchParamTabs>
             </Show>
           </div>
+          <BackTopButton />
         </Container>
       </main>
     </>

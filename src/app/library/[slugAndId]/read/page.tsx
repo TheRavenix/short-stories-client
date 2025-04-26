@@ -14,6 +14,7 @@ import { Show } from "@/components/Show";
 import { EmptyState } from "@/components/EmptyState";
 import { SeparatorHighlighter } from "@/components/SeparatorHighlighter";
 import { ToggleNavbarFixed } from "@/components/Navbar";
+import { BackTopButton } from "@/components/buttons";
 
 import { getStoryBySlugAndId } from "@/lib/data/story";
 import { getStoryContentByStoryId } from "@/lib/data/story-content";
@@ -64,6 +65,7 @@ export default async function ReadStory(props: Props) {
             >
               <StoryContent {...storyContentResponse.data} />
             </Show>
+            <BackTopButton />
           </div>
         </CompactContainer>
       </main>
