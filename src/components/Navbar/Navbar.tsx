@@ -8,7 +8,6 @@ import { P } from "../ui/Typography";
 import { Container } from "../ui/Container";
 import { NavbarSearch } from "./NavbarSearch";
 import { NavbarAuthActions } from "./NavbarAuthActions";
-import { NavbarSettingsLink } from "./NavbarSettingsLink";
 import { NavbarDashboardLink } from "./NavbarDashboardLink";
 import { ThemeToggle } from "../Theme";
 
@@ -36,7 +35,6 @@ const Navbar: React.FC<Props> = () => {
                 {link.name}
               </NavbarLink>
             ))}
-            <NavbarSettingsLink />
           </div>
           <div className={styles.searchAndThemeContainer}>
             <NavbarSearch />

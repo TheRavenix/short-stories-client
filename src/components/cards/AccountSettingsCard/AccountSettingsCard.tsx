@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./AccountSettingsCard.module.scss";
 
 import { SettingsCard, SettingsCardItem } from "../SettingsCard";
@@ -6,10 +8,23 @@ import { EditEmail } from "./EditEmail";
 import { ChangePassword } from "./ChangePassword";
 import { DeleteAccount } from "./DeleteAccount";
 import { SignOut } from "./SignOut";
+import { Skeleton } from "@/components/Skeleton";
+
+import { useAuthStore } from "@/stores/auth";
+import { useProfile } from "@/hooks/profile";
 
 interface Props {}
 
 const AccountSettingsCard: React.FC<Props> = () => {
+  const { isLoading } = useProfile();
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+
+  if (isLoading) {
+    return <Skeleton type="card" />;
+  }
+
+  if (!isAuthenticated) return null;
+
   return (
     <SettingsCard
       title="Account Settings"
