@@ -6,6 +6,7 @@ import { P, Span } from "../../ui/Typography";
 import { Button } from "../../ui/Button";
 import { Badge } from "../../ui/Badge";
 import Link from "next/link";
+import clsx from "clsx";
 
 interface StoryReviewType {
   _id: string;
@@ -21,6 +22,7 @@ interface StoryReviewWithDetails extends StoryReviewType {
 }
 
 interface Props extends StoryReviewWithDetails {
+  className?: string;
   shouldShowStoryNameBadge?: boolean;
   shouldShowReadMoreLink?: boolean;
   shouldShowSeparator?: boolean;
@@ -34,12 +36,13 @@ const StoryReview: React.FC<Props> = ({
   userName,
   userId,
   storyName,
+  className,
   shouldShowStoryNameBadge = false,
   shouldShowReadMoreLink = false,
   shouldShowSeparator = true,
 }) => {
   return (
-    <div className={styles.review}>
+    <div className={clsx(styles.review, className)}>
       <div className={styles.reviewHeader}>
         <Span
           size="lg"

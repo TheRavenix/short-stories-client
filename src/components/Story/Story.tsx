@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { DownloadIcon, EyeIcon } from "lucide-react";
+import clsx from "clsx";
 
 import styles from "./Story.module.scss";
 
@@ -32,6 +33,7 @@ interface StoryType {
 }
 
 interface Props extends StoryType {
+  className?: string;
   shouldShowStarRating?: boolean;
   shouldShowTitle?: boolean;
   shouldShowExploreLink?: boolean;
@@ -50,6 +52,7 @@ const Story: React.FC<Props> = ({
   downloads,
   plan,
   rating,
+  className,
   shouldShowStarRating = true,
   shouldShowTitle = true,
   shouldShowExploreLink = true,
@@ -58,7 +61,7 @@ const Story: React.FC<Props> = ({
   shouldShowStats = false,
 }) => {
   return (
-    <Card withPadding className={styles.story}>
+    <Card withPadding className={clsx(styles.story, className)}>
       <div className={styles.genre}>
         {genre.map((item) => (
           <Badge key={item}>{item}</Badge>

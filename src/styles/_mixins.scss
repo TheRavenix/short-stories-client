@@ -1,16 +1,28 @@
-$breakpoints: (
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-);
+@use "./variables" as variables;
 
 @mixin media($breakpoint) {
-  @each $key, $value in $breakpoints {
+  @each $key, $value in variables.$breakpoints {
     @if $key == $breakpoint {
       @media (min-width: $value) {
         @content;
       }
     }
+  }
+}
+
+@mixin fadeIn() {
+  animation: fadeInAnim 0.3s ease-out forwards;
+  opacity: 0;
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: $i * 0.1s;
+    }
+  }
+}
+
+@keyframes fadeInAnim {
+  to {
+    opacity: 1;
   }
 }

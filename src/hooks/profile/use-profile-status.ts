@@ -9,6 +9,7 @@ export function useProfileStatus() {
     staleTime: 1000 * 60 * 15, // 15 minutes fresh
     gcTime: 1000 * 60 * 60 * 12, // 12 hours cache
   });
+
   return {
     status: data?.data,
     isLoading: isPending,

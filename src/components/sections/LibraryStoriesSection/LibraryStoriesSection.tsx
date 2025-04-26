@@ -32,7 +32,7 @@ const LibraryStoriesSection: React.FC<Props> = async (props) => {
     >
       <div className={styles.stories}>
         {libraryStories?.data.stories.map((story) => (
-          <Story key={story._id} {...story} />
+          <Story key={story._id} className={styles.story} {...story} />
         ))}
       </div>
       <LibraryLoadMoreButton
