@@ -13,7 +13,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../../ui/Dialog";
-
 import { NavbarSearchContent } from "./NavbarSearchContent";
 
 interface Props {}

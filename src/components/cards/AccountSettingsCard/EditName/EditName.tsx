@@ -5,7 +5,7 @@ import styles from "./EditName.module.scss";
 import { EditNameDialog } from "./EditNameDialog";
 import { EditNameDrawer } from "./EditNameDrawer";
 
-import { useIsMobile } from "@/hooks/use-media-utils";
+import { useIsMobile } from "@/hooks";
 
 interface Props {}
 

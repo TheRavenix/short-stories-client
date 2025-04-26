@@ -11,7 +11,7 @@ import { NavbarAuthActions } from "./NavbarAuthActions";
 import { NavbarDashboardLink } from "./NavbarDashboardLink";
 import { ThemeToggle } from "../Theme";
 
-import { navBarLinks } from "@/data/links";
+import { navBarLinks } from "@/data";
 
 interface Props {}
 

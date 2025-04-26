@@ -2,7 +2,7 @@
 
 import { PropsWithChildren, useEffect } from "react";
 
-import { useThemeStore } from "@/stores/theme";
+import { useThemeStore } from "@/stores";
 
 interface Props extends PropsWithChildren {}
 

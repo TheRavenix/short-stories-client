@@ -6,8 +6,8 @@ import styles from "./Navbar.module.scss";
 
 import { Button } from "../ui/Button";
 
-import { useAuthStore } from "@/stores/auth";
-import { authLinks } from "@/data/links";
+import { useAuthStore } from "@/stores";
+import { authLinks } from "@/data";
 
 interface Props {}
 

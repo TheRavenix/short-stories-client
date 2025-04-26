@@ -7,7 +7,8 @@ import { usePathname } from "next/navigation";
 import styles from "./Navbar.module.scss";
 
 import { NavbarLink } from "./NavbarLink";
-import { useAuthStore } from "@/stores/auth";
+
+import { useAuthStore } from "@/stores";
 
 type Props = Omit<LinkProps, "href"> &
   Omit<ComponentProps<"a">, "children"> & {};

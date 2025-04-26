@@ -15,7 +15,7 @@ import {
   ToastTitle,
 } from "@/components/ui/Toast";
 
-import { useProfile } from "@/hooks/profile";
+import { useProfile } from "@/hooks";
 
 import { services } from "@/services";
 

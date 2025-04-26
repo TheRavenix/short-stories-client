@@ -4,7 +4,7 @@ import { MoonIcon, SunIcon } from "lucide-react";
 
 import { Button } from "../ui/Button";
 
-import { useThemeStore } from "@/stores/theme";
+import { useThemeStore } from "@/stores";
 
 interface Props {}
 

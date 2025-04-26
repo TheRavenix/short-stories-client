@@ -5,7 +5,7 @@ import styles from "./SignUpSection.module.scss";
 import { SignUpForm } from "../../forms";
 import { H1 } from "../../ui/Typography";
 
-import { useAuthStore } from "@/stores/auth";
+import { useAuthStore } from "@/stores";
 
 interface Props {}
 

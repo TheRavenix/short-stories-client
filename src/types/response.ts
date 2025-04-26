@@ -1,7 +1,9 @@
-export interface MessageResponse {
+interface MessageResponse {
   message: string;
 }
 
-export interface ErrorResponse extends MessageResponse {
+interface ErrorResponse extends MessageResponse {
   success: false;
 }
+
+export { type MessageResponse, type ErrorResponse };

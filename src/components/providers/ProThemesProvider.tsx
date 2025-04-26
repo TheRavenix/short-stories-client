@@ -3,7 +3,7 @@
 import { PropsWithChildren, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import { applyDataKeyAndStyle } from "@/utils/apply-data-key-and-style";
+import { applyDataKeyAndStyle } from "@/utils";
 import { services } from "@/services";
 
 interface Props extends PropsWithChildren {}

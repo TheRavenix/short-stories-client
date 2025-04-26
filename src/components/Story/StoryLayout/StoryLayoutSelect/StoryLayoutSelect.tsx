@@ -9,8 +9,8 @@ import {
   SelectValue,
 } from "@/components/ui/Select";
 
-import { useProfile } from "@/hooks/profile";
-import { useStoryStore } from "@/stores/story";
+import { useProfile } from "@/hooks";
+import { useStoryStore } from "@/stores";
 
 interface Props {}
 

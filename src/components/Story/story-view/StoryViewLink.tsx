@@ -3,7 +3,7 @@
 import Link, { LinkProps } from "next/link";
 import { ComponentProps, useEffect, useState } from "react";
 
-import { useStoryStore } from "@/stores/story";
+import { useStoryStore } from "@/stores";
 
 type Props = LinkProps & ComponentProps<"a"> & {};
 

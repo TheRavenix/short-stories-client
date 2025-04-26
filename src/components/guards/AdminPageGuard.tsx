@@ -1,6 +1,6 @@
 "use client";
 
-import { useAdminGuard } from "@/hooks/auth";
+import { useAdminGuard } from "@/hooks";
 
 interface Props {}
 

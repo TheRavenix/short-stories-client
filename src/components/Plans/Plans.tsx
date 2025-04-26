@@ -8,7 +8,7 @@ import { TabsList, TabsTrigger, TabsContent } from "@/components/ui/Tabs";
 import { SearchParamTabs } from "@/components/SearchParamTabs";
 import { Plan } from "./Plan";
 
-import { freePlanFeatures, proPlanFeatures } from "@/data/plans";
+import { freePlanFeatures, proPlanFeatures } from "@/data";
 
 interface Props {}
 

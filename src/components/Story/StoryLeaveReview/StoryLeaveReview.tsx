@@ -5,8 +5,8 @@ import styles from "./StoryLeaveReview.module.scss";
 import { StoryLeaveReviewDrawer } from "./StoryLeaveReviewDrawer";
 import { StoryLeaveReviewDialog } from "./StoryLeaveReviewDialog";
 
-import { useIsMobile } from "@/hooks/use-media-utils";
-import { useAuthStore } from "@/stores/auth";
+import { useIsMobile } from "@/hooks";
+import { useAuthStore } from "@/stores";
 
 interface Props {
   storyId: string;

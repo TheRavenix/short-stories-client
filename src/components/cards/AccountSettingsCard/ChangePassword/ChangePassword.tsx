@@ -5,7 +5,7 @@ import styles from "./ChangePassword.module.scss";
 import { ChangePasswordDialog } from "./ChangePasswordDialog";
 import { ChangePasswordDrawer } from "./ChangePasswordDrawer";
 
-import { useIsMobile } from "@/hooks/use-media-utils";
+import { useIsMobile } from "@/hooks";
 
 interface Props {}
 

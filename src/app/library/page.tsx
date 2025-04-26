@@ -13,8 +13,8 @@ import {
 } from "@/components/sections";
 import { BackTopButton } from "@/components/buttons";
 
-import { PAGINATION_DEFAULT_LIMIT } from "@/constants/filter";
-import { GetLibraryStoriesQuery } from "@/lib/data/story";
+import { PAGINATION_DEFAULT_LIMIT } from "@/constants";
+import { GetLibraryStoriesQuery } from "@/lib";
 
 interface Props {
   searchParams: Promise<

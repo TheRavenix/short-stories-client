@@ -4,8 +4,8 @@ import styles from "./NavbarDrawer.module.scss";
 
 import { Button } from "@/components/ui/Button";
 
-import { authLinks } from "@/data/links";
-import { useAuthStore } from "@/stores/auth";
+import { authLinks } from "@/data";
+import { useAuthStore } from "@/stores";
 
 interface Props {
   toggleOpen: () => void;

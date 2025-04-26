@@ -1,3 +1,6 @@
+import Link from "next/link";
+import clsx from "clsx";
+
 import styles from "./StoryReview.module.scss";
 
 import { StarRating } from "../../StarRating";
@@ -5,8 +8,6 @@ import { Separator } from "../../ui/Separator";
 import { P, Span } from "../../ui/Typography";
 import { Button } from "../../ui/Button";
 import { Badge } from "../../ui/Badge";
-import Link from "next/link";
-import clsx from "clsx";
 
 interface StoryReviewType {
   _id: string;

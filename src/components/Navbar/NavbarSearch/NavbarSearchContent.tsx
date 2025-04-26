@@ -7,7 +7,7 @@ import styles from "./NavbarSearch.module.scss";
 
 import { Button } from "@/components/ui/Button";
 
-import { useSearchStore } from "@/stores/search";
+import { useSearchStore } from "@/stores";
 
 interface Props {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;

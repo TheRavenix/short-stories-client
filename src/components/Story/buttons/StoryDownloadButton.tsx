@@ -12,10 +12,10 @@ import {
   ToastTitle,
 } from "@/components/ui/Toast";
 
-import { useAuthStore } from "@/stores/auth";
+import { useAuthStore } from "@/stores";
 
 import { services } from "@/services";
-import { downloadFile } from "@/utils/download-file";
+import { downloadFile } from "@/utils";
 
 interface Props {
   id: string;

@@ -6,7 +6,7 @@ import styles from "./StoryContent.module.scss";
 
 import { P, ParagraphProps } from "@/components/ui/Typography";
 
-import { useStoryReadStore } from "@/stores/story-read";
+import { useStoryReadStore } from "@/stores";
 
 interface Props extends ParagraphProps {}
 

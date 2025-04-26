@@ -2,12 +2,11 @@
 
 import { Show } from "@/components/Show";
 import { StoryBookLayout } from "./StoryBookLayout";
-
-import { useProfile } from "@/hooks/profile";
-import { useStoryStore } from "@/stores/story";
-
 import { StoryContentType } from "../StoryContent";
 import { StoryCardLayout } from "./StoryCardLayout";
+
+import { useProfile } from "@/hooks";
+import { useStoryStore } from "@/stores";
 
 interface Props {
   id: string;

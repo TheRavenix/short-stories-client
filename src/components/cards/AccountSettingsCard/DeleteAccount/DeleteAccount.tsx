@@ -5,7 +5,7 @@ import styles from "./DeleteAccount.module.scss";
 import { DeleteAccountDialog } from "./DeleteAccountDialog";
 import { DeleteAccountDrawer } from "./DeleteAccountDrawer";
 
-import { useIsMobile } from "@/hooks/use-media-utils";
+import { useIsMobile } from "@/hooks";
 
 interface Props {}
 

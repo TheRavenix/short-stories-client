@@ -2,7 +2,6 @@ import clsx from "clsx";
 
 import styles from "./SettingsCard.module.scss";
 
-import { P } from "@/components/ui/Typography";
 import { Label } from "@/components/ui/Label";
 
 interface Props {

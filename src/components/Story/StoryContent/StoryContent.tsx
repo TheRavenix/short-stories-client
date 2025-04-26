@@ -4,10 +4,7 @@ import styles from "./StoryContent.module.scss";
 
 import { Separator } from "@/components/ui/Separator";
 import { StoryContentText } from "./StoryContentText";
-import { H3 } from "@/components/ui/Typography";
 import { Button } from "@/components/ui/Button";
-
-import { romanize } from "@/utils/romanize";
 import { StoryContentItemHeading } from "./StoryContentItemHeading";
 
 type StoryContentType = {

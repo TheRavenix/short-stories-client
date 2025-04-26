@@ -6,8 +6,9 @@ import styles from "./Footer.module.scss";
 import { Container } from "../ui/Container";
 import { H3, P } from "../ui/Typography";
 import { NavbarLink } from "../Navbar";
-import { footerLinks } from "@/data/links";
 import { Button } from "../ui/Button";
+
+import { footerLinks } from "@/data";
 
 interface Props {}
 

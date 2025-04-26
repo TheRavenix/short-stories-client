@@ -2,8 +2,8 @@
 
 import { PropsWithChildren, useEffect } from "react";
 
-import { useAuthStore } from "@/stores/auth";
-import { useProfile } from "@/hooks/profile";
+import { useAuthStore } from "@/stores";
+import { useProfile } from "@/hooks";
 
 interface Props extends PropsWithChildren {}
 

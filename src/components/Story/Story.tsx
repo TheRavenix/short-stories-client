@@ -12,9 +12,9 @@ import { StoryDownloadButton } from "./buttons";
 import { StarRating } from "../StarRating";
 import { Stats } from "../Stats";
 import { StoryViewLink } from "./story-view/StoryViewLink";
-
 import { PlanType } from "../Plans";
-import { slugify } from "@/utils/slugify";
+
+import { slugify } from "@/utils";
 
 interface StoryType {
   _id: string;

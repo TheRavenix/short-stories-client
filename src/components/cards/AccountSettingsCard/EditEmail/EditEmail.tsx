@@ -5,7 +5,7 @@ import styles from "./EditEmail.module.scss";
 import { EditEmailDialog } from "./EditEmailDialog";
 import { EditEmailDrawer } from "./EditEmailDrawer";
 
-import { useIsMobile } from "@/hooks/use-media-utils";
+import { useIsMobile } from "@/hooks";
 
 interface Props {}
 

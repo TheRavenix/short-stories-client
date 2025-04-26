@@ -7,9 +7,9 @@ import styles from "./StoryViewToggle.module.scss";
 
 import { Button } from "../../../ui/Button";
 
-import { useStoryStore } from "@/stores/story";
+import { useStoryStore } from "@/stores";
 
-import { slugify } from "@/utils/slugify";
+import { slugify } from "@/utils";
 
 interface Props {
   id: string;
