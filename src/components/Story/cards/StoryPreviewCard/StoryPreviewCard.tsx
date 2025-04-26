@@ -29,7 +29,7 @@ const StoryPreviewCard: React.FC<Props> = ({ id, name, preview }) => {
       </CardHeader>
       <CardContent>
         <Show
-          when={["zzzzz"].length > 0}
+          when={preview.length > 0}
           fallback={
             <EmptyState
               icon={<EyeIcon />}
@@ -37,10 +37,7 @@ const StoryPreviewCard: React.FC<Props> = ({ id, name, preview }) => {
             />
           }
         >
-          <StoryContent
-            content={["zzzzz", "qqqqqqqq", "qdddddd"]}
-            showItemHeaderTools={false}
-          />
+          <StoryContent content={preview} showItemHeaderTools={false} />
         </Show>
       </CardContent>
     </Card>
