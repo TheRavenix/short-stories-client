@@ -7,17 +7,17 @@ import { useProfile } from "@/hooks/profile";
 
 interface Props extends PropsWithChildren {}
 
-const ProfileProvider: React.FC<Props> = ({ children }) => {
+const AuthProvider: React.FC<Props> = ({ children }) => {
   const { profile, isSuccess } = useProfile();
   const setIsAuthenticated = useAuthStore((s) => s.setIsAuthenticated);
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && profile) {
       setIsAuthenticated(true);
-    }
+    } else setIsAuthenticated(false);
   }, [profile, isSuccess]);
 
   return <>{children}</>;
 };
 
-export { ProfileProvider };
+export { AuthProvider };

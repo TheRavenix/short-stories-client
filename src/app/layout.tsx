@@ -5,7 +5,7 @@ import "./globals.scss";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ThemeProvider } from "@/components/Theme";
-import { QueryProvider, ProfileProvider } from "@/components/providers";
+import { QueryProvider, AuthProvider } from "@/components/providers";
 import { Toast, ToastViewport } from "@/components/ui/Toast";
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <QueryProvider>
-          <ProfileProvider>
+          <AuthProvider>
             <ThemeProvider>
               <Navbar />
               <Toast>
@@ -31,7 +31,7 @@ export default function RootLayout({
               </Toast>
               <Footer />
             </ThemeProvider>
-          </ProfileProvider>
+          </AuthProvider>
         </QueryProvider>
       </body>
     </html>
