@@ -23,7 +23,7 @@ const FeaturedReviewsSection: React.FC<Props> = ({ reviews }) => {
         fallback={
           <EmptyState
             icon={<MessageCircleIcon />}
-            message="No reviews available yet. Be the first to share your thoughts!"
+            message="No featured reviews at the moment."
           />
         }
       >

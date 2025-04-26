@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { ThemeProvider } from "@/components/Theme";
 import { QueryProvider, AuthProvider } from "@/components/providers";
 import { Toast, ToastViewport } from "@/components/ui/Toast";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,6 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script src="/main.js"></script>
+      </head>
       <body>
         <QueryProvider>
           <AuthProvider>

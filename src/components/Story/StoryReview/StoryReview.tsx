@@ -60,7 +60,7 @@ const StoryReview: React.FC<Props> = ({
       <P>{comment}</P>
       {shouldShowReadMoreLink && (
         <Link
-          href={`/library/${storyId}?view=tabs&tab=reviews`}
+          href={`/s/${storyId}?view=tabs&tab=reviews`}
           className={styles.reviewLink}
         >
           <Button size="sm" variant="inverse">

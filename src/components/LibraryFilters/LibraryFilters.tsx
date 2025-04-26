@@ -33,7 +33,7 @@ const LibraryFilters: React.FC<Props> = ({}) => {
   function updateSearchParams(paramKey: string, paramValue: string) {
     const params = new URLSearchParams(searchParams);
     params.set(paramKey, paramValue);
-    router.push(`/library?${params.toString()}`);
+    router.push(`/s?${params.toString()}`);
   }
 
   function handleQueryFilter(query: string) {

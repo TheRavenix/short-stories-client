@@ -10,7 +10,7 @@ const navBarLinks: LinkType[] = [
   },
   {
     name: "Library",
-    href: "/library",
+    href: "/s",
   },
   {
     name: "About",

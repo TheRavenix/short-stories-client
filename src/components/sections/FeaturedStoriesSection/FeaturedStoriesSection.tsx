@@ -34,7 +34,7 @@ const FeaturedStoriesSection: React.FC<Props> = ({ stories }) => {
           ))}
         </div>
         <div className={styles.storiesExploreMoreContainer}>
-          <Link href="/library">
+          <Link href="/s">
             <Button>Explore More</Button>
           </Link>
         </div>

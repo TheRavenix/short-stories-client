@@ -6,6 +6,5 @@ export * from "./download-file";
 export * from "./apply-data-key-and-style";
 export * from "./apply-import-url-and-style";
 export * from "./remove-hyphen";
-export * from "./slugify";
 export * from "./error";
 export * from "./romanize";

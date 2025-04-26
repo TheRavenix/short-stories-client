@@ -15,23 +15,22 @@ import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import { Show } from "@/components/Show";
 import { BackTopButton } from "@/components/buttons";
 
-import { getStoryBySlugAndId, getStoryReviewsByStoryId } from "@/lib";
+import { getStoryBySlug, getStoryReviewsByStoryId } from "@/lib";
 
 interface Props {
-  params: Promise<{ slugAndId: string }>;
+  params: Promise<{ slug: string }>;
   searchParams: Promise<{ view: string; tab: string }>;
 }
 
 export default async function StoryPage(props: Props) {
   const params = await props.params;
-  const storyId = params.slugAndId.split("-").pop();
   const searchParams = await props.searchParams;
   const view = searchParams.view || "grid";
   const tab = searchParams.tab || "about";
-  const [storyResponse, storyReviewsResponse] = await Promise.all([
-    getStoryBySlugAndId(params.slugAndId),
-    getStoryReviewsByStoryId(storyId!),
-  ]);
+  const storyResponse = await getStoryBySlug(params.slug);
+  const storyReviewsResponse = await getStoryReviewsByStoryId(
+    storyResponse?.data._id
+  );
 
   return (
     <>
@@ -55,8 +54,7 @@ export default async function StoryPage(props: Props) {
               shouldShowStats
             />
             <StoryViewToggle
-              id={storyResponse.data._id}
-              name={storyResponse.data.name}
+              slug={storyResponse.data.slug}
               currentView={view}
             />
             <Show

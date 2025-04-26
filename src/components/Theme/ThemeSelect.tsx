@@ -26,6 +26,7 @@ const ThemeSelect: React.FC<Props> = () => {
         <SelectGroup>
           <SelectItem value="light">Light</SelectItem>
           <SelectItem value="dark">Dark</SelectItem>
+          <SelectItem value="system">System</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

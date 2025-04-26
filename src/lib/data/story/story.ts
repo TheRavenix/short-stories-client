@@ -73,19 +73,46 @@ async function getFeaturedStories(): Promise<GetFeaturedStoriesResponse> {
   }
 }
 
-interface GetStoryBySlugAndIdResponse {
+interface GetStoryBySlugResponse {
   success: boolean;
   data: StoryType;
 }
 
-async function getStoryBySlugAndId(
-  slugAndId: string
-): Promise<GetStoryBySlugAndIdResponse> {
+async function getStoryBySlug(slug: string): Promise<GetStoryBySlugResponse> {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/stories/${slugAndId}`
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/stories/${slug}`
     );
-    const responseData: GetStoryBySlugAndIdResponse & ErrorResponse =
+    const responseData: GetStoryBySlugResponse & ErrorResponse =
+      await response.json();
+
+    if (!response.ok || !responseData.success) {
+      throw new Error(responseData.message);
+    }
+
+    return responseData;
+  } catch (error) {
+    if (isNextJSFetchError(error)) {
+      throw new Error(NETWORK_ERROR);
+    }
+
+    throw error;
+  }
+}
+
+interface GetStoryIdBySlugResponse {
+  success: boolean;
+  data: { _id: string };
+}
+
+async function getStoryIdBySlug(
+  slug: string
+): Promise<GetStoryIdBySlugResponse> {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/stories/${slug}/id`
+    );
+    const responseData: GetStoryIdBySlugResponse & ErrorResponse =
       await response.json();
 
     if (!response.ok || !responseData.success) {
@@ -105,6 +132,7 @@ async function getStoryBySlugAndId(
 export {
   getLibraryStories,
   getFeaturedStories,
-  getStoryBySlugAndId,
+  getStoryBySlug,
+  getStoryIdBySlug,
   type GetLibraryStoriesQuery,
 };

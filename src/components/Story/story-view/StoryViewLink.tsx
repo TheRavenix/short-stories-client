@@ -12,7 +12,11 @@ const StoryViewLink: React.FC<Props> = ({ href, ...rest }) => {
   const storyView = useStoryStore((s) => s.storyView);
 
   useEffect(() => {
-    setViewHref(Boolean(storyView) ? `${href}?view=${storyView}` : href);
+    setViewHref(
+      Boolean(storyView)
+        ? `${href}${storyView === "tabs" ? `?view=${storyView}` : ""}`
+        : href
+    );
   }, [href, storyView]);
 
   return <Link href={viewHref} {...rest} />;

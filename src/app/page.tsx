@@ -29,7 +29,7 @@ export default async function Home() {
               Discover amazing short stories
             </H1>
             <P>Read, imagine, and escape into worlds beyond your own.</P>
-            <Link href="/library">
+            <Link href="/s">
               <Button>Explore Stories</Button>
             </Link>
           </div>

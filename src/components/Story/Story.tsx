@@ -14,11 +14,10 @@ import { Stats } from "../Stats";
 import { StoryViewLink } from "./story-view/StoryViewLink";
 import { PlanType } from "../Plans";
 
-import { slugify } from "@/utils";
-
 interface StoryType {
   _id: string;
   name: string;
+  slug: string;
   description: string;
   about: string[];
   preview: string[];
@@ -45,6 +44,7 @@ interface Props extends StoryType {
 const Story: React.FC<Props> = ({
   _id,
   name,
+  slug,
   description,
   genre,
   coverImage,
@@ -84,15 +84,12 @@ const Story: React.FC<Props> = ({
         <CardDescription>{description}</CardDescription>
         <div className={styles.actions}>
           {shouldShowExploreLink && (
-            <StoryViewLink
-              href={`/library/${slugify(name)}-${_id}`}
-              className={styles.actionLink}
-            >
+            <StoryViewLink href={`/s/${slug}`} className={styles.actionLink}>
               <Button>Explore</Button>
             </StoryViewLink>
           )}
           {shouldShowReadButton && (
-            <Link href={`/library/${slugify(name)}-${_id}/read`}>
+            <Link href={`/s/${slug}/read`}>
               <Button>Read</Button>
             </Link>
           )}

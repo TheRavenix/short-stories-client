@@ -7,12 +7,24 @@ import styles from "./Navbar.module.scss";
 import { Button } from "../ui/Button";
 
 import { useAuthStore } from "@/stores";
+import { useProfile } from "@/hooks";
+
 import { authLinks } from "@/data";
+import { Skeleton } from "../Skeleton";
 
 interface Props {}
 
 const NavbarAuthActions: React.FC<Props> = () => {
+  const { isLoading } = useProfile();
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+
+  if (isLoading) {
+    return (
+      <div className={styles.authActions}>
+        <Skeleton type="button" width="120px" />
+      </div>
+    );
+  }
 
   if (isAuthenticated) return null;
 

@@ -16,30 +16,29 @@ import { SeparatorHighlighter } from "@/components/SeparatorHighlighter";
 import { ToggleNavbarFixed } from "@/components/Navbar";
 import { BackTopButton } from "@/components/buttons";
 
-import { getStoryBySlugAndId, getStoryContentByStoryId } from "@/lib";
+import { getStoryBySlug, getStoryContentByStoryId } from "@/lib";
 
 interface Props {
-  params: Promise<{ slugAndId: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 export default async function ReadStory(props: Props) {
   const params = await props.params;
-  const storyId = params.slugAndId.split("-").pop();
-  const [storyResponse, storyContentResponse] = await Promise.all([
-    getStoryBySlugAndId(params.slugAndId),
-    getStoryContentByStoryId(storyId!),
-  ]);
+  const storyResponse = await getStoryBySlug(params.slug);
+  const storyContentResponse = await getStoryContentByStoryId(
+    storyResponse?.data._id
+  );
 
   return (
     <>
       <SeparatorHighlighter />
-      <StoryReadTracker storyId={storyId!} />
+      <StoryReadTracker storyId={storyResponse?.data._id} />
       <ToggleNavbarFixed />
       <main className={styles.main}>
         <CompactContainer withPaddingBlock>
           <div className={styles.containerContent}>
             <StoryViewLink
-              href={`/library/${params.slugAndId}`}
+              href={`/s/${params.slug}`}
               className={styles.backToStory}
             >
               <Button variant="ghost" size="icon">
