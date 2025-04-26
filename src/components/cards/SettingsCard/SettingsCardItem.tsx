@@ -3,16 +3,19 @@ import clsx from "clsx";
 import styles from "./SettingsCard.module.scss";
 
 import { P } from "@/components/ui/Typography";
+import { Label } from "@/components/ui/Label";
 
 interface Props {
   direction?: "col" | "row";
   label: string;
+  labelHtmlFor?: string;
   children: React.ReactNode;
 }
 
 const SettingsCardItem: React.FC<Props> = ({
   direction = "row",
   label,
+  labelHtmlFor,
   children,
 }) => {
   return (
@@ -22,7 +25,7 @@ const SettingsCardItem: React.FC<Props> = ({
         direction === "row" ? styles.cardItemRow : styles.cardItemCol
       )}
     >
-      <P>{label}</P>
+      <Label htmlFor={labelHtmlFor}>{label}</Label>
       <div>{children}</div>
     </div>
   );

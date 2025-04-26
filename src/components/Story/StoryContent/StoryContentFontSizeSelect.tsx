@@ -9,16 +9,16 @@ import {
   SelectValue,
 } from "@/components/ui/Select";
 
-import { useFontStore } from "@/stores/font";
+import { useStoryReadStore } from "@/stores/story-read";
 
 interface Props {}
 
 const StoryContentFontSizeSelect: React.FC<Props> = () => {
-  const readingFontSize = useFontStore((s) => s.readingFontSize);
-  const setReadingFontSize = useFontStore((s) => s.setReadingFontSize);
+  const fontSize = useStoryReadStore((s) => s.fontSize);
+  const setFontSize = useStoryReadStore((s) => s.setFontSize);
 
   return (
-    <Select defaultValue={readingFontSize} onValueChange={setReadingFontSize}>
+    <Select defaultValue={fontSize} onValueChange={setFontSize}>
       <SelectTrigger>
         <SelectValue />
       </SelectTrigger>

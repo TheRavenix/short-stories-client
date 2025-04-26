@@ -1,0 +1,31 @@
+.switchRoot {
+  all: unset;
+  width: 42px;
+  height: 25px;
+  background-color: var(--card);
+  border-radius: 9999px;
+  position: relative;
+  border: 1px solid var(--border);
+  cursor: pointer;
+
+  &[data-state="checked"] {
+    background-color: var(--primary);
+  }
+}
+
+.switchThumb {
+  display: block;
+  width: 21px;
+  height: 21px;
+  background-color: var(--card-foreground);
+  border-radius: 9999px;
+  box-shadow: 0 2px 2px var(--black-a7);
+  transition: transform 100ms;
+  transform: translateX(2px);
+  will-change: transform;
+
+  &[data-state="checked"] {
+    transform: translateX(19px);
+    background-color: var(--primary-foreground);
+  }
+}

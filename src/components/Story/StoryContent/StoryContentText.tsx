@@ -6,17 +6,17 @@ import styles from "./StoryContent.module.scss";
 
 import { P, ParagraphProps } from "@/components/ui/Typography";
 
-import { useFontStore } from "@/stores/font";
+import { useStoryReadStore } from "@/stores/story-read";
 
 interface Props extends ParagraphProps {}
 
 const StoryContentText: React.FC<Props> = ({ className, style, ...rest }) => {
-  const readingFontSize = useFontStore((s) => s.readingFontSize);
+  const fontSize = useStoryReadStore((s) => s.fontSize);
 
   return (
     <P
       className={clsx(styles.text, className)}
-      style={{ ...style, fontSize: readingFontSize }}
+      style={{ ...style, fontSize }}
       {...rest}
     />
   );

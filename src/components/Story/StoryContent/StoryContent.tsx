@@ -8,6 +8,7 @@ import { H3 } from "@/components/ui/Typography";
 import { Button } from "@/components/ui/Button";
 
 import { romanize } from "@/utils/romanize";
+import { StoryContentItemHeading } from "./StoryContentItemHeading";
 
 type StoryContentType = {
   _id: string;
@@ -29,7 +30,9 @@ const StoryContent: React.FC<Props> = ({
       {content.map((sc, index) => (
         <div key={index} className={styles.item}>
           <div className={styles.itemHeader}>
-            <H3>{romanize(index + 1)}</H3>
+            <div>
+              <StoryContentItemHeading index={index} />
+            </div>
             {showItemHeaderTools && (
               <div className={styles.itemHeaderTools}>
                 <Button variant="ghost" size="icon">

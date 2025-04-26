@@ -2,27 +2,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
 
 :root {
-  --background: #f1f5f9;
-  --foreground: #212529;
+  --background: #f5f0e6;
+  --foreground: #3a3226;
 
-  --gray-foreground: #7a7a7a;
-  --heading-foreground: #555555;
+  --gray-foreground: #6b5c4d;
+  --heading-foreground: #4a3c2a;
 
-  --primary: #0075ff;
-  --primary-foreground: #ffffff;
+  --primary: #8c6a4d;
+  --primary-foreground: #fffaf0;
 
-  --secondary: #ffffff;
-  --secondary-foreground: #212529;
+  --secondary: #e8d8c0;
+  --secondary-foreground: #3a3226;
 
-  --card: #ffffff;
-  --card-foreground: #212529;
+  --card: #fffaf0;
+  --card-foreground: #3a3226;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
-  --destructive: #f44336;
-  --destructive-foreground: #ffffff;
+  --destructive: #c45c4d;
+  --destructive-foreground: #fffaf0;
 
-  --star: #ffc107;
+  --star: #d4a017;
 
-  --border: #e1e5ea;
+  --border: #d1c7b7;
 
   --overlay: rgba(0, 0, 0, 0.5);
 
@@ -55,19 +56,19 @@
 }
 
 html[data-theme="dark"] {
-  --background: #1a1d21;
+  --background: #1c1a17;
   --foreground: #ffffff;
 
-  --gray-foreground: #b3b3b3;
+  --gray-foreground: #a89b90;
   --heading-foreground: #ffffff;
 
-  --primary: #405189;
+  --primary: #a07c5a;
   --primary-foreground: #ffffff;
 
   --secondary: #292e32;
   --secondary-foreground: #ffffff;
 
-  --card: #212529;
+  --card: #27231f;
   --card-foreground: #ffffff;
 
   --destructive: #e53935;
