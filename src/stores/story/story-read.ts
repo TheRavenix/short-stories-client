@@ -16,7 +16,7 @@ const useStoryReadStore = create(
   persist<StoreState>(
     (set) => ({
       fontSize: "20px",
-      lineNumeralsActive: true,
+      lineNumeralsActive: false,
       romanNumeralsActive: true,
 
       setFontSize(size) {

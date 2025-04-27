@@ -1,4 +1,4 @@
-import { SaveIcon } from "lucide-react";
+import { BookmarkIcon, CopyIcon } from "lucide-react";
 
 import styles from "./StoryContent.module.scss";
 
@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/Separator";
 import { StoryContentText } from "./StoryContentText";
 import { Button } from "@/components/ui/Button";
 import { StoryContentItemHeading } from "./StoryContentItemHeading";
+import { ClipboardButton } from "@/components/buttons";
 
 type StoryContentType = {
   _id: string;
@@ -32,8 +33,12 @@ const StoryContent: React.FC<Props> = ({
             </div>
             {showItemHeaderTools && (
               <div className={styles.itemHeaderTools}>
+                <ClipboardButton
+                  text={sc}
+                  message="Story line copied to clipboard."
+                />
                 <Button variant="ghost" size="icon">
-                  <SaveIcon size={20} />
+                  <BookmarkIcon size={20} />
                 </Button>
               </div>
             )}

@@ -2,17 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
-import { XIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
-import {
-  ToastAction,
-  ToastDescription,
-  ToastRoot,
-  ToastTitle,
-} from "@/components/ui/Toast";
 
-import { useAuthStore } from "@/stores";
+import { useAuthStore, useToastStore } from "@/stores";
 
 import { services } from "@/services";
 import { downloadFile } from "@/utils";
@@ -25,14 +18,22 @@ interface Props {
 const StoryDownloadButton: React.FC<Props> = ({ id, name }) => {
   const router = useRouter();
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  const addToast = useToastStore((s) => s.addToast);
 
   const mutation = useMutation({
     mutationKey: ["download-story"],
     mutationFn: services.story.downloadStory,
-    onSuccess(data, variables, context) {
+    onSuccess(data) {
       const url = window.URL.createObjectURL(new Blob([data.data]));
       downloadFile(url, `${name}.pdf`);
       window.URL.revokeObjectURL(url);
+    },
+    onError(error) {
+      addToast({
+        title: "Error download story",
+        description: error.message,
+        variant: "error",
+      });
     },
   });
 
@@ -46,28 +47,13 @@ const StoryDownloadButton: React.FC<Props> = ({ id, name }) => {
   }
 
   return (
-    <>
-      <Button
-        variant="inverse"
-        onClick={handleDownload}
-        disabled={mutation.isPending}
-      >
-        {mutation.isPending ? "Loading..." : "Download"}
-      </Button>
-      {mutation.isError && (
-        <ToastRoot>
-          <ToastTitle>Error download story</ToastTitle>
-          <ToastDescription variant="error">
-            {mutation.error.message}
-          </ToastDescription>
-          <ToastAction altText="Action" asChild>
-            <Button size="icon" variant="ghost">
-              <XIcon size={20} />
-            </Button>
-          </ToastAction>
-        </ToastRoot>
-      )}
-    </>
+    <Button
+      variant="inverse"
+      onClick={handleDownload}
+      disabled={mutation.isPending}
+    >
+      {mutation.isPending ? "Loading..." : "Download"}
+    </Button>
   );
 };
 

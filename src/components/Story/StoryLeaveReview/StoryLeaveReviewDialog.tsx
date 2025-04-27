@@ -31,7 +31,7 @@ const StoryLeaveReviewDialog: React.FC<Props> = ({ storyId }) => {
       </div>
       <DialogContent>
         <DialogTitle>Leave a Review</DialogTitle>
-        <StoryLeaveReviewContent storyId={storyId} onOpenChange={setOpen} />
+        <StoryLeaveReviewContent storyId={storyId} setOpen={setOpen} />
         <DialogClose asChild>
           <XIcon size={20} />
         </DialogClose>

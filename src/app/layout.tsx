@@ -5,9 +5,12 @@ import "./globals.scss";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ThemeProvider } from "@/components/Theme";
-import { QueryProvider, AuthProvider } from "@/components/providers";
+import {
+  QueryProvider,
+  AuthProvider,
+  ToastProvider,
+} from "@/components/providers";
 import { Toast, ToastViewport } from "@/components/ui/Toast";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,16 +29,18 @@ export default function RootLayout({
       </head>
       <body>
         <QueryProvider>
-          <AuthProvider>
-            <ThemeProvider>
-              <Navbar />
-              <Toast>
-                {children}
-                <ToastViewport />
-              </Toast>
-              <Footer />
-            </ThemeProvider>
-          </AuthProvider>
+          <ToastProvider>
+            <AuthProvider>
+              <ThemeProvider>
+                <Toast>
+                  <Navbar />
+                  {children}
+                  <Footer />
+                  <ToastViewport />
+                </Toast>
+              </ThemeProvider>
+            </AuthProvider>
+          </ToastProvider>
         </QueryProvider>
       </body>
     </html>

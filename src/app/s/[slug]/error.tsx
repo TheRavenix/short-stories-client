@@ -1,18 +1,13 @@
 "use client";
 
-import { XIcon } from "lucide-react";
+import { useEffect } from "react";
 
 import styles from "./page.module.scss";
 
 import { Callout } from "@/components/Callout";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import {
-  ToastAction,
-  ToastDescription,
-  ToastRoot,
-  ToastTitle,
-} from "@/components/ui/Toast";
+
+import { useToastStore } from "@/stores";
 
 interface Props {
   error: Error;
@@ -20,28 +15,25 @@ interface Props {
 }
 
 export default function StoryPageError(props: Props) {
+  const addToast = useToastStore((s) => s.addToast);
+
+  useEffect(() => {
+    addToast({
+      title: "Error loading story",
+      description: props.error.message,
+      variant: "error",
+    });
+  }, []);
+
   return (
-    <>
-      <main className={styles.noStoryMain}>
-        <Container withPaddingBlock>
-          <Callout
-            message="This story hasn’t been written yet… or maybe it got lost!"
-            href="/library"
-            buttonText="Back to Library"
-          />
-        </Container>
-      </main>
-      <ToastRoot>
-        <ToastTitle>Error loading story</ToastTitle>
-        <ToastDescription variant="error">
-          {props.error.message}
-        </ToastDescription>
-        <ToastAction altText="Action" asChild>
-          <Button size="icon" variant="ghost">
-            <XIcon size={20} />
-          </Button>
-        </ToastAction>
-      </ToastRoot>
-    </>
+    <main className={styles.noStoryMain}>
+      <Container withPaddingBlock>
+        <Callout
+          message="This story hasn’t been written yet… or maybe it got lost!"
+          href="/s"
+          buttonText="Back to Library"
+        />
+      </Container>
+    </main>
   );
 }

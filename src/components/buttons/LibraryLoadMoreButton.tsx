@@ -18,7 +18,7 @@ const LibraryLoadMoreButton: React.FC<Props> = ({ limit, count }) => {
   function handleOnClick() {
     const params = new URLSearchParams(searchParams);
     params.set("limit", (limit + PAGINATION_DEFAULT_LIMIT).toString());
-    router.push(`/library?${params.toString()}`, { scroll: false });
+    router.push(`/s?${params.toString()}`, { scroll: false });
   }
 
   if (limit >= count) return null;

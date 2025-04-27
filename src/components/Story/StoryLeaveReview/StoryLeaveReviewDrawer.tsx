@@ -38,7 +38,7 @@ const StoryLeaveReviewDrawer: React.FC<Props> = ({ storyId }) => {
             <DrawerTitle>Leave a Review</DrawerTitle>
           </DrawerHeader>
           <DrawerBody className={styles.drawerBody}>
-            <StoryLeaveReviewContent storyId={storyId} onOpenChange={setOpen} />
+            <StoryLeaveReviewContent storyId={storyId} setOpen={setOpen} />
           </DrawerBody>
         </DrawerContent>
       </DrawerPortal>

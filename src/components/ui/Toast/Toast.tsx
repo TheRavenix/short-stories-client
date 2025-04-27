@@ -3,7 +3,10 @@
 import * as React from "react";
 import * as ToastPrimitive from "@radix-ui/react-toast";
 import clsx from "clsx";
+
 import styles from "./Toast.module.scss";
+
+import { ToastVariant } from "@/stores";
 
 const ToastProvider = ToastPrimitive.Provider;
 ToastProvider.displayName = ToastPrimitive.Provider.displayName;
@@ -46,7 +49,7 @@ ToastTitle.displayName = ToastPrimitive.Title.displayName;
 
 interface ToastDescriptionProps
   extends React.ComponentPropsWithoutRef<typeof ToastPrimitive.Description> {
-  variant?: "default" | "error";
+  variant?: ToastVariant;
 }
 
 const ToastDescription = React.forwardRef<

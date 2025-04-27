@@ -2,21 +2,15 @@
 
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { XIcon } from "lucide-react";
 
 import styles from "./DeleteAccount.module.scss";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { P, Span } from "@/components/ui/Typography";
-import {
-  ToastAction,
-  ToastDescription,
-  ToastRoot,
-  ToastTitle,
-} from "@/components/ui/Toast";
 
 import { useProfile } from "@/hooks";
+import { useToastStore } from "@/stores";
 
 import { services } from "@/services";
 
@@ -25,21 +19,33 @@ interface Props {
 }
 
 const DeleteAccountContent: React.FC<Props> = ({ setOpen }) => {
-  const mustType = "DELETE MY ACCOUNT";
+  const DELETE_CONFIRM = "DELETE MY ACCOUNT";
   const [confirmMessage, setConfirmMessage] = useState("");
   const { profile } = useProfile();
+  const addToast = useToastStore((s) => s.addToast);
 
   const mutation = useMutation({
     mutationFn: services.user.deleteOne,
-    onSuccess(data, variables) {
+    onSuccess(data) {
+      addToast({
+        title: "Done",
+        description: data.message,
+      });
       window.location.replace("/sign-in");
+    },
+    onError(error) {
+      addToast({
+        title: "Error delete account",
+        description: error.message,
+        variant: "error",
+      });
     },
   });
 
   function handleDelete(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (confirmMessage.toUpperCase() !== mustType) {
+    if (confirmMessage.toUpperCase() !== DELETE_CONFIRM) {
       return;
     }
 
@@ -47,44 +53,29 @@ const DeleteAccountContent: React.FC<Props> = ({ setOpen }) => {
   }
 
   return (
-    <>
-      <form className={styles.form} onSubmit={handleDelete}>
-        <P size="lg">
-          Type{" "}
-          <Span size="lg" weight="bold">
-            {mustType}
-          </Span>
-        </P>
-        <Input
-          label="Type here"
-          required
-          value={confirmMessage}
-          onChange={(e) => setConfirmMessage(e.target.value)}
-        />
-        <Button
-          type="submit"
-          variant="destructive"
-          disabled={
-            confirmMessage.toUpperCase() !== mustType || mutation.isPending
-          }
-        >
-          Delete
-        </Button>
-      </form>
-      {mutation.isError && (
-        <ToastRoot>
-          <ToastTitle>Error delete account</ToastTitle>
-          <ToastDescription variant="error">
-            {mutation.error?.message}
-          </ToastDescription>
-          <ToastAction altText="Action" asChild>
-            <Button size="icon" variant="ghost">
-              <XIcon size={20} />
-            </Button>
-          </ToastAction>
-        </ToastRoot>
-      )}
-    </>
+    <form className={styles.form} onSubmit={handleDelete}>
+      <P size="lg">
+        Type{" "}
+        <Span size="lg" weight="bold">
+          {DELETE_CONFIRM}
+        </Span>
+      </P>
+      <Input
+        label="Type here"
+        required
+        value={confirmMessage}
+        onChange={(e) => setConfirmMessage(e.target.value)}
+      />
+      <Button
+        type="submit"
+        variant="destructive"
+        disabled={
+          confirmMessage.toUpperCase() !== DELETE_CONFIRM || mutation.isPending
+        }
+      >
+        Delete
+      </Button>
+    </form>
   );
 };
 

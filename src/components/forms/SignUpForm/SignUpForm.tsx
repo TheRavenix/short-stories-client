@@ -17,6 +17,8 @@ import {
   ToastTitle,
 } from "../../ui/Toast";
 
+import { useToastStore } from "@/stores";
+
 import { SignUpData } from "@/services/auth";
 import { services } from "@/services";
 
@@ -28,11 +30,23 @@ const SignUpForm: React.FC<Props> = () => {
     email: "",
     password: "",
   });
+  const addToast = useToastStore((s) => s.addToast);
 
   const mutation = useMutation({
     mutationFn: services.auth.signUp,
     onSuccess(data) {
+      addToast({
+        title: "Sign up",
+        description: data.message,
+      });
       window.location.replace("/");
+    },
+    onError(error) {
+      addToast({
+        title: "Error sign up",
+        description: error.message,
+        variant: "error",
+      });
     },
   });
 
@@ -43,67 +57,52 @@ const SignUpForm: React.FC<Props> = () => {
   }
 
   return (
-    <>
-      <form className={styles.form} onSubmit={handleSignUp}>
-        <Input
-          label="Your Name (Optional)"
-          value={formData.name}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, name: e.target.value }))
-          }
-        />
-        <Input
-          type="email"
-          label="Email"
-          required
-          value={formData.email}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, email: e.target.value }))
-          }
-        />
-        <Input
-          type="password"
-          label="Password"
-          required
-          value={formData.password}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, password: e.target.value }))
-          }
-        />
-        <div className={styles.endContent}>
-          <Button type="submit" disabled={mutation.isPending}>
-            {mutation.isPending ? "Loading..." : "Sign up"}
-          </Button>
-          <div className={styles.linksContainer}>
-            <P variant="gray">
-              You already have an account?{" "}
-              <Link href="/sign-in" className={styles.signInLink}>
-                Sign in
-              </Link>
-            </P>
-            <P variant="gray">
-              By creating an account you agree to our{" "}
-              <Link href="/terms" className={styles.signInLink}>
-                Terms & Conditions
-              </Link>
-            </P>
-          </div>
+    <form className={styles.form} onSubmit={handleSignUp}>
+      <Input
+        label="Your Name (Optional)"
+        value={formData.name}
+        onChange={(e) =>
+          setFormData((prev) => ({ ...prev, name: e.target.value }))
+        }
+      />
+      <Input
+        type="email"
+        label="Email"
+        required
+        value={formData.email}
+        onChange={(e) =>
+          setFormData((prev) => ({ ...prev, email: e.target.value }))
+        }
+      />
+      <Input
+        type="password"
+        label="Password"
+        required
+        value={formData.password}
+        onChange={(e) =>
+          setFormData((prev) => ({ ...prev, password: e.target.value }))
+        }
+      />
+      <div className={styles.endContent}>
+        <Button type="submit" disabled={mutation.isPending}>
+          {mutation.isPending ? "Loading..." : "Sign up"}
+        </Button>
+        <div className={styles.linksContainer}>
+          <P variant="gray">
+            You already have an account?{" "}
+            <Link href="/sign-in" className={styles.signInLink}>
+              Sign in
+            </Link>
+          </P>
+          <P variant="gray">
+            By creating an account you agree to our{" "}
+            <Link href="/terms" className={styles.signInLink}>
+              Terms & Conditions
+            </Link>
+          </P>
         </div>
-      </form>
-      {mutation.isError && (
-        <ToastRoot>
-          <ToastTitle>Error sign up</ToastTitle>
-          <ToastDescription variant="error">
-            {mutation.error?.message}
-          </ToastDescription>
-          <ToastAction altText="Action" asChild>
-            <Button size="icon" variant="ghost">
-              <XIcon size={20} />
-            </Button>
-          </ToastAction>
-        </ToastRoot>
-      )}
-    </>
+      </div>
+    </form>
   );
 };
 

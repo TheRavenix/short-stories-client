@@ -1,6 +1,6 @@
 "use client";
 
-import { MinusIcon, PlusIcon, XIcon } from "lucide-react";
+import { MinusIcon, PlusIcon } from "lucide-react";
 import { useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
@@ -14,43 +14,47 @@ import {
   StarRating,
 } from "@/components/StarRating";
 import { Input } from "@/components/ui/Input";
-import {
-  ToastAction,
-  ToastDescription,
-  ToastRoot,
-  ToastTitle,
-} from "@/components/ui/Toast";
+
+import { useToastStore } from "@/stores";
 
 import { services } from "@/services";
 
 interface Props {
   storyId: string;
-  onOpenChange: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const StoryLeaveReviewContent: React.FC<Props> = ({
-  storyId,
-  onOpenChange,
-}) => {
+const StoryLeaveReviewContent: React.FC<Props> = ({ storyId, setOpen }) => {
   const router = useRouter();
   const pathName = usePathname();
   const searchParams = useSearchParams();
   const [rating, setRating] = useState(STAR_RATING_MAX);
   const [comment, setComment] = useState("");
+  const addToast = useToastStore((s) => s.addToast);
 
   const mutation = useMutation({
     mutationKey: ["post-review"],
     mutationFn: services.storyReview.createStoryReview,
-    onSuccess(data, variables, context) {
+    onSuccess(data) {
       let href = `${pathName}?view=${searchParams.get("view")}`;
 
       if (searchParams.get("view") === "tabs") {
         href += `&tab=${searchParams.get("tab")}`;
       }
 
-      setRating(STAR_RATING_MAX);
-      setComment("");
+      addToast({
+        title: "Post review",
+        description: data.message,
+      });
+      setOpen(false);
       router.push(href, { scroll: false });
+    },
+    onError(error) {
+      addToast({
+        title: "Error post review",
+        description: error.message,
+        variant: "error",
+      });
     },
   });
 
@@ -73,58 +77,32 @@ const StoryLeaveReviewContent: React.FC<Props> = ({
   }
 
   return (
-    <>
-      <div className={styles.content}>
-        <div className={styles.contentRatingContainer}>
-          <Button variant="inverse" size="icon" onClick={decreaseRating}>
-            <MinusIcon size={18} />
-          </Button>
-          <StarRating stars={rating} fixedWidth />
-          <Button variant="inverse" size="icon" onClick={increaseRating}>
-            <PlusIcon size={18} />
-          </Button>
-        </div>
-        <form className={styles.contentForm} onSubmit={handleReview}>
-          <Input
-            label="Your Comment"
-            required
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <Button
-            type="submit"
-            className={styles.postButton}
-            disabled={mutation.isPending}
-          >
-            {mutation.isPending ? "Loading..." : "Post"}
-          </Button>
-        </form>
+    <div className={styles.content}>
+      <div className={styles.contentRatingContainer}>
+        <Button variant="inverse" size="icon" onClick={decreaseRating}>
+          <MinusIcon size={18} />
+        </Button>
+        <StarRating stars={rating} fixedWidth />
+        <Button variant="inverse" size="icon" onClick={increaseRating}>
+          <PlusIcon size={18} />
+        </Button>
       </div>
-      {mutation.isError && (
-        <ToastRoot>
-          <ToastTitle>Error post review</ToastTitle>
-          <ToastDescription variant="error">
-            {mutation.error.message}
-          </ToastDescription>
-          <ToastAction altText="Action" asChild>
-            <Button size="icon" variant="ghost">
-              <XIcon size={20} />
-            </Button>
-          </ToastAction>
-        </ToastRoot>
-      )}
-      {mutation.isSuccess && (
-        <ToastRoot>
-          <ToastTitle>Post review</ToastTitle>
-          <ToastDescription>{mutation.data.message}</ToastDescription>
-          <ToastAction altText="Action" asChild>
-            <Button size="icon" variant="ghost">
-              <XIcon size={20} />
-            </Button>
-          </ToastAction>
-        </ToastRoot>
-      )}
-    </>
+      <form className={styles.contentForm} onSubmit={handleReview}>
+        <Input
+          label="Your Comment"
+          required
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+        />
+        <Button
+          type="submit"
+          className={styles.postButton}
+          disabled={mutation.isPending}
+        >
+          {mutation.isPending ? "Loading..." : "Post"}
+        </Button>
+      </form>
+    </div>
   );
 };
 
