@@ -11,7 +11,7 @@ import { Badge } from "../ui/Badge";
 import {
   StoryDeleteButton,
   StoryDownloadButton,
-  StoryUpdateButton,
+  StoryEditButton,
 } from "./buttons";
 import { StarRating } from "../StarRating";
 import { Stats } from "../Stats";
@@ -42,7 +42,7 @@ interface Props extends StoryType {
   shouldShowTitle?: boolean;
   shouldShowExploreLink?: boolean;
   shouldShowReadButton?: boolean;
-  shouldShowUpdateButton?: boolean;
+  shouldShowEditButton?: boolean;
   shouldShowDownloadButton?: boolean;
   shouldShowDeleteButton?: boolean;
   shouldShowStats?: boolean;
@@ -63,7 +63,7 @@ const Story: React.FC<Props> = ({
   shouldShowTitle = true,
   shouldShowExploreLink = true,
   shouldShowReadButton = false,
-  shouldShowUpdateButton = false,
+  shouldShowEditButton = false,
   shouldShowDownloadButton = false,
   shouldShowDeleteButton = false,
   shouldShowStats = false,
@@ -101,7 +101,7 @@ const Story: React.FC<Props> = ({
               <Button>Read</Button>
             </Link>
           )}
-          {shouldShowUpdateButton && <StoryUpdateButton storySlug={slug} />}
+          {shouldShowEditButton && <StoryEditButton storySlug={slug} />}
           {shouldShowDownloadButton && (
             <StoryDownloadButton storyId={_id} storyName={name} />
           )}

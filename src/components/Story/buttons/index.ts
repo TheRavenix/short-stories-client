@@ -1,3 +1,3 @@
 export * from "./StoryDownloadButton";
-export * from "./StoryUpdateButton";
+export * from "./StoryEditButton";
 export * from "./StoryDeleteButton";
