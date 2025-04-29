@@ -54,7 +54,7 @@ const NavbarDrawer: React.FC<Props> = () => {
           </DrawerHeader>
           <DrawerBody className={styles.drawerBody}>
             <div className={styles.drawerLinks}>
-              {isAuthenticated && profile?.role === "admin" && (
+              {/* {isAuthenticated && profile?.role === "admin" && (
                 <Link href="/dashboard" onClick={toggleOpen}>
                   <Button variant="ghost" className={styles.drawerButton}>
                     <span
@@ -68,7 +68,7 @@ const NavbarDrawer: React.FC<Props> = () => {
                     </span>
                   </Button>
                 </Link>
-              )}
+              )} */}
               {navBarLinks.map((link, i) => (
                 <Link key={i} href={link.href} onClick={toggleOpen}>
                   <Button variant="ghost" className={styles.drawerButton}>
@@ -84,21 +84,6 @@ const NavbarDrawer: React.FC<Props> = () => {
                   </Button>
                 </Link>
               ))}
-              {isAuthenticated && (
-                <Link href="/settings" onClick={toggleOpen}>
-                  <Button variant="ghost" className={styles.drawerButton}>
-                    <span
-                      className={
-                        pathName === "/settings"
-                          ? styles.drawerActiveLinkText
-                          : ""
-                      }
-                    >
-                      Settings
-                    </span>
-                  </Button>
-                </Link>
-              )}
               <NavbarDrawerAuthLinks toggleOpen={toggleOpen} />
             </div>
           </DrawerBody>

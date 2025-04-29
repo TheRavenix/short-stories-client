@@ -8,7 +8,6 @@ import { P } from "../ui/Typography";
 import { Container } from "../ui/Container";
 import { NavbarSearch } from "./NavbarSearch";
 import { NavbarAuthActions } from "./NavbarAuthActions";
-import { NavbarDashboardLink } from "./NavbarDashboardLink";
 import { ThemeToggle } from "../Theme";
 
 import { navBarLinks } from "@/data";
@@ -29,7 +28,6 @@ const Navbar: React.FC<Props> = () => {
         </div>
         <div className={styles.endContent}>
           <div className={styles.links}>
-            <NavbarDashboardLink />
             {navBarLinks.map((link, i) => (
               <NavbarLink key={i} href={link.href}>
                 {link.name}

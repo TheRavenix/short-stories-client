@@ -4,9 +4,9 @@ import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import styles from "./page.module.scss";
 
 import { Container } from "@/components/ui/Container";
-import { H1 } from "@/components/ui/Typography";
 import { LibraryFilters } from "@/components/LibraryFilters";
 import {
+  LibraryHeaderSection,
   LibraryStoriesSection,
   LibraryStoriesSectionError,
   LibraryStoriesSectionLoading,
@@ -34,7 +34,7 @@ export default async function Library(props: Props) {
     <main className={styles.main}>
       <Container withPaddingBlock>
         <div className={styles.content}>
-          <H1 className={styles.headline}>Library</H1>
+          <LibraryHeaderSection />
           <Suspense>
             <LibraryFilters />
           </Suspense>
