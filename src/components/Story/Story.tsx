@@ -8,10 +8,15 @@ import styles from "./Story.module.scss";
 import { Card, CardDescription, CardTitle } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { Badge } from "../ui/Badge";
-import { StoryDownloadButton } from "./buttons";
+import {
+  StoryDeleteButton,
+  StoryDownloadButton,
+  StoryUpdateButton,
+} from "./buttons";
 import { StarRating } from "../StarRating";
 import { Stats } from "../Stats";
 import { StoryViewLink } from "./story-view/StoryViewLink";
+
 import { PlanType } from "../Plans";
 
 interface StoryType {
@@ -37,7 +42,9 @@ interface Props extends StoryType {
   shouldShowTitle?: boolean;
   shouldShowExploreLink?: boolean;
   shouldShowReadButton?: boolean;
+  shouldShowUpdateButton?: boolean;
   shouldShowDownloadButton?: boolean;
+  shouldShowDeleteButton?: boolean;
   shouldShowStats?: boolean;
 }
 
@@ -50,14 +57,15 @@ const Story: React.FC<Props> = ({
   coverImage,
   views,
   downloads,
-  plan,
   rating,
   className,
   shouldShowStarRating = true,
   shouldShowTitle = true,
   shouldShowExploreLink = true,
   shouldShowReadButton = false,
+  shouldShowUpdateButton = false,
   shouldShowDownloadButton = false,
+  shouldShowDeleteButton = false,
   shouldShowStats = false,
 }) => {
   return (
@@ -93,9 +101,11 @@ const Story: React.FC<Props> = ({
               <Button>Read</Button>
             </Link>
           )}
+          {shouldShowUpdateButton && <StoryUpdateButton storySlug={slug} />}
           {shouldShowDownloadButton && (
-            <StoryDownloadButton id={_id} name={name} />
+            <StoryDownloadButton storyId={_id} storyName={name} />
           )}
+          {shouldShowDeleteButton && <StoryDeleteButton storyId={_id} />}
         </div>
       </div>
       {shouldShowStats && (

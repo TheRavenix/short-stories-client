@@ -11,11 +11,11 @@ import { services } from "@/services";
 import { downloadFile } from "@/utils";
 
 interface Props {
-  id: string;
-  name: string;
+  storyId: string;
+  storyName: string;
 }
 
-const StoryDownloadButton: React.FC<Props> = ({ id, name }) => {
+const StoryDownloadButton: React.FC<Props> = ({ storyId, storyName }) => {
   const router = useRouter();
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
   const addToast = useToastStore((s) => s.addToast);
@@ -25,7 +25,7 @@ const StoryDownloadButton: React.FC<Props> = ({ id, name }) => {
     mutationFn: services.story.downloadStory,
     onSuccess(data) {
       const url = window.URL.createObjectURL(new Blob([data.data]));
-      downloadFile(url, `${name}.pdf`);
+      downloadFile(url, `${storyName}.pdf`);
       window.URL.revokeObjectURL(url);
     },
     onError(error) {
@@ -43,7 +43,7 @@ const StoryDownloadButton: React.FC<Props> = ({ id, name }) => {
       return;
     }
 
-    mutation.mutate(id);
+    mutation.mutate(storyId);
   }
 
   return (

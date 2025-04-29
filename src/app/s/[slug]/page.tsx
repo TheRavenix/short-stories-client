@@ -50,7 +50,9 @@ export default async function StoryPage(props: Props) {
               shouldShowTitle={false}
               shouldShowExploreLink={false}
               shouldShowReadButton
+              shouldShowUpdateButton
               shouldShowDownloadButton
+              shouldShowDeleteButton
               shouldShowStats
             />
             <StoryViewToggle
