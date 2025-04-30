@@ -7,3 +7,4 @@ export * from "./story-view";
 export * from "./StoryLeaveReview";
 export * from "./StoryLayout";
 export * from "./story-read";
+export * from "./CreateStoryForm";

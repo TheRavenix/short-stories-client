@@ -3,24 +3,19 @@ import clsx from "clsx";
 
 import styles from "./Input.module.scss";
 
-type InputVariant = "default" | "destructive";
+import { InputVariant } from ".";
 
-interface Props extends Omit<ComponentProps<"input">, "size"> {
+interface Props extends ComponentProps<"textarea"> {
   label: string;
   variant?: InputVariant;
 }
 
-const Input: React.FC<Props> = ({
-  className,
-  label,
-  variant = "default",
-  ...rest
-}) => {
+const Textarea: React.FC<Props> = ({ className, label, variant, ...rest }) => {
   return (
     <div className={styles.inputContainer}>
-      <input
+      <textarea
         className={clsx(
-          styles.input,
+          styles.textarea,
           variant === "destructive" && styles.inputDestructive,
           className
         )}
@@ -39,4 +34,4 @@ const Input: React.FC<Props> = ({
   );
 };
 
-export { Input, type InputVariant };
+export { Textarea };

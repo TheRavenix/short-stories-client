@@ -3,9 +3,9 @@
   width: 100%;
 }
 
-.input {
+.input,
+.textarea {
   width: 100%;
-  padding: calc(1.25 * var(--spacing-sm)) 0;
   font-size: var(--font-size-base);
   background: transparent;
   color: var(--foreground);
@@ -24,6 +24,18 @@
     font-size: var(--font-size-xs);
     color: var(--primary);
   }
+}
+
+.input {
+  padding: calc(1.25 * var(--spacing-sm)) 0;
+}
+
+.textarea {
+  min-height: 75px;
+  padding-top: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+  resize: none;
+  overflow: auto;
 }
 
 .label {
