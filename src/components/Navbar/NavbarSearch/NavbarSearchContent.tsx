@@ -29,11 +29,11 @@ const NavbarSearchContent: React.FC<Props> = ({ setOpen }) => {
     if (typeof callback === "function") callback();
     if (query === searchParams.get("q")) return;
 
-    if (pathName === "/library") {
+    if (pathName === "/s") {
       const params = new URLSearchParams(searchParams);
       params.set("q", query);
-      router.replace(`/library?${params.toString()}`);
-    } else router.push(`/library?q=${query}`);
+      router.replace(`/s?${params.toString()}`);
+    } else router.push(`/s?q=${query}`);
   }
 
   return (
@@ -43,7 +43,7 @@ const NavbarSearchContent: React.FC<Props> = ({ setOpen }) => {
     >
       <Input
         label="Enter a Keyword"
-        required={pathName !== "/library"}
+        required={pathName !== "/s"}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
