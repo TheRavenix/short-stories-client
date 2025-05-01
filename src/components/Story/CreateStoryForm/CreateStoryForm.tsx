@@ -16,7 +16,6 @@ import {
 } from "@/components/ui/Select";
 import { Button } from "@/components/ui/Button";
 import { Skeleton } from "@/components/Skeleton";
-import { ActionSlot } from "@/components/ActionSlot";
 import { Form } from "@/components/Form";
 
 import { useProfile } from "@/hooks";
@@ -140,9 +139,9 @@ const CreateStoryForm: React.FC<Props> = () => {
         </SelectContent>
       </Select>
       <Input label="Cover Image" type="file" />
-      <ActionSlot>
-        <Button type="submit">Create</Button>
-      </ActionSlot>
+      <Button type="submit" size="responsive">
+        Create
+      </Button>
     </Form>
   );
 };

@@ -11,7 +11,7 @@ type ButtonVariant =
   | "ghost"
   | "destructive";
 
-type ButtonSize = "sm" | "md" | "lg" | "icon" | "full";
+type ButtonSize = "sm" | "md" | "lg" | "icon" | "full" | "responsive";
 
 type ButtonShape = "rounded" | "squared" | "circle";
 

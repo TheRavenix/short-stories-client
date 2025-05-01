@@ -23,7 +23,11 @@ const LibraryLoadMoreButton: React.FC<Props> = ({ limit, count }) => {
 
   if (limit >= count) return null;
 
-  return <Button onClick={handleOnClick}>Load more stories</Button>;
+  return (
+    <Button size="responsive" onClick={handleOnClick}>
+      Load more stories
+    </Button>
+  );
 };
 
 export { LibraryLoadMoreButton };

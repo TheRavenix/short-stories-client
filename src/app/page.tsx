@@ -29,8 +29,8 @@ export default async function Home() {
               Discover amazing short stories
             </H1>
             <P>Read, imagine, and escape into worlds beyond your own.</P>
-            <Link href="/s">
-              <Button>Explore Stories</Button>
+            <Link href="/s" className={styles.exploreLink}>
+              <Button size="full">Explore Stories</Button>
             </Link>
           </div>
         </div>

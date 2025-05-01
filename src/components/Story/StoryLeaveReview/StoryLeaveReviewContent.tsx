@@ -14,6 +14,8 @@ import {
   StarRating,
 } from "@/components/StarRating";
 import { Input } from "@/components/ui/Input";
+import { Form } from "@/components/Form";
+import { ActionSlot } from "@/components/ActionSlot";
 
 import { useToastStore } from "@/stores";
 
@@ -59,8 +61,6 @@ const StoryLeaveReviewContent: React.FC<Props> = ({ storyId, setOpen }) => {
   });
 
   function handleReview(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
     mutation.mutate({
       stars: rating,
       comment,
@@ -87,21 +87,23 @@ const StoryLeaveReviewContent: React.FC<Props> = ({ storyId, setOpen }) => {
           <PlusIcon size={18} />
         </Button>
       </div>
-      <form className={styles.contentForm} onSubmit={handleReview}>
+      <Form onSubmit={handleReview}>
         <Input
           label="Your Comment"
           required
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         />
-        <Button
-          type="submit"
-          className={styles.postButton}
-          disabled={mutation.isPending}
-        >
-          {mutation.isPending ? "Loading..." : "Post"}
-        </Button>
-      </form>
+        <ActionSlot>
+          <Button
+            type="submit"
+            className={styles.postButton}
+            disabled={mutation.isPending}
+          >
+            {mutation.isPending ? "Loading..." : "Post"}
+          </Button>
+        </ActionSlot>
+      </Form>
     </div>
   );
 };

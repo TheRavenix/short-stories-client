@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as mixins;
+
 .headline {
   text-align: center;
 }
@@ -18,4 +20,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.exploreLink {
+  width: 100%;
+}
+
+@include mixins.media(sm) {
+  .exploreLink {
+    width: 150px;
+  }
 }

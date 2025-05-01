@@ -68,15 +68,15 @@ const SignInForm: React.FC<Props> = () => {
         }
       />
       <div className={styles.endContent}>
+        <Button size="responsive" type="submit" disabled={mutation.isPending}>
+          {mutation.isPending ? "Loading..." : "Sign in"}
+        </Button>
         <P variant="gray">
           You don't have an account?{" "}
           <Link href="/sign-up" className={styles.signUpLink}>
             Sign up
           </Link>
         </P>
-        <Button type="submit" disabled={mutation.isPending}>
-          {mutation.isPending ? "Loading..." : "Sign in"}
-        </Button>
       </div>
     </Form>
   );

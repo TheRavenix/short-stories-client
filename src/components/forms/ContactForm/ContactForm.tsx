@@ -4,7 +4,6 @@ import styles from "./ContactForm.module.scss";
 
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
-import { ActionSlot } from "@/components/ActionSlot";
 import { Form } from "@/components/Form";
 
 interface Props {}
@@ -18,9 +17,9 @@ const ContactForm: React.FC<Props> = () => {
       </div>
       <Input label="Subject (Optional)" />
       <Input label="Message" required />
-      <ActionSlot>
-        <Button type="submit">Send Message</Button>
-      </ActionSlot>
+      <Button size="responsive" type="submit">
+        Send Message
+      </Button>
     </Form>
   );
 };

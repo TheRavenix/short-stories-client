@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as mixins;
+
 .hero {
   height: 80dvh;
   display: flex;
@@ -18,4 +20,14 @@
 
 .headline {
   text-align: center;
+}
+
+.exploreLink {
+  width: 100%;
+}
+
+@include mixins.media(sm) {
+  .exploreLink {
+    width: 150px;
+  }
 }

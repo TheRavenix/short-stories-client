@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as mixins;
+
 .button {
   display: flex;
   align-items: center;
@@ -79,6 +81,11 @@
   height: 48px;
 }
 
+.responsive {
+  width: 100%;
+  height: 48px;
+}
+
 .rounded {
   border-radius: var(--radius-rounded);
 }
@@ -89,4 +96,10 @@
 
 .circle {
   border-radius: var(--radius-circle);
+}
+
+@include mixins.media(sm) {
+  .responsive {
+    width: 150px;
+  }
 }
