@@ -1,7 +1,5 @@
 "use client";
 
-import styles from "./EditEmail.module.scss";
-
 import { EditEmailDialog } from "./EditEmailDialog";
 import { EditEmailDrawer } from "./EditEmailDrawer";
 

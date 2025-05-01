@@ -20,7 +20,6 @@ const SignOut: React.FC<Props> = () => {
         title: "Done",
         description: data.message,
       });
-      localStorage.clear();
       window.location.replace("/sign-in");
     },
     onError(error) {

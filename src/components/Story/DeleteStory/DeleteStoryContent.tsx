@@ -3,41 +3,43 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 
-import styles from "./DeleteAccount.module.scss";
+import styles from "./DeleteStory.module.scss";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { P, Span } from "@/components/ui/Typography";
 
-import { useProfile } from "@/hooks";
 import { useToastStore } from "@/stores";
 
 import { services } from "@/services";
 
 interface Props {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  storyId: string;
+  storyName: string;
 }
 
-const DELETE_CONFIRM = "DELETE MY ACCOUNT";
-
-const DeleteAccountContent: React.FC<Props> = ({ setOpen }) => {
+const DeleteStoryContent: React.FC<Props> = ({
+  setOpen,
+  storyId,
+  storyName,
+}) => {
   const [confirmMessage, setConfirmMessage] = useState("");
-  const { profile } = useProfile();
   const addToast = useToastStore((s) => s.addToast);
-  const confirmed = confirmMessage.toUpperCase() !== DELETE_CONFIRM;
+  const confirmed = confirmMessage.toLowerCase() === storyName.toLowerCase();
 
   const mutation = useMutation({
-    mutationFn: services.user.deleteUser,
+    mutationFn: services.story.deleteStory,
     onSuccess(data) {
       addToast({
         title: "Done",
         description: data.message,
       });
-      window.location.replace("/sign-in");
+      window.location.replace("/s");
     },
     onError(error) {
       addToast({
-        title: "Error delete account",
+        title: "Error delete story",
         description: error.message,
         variant: "error",
       });
@@ -49,7 +51,7 @@ const DeleteAccountContent: React.FC<Props> = ({ setOpen }) => {
 
     if (!confirmed) return;
 
-    mutation.mutate(profile?._id || "");
+    mutation.mutate(storyId);
   }
 
   return (
@@ -57,7 +59,7 @@ const DeleteAccountContent: React.FC<Props> = ({ setOpen }) => {
       <P size="lg">
         Type{" "}
         <Span size="lg" weight="bold">
-          {DELETE_CONFIRM}
+          {storyName}
         </Span>
       </P>
       <Input
@@ -77,4 +79,4 @@ const DeleteAccountContent: React.FC<Props> = ({ setOpen }) => {
   );
 };
 
-export { DeleteAccountContent };
+export { DeleteStoryContent };

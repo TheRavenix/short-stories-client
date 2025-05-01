@@ -8,16 +8,13 @@ import styles from "./Story.module.scss";
 import { Card, CardDescription, CardTitle } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { Badge } from "../ui/Badge";
-import {
-  StoryDeleteButton,
-  StoryDownloadButton,
-  StoryEditButton,
-} from "./buttons";
+import { StoryDownloadButton, StoryEditButton } from "./buttons";
 import { StarRating } from "../StarRating";
 import { Stats } from "../Stats";
 import { StoryViewLink } from "./story-view/StoryViewLink";
 
 import { PlanType } from "../Plans";
+import { DeleteStory } from "./DeleteStory";
 
 interface StoryType {
   _id: string;
@@ -105,7 +102,9 @@ const Story: React.FC<Props> = ({
           {shouldShowDownloadButton && (
             <StoryDownloadButton storyId={_id} storyName={name} />
           )}
-          {shouldShowDeleteButton && <StoryDeleteButton storyId={_id} />}
+          {shouldShowDeleteButton && (
+            <DeleteStory storyId={_id} storyName={name} />
+          )}
         </div>
       </div>
       {shouldShowStats && (

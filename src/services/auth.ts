@@ -1,7 +1,6 @@
-import { NETWORK_ERROR, UNEXPECTED_ERROR } from "@/constants/error";
-import { MessageResponse } from "@/types/response";
-import { axiosClient } from "@/utils/axios-client";
-import { isNetworkError } from "@/utils/error";
+import { NETWORK_ERROR, UNEXPECTED_ERROR } from "@/constants";
+import { MessageResponse } from "@/types";
+import { axiosClient, isNetworkError } from "@/utils";
 
 interface SignUpData {
   name?: string;

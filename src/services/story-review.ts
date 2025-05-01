@@ -1,6 +1,5 @@
-import { NETWORK_ERROR, UNEXPECTED_ERROR } from "@/constants/error";
-import { axiosClient } from "@/utils/axios-client";
-import { isNetworkError } from "@/utils/error";
+import { NETWORK_ERROR, UNEXPECTED_ERROR } from "@/constants";
+import { axiosClient, isNetworkError } from "@/utils";
 
 interface CreateStoryReviewResponse {
   success: boolean;

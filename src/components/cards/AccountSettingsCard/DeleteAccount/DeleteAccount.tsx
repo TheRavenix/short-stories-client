@@ -1,7 +1,5 @@
 "use client";
 
-import styles from "./DeleteAccount.module.scss";
-
 import { DeleteAccountDialog } from "./DeleteAccountDialog";
 import { DeleteAccountDrawer } from "./DeleteAccountDrawer";
 

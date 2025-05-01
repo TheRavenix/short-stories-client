@@ -1,7 +1,5 @@
 "use client";
 
-import styles from "./ChangePassword.module.scss";
-
 import { ChangePasswordDialog } from "./ChangePasswordDialog";
 import { ChangePasswordDrawer } from "./ChangePasswordDrawer";
 

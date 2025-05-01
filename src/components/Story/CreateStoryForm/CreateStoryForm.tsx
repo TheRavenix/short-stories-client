@@ -1,5 +1,8 @@
 "use client";
 
+import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
+
 import styles from "./CreateStoryForm.module.scss";
 
 import { Input, Textarea } from "@/components/ui/Input";
@@ -12,17 +15,61 @@ import {
   SelectValue,
 } from "@/components/ui/Select";
 import { Button } from "@/components/ui/Button";
+import { Skeleton } from "@/components/Skeleton";
 
 import { useProfile } from "@/hooks";
-import { Skeleton } from "@/components/Skeleton";
+import { useToastStore } from "@/stores";
+
+import { services } from "@/services";
+import { CreateStoryData } from "@/services/story";
+import { splitByNewLine } from "@/utils";
 
 interface Props {}
 
 const CreateStoryForm: React.FC<Props> = () => {
   const { isLoading, profile } = useProfile();
+  const [formData, setFormData] = useState<CreateStoryData>({
+    name: "",
+    description: "",
+    preview: [],
+    about: [],
+    content: [],
+    genre: ["adventure"],
+    plan: "free",
+    coverImage: "short-story-cover.jpeg",
+  });
+  const addToast = useToastStore((s) => s.addToast);
+
+  const mutation = useMutation({
+    mutationKey: ["create-story"],
+    mutationFn: services.story.createStory,
+    onSuccess(data) {
+      addToast({
+        title: "Create story",
+        description: data.message,
+      });
+      window.location.replace(`/s?q=${formData.name}`);
+    },
+    onError(error) {
+      addToast({
+        title: "Error create story",
+        description: error.message,
+        variant: "error",
+      });
+    },
+  });
+
+  function updateFormDataProp(
+    prop: keyof CreateStoryData,
+    value: CreateStoryData[keyof CreateStoryData]
+  ) {
+    setFormData((prev) => ({ ...prev, [prop]: value }));
+  }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    mutation.mutate(formData);
   }
 
   if (isLoading || profile?.role !== "admin") {
@@ -31,14 +78,45 @@ const CreateStoryForm: React.FC<Props> = () => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <Input label="Name" required />
-      <Input label="Description" required />
-      <Textarea label="About" />
-      <Textarea label="Preview" />
-      <Textarea label="Content" />
-      <Select defaultValue="adventure">
+      <Input
+        label="Name"
+        defaultValue={formData.name}
+        onBlur={(e) => updateFormDataProp("name", e.target.value)}
+        required
+      />
+      <Input
+        label="Description"
+        defaultValue={formData.description}
+        onBlur={(e) => updateFormDataProp("description", e.target.value)}
+        required
+      />
+      <Textarea
+        label="About"
+        defaultValue={formData.about}
+        onBlur={(e) =>
+          updateFormDataProp("about", splitByNewLine(e.target.value))
+        }
+      />
+      <Textarea
+        label="Preview"
+        defaultValue={formData.preview}
+        onBlur={(e) =>
+          updateFormDataProp("preview", splitByNewLine(e.target.value))
+        }
+      />
+      <Textarea
+        label="Content"
+        defaultValue={formData.content}
+        onBlur={(e) =>
+          updateFormDataProp("content", splitByNewLine(e.target.value))
+        }
+      />
+      <Select
+        value={formData.genre[0]}
+        onValueChange={(v) => updateFormDataProp("genre", [v])}
+      >
         <SelectTrigger>
-          <SelectValue />
+          <SelectValue placeholder="Select story genre" />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
@@ -47,7 +125,10 @@ const CreateStoryForm: React.FC<Props> = () => {
           </SelectGroup>
         </SelectContent>
       </Select>
-      <Select defaultValue="free">
+      <Select
+        value={formData.plan}
+        onValueChange={(v) => updateFormDataProp("plan", v)}
+      >
         <SelectTrigger>
           <SelectValue />
         </SelectTrigger>
@@ -58,7 +139,7 @@ const CreateStoryForm: React.FC<Props> = () => {
           </SelectGroup>
         </SelectContent>
       </Select>
-      <Input label="Cover Image" type="file" required />
+      <Input label="Cover Image" type="file" />
       <div className={styles.createStoryContainer}>
         <Button type="submit">Create</Button>
       </div>

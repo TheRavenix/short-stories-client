@@ -1,8 +1,7 @@
 import { PlanType } from "@/components/Plans";
-import { NETWORK_ERROR, UNEXPECTED_ERROR } from "@/constants/error";
-import { MessageResponse } from "@/types/response";
-import { axiosClient } from "@/utils/axios-client";
-import { isNetworkError } from "@/utils/error";
+import { NETWORK_ERROR, UNEXPECTED_ERROR } from "@/constants";
+import { MessageResponse } from "@/types";
+import { axiosClient, isNetworkError } from "@/utils";
 
 type ProfileRoleType = "user" | "admin";
 
@@ -78,7 +77,7 @@ class UserService {
 
   async editName(name: string): Promise<MessageResponse> {
     try {
-      const response = await axiosClient.post("users/edit-name", { name });
+      const response = await axiosClient.patch("users/edit-name", { name });
       return response.data;
     } catch (error: any) {
       if (isNetworkError(error)) {
@@ -96,7 +95,7 @@ class UserService {
 
   async editEmail(data: EditEmailData): Promise<MessageResponse> {
     try {
-      const response = await axiosClient.post("users/edit-email", data);
+      const response = await axiosClient.patch("users/edit-email", data);
       return response.data;
     } catch (error: any) {
       if (isNetworkError(error)) {
@@ -114,7 +113,7 @@ class UserService {
 
   async changePassword(data: ChangePasswordData): Promise<MessageResponse> {
     try {
-      const response = await axiosClient.post("users/change-password", data);
+      const response = await axiosClient.patch("users/change-password", data);
       return response.data;
     } catch (error: any) {
       if (isNetworkError(error)) {
@@ -130,7 +129,7 @@ class UserService {
     }
   }
 
-  async deleteOne(id: string): Promise<MessageResponse> {
+  async deleteUser(id: string): Promise<MessageResponse> {
     try {
       const response = await axiosClient.delete(`users/${id}`);
       return response.data;

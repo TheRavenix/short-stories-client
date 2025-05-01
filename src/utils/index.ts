@@ -8,3 +8,4 @@ export * from "./apply-import-url-and-style";
 export * from "./remove-hyphen";
 export * from "./error";
 export * from "./romanize";
+export * from "./split-by-new-line";

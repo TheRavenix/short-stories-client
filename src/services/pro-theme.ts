@@ -1,4 +1,4 @@
-import { axiosClient } from "@/utils/axios-client";
+import { axiosClient } from "@/utils";
 
 type ProThemeResponse = Record<string, Record<string, string>>;
 

@@ -1,7 +1,5 @@
 "use client";
 
-import styles from "./EditName.module.scss";
-
 import { EditNameDialog } from "./EditNameDialog";
 import { EditNameDrawer } from "./EditNameDrawer";
 
