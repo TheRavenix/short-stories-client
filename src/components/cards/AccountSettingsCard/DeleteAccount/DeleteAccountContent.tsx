@@ -8,6 +8,8 @@ import styles from "./DeleteAccount.module.scss";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { P, Span } from "@/components/ui/Typography";
+import { ActionSlot } from "@/components/ActionSlot";
+import { Form } from "@/components/Form";
 
 import { useProfile } from "@/hooks";
 import { useToastStore } from "@/stores";
@@ -45,15 +47,13 @@ const DeleteAccountContent: React.FC<Props> = ({ setOpen }) => {
   });
 
   function handleDelete(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
     if (!confirmed) return;
 
     mutation.mutate(profile?._id || "");
   }
 
   return (
-    <form className={styles.form} onSubmit={handleDelete}>
+    <Form onSubmit={handleDelete}>
       <P size="lg">
         Type{" "}
         <Span size="lg" weight="bold">
@@ -66,14 +66,16 @@ const DeleteAccountContent: React.FC<Props> = ({ setOpen }) => {
         value={confirmMessage}
         onChange={(e) => setConfirmMessage(e.target.value)}
       />
-      <Button
-        type="submit"
-        variant="destructive"
-        disabled={!confirmed || mutation.isPending}
-      >
-        Delete
-      </Button>
-    </form>
+      <ActionSlot>
+        <Button
+          type="submit"
+          variant="destructive"
+          disabled={!confirmed || mutation.isPending}
+        >
+          Delete
+        </Button>
+      </ActionSlot>
+    </Form>
   );
 };
 

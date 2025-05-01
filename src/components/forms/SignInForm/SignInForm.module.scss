@@ -1,12 +1,5 @@
 @use "@/styles/mixins" as mixins;
 
-.form {
-  margin-top: var(--spacing-lg);
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-}
-
 .endContent {
   display: flex;
   flex-direction: column;

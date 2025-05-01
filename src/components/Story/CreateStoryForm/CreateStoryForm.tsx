@@ -16,6 +16,8 @@ import {
 } from "@/components/ui/Select";
 import { Button } from "@/components/ui/Button";
 import { Skeleton } from "@/components/Skeleton";
+import { ActionSlot } from "@/components/ActionSlot";
+import { Form } from "@/components/Form";
 
 import { useProfile } from "@/hooks";
 import { useToastStore } from "@/stores";
@@ -67,8 +69,6 @@ const CreateStoryForm: React.FC<Props> = () => {
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
     mutation.mutate(formData);
   }
 
@@ -77,7 +77,7 @@ const CreateStoryForm: React.FC<Props> = () => {
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <Form spacing="md" onSubmit={handleSubmit}>
       <Input
         label="Name"
         defaultValue={formData.name}
@@ -140,10 +140,10 @@ const CreateStoryForm: React.FC<Props> = () => {
         </SelectContent>
       </Select>
       <Input label="Cover Image" type="file" />
-      <div className={styles.createStoryContainer}>
+      <ActionSlot>
         <Button type="submit">Create</Button>
-      </div>
-    </form>
+      </ActionSlot>
+    </Form>
   );
 };
 

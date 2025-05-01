@@ -7,7 +7,7 @@ import { CompactContainer } from "@/components/ui/Container";
 export default function ContactPage() {
   return (
     <main className={styles.main}>
-      <CompactContainer className={styles.mainContainer} withPaddingBlock>
+      <CompactContainer spacing="lg" withPaddingBlock>
         <H1 className={styles.headline}>Contact</H1>
         <ContactForm />
       </CompactContainer>

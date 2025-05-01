@@ -10,7 +10,7 @@ export default function CreateStory() {
     <>
       <AdminPageGuard />
       <main className={styles.main}>
-        <CompactContainer withPaddingBlock withContentSpacing>
+        <CompactContainer className={styles.container} withPaddingBlock>
           <H1 className={styles.headline} transform="capitalize">
             Create story
           </H1>

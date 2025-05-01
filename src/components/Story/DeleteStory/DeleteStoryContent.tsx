@@ -8,6 +8,7 @@ import styles from "./DeleteStory.module.scss";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { P, Span } from "@/components/ui/Typography";
+import { ActionSlot } from "@/components/ActionSlot";
 
 import { useToastStore } from "@/stores";
 
@@ -68,13 +69,15 @@ const DeleteStoryContent: React.FC<Props> = ({
         value={confirmMessage}
         onChange={(e) => setConfirmMessage(e.target.value)}
       />
-      <Button
-        type="submit"
-        variant="destructive"
-        disabled={!confirmed || mutation.isPending}
-      >
-        Delete
-      </Button>
+      <ActionSlot>
+        <Button
+          type="submit"
+          variant="destructive"
+          disabled={!confirmed || mutation.isPending}
+        >
+          Delete
+        </Button>
+      </ActionSlot>
     </form>
   );
 };

@@ -10,6 +10,7 @@ const CompactContainer: React.FC<Props> = ({
   className,
   withPaddingBlock = false,
   withContentSpacing = false,
+  spacing = "none",
   ...rest
 }) => {
   return (
@@ -18,6 +19,7 @@ const CompactContainer: React.FC<Props> = ({
         styles.compactContainer,
         withPaddingBlock && styles.withPaddingBlock,
         withContentSpacing && styles.withContentSpacing,
+        styles[spacing],
         className
       )}
       {...rest}

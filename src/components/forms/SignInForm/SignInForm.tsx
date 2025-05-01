@@ -9,6 +9,7 @@ import styles from "./SignInForm.module.scss";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { P } from "@/components/ui/Typography";
+import { Form } from "@/components/Form";
 
 import { useToastStore } from "@/stores";
 
@@ -43,13 +44,11 @@ const SignInForm: React.FC<Props> = () => {
   });
 
   function handleSignIn(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
     mutation.mutate(formData);
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSignIn}>
+    <Form spacing="md" onSubmit={handleSignIn}>
       <Input
         type="email"
         label="Email"
@@ -69,17 +68,17 @@ const SignInForm: React.FC<Props> = () => {
         }
       />
       <div className={styles.endContent}>
-        <Button type="submit" disabled={mutation.isPending}>
-          {mutation.isPending ? "Loading..." : "Sign in"}
-        </Button>
         <P variant="gray">
           You don't have an account?{" "}
           <Link href="/sign-up" className={styles.signUpLink}>
             Sign up
           </Link>
         </P>
+        <Button type="submit" disabled={mutation.isPending}>
+          {mutation.isPending ? "Loading..." : "Sign in"}
+        </Button>
       </div>
-    </form>
+    </Form>
   );
 };
 

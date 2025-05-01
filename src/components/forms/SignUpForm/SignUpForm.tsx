@@ -3,19 +3,13 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { XIcon } from "lucide-react";
 
 import styles from "./SignUpForm.module.scss";
 
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { P } from "@/components/ui/Typography";
-import {
-  ToastAction,
-  ToastDescription,
-  ToastRoot,
-  ToastTitle,
-} from "../../ui/Toast";
+import { Form } from "@/components/Form";
 
 import { useToastStore } from "@/stores";
 
@@ -51,13 +45,11 @@ const SignUpForm: React.FC<Props> = () => {
   });
 
   function handleSignUp(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
     mutation.mutate(formData);
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSignUp}>
+    <Form spacing="md" onSubmit={handleSignUp}>
       <Input
         label="Your Name (Optional)"
         value={formData.name}
@@ -84,9 +76,6 @@ const SignUpForm: React.FC<Props> = () => {
         }
       />
       <div className={styles.endContent}>
-        <Button type="submit" disabled={mutation.isPending}>
-          {mutation.isPending ? "Loading..." : "Sign up"}
-        </Button>
         <div className={styles.linksContainer}>
           <P variant="gray">
             You already have an account?{" "}
@@ -101,8 +90,11 @@ const SignUpForm: React.FC<Props> = () => {
             </Link>
           </P>
         </div>
+        <Button type="submit" disabled={mutation.isPending}>
+          {mutation.isPending ? "Loading..." : "Sign up"}
+        </Button>
       </div>
-    </form>
+    </Form>
   );
 };
 

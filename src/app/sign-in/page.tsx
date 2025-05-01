@@ -10,7 +10,7 @@ export default function SignIn() {
     <>
       <AuthPageGuard />
       <main className={styles.main}>
-        <CompactContainer withPaddingBlock>
+        <CompactContainer spacing="lg" withPaddingBlock>
           <H1 className={styles.headline}>Sign In</H1>
           <SignInForm />
         </CompactContainer>

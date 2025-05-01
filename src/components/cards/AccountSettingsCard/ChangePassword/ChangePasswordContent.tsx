@@ -7,6 +7,8 @@ import styles from "./ChangePassword.module.scss";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { ActionSlot } from "@/components/ActionSlot";
+import { Form } from "@/components/Form";
 
 import { useToastStore } from "@/stores";
 
@@ -43,13 +45,11 @@ const ChangePasswordContent: React.FC<Props> = ({ setOpen }) => {
   });
 
   function handleChange(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
     mutation.mutate(formData);
   }
 
   return (
-    <form className={styles.form} onSubmit={handleChange}>
+    <Form spacing="md" onSubmit={handleChange}>
       <Input
         type="password"
         label="Current Password"
@@ -71,10 +71,12 @@ const ChangePasswordContent: React.FC<Props> = ({ setOpen }) => {
           setFormData((prev) => ({ ...prev, newPassword: e.target.value }))
         }
       />
-      <Button type="submit" disabled={mutation.isPending}>
-        Save
-      </Button>
-    </form>
+      <ActionSlot>
+        <Button type="submit" disabled={mutation.isPending}>
+          Save
+        </Button>
+      </ActionSlot>
+    </Form>
   );
 };
 

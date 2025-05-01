@@ -7,6 +7,8 @@ import styles from "./EditEmail.module.scss";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { ActionSlot } from "@/components/ActionSlot";
+import { Form } from "@/components/Form";
 
 import { useProfile } from "@/hooks";
 import { useToastStore } from "@/stores";
@@ -46,13 +48,11 @@ const EditEmailContent: React.FC<Props> = ({ setOpen }) => {
   });
 
   function handleEdit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
     mutation.mutate(formData);
   }
 
   return (
-    <form className={styles.form} onSubmit={handleEdit}>
+    <Form spacing="md" onSubmit={handleEdit}>
       <Input
         type="email"
         label="Current Email"
@@ -71,10 +71,12 @@ const EditEmailContent: React.FC<Props> = ({ setOpen }) => {
           setFormData((prev) => ({ ...prev, newEmail: e.target.value }))
         }
       />
-      <Button type="submit" disabled={mutation.isPending}>
-        Save
-      </Button>
-    </form>
+      <ActionSlot>
+        <Button type="submit" disabled={mutation.isPending}>
+          Save
+        </Button>
+      </ActionSlot>
+    </Form>
   );
 };
 

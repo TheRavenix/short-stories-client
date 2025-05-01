@@ -7,11 +7,13 @@ import styles from "./EditName.module.scss";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { ActionSlot } from "@/components/ActionSlot";
 
 import { useProfile } from "@/hooks";
 import { useToastStore } from "@/stores";
 
 import { services } from "@/services";
+import { Form } from "@/components/Form";
 
 interface Props {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -42,23 +44,23 @@ const EditNameContent: React.FC<Props> = ({ setOpen }) => {
   });
 
   function handleEdit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
     mutation.mutate(name);
   }
 
   return (
-    <form className={styles.form} onSubmit={handleEdit}>
+    <Form onSubmit={handleEdit}>
       <Input
         label="Your New Name"
         required
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <Button type="submit" disabled={mutation.isPending}>
-        Save
-      </Button>
-    </form>
+      <ActionSlot>
+        <Button type="submit" disabled={mutation.isPending}>
+          Save
+        </Button>
+      </ActionSlot>
+    </Form>
   );
 };
 

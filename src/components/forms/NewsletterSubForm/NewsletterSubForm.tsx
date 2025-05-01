@@ -1,18 +1,22 @@
+"use client";
+
 import styles from "./NewsletterSubForm.module.scss";
 
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
+import { ActionSlot } from "@/components/ActionSlot";
+import { Form } from "@/components/Form";
 
 interface Props {}
 
 const NewsletterSubForm: React.FC<Props> = () => {
   return (
-    <form className={styles.form}>
+    <Form>
       <Input type="email" label="Email" required />
-      <div className={styles.subscribeContainer}>
+      <ActionSlot>
         <Button>Subscribe</Button>
-      </div>
-    </form>
+      </ActionSlot>
+    </Form>
   );
 };
 

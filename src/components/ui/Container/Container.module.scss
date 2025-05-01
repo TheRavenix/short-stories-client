@@ -24,6 +24,20 @@
   gap: var(--spacing-xl);
 }
 
+.lg,
+.xl {
+  display: flex;
+  flex-direction: column;
+}
+
+.lg {
+  gap: var(--spacing-lg);
+}
+
+.xl {
+  gap: var(--spacing-sm);
+}
+
 @include mixins.media(sm) {
   .container {
     width: 576px;
