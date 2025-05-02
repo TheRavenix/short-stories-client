@@ -8,9 +8,9 @@ import { CreateStoryForm } from "@/components/Story";
 export default function CreateStory() {
   return (
     <>
-      <AdminPageGuard />
+      <AdminPageGuard redirectTo="/s" />
       <main className={styles.main}>
-        <CompactContainer className={styles.container} withPaddingBlock>
+        <CompactContainer spacing="lg" withPaddingBlock>
           <H1 className={styles.headline} transform="capitalize">
             Create story
           </H1>

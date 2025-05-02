@@ -5,12 +5,12 @@ import { useEffect } from "react";
 
 import { useProfileStatus } from "../profile";
 
-interface Options {
+interface AdminGuardOptions {
   redirectTo?: string;
   onError?: () => void;
 }
 
-export function useAdminGuard(options?: Options) {
+function useAdminGuard(options?: AdminGuardOptions) {
   const router = useRouter();
   const profileStatus = useProfileStatus();
 
@@ -25,3 +25,5 @@ export function useAdminGuard(options?: Options) {
 
   return profileStatus;
 }
+
+export { useAdminGuard, type AdminGuardOptions };

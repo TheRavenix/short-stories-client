@@ -1,12 +1,9 @@
-import { ArrowLeftIcon } from "lucide-react";
-
 import styles from "./page.module.scss";
 
-import { Button } from "@/components/ui/Button";
 import {
+  StoryBackButton,
   StoryContent,
   StoryReadTracker,
-  StoryViewLink,
 } from "@/components/Story";
 import { CompactContainer } from "@/components/ui/Container";
 import { H1 } from "@/components/ui/Typography";
@@ -35,36 +32,27 @@ export default async function ReadStory(props: Props) {
       <StoryReadTracker storyId={storyResponse?.data._id} />
       <ToggleNavbarFixed />
       <main className={styles.main}>
-        <CompactContainer withPaddingBlock>
-          <div className={styles.containerContent}>
-            <StoryViewLink
-              href={`/s/${params.slug}`}
-              className={styles.backToStory}
-            >
-              <Button variant="ghost" size="icon">
-                <ArrowLeftIcon />
-              </Button>
-            </StoryViewLink>
-            <H1
-              variant="primary"
-              transform="capitalize"
-              className={styles.headline}
-            >
-              {storyResponse.data.name}
-            </H1>
-            <Show
-              when={
-                storyContentResponse.success &&
-                storyContentResponse.data.content.length > 0
-              }
-              fallback={
-                <EmptyState message="A story was supposed to be here... Perhaps the author is still writing?" />
-              }
-            >
-              <StoryContent {...storyContentResponse.data} />
-            </Show>
-            <BackTopButton />
-          </div>
+        <CompactContainer spacing="lg" withPaddingBlock>
+          <StoryBackButton storySlug={params.slug} />
+          <H1
+            variant="primary"
+            transform="capitalize"
+            className={styles.headline}
+          >
+            {storyResponse.data.name}
+          </H1>
+          <Show
+            when={
+              storyContentResponse.success &&
+              storyContentResponse.data.content.length > 0
+            }
+            fallback={
+              <EmptyState message="A story was supposed to be here... Perhaps the author is still writing?" />
+            }
+          >
+            <StoryContent {...storyContentResponse.data} />
+          </Show>
+          <BackTopButton />
         </CompactContainer>
       </main>
     </>

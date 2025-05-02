@@ -8,6 +8,7 @@ import styles from "./NavbarSearch.module.scss";
 import { Button } from "@/components/ui/Button";
 
 import { useSearchStore } from "@/stores";
+import { ActionSlot } from "@/components/ActionSlot";
 
 interface Props {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -47,7 +48,9 @@ const NavbarSearchContent: React.FC<Props> = ({ setOpen }) => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <Button type="submit">Search</Button>
+      <ActionSlot>
+        <Button type="submit">Search</Button>
+      </ActionSlot>
     </form>
   );
 };

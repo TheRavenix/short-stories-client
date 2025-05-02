@@ -26,7 +26,7 @@ const DeleteAccountContent: React.FC<Props> = ({ setOpen }) => {
   const [confirmMessage, setConfirmMessage] = useState("");
   const { profile } = useProfile();
   const addToast = useToastStore((s) => s.addToast);
-  const confirmed = confirmMessage.toUpperCase() !== DELETE_CONFIRM;
+  const confirmed = confirmMessage.toUpperCase() === DELETE_CONFIRM;
 
   const mutation = useMutation({
     mutationFn: services.user.deleteUser,

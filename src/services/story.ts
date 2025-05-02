@@ -13,6 +13,16 @@ interface CreateStoryData {
   coverImage: string;
 }
 
+interface EditStoryData extends CreateStoryData {}
+
+interface EditStoryResponse {
+  success: boolean;
+  data: {
+    message: string;
+    slug: string;
+  };
+}
+
 interface DownloadStoryResponse {
   success: boolean;
   data: Buffer<ArrayBuffer>;
@@ -31,6 +41,28 @@ class StoryService {
         throw new Error(
           error.response.data?.message || "Failed to create story"
         );
+      }
+
+      throw new Error(UNEXPECTED_ERROR);
+    }
+  }
+
+  async editStory({
+    storyId,
+    data,
+  }: {
+    storyId: string;
+    data: EditStoryData;
+  }): Promise<EditStoryResponse> {
+    try {
+      const response = await axiosClient.patch(`/stories/${storyId}`, data);
+      return response.data;
+    } catch (error: any) {
+      if (isNetworkError(error)) {
+        throw new Error(NETWORK_ERROR);
+      }
+      if (error.response) {
+        throw new Error(error.response.data?.message || "Failed to edit story");
       }
 
       throw new Error(UNEXPECTED_ERROR);
@@ -92,4 +124,4 @@ class StoryService {
   }
 }
 
-export { StoryService, type CreateStoryData };
+export { StoryService, type CreateStoryData, type EditStoryData };

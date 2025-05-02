@@ -3,8 +3,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 
-import styles from "./CreateStoryForm.module.scss";
-
 import { Input, Textarea } from "@/components/ui/Input";
 import {
   Select,

@@ -1,11 +1,11 @@
 "use client";
 
-import { useAdminGuard } from "@/hooks";
+import { AdminGuardOptions, useAdminGuard } from "@/hooks";
 
-interface Props {}
+interface Props extends AdminGuardOptions {}
 
-const AdminPageGuard: React.FC<Props> = () => {
-  useAdminGuard();
+const AdminPageGuard: React.FC<Props> = (props) => {
+  useAdminGuard(props);
 
   return null;
 };
