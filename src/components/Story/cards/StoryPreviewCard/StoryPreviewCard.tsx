@@ -40,6 +40,7 @@ const StoryPreviewCard: React.FC<Props> = ({ id, name, preview }) => {
           <div className={styles.storyContentList}>
             {preview.map((contentText, index) => (
               <StoryContent
+                key={index}
                 contentText={contentText}
                 index={index}
                 showHeaderSaveTool={false}
