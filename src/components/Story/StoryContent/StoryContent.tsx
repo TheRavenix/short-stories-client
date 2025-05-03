@@ -1,12 +1,12 @@
-import { BookmarkIcon, CopyIcon } from "lucide-react";
+import { BookmarkIcon } from "lucide-react";
 
 import styles from "./StoryContent.module.scss";
 
-import { Separator } from "@/components/ui/Separator";
-import { StoryContentText } from "./StoryContentText";
-import { Button } from "@/components/ui/Button";
-import { StoryContentItemHeading } from "./StoryContentItemHeading";
 import { ClipboardButton } from "@/components/buttons";
+import { Button } from "@/components/ui/Button";
+import { Separator } from "@/components/ui/Separator";
+import { StoryContentHeading } from "./StoryContentHeading";
+import { StoryContentText } from "./StoryContentText";
 
 type StoryContentType = {
   _id: string;
@@ -15,38 +15,40 @@ type StoryContentType = {
 };
 
 interface Props {
-  content: string[];
-  showItemHeaderTools?: boolean;
+  showHeaderTools?: boolean;
+  showHeaderSaveTool?: boolean;
+  index: number;
+  contentText: string;
 }
 
 const StoryContent: React.FC<Props> = ({
-  content,
-  showItemHeaderTools = true,
+  showHeaderTools = true,
+  showHeaderSaveTool = true,
+  index,
+  contentText,
 }) => {
   return (
     <div className={styles.content}>
-      {content.map((sc, index) => (
-        <div key={index} className={styles.item}>
-          <div className={styles.itemHeader}>
-            <div>
-              <StoryContentItemHeading index={index} />
-            </div>
-            {showItemHeaderTools && (
-              <div className={styles.itemHeaderTools}>
-                <ClipboardButton
-                  text={sc}
-                  message="Story line copied to clipboard."
-                />
-                <Button variant="ghost" size="icon">
-                  <BookmarkIcon size={20} />
-                </Button>
-              </div>
+      <div className={styles.contentHeader}>
+        <div>
+          <StoryContentHeading index={index} />
+        </div>
+        {showHeaderTools && (
+          <div className={styles.contentHeaderTools}>
+            <ClipboardButton
+              text={contentText}
+              message="Story line copied to clipboard."
+            />
+            {showHeaderSaveTool && (
+              <Button variant="ghost" size="icon">
+                <BookmarkIcon size={20} />
+              </Button>
             )}
           </div>
-          <StoryContentText>{sc}</StoryContentText>
-          <Separator />
-        </div>
-      ))}
+        )}
+      </div>
+      <StoryContentText>{contentText}</StoryContentText>
+      <Separator />
     </div>
   );
 };

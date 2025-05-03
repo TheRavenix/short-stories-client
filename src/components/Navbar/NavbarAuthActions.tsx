@@ -19,11 +19,7 @@ const NavbarAuthActions: React.FC<Props> = () => {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
 
   if (isLoading) {
-    return (
-      <div className={styles.authActions}>
-        <Skeleton type="button" width="120px" />
-      </div>
-    );
+    return <Skeleton type="button" width="120px" />;
   }
 
   if (isAuthenticated) return null;

@@ -1,3 +1,9 @@
 .uiFont {
   font-family: var(--ui-font);
 }
+
+.storyContentList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}

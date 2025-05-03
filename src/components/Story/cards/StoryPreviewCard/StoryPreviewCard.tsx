@@ -37,7 +37,15 @@ const StoryPreviewCard: React.FC<Props> = ({ id, name, preview }) => {
             />
           }
         >
-          <StoryContent content={preview} showItemHeaderTools={false} />
+          <div className={styles.storyContentList}>
+            {preview.map((contentText, index) => (
+              <StoryContent
+                contentText={contentText}
+                index={index}
+                showHeaderSaveTool={false}
+              />
+            ))}
+          </div>
         </Show>
       </CardContent>
     </Card>

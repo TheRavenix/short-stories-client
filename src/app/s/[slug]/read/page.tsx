@@ -50,7 +50,11 @@ export default async function ReadStory(props: Props) {
               <EmptyState message="A story was supposed to be here... Perhaps the author is still writing?" />
             }
           >
-            <StoryContent {...storyContentResponse.data} />
+            <div className={styles.storyContentList}>
+              {storyContentResponse?.data.content.map((contentText, index) => (
+                <StoryContent contentText={contentText} index={index} />
+              ))}
+            </div>
           </Show>
           <BackTopButton />
         </CompactContainer>

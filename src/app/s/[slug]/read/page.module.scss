@@ -17,3 +17,9 @@
   align-items: center;
   justify-content: center;
 }
+
+.storyContentList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}

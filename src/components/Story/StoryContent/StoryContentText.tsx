@@ -15,7 +15,7 @@ const StoryContentText: React.FC<Props> = ({ className, style, ...rest }) => {
 
   return (
     <P
-      className={clsx(styles.text, className)}
+      className={clsx(styles.contentText, className)}
       style={{ ...style, fontSize }}
       {...rest}
     />
