@@ -13,6 +13,7 @@ interface StoryReviewType {
   _id: string;
   userId: string;
   storyId: string;
+  storySlug: string;
   stars: number;
   comment: string;
 }
@@ -34,6 +35,7 @@ const StoryReview: React.FC<Props> = ({
   comment,
   stars,
   storyId,
+  storySlug,
   userName,
   userId,
   storyName,
@@ -60,7 +62,7 @@ const StoryReview: React.FC<Props> = ({
       <P>{comment}</P>
       {shouldShowReadMoreLink && (
         <Link
-          href={`/s/${storyId}?view=tabs&tab=reviews`}
+          href={`/s/${storySlug}?view=tabs&tab=reviews`}
           className={styles.reviewLink}
         >
           <Button size="sm" variant="inverse">
