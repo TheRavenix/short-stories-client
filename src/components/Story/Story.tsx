@@ -81,7 +81,7 @@ const Story: React.FC<Props> = ({
       />
       <div className={styles.content}>
         {shouldShowStarRating && rating > 0 ? (
-          <StarRating stars={rating} />
+          <StarRating rating={rating} />
         ) : (
           <Badge variant="inverse">Not Rated</Badge>
         )}

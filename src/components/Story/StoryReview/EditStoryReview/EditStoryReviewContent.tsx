@@ -1,18 +1,13 @@
 "use client";
 
-import { MinusIcon, PlusIcon } from "lucide-react";
 import { useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
-import styles from "./StoryLeaveReview.module.scss";
+import styles from "./EditStoryReview.module.scss";
 
 import { Button } from "@/components/ui/Button";
-import {
-  STAR_RATING_MAX,
-  STAR_RATING_MIN,
-  StarRating,
-} from "@/components/StarRating";
+import { STAR_RATING_MAX, StarRating } from "@/components/StarRating";
 import { Input } from "@/components/ui/Input";
 import { Form } from "@/components/Form";
 import { ActionSlot } from "@/components/ActionSlot";
@@ -22,30 +17,37 @@ import { useToastStore } from "@/stores";
 import { services } from "@/services";
 
 interface Props {
-  storyId: string;
+  reviewId: string;
+  reviewRating: number;
+  reviewComment: string;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const StoryLeaveReviewContent: React.FC<Props> = ({ storyId, setOpen }) => {
+const EditStoryReviewContent: React.FC<Props> = ({
+  reviewId,
+  reviewRating,
+  reviewComment,
+  setOpen,
+}) => {
   const router = useRouter();
   const pathName = usePathname();
   const searchParams = useSearchParams();
-  const [rating, setRating] = useState(STAR_RATING_MAX);
-  const [comment, setComment] = useState("");
+  const [rating, setRating] = useState(reviewRating);
+  const [comment, setComment] = useState(reviewComment);
   const addToast = useToastStore((s) => s.addToast);
 
   const mutation = useMutation({
-    mutationKey: ["post-review"],
-    mutationFn: services.storyReview.createStoryReview,
+    mutationKey: ["edit-story-review"],
+    mutationFn: services.storyReview.editStoryReview,
     onSuccess(data) {
-      let href = `${pathName}?view=${searchParams.get("view")}`;
+      let href = pathName;
 
       if (searchParams.get("view") === "tabs") {
-        href += `&tab=${searchParams.get("tab")}`;
+        href += `?view=tabs&tab=${searchParams.get("tab")}`;
       }
 
       addToast({
-        title: "Post review",
+        title: "Edit review",
         description: data.message,
       });
       setOpen(false);
@@ -53,7 +55,7 @@ const StoryLeaveReviewContent: React.FC<Props> = ({ storyId, setOpen }) => {
     },
     onError(error) {
       addToast({
-        title: "Error post review",
+        title: "Error edit review",
         description: error.message,
         variant: "error",
       });
@@ -62,31 +64,17 @@ const StoryLeaveReviewContent: React.FC<Props> = ({ storyId, setOpen }) => {
 
   function handleReview(e: React.FormEvent<HTMLFormElement>) {
     mutation.mutate({
-      stars: rating,
-      comment,
-      storyId,
+      reviewId,
+      data: {
+        stars: rating,
+        comment,
+      },
     });
-  }
-
-  function decreaseRating() {
-    setRating((prev) => (prev > STAR_RATING_MIN ? prev - 0.5 : prev));
-  }
-
-  function increaseRating() {
-    setRating((prev) => (prev < STAR_RATING_MAX ? prev + 0.5 : prev));
   }
 
   return (
     <div className={styles.content}>
-      <div className={styles.contentRatingContainer}>
-        <Button variant="inverse" size="icon" onClick={decreaseRating}>
-          <MinusIcon size={18} />
-        </Button>
-        <StarRating stars={rating} fixedWidth />
-        <Button variant="inverse" size="icon" onClick={increaseRating}>
-          <PlusIcon size={18} />
-        </Button>
-      </div>
+      <StarRating rating={rating} setRating={setRating} interactive />
       <Form onSubmit={handleReview}>
         <Input
           label="Your Comment"
@@ -100,7 +88,7 @@ const StoryLeaveReviewContent: React.FC<Props> = ({ storyId, setOpen }) => {
             className={styles.postButton}
             disabled={mutation.isPending}
           >
-            {mutation.isPending ? "Loading..." : "Post"}
+            {mutation.isPending ? "Loading..." : "Edit"}
           </Button>
         </ActionSlot>
       </Form>
@@ -108,4 +96,4 @@ const StoryLeaveReviewContent: React.FC<Props> = ({ storyId, setOpen }) => {
   );
 };
 
-export { StoryLeaveReviewContent };
+export { EditStoryReviewContent };

@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { PencilIcon } from "lucide-react";
 
-import styles from "./StoryLeaveReview.module.scss";
+import styles from "./EditStoryReview.module.scss";
 
 import { Button } from "@/components/ui/Button";
 import {
@@ -15,30 +16,43 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/Drawer";
-import { StoryLeaveReviewContent } from "./StoryLeaveReviewContent";
+import { EditStoryReviewContent } from "./EditStoryReviewContent";
 
 interface Props {
-  storyId: string;
+  reviewId: string;
+  reviewRating: number;
+  reviewComment: string;
 }
 
-const StoryLeaveReviewDrawer: React.FC<Props> = ({ storyId }) => {
+const EditStoryReviewDrawer: React.FC<Props> = ({
+  reviewId,
+  reviewRating,
+  reviewComment,
+}) => {
   const [open, setOpen] = useState(false);
 
   return (
     <Drawer open={open} onOpenChange={setOpen} autoFocus>
       <div className={styles.triggerWrapper}>
         <DrawerTrigger asChild>
-          <Button>Leave a Review</Button>
+          <Button variant="inverse" size="icon">
+            <PencilIcon size={20} />
+          </Button>
         </DrawerTrigger>
       </div>
       <DrawerPortal>
         <DrawerOverlay />
         <DrawerContent className={styles.drawerContent}>
           <DrawerHeader>
-            <DrawerTitle>Leave a Review</DrawerTitle>
+            <DrawerTitle>Edit Review</DrawerTitle>
           </DrawerHeader>
           <DrawerBody className={styles.drawerBody}>
-            <StoryLeaveReviewContent storyId={storyId} setOpen={setOpen} />
+            <EditStoryReviewContent
+              reviewId={reviewId}
+              reviewRating={reviewRating}
+              reviewComment={reviewComment}
+              setOpen={setOpen}
+            />
           </DrawerBody>
         </DrawerContent>
       </DrawerPortal>
@@ -46,4 +60,4 @@ const StoryLeaveReviewDrawer: React.FC<Props> = ({ storyId }) => {
   );
 };
 
-export { StoryLeaveReviewDrawer };
+export { EditStoryReviewDrawer };

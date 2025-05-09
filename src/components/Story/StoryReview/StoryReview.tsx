@@ -1,6 +1,7 @@
 import Link from "next/link";
 import clsx from "clsx";
-import { PencilIcon, TrashIcon } from "lucide-react";
+import { PencilIcon } from "lucide-react";
+import dayjs from "dayjs";
 
 import styles from "./StoryReview.module.scss";
 
@@ -9,6 +10,8 @@ import { Separator } from "../../ui/Separator";
 import { P, Span } from "../../ui/Typography";
 import { Button } from "../../ui/Button";
 import { Badge } from "../../ui/Badge";
+import { DeleteStoryReview } from "./DeleteStoryReview";
+import { EditStoryReview } from "./EditStoryReview";
 
 interface StoryReviewType {
   _id: string;
@@ -17,6 +20,8 @@ interface StoryReviewType {
   storySlug: string;
   stars: number;
   comment: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 interface StoryReviewWithDetails extends StoryReviewType {
@@ -43,6 +48,8 @@ const StoryReview: React.FC<StoryReviewProps> = ({
   userName,
   userId,
   storyName,
+  createdAt,
+  updatedAt,
   className,
   shouldShowStoryNameBadge = false,
   shouldShowReadMoreLink = false,
@@ -54,28 +61,33 @@ const StoryReview: React.FC<StoryReviewProps> = ({
   return (
     <div className={clsx(styles.review, className)}>
       <div className={styles.reviewHeader}>
-        <Span
-          size="lg"
-          weight="bold"
-          variant={shouldHighlightUserName ? "primary" : "foreground"}
-        >
-          {userName}
-        </Span>
+        <div>
+          <Span
+            size="lg"
+            weight="bold"
+            variant={shouldHighlightUserName ? "primary" : "foreground"}
+          >
+            {userName || "DELETED USER"}
+          </Span>
+          <P size="sm">
+            {dayjs(createdAt).format("DD/MM/YYYY")}
+            {new Date(createdAt).getTime() !== new Date(updatedAt).getTime() &&
+              " (edited)"}
+          </P>
+        </div>
         <div className={styles.reviewHeaderEndContent}>
           {shouldShowEditButton && (
-            <Button variant="inverse" size="icon">
-              <PencilIcon size={20} />
-            </Button>
+            <EditStoryReview
+              reviewId={_id}
+              reviewRating={stars}
+              reviewComment={comment}
+            />
           )}
-          {shouldShowDeleteButton && (
-            <Button variant="destructive" size="icon">
-              <TrashIcon size={20} />
-            </Button>
-          )}
+          {shouldShowDeleteButton && <DeleteStoryReview reviewId={_id} />}
           {shouldShowStoryNameBadge && <Badge>{storyName}</Badge>}
         </div>
       </div>
-      <StarRating stars={stars} />
+      <StarRating rating={stars} />
       <P>{comment}</P>
       {shouldShowReadMoreLink && (
         <Link

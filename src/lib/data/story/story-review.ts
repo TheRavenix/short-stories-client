@@ -8,12 +8,17 @@ interface GetStoryReviewsByStoryIdResponse {
   data: StoryReviewWithDetails[];
 }
 
+interface GetStoryReviewByIdResponse {
+  success: boolean;
+  data: StoryReviewWithDetails;
+}
+
 async function getStoryReviewsByStoryId(
   storyId: string
 ): Promise<GetStoryReviewsByStoryIdResponse> {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/story-reviews/${storyId}`
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/story-reviews/story/${storyId}`
     );
     const responseData: GetStoryReviewsByStoryIdResponse & ErrorResponse =
       await response.json();
@@ -32,4 +37,32 @@ async function getStoryReviewsByStoryId(
   }
 }
 
-export { getStoryReviewsByStoryId, type GetStoryReviewsByStoryIdResponse };
+async function getStoryReviewById(
+  reviewId: string
+): Promise<GetStoryReviewByIdResponse> {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/story-reviews/${reviewId}`
+    );
+    const responseData: GetStoryReviewByIdResponse & ErrorResponse =
+      await response.json();
+
+    if (!response.ok || !responseData.success) {
+      throw new Error(responseData.message);
+    }
+
+    return responseData;
+  } catch (error) {
+    if (isNextJSFetchError(error)) {
+      throw new Error(NETWORK_ERROR);
+    }
+
+    throw error;
+  }
+}
+
+export {
+  getStoryReviewsByStoryId,
+  getStoryReviewById,
+  type GetStoryReviewsByStoryIdResponse,
+};

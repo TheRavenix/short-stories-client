@@ -9,7 +9,7 @@ import { Show } from "@/components/Show";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";
 import { P } from "@/components/ui/Typography";
 import { Stats } from "@/components/Stats";
-import { StoryLeaveReview } from "../../StoryLeaveReview";
+import { CreateStoryReview } from "../../StoryReview";
 import { StoryReview, StoryReviewWithDetails } from "../../StoryReview";
 import { Skeleton } from "@/components/Skeleton";
 
@@ -68,7 +68,7 @@ const StoryReviewsCard: React.FC<Props> = ({ id, name, reviews }) => {
         )}
       </CardHeader>
       <CardContent className={styles.reviewsCardContent}>
-        {!userReview && <StoryLeaveReview storyId={id} />}
+        {!userReview && <CreateStoryReview storyId={id} />}
         <Show
           when={reviews.length > 0}
           fallback={

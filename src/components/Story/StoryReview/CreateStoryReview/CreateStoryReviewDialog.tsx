@@ -3,35 +3,35 @@
 import { XIcon } from "lucide-react";
 import { useState } from "react";
 
-import styles from "./StoryLeaveReview.module.scss";
+import styles from "./CreateStoryReview.module.scss";
 
-import { Button } from "../../ui/Button";
+import { Button } from "../../../ui/Button";
 import {
   Dialog,
   DialogClose,
   DialogContent,
   DialogTitle,
   DialogTrigger,
-} from "../../ui/Dialog";
-import { StoryLeaveReviewContent } from "./StoryLeaveReviewContent";
+} from "../../../ui/Dialog";
+import { CreateStoryReviewContent } from "./CreateStoryReviewContent";
 
 interface Props {
   storyId: string;
 }
 
-const StoryLeaveReviewDialog: React.FC<Props> = ({ storyId }) => {
+const CreateStoryReviewDialog: React.FC<Props> = ({ storyId }) => {
   const [open, setOpen] = useState(false);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <div className={styles.triggerWrapper}>
         <DialogTrigger asChild>
-          <Button>Leave a Review</Button>
+          <Button>Add a Review</Button>
         </DialogTrigger>
       </div>
       <DialogContent>
-        <DialogTitle>Leave a Review</DialogTitle>
-        <StoryLeaveReviewContent storyId={storyId} setOpen={setOpen} />
+        <DialogTitle>Add a Review</DialogTitle>
+        <CreateStoryReviewContent storyId={storyId} setOpen={setOpen} />
         <DialogClose asChild>
           <XIcon size={20} />
         </DialogClose>
@@ -40,4 +40,4 @@ const StoryLeaveReviewDialog: React.FC<Props> = ({ storyId }) => {
   );
 };
 
-export { StoryLeaveReviewDialog };
+export { CreateStoryReviewDialog };

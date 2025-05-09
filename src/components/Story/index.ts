@@ -4,7 +4,7 @@ export * from "./StoryReview";
 export * from "./cards";
 export * from "./buttons";
 export * from "./story-view";
-export * from "./StoryLeaveReview";
+export * from "./StoryReview/CreateStoryReview";
 export * from "./StoryLayout";
 export * from "./story-read";
 export * from "./forms";
