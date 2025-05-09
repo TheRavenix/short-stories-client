@@ -1,53 +1,49 @@
-import { StarHalfIcon, StarIcon } from "lucide-react";
-import clsx from "clsx";
+"use client";
+
+import { StarIcon } from "lucide-react";
 
 import styles from "./StarRating.module.scss";
+import clsx from "clsx";
 
-import { P } from "../ui/Typography";
-
-interface Props {
-  stars: number;
-  fixedWidth?: boolean;
+interface StarRatingProps {
+  rating: number;
+  setRating?: React.Dispatch<React.SetStateAction<number>>;
+  interactive?: boolean;
 }
 
-const STAR_RATING_MIN = 1;
-const STAR_RATING_MAX = 5;
+const STAR_RATING_LIST = [1, 2, 3, 4, 5] as const;
+const STAR_RATING_MIN = Math.min(...STAR_RATING_LIST);
+const STAR_RATING_MAX = Math.max(...STAR_RATING_LIST);
 
-const StarRating: React.FC<Props> = ({ stars, fixedWidth = false }) => {
-  const starsDecimal = stars - Math.floor(stars);
-  const finalStarsDecimal =
-    starsDecimal < 0.25
-      ? 0
-      : starsDecimal >= 0.25 && starsDecimal < 0.75
-      ? 0.5
-      : 1;
-  const finalStars = Number(Math.floor(stars) + finalStarsDecimal).toFixed(1);
+const StarRating: React.FC<StarRatingProps> = ({
+  rating,
+  setRating,
+  interactive = false,
+}) => {
+  const roundedStars = Math.round(rating);
+
+  function handleInteractivity(starRating: number) {
+    if (!interactive || typeof setRating !== "function") return;
+
+    setRating(starRating);
+  }
 
   return (
-    <div
-      className={clsx(
-        styles.starRating,
-        fixedWidth && styles.starRatingFixedWidth
-      )}
-    >
-      <div className={styles.starRatingStars}>
-        {Array(Number(Math.floor(stars)))
-          .fill(0)
-          .map((_, i) => (
-            <StarIcon key={i} size={20} className={styles.icon} />
-          ))}
-        {finalStarsDecimal === 0.5 && (
-          <StarHalfIcon size={20} className={styles.icon} />
-        )}
-        {finalStarsDecimal === 1 && (
-          <StarIcon size={20} className={styles.icon} />
-        )}
-      </div>
-      <P size="lg" weight="bold">
-        {finalStars}
-      </P>
+    <div className={styles.starRatingStars}>
+      {STAR_RATING_LIST.map((starRating, i) => (
+        <StarIcon
+          key={i}
+          size={22}
+          className={clsx({
+            [styles.starred]: starRating <= roundedStars,
+            [styles.unstarred]: starRating > roundedStars,
+          })}
+          onClick={() => handleInteractivity(starRating)}
+          onMouseEnter={() => handleInteractivity(starRating)}
+        />
+      ))}
     </div>
   );
 };
 
-export { StarRating, STAR_RATING_MIN, STAR_RATING_MAX };
+export { StarRating, type StarRatingProps, STAR_RATING_MIN, STAR_RATING_MAX };
