@@ -1,3 +1,5 @@
+"use client";
+
 import { MessageCircleIcon } from "lucide-react";
 
 import styles from "./StoryReviewsCard.module.scss";
@@ -9,6 +11,9 @@ import { P } from "@/components/ui/Typography";
 import { Stats } from "@/components/Stats";
 import { StoryLeaveReview } from "../../StoryLeaveReview";
 import { StoryReview, StoryReviewWithDetails } from "../../StoryReview";
+import { Skeleton } from "@/components/Skeleton";
+
+import { useProfile } from "@/hooks";
 
 interface Props {
   id: string;
@@ -17,6 +22,29 @@ interface Props {
 }
 
 const StoryReviewsCard: React.FC<Props> = ({ id, name, reviews }) => {
+  const { profile, isLoading } = useProfile();
+  const userReview = reviews.find((r) => r.userId === profile?._id);
+
+  if (isLoading) {
+    return (
+      <Card>
+        <CardHeader>
+          <P
+            size="xl"
+            weight="semi-bold"
+            transform="capitalize"
+            className={styles.uiFont}
+          >
+            {name}'s reviews
+          </P>
+        </CardHeader>
+        <CardContent>
+          <Skeleton type="card" height="125px" />
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <Card>
       <CardHeader className={styles.reviewsCardHeader}>
@@ -40,7 +68,7 @@ const StoryReviewsCard: React.FC<Props> = ({ id, name, reviews }) => {
         )}
       </CardHeader>
       <CardContent className={styles.reviewsCardContent}>
-        <StoryLeaveReview storyId={id} />
+        {!userReview && <StoryLeaveReview storyId={id} />}
         <Show
           when={reviews.length > 0}
           fallback={
@@ -51,9 +79,23 @@ const StoryReviewsCard: React.FC<Props> = ({ id, name, reviews }) => {
           }
         >
           <div className={styles.reviewsCardList}>
-            {reviews.map((review) => (
-              <StoryReview key={review._id} {...review} />
-            ))}
+            {userReview && (
+              <StoryReview
+                {...userReview}
+                shouldShowEditButton
+                shouldShowDeleteButton
+                shouldHighlightUserName
+              />
+            )}
+            {reviews
+              .filter((r) => r.userId !== profile?._id)
+              .map((review) => (
+                <StoryReview
+                  key={review._id}
+                  {...review}
+                  shouldShowDeleteButton={profile?.role === "admin"}
+                />
+              ))}
           </div>
         </Show>
       </CardContent>

@@ -11,6 +11,12 @@
   align-items: center;
 }
 
+.reviewHeaderEndContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
 .reviewUserName {
   &[data-highlighted="true"] {
     color: var(--primary);

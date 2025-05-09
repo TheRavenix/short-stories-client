@@ -1,5 +1,6 @@
 import Link from "next/link";
 import clsx from "clsx";
+import { PencilIcon, TrashIcon } from "lucide-react";
 
 import styles from "./StoryReview.module.scss";
 
@@ -23,14 +24,17 @@ interface StoryReviewWithDetails extends StoryReviewType {
   storyName: string;
 }
 
-interface Props extends StoryReviewWithDetails {
+interface StoryReviewProps extends StoryReviewWithDetails {
   className?: string;
   shouldShowStoryNameBadge?: boolean;
   shouldShowReadMoreLink?: boolean;
   shouldShowSeparator?: boolean;
+  shouldShowEditButton?: boolean;
+  shouldShowDeleteButton?: boolean;
+  shouldHighlightUserName?: boolean;
 }
 
-const StoryReview: React.FC<Props> = ({
+const StoryReview: React.FC<StoryReviewProps> = ({
   _id,
   comment,
   stars,
@@ -43,6 +47,9 @@ const StoryReview: React.FC<Props> = ({
   shouldShowStoryNameBadge = false,
   shouldShowReadMoreLink = false,
   shouldShowSeparator = true,
+  shouldShowEditButton = false,
+  shouldShowDeleteButton = false,
+  shouldHighlightUserName = false,
 }) => {
   return (
     <div className={clsx(styles.review, className)}>
@@ -50,13 +57,23 @@ const StoryReview: React.FC<Props> = ({
         <Span
           size="lg"
           weight="bold"
-          data-review-user-id={userId}
-          data-highlighted={false}
-          className={styles.reviewUserName}
+          variant={shouldHighlightUserName ? "primary" : "foreground"}
         >
           {userName}
         </Span>
-        {shouldShowStoryNameBadge && <Badge>{storyName}</Badge>}
+        <div className={styles.reviewHeaderEndContent}>
+          {shouldShowEditButton && (
+            <Button variant="inverse" size="icon">
+              <PencilIcon size={20} />
+            </Button>
+          )}
+          {shouldShowDeleteButton && (
+            <Button variant="destructive" size="icon">
+              <TrashIcon size={20} />
+            </Button>
+          )}
+          {shouldShowStoryNameBadge && <Badge>{storyName}</Badge>}
+        </div>
       </div>
       <StarRating stars={stars} />
       <P>{comment}</P>
@@ -75,4 +92,9 @@ const StoryReview: React.FC<Props> = ({
   );
 };
 
-export { StoryReview, type StoryReviewType, type StoryReviewWithDetails };
+export {
+  StoryReview,
+  type StoryReviewType,
+  type StoryReviewWithDetails,
+  type StoryReviewProps,
+};
