@@ -9,7 +9,9 @@ const StoryCardLayout: React.FC<Props> = ({ storyContent }) => {
   return (
     <Card>
       <CardContent>
-        <StoryContent {...storyContent} />
+        {storyContent.content.map((contentText, index) => (
+          <StoryContent contentText={contentText} index={index} />
+        ))}
       </CardContent>
     </Card>
   );

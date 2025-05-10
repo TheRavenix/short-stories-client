@@ -48,7 +48,9 @@ const StoryBookLayout: React.FC<Props> = ({ id, storyId, storyContent }) => {
         </Button>
       </div>
       <div className={styles.page}>
-        <StoryContent content={contentList[page]} />
+        {contentList[page].map((contentText, index) => (
+          <StoryContent contentText={contentText} index={index} />
+        ))}
       </div>
       <div className={styles.pageProgress}>
         <P variant="gray">
