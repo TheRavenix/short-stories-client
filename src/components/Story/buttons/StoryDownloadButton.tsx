@@ -24,7 +24,7 @@ const StoryDownloadButton: React.FC<Props> = ({ storyId, storyName }) => {
     mutationKey: ["download-story"],
     mutationFn: services.story.downloadStory,
     onSuccess(data) {
-      const url = window.URL.createObjectURL(new Blob([data.data]));
+      const url = window.URL.createObjectURL(new Blob([data]));
       downloadFile(url, `${storyName}.pdf`);
       window.URL.revokeObjectURL(url);
     },

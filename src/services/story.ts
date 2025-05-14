@@ -23,11 +23,6 @@ interface EditStoryResponse {
   };
 }
 
-interface DownloadStoryResponse {
-  success: boolean;
-  data: Buffer<ArrayBuffer>;
-}
-
 class StoryService {
   async createStory(data: CreateStoryData): Promise<MessageResponse> {
     try {
@@ -87,7 +82,7 @@ class StoryService {
     }
   }
 
-  async downloadStory(storyId: string): Promise<DownloadStoryResponse> {
+  async downloadStory(storyId: string): Promise<Buffer<ArrayBuffer>> {
     try {
       const response = await axiosClient.post(`/stories/download/${storyId}`);
       return response.data;
