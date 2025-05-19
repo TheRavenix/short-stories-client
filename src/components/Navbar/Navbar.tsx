@@ -10,7 +10,7 @@ import { NavbarSearch } from "./NavbarSearch";
 import { NavbarAuthActions } from "./NavbarAuthActions";
 import { ThemeToggle } from "../Theme";
 
-import { navBarLinks } from "@/data";
+import { navBarLinks } from "@/data/links";
 
 interface Props {}
 

@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/Input";
 import { ActionSlot } from "@/components/ActionSlot";
 import { Form } from "@/components/Form";
 
-import { useToastStore } from "@/stores";
+import { useToastStore } from "@/stores/toast";
 
 import { ChangePasswordData } from "@/services/user";
 import { services } from "@/services";

@@ -14,7 +14,7 @@ import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import { Show } from "@/components/Show";
 import { BackTopButton } from "@/components/buttons";
 
-import { getStoryBySlug, getStoryReviewsByStoryId } from "@/lib";
+import { getStoryBySlug, getStoryReviewsByStoryId } from "@/lib/data/story";
 
 interface Props {
   params: Promise<{ slug: string }>;

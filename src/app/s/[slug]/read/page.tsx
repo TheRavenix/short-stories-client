@@ -13,7 +13,7 @@ import { SeparatorHighlighter } from "@/components/SeparatorHighlighter";
 import { ToggleNavbarFixed } from "@/components/Navbar";
 import { BackTopButton } from "@/components/buttons";
 
-import { getStoryBySlug, getStoryContentByStoryId } from "@/lib";
+import { getStoryBySlug, getStoryContentByStoryId } from "@/lib/data/story";
 
 interface Props {
   params: Promise<{ slug: string }>;

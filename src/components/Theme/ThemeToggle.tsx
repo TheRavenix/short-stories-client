@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import { Button } from "../ui/Button";
 
-import { useThemeStore } from "@/stores";
+import { useThemeStore } from "@/stores/theme";
 
 interface Props {}
 

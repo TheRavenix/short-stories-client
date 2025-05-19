@@ -8,7 +8,7 @@ import { H3, P } from "../ui/Typography";
 import { NavbarLink } from "../Navbar";
 import { Button } from "../ui/Button";
 
-import { footerLinks } from "@/data";
+import { footerLinks } from "@/data/links";
 
 interface Props {}
 

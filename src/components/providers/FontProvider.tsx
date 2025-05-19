@@ -2,7 +2,7 @@
 
 import { PropsWithChildren, useEffect } from "react";
 
-import { useFontStore } from "@/stores";
+import { useFontStore } from "@/stores/font";
 
 interface Props extends PropsWithChildren {}
 

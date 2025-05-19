@@ -1,4 +1,4 @@
-import { axiosClient } from "@/utils";
+import { axiosClient } from "@/utils/axios-client";
 
 type ProFontType = Record<string, Record<string, string>>;
 

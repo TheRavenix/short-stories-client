@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from "../ui/Select";
 
-import { useThemeStore } from "@/stores";
+import { useThemeStore } from "@/stores/theme";
 
 interface Props {}
 

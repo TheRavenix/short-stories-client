@@ -1,6 +1,6 @@
 "use client";
 
-import { useRedirectIfAuthenticated } from "@/hooks";
+import { useRedirectIfAuthenticated } from "@/hooks/auth";
 
 interface Props {}
 

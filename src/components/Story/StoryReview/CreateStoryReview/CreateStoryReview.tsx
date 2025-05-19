@@ -5,8 +5,8 @@ import styles from "./CreateStoryReview.module.scss";
 import { CreateStoryReviewDrawer } from "./CreateStoryReviewDrawer";
 import { CreateStoryReviewDialog } from "./CreateStoryReviewDialog";
 
-import { useIsMobile } from "@/hooks";
-import { useAuthStore } from "@/stores";
+import { useIsMobile } from "@/hooks/media";
+import { useAuthStore } from "@/stores/auth";
 
 interface Props {
   storyId: string;

@@ -1,7 +1,7 @@
 import { FeaturedStoriesSection } from "../FeaturedStoriesSection";
 import { FeaturedReviewsSection } from "../FeaturedReviewsSection";
 
-import { getFeaturedStories } from "@/lib";
+import { getFeaturedStories } from "@/lib/data/story";
 
 interface Props {}
 

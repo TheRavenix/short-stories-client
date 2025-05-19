@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/Input";
 import { Form } from "@/components/Form";
 import { ActionSlot } from "@/components/ActionSlot";
 
-import { useToastStore } from "@/stores";
+import { useToastStore } from "@/stores/toast";
 
 import { services } from "@/services";
 

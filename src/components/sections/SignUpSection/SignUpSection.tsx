@@ -5,8 +5,8 @@ import styles from "./SignUpSection.module.scss";
 import { SignUpForm } from "../../forms";
 import { H1 } from "../../ui/Typography";
 
-import { useAuthStore } from "@/stores";
-import { useProfile } from "@/hooks";
+import { useAuthStore } from "@/stores/auth";
+import { useProfile } from "@/hooks/profile";
 import { Skeleton } from "@/components/Skeleton";
 
 interface Props {}

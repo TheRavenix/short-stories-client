@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 
 import { Button } from "@/components/ui/Button";
 
-import { useToastStore } from "@/stores";
+import { useToastStore } from "@/stores/toast";
 
 import { services } from "@/services";
 

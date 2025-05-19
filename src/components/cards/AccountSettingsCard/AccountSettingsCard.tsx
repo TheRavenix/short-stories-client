@@ -10,8 +10,8 @@ import { DeleteAccount } from "./DeleteAccount";
 import { SignOut } from "./SignOut";
 import { Skeleton } from "@/components/Skeleton";
 
-import { useAuthStore } from "@/stores";
-import { useProfile } from "@/hooks";
+import { useAuthStore } from "@/stores/auth";
+import { useProfile } from "@/hooks/profile";
 
 interface Props {}
 

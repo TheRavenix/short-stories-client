@@ -8,7 +8,7 @@ import styles from "./Navbar.module.scss";
 
 import { NavbarLink } from "./NavbarLink";
 
-import { useAuthStore } from "@/stores";
+import { useAuthStore } from "@/stores/auth";
 
 type Props = Omit<LinkProps, "href"> &
   Omit<ComponentProps<"a">, "children"> & {};

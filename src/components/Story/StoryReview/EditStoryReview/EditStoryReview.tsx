@@ -5,8 +5,8 @@ import styles from "./EditStoryReview.module.scss";
 import { EditStoryReviewDrawer } from "./EditStoryReviewDrawer";
 import { EditStoryReviewDialog } from "./EditStoryReviewDialog";
 
-import { useIsMobile } from "@/hooks";
-import { useAuthStore } from "@/stores";
+import { useIsMobile } from "@/hooks/media";
+import { useAuthStore } from "@/stores/auth";
 
 interface Props {
   reviewId: string;

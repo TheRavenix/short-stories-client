@@ -20,8 +20,8 @@ import {
 } from "@/components/ui/Drawer";
 import { NavbarDrawerAuthLinks } from "./NavbarDrawerAuthLinks";
 
-import { useAuthStore } from "@/stores";
-import { useProfile } from "@/hooks";
+import { useAuthStore } from "@/stores/auth";
+import { useProfile } from "@/hooks/profile";
 
 import { navBarLinks } from "../Navbar";
 

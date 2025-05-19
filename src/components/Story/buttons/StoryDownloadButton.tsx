@@ -5,10 +5,11 @@ import { useMutation } from "@tanstack/react-query";
 
 import { Button } from "@/components/ui/Button";
 
-import { useAuthStore, useToastStore } from "@/stores";
+import { useAuthStore } from "@/stores/auth";
+import { useToastStore } from "@/stores/toast";
 
 import { services } from "@/services";
-import { downloadFile } from "@/utils";
+import { downloadFile } from "@/utils/download-file";
 
 interface Props {
   storyId: string;

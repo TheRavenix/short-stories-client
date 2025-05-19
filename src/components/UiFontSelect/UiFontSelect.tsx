@@ -13,10 +13,10 @@ import {
   SelectValue,
 } from "@/components/ui/Select";
 
-import { useFontStore } from "@/stores";
-import { useProfile } from "@/hooks";
+import { useFontStore } from "@/stores/font";
+import { useProfile } from "@/hooks/profile";
 
-import { removeHyphen, capitalize } from "@/utils";
+import { removeHyphen, capitalize } from "@/utils/text";
 import { services } from "@/services";
 
 interface Props extends SelectProps {}

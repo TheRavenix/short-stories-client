@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/Select";
 
-import { useStoryReadStore } from "@/stores";
+import { useStoryReadStore } from "@/stores/story";
 
 interface Props {}
 

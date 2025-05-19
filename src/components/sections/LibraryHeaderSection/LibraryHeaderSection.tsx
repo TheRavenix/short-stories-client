@@ -7,7 +7,7 @@ import styles from "./LibraryHeaderSection.module.scss";
 import { H1 } from "@/components/ui/Typography";
 import { Button } from "@/components/ui/Button";
 
-import { useProfile } from "@/hooks";
+import { useProfile } from "@/hooks/profile";
 
 interface Props {}
 

@@ -3,7 +3,8 @@
 import { DeleteStoryDialog } from "./DeleteStoryDialog";
 import { DeleteStoryDrawer } from "./DeleteStoryDrawer";
 
-import { useIsMobile, useProfile } from "@/hooks";
+import { useIsMobile } from "@/hooks/media";
+import { useProfile } from "@/hooks/profile";
 
 interface Props {
   storyId: string;

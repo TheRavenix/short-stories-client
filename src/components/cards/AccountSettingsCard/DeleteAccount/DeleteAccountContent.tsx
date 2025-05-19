@@ -11,8 +11,8 @@ import { P, Span } from "@/components/ui/Typography";
 import { ActionSlot } from "@/components/ActionSlot";
 import { Form } from "@/components/Form";
 
-import { useProfile } from "@/hooks";
-import { useToastStore } from "@/stores";
+import { useProfile } from "@/hooks/profile";
+import { useToastStore } from "@/stores/toast";
 
 import { services } from "@/services";
 

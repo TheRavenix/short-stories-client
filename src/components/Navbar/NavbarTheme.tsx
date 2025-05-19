@@ -4,7 +4,7 @@ import styles from "./Navbar.module.scss";
 
 import { ThemeSelect, ThemeToggle } from "../Theme";
 
-import { useAuthStore } from "@/stores";
+import { useAuthStore } from "@/stores/auth";
 
 interface Props {}
 

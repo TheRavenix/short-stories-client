@@ -7,7 +7,7 @@ import styles from "./StoryViewToggle.module.scss";
 
 import { Button } from "../../../ui/Button";
 
-import { useStoryStore } from "@/stores";
+import { useStoryStore } from "@/stores/story";
 
 interface Props {
   slug: string;

@@ -7,7 +7,7 @@ import styles from "./NavbarSearch.module.scss";
 
 import { Button } from "@/components/ui/Button";
 
-import { useSearchStore } from "@/stores";
+import { useSearchStore } from "@/stores/search";
 import { ActionSlot } from "@/components/ActionSlot";
 
 interface Props {

@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/Input";
 import { P, Span } from "@/components/ui/Typography";
 import { ActionSlot } from "@/components/ActionSlot";
 
-import { useToastStore } from "@/stores";
+import { useToastStore } from "@/stores/toast";
 
 import { services } from "@/services";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";

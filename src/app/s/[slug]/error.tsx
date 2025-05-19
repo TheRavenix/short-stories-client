@@ -7,7 +7,7 @@ import styles from "./page.module.scss";
 import { Callout } from "@/components/Callout";
 import { Container } from "@/components/ui/Container";
 
-import { useToastStore } from "@/stores";
+import { useToastStore } from "@/stores/toast";
 
 interface Props {
   error: Error;

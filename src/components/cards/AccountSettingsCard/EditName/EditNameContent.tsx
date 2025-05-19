@@ -9,8 +9,8 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { ActionSlot } from "@/components/ActionSlot";
 
-import { useProfile } from "@/hooks";
-import { useToastStore } from "@/stores";
+import { useProfile } from "@/hooks/profile";
+import { useToastStore } from "@/stores/toast";
 
 import { services } from "@/services";
 import { Form } from "@/components/Form";

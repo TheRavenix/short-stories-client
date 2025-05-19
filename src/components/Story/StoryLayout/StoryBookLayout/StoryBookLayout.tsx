@@ -16,7 +16,7 @@ import {
   SliderTrack,
 } from "@/components/ui/Slider";
 
-import { chunkArray } from "@/utils";
+import { chunkArray } from "@/utils/chunk-array";
 
 interface Props {
   id: string;

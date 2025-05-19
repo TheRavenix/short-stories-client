@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/Button";
 
-import { useProfile } from "@/hooks";
+import { useProfile } from "@/hooks/profile";
 
 interface Props {
   storySlug: string;

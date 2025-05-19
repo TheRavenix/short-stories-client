@@ -15,9 +15,9 @@ import {
   SelectValue,
 } from "@/components/ui/Select";
 
-import { useSearchStore } from "@/stores";
+import { useSearchStore } from "@/stores/search";
 
-import { FILTER_DEFAULT_TIMEOUT } from "@/constants";
+import { FILTER_DEFAULT_TIMEOUT } from "@/constants/filter";
 
 interface Props {}
 

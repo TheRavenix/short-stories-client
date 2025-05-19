@@ -3,7 +3,7 @@
 import { SettingsCardItem } from "@/components/cards/SettingsCard";
 import { Button } from "@/components/ui/Button";
 
-import { useProfile } from "@/hooks";
+import { useProfile } from "@/hooks/profile";
 
 interface Props {}
 

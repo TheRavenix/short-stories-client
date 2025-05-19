@@ -2,7 +2,7 @@
 
 import { Switch } from "@/components/ui/Switch";
 
-import { useStoryReadStore } from "@/stores";
+import { useStoryReadStore } from "@/stores/story";
 
 interface Props {}
 

@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/Button";
 import { P } from "@/components/ui/Typography";
 import { Form } from "@/components/Form";
 
-import { useToastStore } from "@/stores";
+import { useToastStore } from "@/stores/toast";
 
 import { SignUpData } from "@/services/auth";
 import { services } from "@/services";

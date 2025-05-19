@@ -6,10 +6,10 @@ import styles from "./Navbar.module.scss";
 
 import { Button } from "../ui/Button";
 
-import { useAuthStore } from "@/stores";
-import { useProfile } from "@/hooks";
+import { useAuthStore } from "@/stores/auth";
+import { useProfile } from "@/hooks/profile";
 
-import { authLinks } from "@/data";
+import { authLinks } from "@/data/links";
 import { Skeleton } from "../Skeleton";
 
 interface Props {}

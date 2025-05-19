@@ -2,10 +2,10 @@
 
 import { useEffect } from "react";
 
-import { useProfile } from "@/hooks";
-import { useAuthStore } from "@/stores";
+import { useProfile } from "@/hooks/profile";
+import { useAuthStore } from "@/stores/auth";
 
-import { GetStoryReviewsByStoryIdResponse } from "@/lib";
+import { GetStoryReviewsByStoryIdResponse } from "@/lib/data/story";
 
 interface Props {
   storyReviewsResponse: GetStoryReviewsByStoryIdResponse;

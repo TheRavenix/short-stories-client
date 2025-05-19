@@ -7,7 +7,7 @@ import { H2, H3, P, Span } from "../ui/Typography";
 import { Button } from "../ui/Button";
 import { Show } from "../Show";
 
-import { PlanFeature } from "@/data";
+import { PlanFeature } from "@/data/plans";
 
 type PlanType = "free" | "pro";
 

@@ -3,7 +3,7 @@
 import { ChangePasswordDialog } from "./ChangePasswordDialog";
 import { ChangePasswordDrawer } from "./ChangePasswordDrawer";
 
-import { useIsMobile } from "@/hooks";
+import { useIsMobile } from "@/hooks/media";
 
 interface Props {}
 

@@ -7,7 +7,7 @@ import { EmptyState } from "@/components/EmptyState";
 import { Story } from "@/components/Story";
 import { LibraryLoadMoreButton } from "@/components/buttons";
 
-import { getLibraryStories, GetLibraryStoriesQuery } from "@/lib";
+import { getLibraryStories, GetLibraryStoriesQuery } from "@/lib/data/story";
 
 interface Props extends GetLibraryStoriesQuery {}
 

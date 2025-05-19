@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 
-import { useToastStore } from "@/stores";
+import { useToastStore } from "@/stores/toast";
 
 const CLIPBOARD_DURATION_MS = 2000;
 

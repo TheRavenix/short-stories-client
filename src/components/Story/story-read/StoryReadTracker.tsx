@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { useMutation } from "@tanstack/react-query";
 
 import { services } from "@/services";
-import { STORY_READ_TIMEOUT_MS } from "@/constants";
+import { STORY_READ_TIMEOUT_MS } from "@/constants/story";
 
 interface Props {
   storyId: string;

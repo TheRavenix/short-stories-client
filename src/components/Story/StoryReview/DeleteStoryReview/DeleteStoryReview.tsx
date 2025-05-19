@@ -3,7 +3,7 @@
 import { DeleteStoryReviewDialog } from "./DeleteStoryReviewDialog";
 import { DeleteStoryReviewDrawer } from "./DeleteStoryReviewDrawer";
 
-import { useIsMobile } from "@/hooks";
+import { useIsMobile } from "@/hooks/media";
 
 interface Props {
   reviewId: string;

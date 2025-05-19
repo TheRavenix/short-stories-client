@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/Toast";
 import { Button } from "../ui/Button";
 
-import { useToastStore } from "@/stores";
+import { useToastStore } from "@/stores/toast";
 
 interface Props extends PropsWithChildren {}
 

@@ -6,7 +6,7 @@ import clsx from "clsx";
 
 import styles from "./Toast.module.scss";
 
-import { ToastVariant } from "@/stores";
+import { ToastVariant } from "@/stores/toast";
 
 const ToastProvider = ToastPrimitive.Provider;
 ToastProvider.displayName = ToastPrimitive.Provider.displayName;

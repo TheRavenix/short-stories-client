@@ -3,7 +3,7 @@
 import { DeleteAccountDialog } from "./DeleteAccountDialog";
 import { DeleteAccountDrawer } from "./DeleteAccountDrawer";
 
-import { useIsMobile } from "@/hooks";
+import { useIsMobile } from "@/hooks/media";
 
 interface Props {}
 

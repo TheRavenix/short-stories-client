@@ -5,8 +5,8 @@ import { StoryBookLayout } from "./StoryBookLayout";
 import { StoryContentType } from "../StoryContent";
 import { StoryCardLayout } from "./StoryCardLayout";
 
-import { useProfile } from "@/hooks";
-import { useStoryStore } from "@/stores";
+import { useProfile } from "@/hooks/profile";
+import { useStoryStore } from "@/stores/story";
 
 interface Props {
   id: string;

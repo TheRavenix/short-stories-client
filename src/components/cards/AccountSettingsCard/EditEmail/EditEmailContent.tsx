@@ -10,8 +10,8 @@ import { Input } from "@/components/ui/Input";
 import { ActionSlot } from "@/components/ActionSlot";
 import { Form } from "@/components/Form";
 
-import { useProfile } from "@/hooks";
-import { useToastStore } from "@/stores";
+import { useProfile } from "@/hooks/profile";
+import { useToastStore } from "@/stores/toast";
 
 import { EditEmailData } from "@/services/user";
 import { services } from "@/services";

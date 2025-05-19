@@ -13,7 +13,7 @@ import { CreateStoryReview } from "../../StoryReview";
 import { StoryReview, StoryReviewWithDetails } from "../../StoryReview";
 import { Skeleton } from "@/components/Skeleton";
 
-import { useProfile } from "@/hooks";
+import { useProfile } from "@/hooks/profile";
 
 interface Props {
   id: string;

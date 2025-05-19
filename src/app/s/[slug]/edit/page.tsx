@@ -5,7 +5,7 @@ import { CompactContainer } from "@/components/ui/Container";
 import { AdminPageGuard } from "@/components/guards";
 import { EditStoryForm, StoryBackButton } from "@/components/Story";
 
-import { getStoryBySlug, getStoryContentByStoryId } from "@/lib";
+import { getStoryBySlug, getStoryContentByStoryId } from "@/lib/data/story";
 
 interface Props {
   params: Promise<{ slug: string }>;

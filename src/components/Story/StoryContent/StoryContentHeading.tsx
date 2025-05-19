@@ -2,9 +2,9 @@
 
 import { H3 } from "@/components/ui/Typography";
 
-import { useStoryReadStore } from "@/stores";
+import { useStoryReadStore } from "@/stores/story";
 
-import { romanize } from "@/utils";
+import { romanize } from "@/utils/romanize";
 
 interface Props {
   index: number;

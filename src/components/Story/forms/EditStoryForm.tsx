@@ -16,12 +16,12 @@ import { Button } from "@/components/ui/Button";
 import { Skeleton } from "@/components/Skeleton";
 import { Form } from "@/components/Form";
 
-import { useProfile } from "@/hooks";
-import { useToastStore } from "@/stores";
+import { useProfile } from "@/hooks/profile";
+import { useToastStore } from "@/stores/toast";
 
 import { services } from "@/services";
 import { EditStoryData } from "@/services/story";
-import { joinByNewLine, splitByNewLine } from "@/utils";
+import { joinByNewLine, splitByNewLine } from "@/utils/text";
 
 import { StoryType } from "../Story";
 import { StoryContentType } from "../StoryContent";

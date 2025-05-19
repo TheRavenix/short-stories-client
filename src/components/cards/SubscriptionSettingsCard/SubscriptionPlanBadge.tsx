@@ -4,7 +4,7 @@ import styles from "./SubscriptionSettingsCard.module.scss";
 
 import { Badge } from "../../ui/Badge";
 
-import { useProfile } from "@/hooks";
+import { useProfile } from "@/hooks/profile";
 
 interface Props {}
 

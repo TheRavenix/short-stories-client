@@ -5,7 +5,7 @@ import styles from "./NavbarSearch.module.scss";
 import { NavbarSearchDrawer } from "./NavbarSearchDrawer";
 import { NavbarSearchDialog } from "./NavbarSearchDialog";
 
-import { useIsMobile } from "@/hooks";
+import { useIsMobile } from "@/hooks/media";
 
 interface Props {}
 

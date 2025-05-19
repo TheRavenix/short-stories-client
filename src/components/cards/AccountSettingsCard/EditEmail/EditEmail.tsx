@@ -3,7 +3,7 @@
 import { EditEmailDialog } from "./EditEmailDialog";
 import { EditEmailDrawer } from "./EditEmailDrawer";
 
-import { useIsMobile } from "@/hooks";
+import { useIsMobile } from "@/hooks/media";
 
 interface Props {}
 
