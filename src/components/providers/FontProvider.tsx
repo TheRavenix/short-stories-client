@@ -1,24 +1,21 @@
 "use client";
 
 import { PropsWithChildren, useEffect } from "react";
-
 import { useFontStore } from "@/stores/font";
 
-interface Props extends PropsWithChildren {}
+type Props = PropsWithChildren
 
-const FontProvider: React.FC<Props> = ({ children }) => {
-  const uiFont = useFontStore((s) => s.uiFont);
-  const readingFont = useFontStore((s) => s.readingFont);
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-ui-font", uiFont);
-  }, [uiFont]);
+export function FontProvider({ children }: Props) {
+  const uiFont = useFontStore((s) => s.uiFont)
+  const readingFont = useFontStore((s) => s.readingFont)
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-reading-font", readingFont);
-  }, [readingFont]);
+    document.documentElement.setAttribute('data-ui-font', uiFont)
+  }, [uiFont])
 
-  return <>{children}</>;
-};
+  useEffect(() => {
+    document.documentElement.setAttribute('data-reading-font', readingFont)
+  }, [readingFont])
 
-export { FontProvider };
+  return <>{children}</>
+}

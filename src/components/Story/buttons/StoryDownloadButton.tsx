@@ -4,58 +4,54 @@ import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 
 import { Button } from "@/components/ui/Button";
-
 import { useAuthStore } from "@/stores/auth";
 import { useToastStore } from "@/stores/toast";
-
-import { services } from "@/services";
+import { downloadStory } from "@/services/story";
 import { downloadFile } from "@/utils/download-file";
 
-interface Props {
-  storyId: string;
-  storyName: string;
+type Props = {
+  storyId: number
+  storyName: string
 }
 
-const StoryDownloadButton: React.FC<Props> = ({ storyId, storyName }) => {
-  const router = useRouter();
-  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
-  const addToast = useToastStore((s) => s.addToast);
+export function StoryDownloadButton({ storyId, storyName }: Props) {
+  const router = useRouter()
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
+  const addToast = useToastStore((s) => s.addToast)
 
   const mutation = useMutation({
-    mutationKey: ["download-story"],
-    mutationFn: services.story.downloadStory,
+    mutationKey: ['download-story'],
+    mutationFn: downloadStory,
     onSuccess(data) {
-      const url = window.URL.createObjectURL(new Blob([data]));
-      downloadFile(url, `${storyName}.pdf`);
-      window.URL.revokeObjectURL(url);
+      const url = window.URL.createObjectURL(new Blob([data]))
+      downloadFile(url, `${storyName}.pdf`)
+      window.URL.revokeObjectURL(url)
     },
     onError(error) {
       addToast({
-        title: "Error download story",
+        title: 'Error download story',
         description: error.message,
-        variant: "error",
-      });
-    },
-  });
+        variant: 'error'
+      })
+    }
+  })
 
-  function handleDownload() {
+  const handleDownload = () => {
     if (!isAuthenticated) {
-      router.push("/sign-in");
-      return;
+      router.push('/sign-in')
+      return
     }
 
-    mutation.mutate(storyId);
+    mutation.mutate(storyId)
   }
 
   return (
     <Button
-      variant="inverse"
+      variant='inverse'
       onClick={handleDownload}
       disabled={mutation.isPending}
     >
-      {mutation.isPending ? "Loading..." : "Download"}
+      {mutation.isPending ? 'Loading...' : "Download"}
     </Button>
-  );
-};
-
-export { StoryDownloadButton };
+  )
+}

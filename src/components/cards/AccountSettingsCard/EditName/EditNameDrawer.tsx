@@ -16,15 +16,13 @@ import {
 } from "@/components/ui/Drawer";
 import { EditNameContent } from "./EditNameContent";
 
-interface Props {}
-
-const EditNameDrawer: React.FC<Props> = () => {
-  const [open, setOpen] = useState(false);
+export function EditNameDrawer() {
+  const [open, setOpen] = useState(false)
 
   return (
     <Drawer open={open} onOpenChange={setOpen} autoFocus>
       <DrawerTrigger asChild>
-        <Button size="sm" variant="inverse">
+        <Button size='sm' variant='inverse'>
           Edit
         </Button>
       </DrawerTrigger>
@@ -40,7 +38,5 @@ const EditNameDrawer: React.FC<Props> = () => {
         </DrawerContent>
       </DrawerPortal>
     </Drawer>
-  );
-};
-
-export { EditNameDrawer };
+  )
+}

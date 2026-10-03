@@ -12,23 +12,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/Select";
-
 import { useFontStore } from "@/stores/font";
 import { useProfile } from "@/hooks/profile";
-
 import { removeHyphen, capitalize } from "@/utils/text";
-import { services } from "@/services";
+import { getAllProFonts } from "@/services/pro-font";
 
-interface Props extends SelectProps {}
+type Props = SelectProps
 
-const StoryContentFontSelect: React.FC<Props> = (props) => {
-  const readingFont = useFontStore((s) => s.readingFont);
-  const setReadingFont = useFontStore((s) => s.setReadingFont);
-  const { profile } = useProfile();
+export function StoryContentFontSelect(props: Props) {
+  const readingFont = useFontStore((s) => s.readingFont)
+  const setReadingFont = useFontStore((s) => s.setReadingFont)
+  const { profile } = useProfile()
   const { data: proFonts } = useQuery({
-    queryKey: ["pro-fonts"],
-    queryFn: services.proFont.getAll,
-  });
+    queryKey: ['pro-fonts'],
+    queryFn: getAllProFonts,
+  })
 
   return (
     <Select value={readingFont} onValueChange={setReadingFont}>
@@ -37,26 +35,24 @@ const StoryContentFontSelect: React.FC<Props> = (props) => {
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel variant="primary">Free</SelectLabel>
-          <SelectItem value="inter">Inter</SelectItem>
-          <SelectItem value="source-sans3">Source Sans 3</SelectItem>
+          <SelectLabel variant='primary'>Free</SelectLabel>
+          <SelectItem value='inter'>Inter</SelectItem>
+          <SelectItem value='source-sans3'>Source Sans 3</SelectItem>
         </SelectGroup>
-        {profile?.plan === "pro" && (
+        {profile?.plan === 'pro' && (
           <SelectGroup>
-            <SelectLabel variant="primary">Pro</SelectLabel>
+            <SelectLabel variant='primary'>Pro</SelectLabel>
             {proFonts?.reading &&
               Object.keys(proFonts?.reading).map((name) => {
                 return (
                   <SelectItem key={name} value={name}>
                     {removeHyphen(capitalize(name))}
                   </SelectItem>
-                );
+                )
               })}
           </SelectGroup>
         )}
       </SelectContent>
     </Select>
-  );
-};
-
-export { StoryContentFontSelect };
+  )
+}

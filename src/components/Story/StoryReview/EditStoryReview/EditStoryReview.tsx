@@ -1,42 +1,39 @@
 "use client";
 
-import styles from "./EditStoryReview.module.scss";
-
 import { EditStoryReviewDrawer } from "./EditStoryReviewDrawer";
 import { EditStoryReviewDialog } from "./EditStoryReviewDialog";
-
-import { useIsMobile } from "@/hooks/media";
 import { useAuthStore } from "@/stores/auth";
+import { useIsMobile } from "@/hooks/media/use-media-utils";
 
-interface Props {
-  reviewId: string;
-  reviewRating: number;
-  reviewComment: string;
+type Props = {
+  reviewId: number
+  reviewRatingCount: number
+  reviewComment: string
 }
 
-const EditStoryReview: React.FC<Props> = ({
+export function EditStoryReview({
   reviewId,
-  reviewRating,
-  reviewComment,
-}) => {
-  const isMobile = useIsMobile();
-  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  reviewRatingCount,
+  reviewComment
+}: Props) {
+  const isMobile = useIsMobile()
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
 
-  if (!isAuthenticated) return null;
+  if (!isAuthenticated) {
+    return null
+  }
 
   return isMobile ? (
     <EditStoryReviewDrawer
       reviewId={reviewId}
-      reviewRating={reviewRating}
+      reviewRating={reviewRatingCount}
       reviewComment={reviewComment}
     />
   ) : (
     <EditStoryReviewDialog
       reviewId={reviewId}
-      reviewRating={reviewRating}
+      reviewRating={reviewRatingCount}
       reviewComment={reviewComment}
     />
-  );
-};
-
-export { EditStoryReview };
+  )
+}

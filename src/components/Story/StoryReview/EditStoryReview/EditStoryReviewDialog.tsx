@@ -15,24 +15,24 @@ import {
 } from "../../../ui/Dialog";
 import { EditStoryReviewContent } from "./EditStoryReviewContent";
 
-interface Props {
-  reviewId: string;
-  reviewRating: number;
-  reviewComment: string;
+type Props = {
+  reviewId: number
+  reviewRating: number
+  reviewComment: string
 }
 
-const EditStoryReviewDialog: React.FC<Props> = ({
+export function EditStoryReviewDialog({
   reviewId,
   reviewRating,
-  reviewComment,
-}) => {
-  const [open, setOpen] = useState(false);
+  reviewComment
+}: Props) {
+  const [open, setOpen] = useState(false)
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <div className={styles.triggerWrapper}>
         <DialogTrigger asChild>
-          <Button variant="inverse" size="icon">
+          <Button variant='inverse' size='icon'>
             <PencilIcon size={20} />
           </Button>
         </DialogTrigger>
@@ -50,7 +50,5 @@ const EditStoryReviewDialog: React.FC<Props> = ({
         </DialogClose>
       </DialogContent>
     </Dialog>
-  );
-};
-
-export { EditStoryReviewDialog };
+  )
+}

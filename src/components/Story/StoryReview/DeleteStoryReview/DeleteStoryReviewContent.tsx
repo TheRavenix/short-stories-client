@@ -2,65 +2,63 @@
 
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import styles from "./DeleteStoryReview.module.scss";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { P, Span } from "@/components/ui/Typography";
+import { P } from "@/components/ui/Typography";
 import { ActionSlot } from "@/components/ActionSlot";
-
 import { useToastStore } from "@/stores/toast";
+import { deleteStoryReview } from "@/services/story-review";
 
-import { services } from "@/services";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-
-interface Props {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  reviewId: string;
+type Props = {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  reviewId: number
 }
 
-const CONFIRM = "CONFIRM";
+const CONFIRM = "CONFIRM"
 
-const DeleteStoryReviewContent: React.FC<Props> = ({ setOpen, reviewId }) => {
-  const [confirmMessage, setConfirmMessage] = useState("");
-  const router = useRouter();
-  const pathName = usePathname();
-  const searchParams = useSearchParams();
-  const addToast = useToastStore((s) => s.addToast);
-  const confirmed = confirmMessage.toLowerCase() === CONFIRM.toLowerCase();
+export function DeleteStoryReviewContent({ setOpen, reviewId }: Props) {
+  const [confirmMessage, setConfirmMessage] = useState("")
+  const router = useRouter()
+  const pathName = usePathname()
+  const searchParams = useSearchParams()
+  const addToast = useToastStore((s) => s.addToast)
+  const confirmed = confirmMessage.toLowerCase() === CONFIRM.toLowerCase()
 
   const mutation = useMutation({
     mutationKey: ["delete-story-review"],
-    mutationFn: services.storyReview.deleteStoryReview,
+    mutationFn: deleteStoryReview,
     onSuccess(data) {
-      let href = pathName;
+      let href = pathName
 
       if (searchParams.get("view") === "tabs") {
-        href += `?view=tabs&tab=${searchParams.get("tab")}`;
+        href += `?view=tabs&tab=${searchParams.get("tab")}`
       }
 
       addToast({
         title: "Done",
         description: data.message,
-      });
-      router.push(href, { scroll: false });
+      })
+      router.push(href, { scroll: false })
     },
     onError(error) {
       addToast({
         title: "Error delete story review",
         description: error.message,
         variant: "error",
-      });
+      })
     },
-  });
+  })
 
-  function handleDelete(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const handleDelete = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
 
-    if (!confirmed) return;
-
-    mutation.mutate(reviewId);
+    if (confirmed) {
+      mutation.mutate(reviewId)
+    }
   }
 
   return (
@@ -82,7 +80,5 @@ const DeleteStoryReviewContent: React.FC<Props> = ({ setOpen, reviewId }) => {
         </Button>
       </ActionSlot>
     </form>
-  );
-};
-
-export { DeleteStoryReviewContent };
+  )
+}

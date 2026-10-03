@@ -8,123 +8,114 @@ import styles from "./Story.module.scss";
 import { Card, CardDescription, CardTitle } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { Badge } from "../ui/Badge";
-import { StoryDownloadButton, StoryEditButton } from "./buttons";
+import { StoryDownloadButton } from "./buttons/StoryDownloadButton";
+import { StoryEditButton } from "./buttons/StoryEditButton";
 import { StarRating } from "../StarRating";
 import { Stats } from "../Stats";
 import { StoryViewLink } from "./story-view/StoryViewLink";
-
 import { PlanType } from "../Plans";
 import { DeleteStory } from "./DeleteStory";
 
-interface StoryType {
-  _id: string;
-  name: string;
-  slug: string;
-  description: string;
-  about: string[];
-  preview: string[];
-  genre: string[];
-  coverImage: string;
-  views: number;
-  downloads: number;
-  plan: PlanType;
-  rating: number;
-  createdAt: Date;
-  updatedAt: Date;
+export type StoryType = {
+  id: number
+  name: string
+  slug: string
+  description: string
+  content: string[]
+  about: string[]
+  preview: string[]
+  genre: string[]
+  coverImage: string
+  views: number
+  downloads: number
+  plan: PlanType
 }
 
-interface Props extends StoryType {
-  className?: string;
-  shouldShowStarRating?: boolean;
-  shouldShowTitle?: boolean;
-  shouldShowExploreLink?: boolean;
-  shouldShowReadButton?: boolean;
-  shouldShowEditButton?: boolean;
-  shouldShowDownloadButton?: boolean;
-  shouldShowDeleteButton?: boolean;
-  shouldShowStats?: boolean;
+type Props = {
+  className?: string
+  story: StoryType
+  ratingCount: number
+  isStarRatingShown?: boolean
+  isTitleShown?: boolean
+  isExploreLinkShown?: boolean
+  isReadButtonShown?: boolean
+  isEditButtonShown?: boolean
+  isDownloadButtonShown?: boolean
+  isDeleteButtonShown?: boolean
+  isStatsShown?: boolean
 }
 
-const Story: React.FC<Props> = ({
-  _id,
-  name,
-  slug,
-  description,
-  genre,
-  coverImage,
-  views,
-  downloads,
-  rating,
+export function Story({
   className,
-  shouldShowStarRating = true,
-  shouldShowTitle = true,
-  shouldShowExploreLink = true,
-  shouldShowReadButton = false,
-  shouldShowEditButton = false,
-  shouldShowDownloadButton = false,
-  shouldShowDeleteButton = false,
-  shouldShowStats = false,
-}) => {
+  story,
+  ratingCount,
+  isStarRatingShown = true,
+  isTitleShown = true,
+  isExploreLinkShown = true,
+  isReadButtonShown = false,
+  isEditButtonShown = false,
+  isDownloadButtonShown = false,
+  isDeleteButtonShown = false,
+  isStatsShown = false
+}: Props) {
   return (
     <Card withPadding className={clsx(styles.story, className)}>
       <div className={styles.genre}>
-        {genre.map((item) => (
+        {story.genre.map((item) => (
           <Badge key={item}>{item}</Badge>
         ))}
       </div>
       <Image
         className={styles.coverImage}
-        src={`${process.env.NEXT_PUBLIC_SERVER_URL}/images/${coverImage}`}
-        alt={`${name} Cover`}
+        src={`${process.env.NEXT_PUBLIC_SERVER_URL}/images/${story.coverImage}`}
+        alt={`${story.name} Cover`}
         width={178.5}
         height={200}
       />
       <div className={styles.content}>
-        {shouldShowStarRating && rating > 0 ? (
-          <StarRating rating={rating} />
+        {isStarRatingShown && ratingCount > 0 ? (
+          <StarRating rating={ratingCount} />
         ) : (
           <Badge variant="inverse">Not Rated</Badge>
         )}
-        {shouldShowTitle && <CardTitle>{name}</CardTitle>}
-        <CardDescription>{description}</CardDescription>
+        {isTitleShown && <CardTitle>{story.name}</CardTitle>}
+        <CardDescription>{story.description}</CardDescription>
         <div className={styles.actions}>
-          {shouldShowExploreLink && (
-            <StoryViewLink href={`/s/${slug}`} className={styles.actionLink}>
+          {isExploreLinkShown && (
+            <StoryViewLink href={`/s/${story.slug}`} className={styles.actionLink}>
               <Button>Explore</Button>
             </StoryViewLink>
           )}
-          {shouldShowReadButton && (
-            <Link href={`/s/${slug}/read`}>
+          {isReadButtonShown && (
+            <Link href={`/s/${story.slug}/read`}>
               <Button>Read</Button>
             </Link>
           )}
-          {shouldShowEditButton && <StoryEditButton storySlug={slug} />}
-          {shouldShowDownloadButton && (
-            <StoryDownloadButton storyId={_id} storyName={name} />
+          {isEditButtonShown && <StoryEditButton storySlug={story.slug} />}
+          {isDownloadButtonShown && (
+            <StoryDownloadButton storyId={story.id} storyName={story.name} />
           )}
-          {shouldShowDeleteButton && (
-            <DeleteStory storyId={_id} storyName={name} />
+          {isDeleteButtonShown && (
+            <DeleteStory storyId={story.id} storyName={story.name} />
           )}
         </div>
       </div>
-      {shouldShowStats && (
+      {isStatsShown && (
         <div className={styles.statsWrapper}>
           <Stats
             list={[
               {
                 icon: <EyeIcon size={16} />,
-                value: views,
+                value: story.views
               },
               {
                 icon: <DownloadIcon size={16} />,
-                value: downloads,
-              },
+                value: story.downloads
+              }
             ]}
           />
         </div>
       )}
     </Card>
-  );
-};
-
-export { Story, type StoryType };
+  )
+}

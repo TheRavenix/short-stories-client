@@ -8,38 +8,38 @@ import { Separator } from "@/components/ui/Separator";
 import { StoryContentHeading } from "./StoryContentHeading";
 import { StoryContentText } from "./StoryContentText";
 
-type StoryContentType = {
-  _id: string;
-  storyId: string;
-  content: string[];
-};
-
-interface Props {
-  showHeaderTools?: boolean;
-  showHeaderSaveTool?: boolean;
-  index: number;
-  contentText: string;
+export type StoryContentType = {
+  id: number
+  storyId: number
+  content: string[]
 }
 
-const StoryContent: React.FC<Props> = ({
-  showHeaderTools = true,
-  showHeaderSaveTool = true,
+type Props = {
+  isHeaderToolsShown?: boolean
+  isHeaderSaveToolShown?: boolean
+  index: number
+  contentText: string
+}
+
+export function StoryContent({
+  isHeaderToolsShown = true,
+  isHeaderSaveToolShown = true,
   index,
-  contentText,
-}) => {
+  contentText
+}: Props) {
   return (
     <div className={styles.content}>
       <div className={styles.contentHeader}>
         <div>
           <StoryContentHeading index={index} />
         </div>
-        {showHeaderTools && (
+        {isHeaderToolsShown && (
           <div className={styles.contentHeaderTools}>
             <ClipboardButton
               text={contentText}
               message="Story line copied to clipboard."
             />
-            {showHeaderSaveTool && (
+            {isHeaderSaveToolShown && (
               <Button variant="ghost" size="icon">
                 <BookmarkIcon size={20} />
               </Button>
@@ -50,7 +50,5 @@ const StoryContent: React.FC<Props> = ({
       <StoryContentText>{contentText}</StoryContentText>
       <Separator />
     </div>
-  );
-};
-
-export { StoryContent, type StoryContentType };
+  )
+}

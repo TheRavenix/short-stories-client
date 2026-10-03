@@ -7,52 +7,54 @@ import styles from "./BackTopButton.module.scss";
 
 import { Button } from "@/components/ui/Button";
 
-interface Props {
-  maxScrollY?: number;
+type Props = {
+  maxScrollY?: number
 }
 
-const BackTopButton: React.FC<Props> = ({ maxScrollY = 2500 }) => {
-  const [visible, setVisible] = useState(false);
-  const scrollTimeout = useRef<NodeJS.Timeout>(null);
-  const scrollTimeoutMS = 300;
+export function BackTopButton({ maxScrollY = 2500 }: Props) {
+  const [visible, setVisible] = useState(false)
+  const scrollTimeout = useRef<NodeJS.Timeout>(null)
+  const scrollTimeoutMS = 300
 
-  function handleClick() {
-    window.scroll({ top: 0, behavior: "smooth" });
+  const handleClick = () => {
+    window.scroll({ top: 0, behavior: 'smooth' })
   }
 
-  function handleScroll() {
+  const handleScroll = () => {
     if (scrollTimeout.current !== null) {
-      clearTimeout(scrollTimeout.current);
+      clearTimeout(scrollTimeout.current)
     }
 
     scrollTimeout.current = setTimeout(() => {
       if (window.scrollY >= maxScrollY) {
-        setVisible(true);
-      } else setVisible(false);
-    }, scrollTimeoutMS);
+        setVisible(true)
+      } else {
+        setVisible(false)
+      }
+    }, scrollTimeoutMS)
   }
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll)
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll)
 
       if (scrollTimeout.current !== null) {
-        clearTimeout(scrollTimeout.current);
+        clearTimeout(scrollTimeout.current)
       }
-    };
-  }, []);
+    }
+  }, [])
 
-  if (!visible) return null;
+  if (!visible) {
+    return null
+  }
 
   return (
     <div className={styles.container}>
-      <Button variant="inverse" size="icon" onClick={handleClick}>
+      <Button variant='inverse' size='icon' onClick={handleClick}>
         <ArrowUpIcon size={20} />
       </Button>
     </div>
-  );
-};
-
-export { BackTopButton };
+  )
+}

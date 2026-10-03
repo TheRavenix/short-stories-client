@@ -3,46 +3,44 @@ type LinkType = {
   href: string;
 };
 
-const navBarLinks: LinkType[] = [
+export const navBarLinks: LinkType[] = [
   {
-    name: "Home",
-    href: "/",
+    name: 'Home',
+    href: '/'
   },
   {
-    name: "Library",
-    href: "/s",
+    name: 'Library',
+    href: '/s'
   },
   {
-    name: "About",
-    href: "/about",
+    name: 'About',
+    href: '/about'
   },
   {
-    name: "Contact",
-    href: "/contact",
+    name: 'Contact',
+    href: '/contact'
   },
   {
-    name: "Settings",
-    href: "/settings",
-  },
-];
+    name: 'Settings',
+    href: '/settings'
+  }
+]
 
-const authLinks: LinkType[] = [
+export const authLinks: LinkType[] = [
   {
-    name: "Sign in",
-    href: "/sign-in",
+    name: 'Sign in',
+    href: '/sign-in'
   },
   {
-    name: "Sign up",
-    href: "/sign-up",
-  },
-];
+    name: 'Sign up',
+    href: '/sign-up'
+  }
+]
 
-const footerLinks: LinkType[] = [
+export const footerLinks: LinkType[] = [
   ...navBarLinks,
   {
-    name: "Terms and Conditions",
-    href: "/terms",
-  },
-];
-
-export { navBarLinks, authLinks, footerLinks };
+    name: 'Terms and Conditions',
+    href: '/terms'
+  }
+]

@@ -4,43 +4,47 @@ import { BookIcon } from "lucide-react";
 import styles from "./FeaturedStoriesSection.module.scss";
 
 import { H1 } from "@/components/ui/Typography";
-import { Show } from "@/components/Show";
 import { EmptyState } from "@/components/EmptyState";
 import { Story, StoryType } from "@/components/Story";
 import { Button } from "@/components/ui/Button";
+import { getStoryReviewsByStoryId } from "@/lib/story/story-review";
 
-interface Props {
-  stories: StoryType[];
+type Props = {
+  stories: StoryType[]
 }
 
-const FeaturedStoriesSection: React.FC<Props> = ({ stories }) => {
+export function FeaturedStoriesSection({ stories }: Props) {
   return (
     <div className={styles.stories}>
-      <H1 transform="capitalize" className={styles.headline}>
+      <H1 transform='capitalize' className={styles.headline}>
         Featured stories
       </H1>
-      <Show
-        when={stories.length > 0}
-        fallback={
+      {
+        stories.length > 0 ?
+          <>
+            <div className={styles.storiesList}>
+              {stories.map(async (story) => {
+                const storyReviews = await getStoryReviewsByStoryId(story.id)
+                return (
+                  <Story 
+                    key={story.id} 
+                    story={story} 
+                    ratingCount={storyReviews.ratingCount} 
+                  />
+                )
+              })}
+            </div>
+            <div className={styles.storiesExploreMoreContainer}>
+              <Link href='/s' className={styles.exploreLink}>
+                <Button size='full'>Explore More</Button>
+              </Link>
+            </div>
+          </> :
           <EmptyState
             icon={<BookIcon />}
-            message="No featured stories at the moment. Stay tuned for exciting tales!"
+            message='No featured stories at the moment. Stay tuned for exciting tales!'
           />
-        }
-      >
-        <div className={styles.storiesList}>
-          {stories.map((story) => (
-            <Story key={story._id} {...story} />
-          ))}
-        </div>
-        <div className={styles.storiesExploreMoreContainer}>
-          <Link href="/s" className={styles.exploreLink}>
-            <Button size="full">Explore More</Button>
-          </Link>
-        </div>
-      </Show>
+      }
     </div>
-  );
-};
-
-export { FeaturedStoriesSection };
+  )
+}

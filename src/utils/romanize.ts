@@ -1,4 +1,4 @@
-const ROMANIZE_LOOKUP: Record<string, number> = {
+export const ROMANIZE_LOOKUP: Record<string, number> = {
   M: 1000,
   CM: 900,
   D: 500,
@@ -11,19 +11,18 @@ const ROMANIZE_LOOKUP: Record<string, number> = {
   IX: 9,
   V: 5,
   IV: 4,
-  I: 1,
-};
+  I: 1
+}
 
-function romanize(num: number): string {
-  let roman = "";
+export function romanize(num: number) {
+  let roman = ''
 
   for (const key in ROMANIZE_LOOKUP) {
     while (num >= ROMANIZE_LOOKUP[key]) {
-      roman += key;
-      num -= ROMANIZE_LOOKUP[key];
+      roman += key
+      num -= ROMANIZE_LOOKUP[key]
     }
   }
-  return roman;
-}
 
-export { ROMANIZE_LOOKUP, romanize };
+  return roman
+}

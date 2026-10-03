@@ -15,22 +15,21 @@ import {
   SliderThumb,
   SliderTrack,
 } from "@/components/ui/Slider";
-
 import { chunkArray } from "@/utils/chunk-array";
 
-interface Props {
-  id: string;
-  storyId: string;
-  storyContent: StoryContentType;
+type Props = {
+  id: number
+  storyId: number
+  storyContent: StoryContentType
 }
 
-const StoryBookLayout: React.FC<Props> = ({ id, storyId, storyContent }) => {
-  const [page, setPage] = useState(0);
-  const contentList = chunkArray(storyContent.content, 3);
+export function StoryBookLayout({ id, storyId, storyContent }: Props) {
+  const [page, setPage] = useState(0)
+  const contentList = chunkArray(storyContent.content, 3)
 
-  function moveTo(p: number) {
+  const moveTo = (p: number) => {
     if (p >= 0 && p < contentList.length) {
-      setPage(p);
+      setPage(p)
     }
   }
 
@@ -38,10 +37,10 @@ const StoryBookLayout: React.FC<Props> = ({ id, storyId, storyContent }) => {
     <Card>
       <div className={styles.arrowLeftButtonWrapper}>
         <Button
-          variant="ghost"
-          size="icon"
+          variant='ghost'
+          size='icon'
           onClick={() => {
-            moveTo(page - 1);
+            moveTo(page - 1)
           }}
         >
           <ArrowLeftIcon />
@@ -53,7 +52,7 @@ const StoryBookLayout: React.FC<Props> = ({ id, storyId, storyContent }) => {
         ))}
       </div>
       <div className={styles.pageProgress}>
-        <P variant="gray">
+        <P variant='gray'>
           {page + 1}/{contentList.length}
         </P>
         <Slider
@@ -65,22 +64,20 @@ const StoryBookLayout: React.FC<Props> = ({ id, storyId, storyContent }) => {
           <SliderTrack>
             <SliderRange />
           </SliderTrack>
-          <SliderThumb aria-label="Page" />
+          <SliderThumb aria-label='Page' />
         </Slider>
       </div>
       <div className={styles.arrowRightButtonWrapper}>
         <Button
-          variant="ghost"
-          size="icon"
+          variant='ghost'
+          size='icon'
           onClick={() => {
-            moveTo(page + 1);
+            moveTo(page + 1)
           }}
         >
           <ArrowRightIcon />
         </Button>
       </div>
     </Card>
-  );
-};
-
-export { StoryBookLayout };
+  )
+}

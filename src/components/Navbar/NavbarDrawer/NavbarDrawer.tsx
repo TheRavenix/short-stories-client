@@ -19,29 +19,23 @@ import {
   DrawerTrigger,
 } from "@/components/ui/Drawer";
 import { NavbarDrawerAuthLinks } from "./NavbarDrawerAuthLinks";
+import { navBarLinks } from "@/data/links";
 
-import { useAuthStore } from "@/stores/auth";
-import { useProfile } from "@/hooks/profile";
+export function NavbarDrawer() {
+  const pathName = usePathname()
+  const [open, setOpen] = useState(false)
+  // const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
+  // const { profile } = useProfile()
 
-import { navBarLinks } from "../Navbar";
-
-interface Props {}
-
-const NavbarDrawer: React.FC<Props> = () => {
-  const pathName = usePathname();
-  const [open, setOpen] = useState(false);
-  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
-  const { profile } = useProfile();
-
-  function toggleOpen() {
-    setOpen((prev) => !prev);
+  const toggleOpen = () => {
+    setOpen((prev) => !prev)
   }
 
   return (
-    <Drawer direction="left" open={open} onOpenChange={setOpen}>
+    <Drawer direction='left' open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
         <div className={styles.menuButtonContainer}>
-          <Button variant="inverse" size="icon">
+          <Button variant='inverse' size='icon'>
             <MenuIcon size={20} />
           </Button>
         </div>
@@ -54,14 +48,14 @@ const NavbarDrawer: React.FC<Props> = () => {
           </DrawerHeader>
           <DrawerBody className={styles.drawerBody}>
             <div className={styles.drawerLinks}>
-              {/* {isAuthenticated && profile?.role === "admin" && (
-                <Link href="/dashboard" onClick={toggleOpen}>
-                  <Button variant="ghost" className={styles.drawerButton}>
+              {/* {isAuthenticated && profile?.role === 'admin' && (
+                <Link href='/dashboard' onClick={toggleOpen}>
+                  <Button variant='ghost' className={styles.drawerButton}>
                     <span
                       className={
-                        pathName === "/dashboard"
+                        pathName === '/dashboard'
                           ? styles.drawerActiveLinkText
-                          : ""
+                          : ''
                       }
                     >
                       Dashboard
@@ -71,12 +65,12 @@ const NavbarDrawer: React.FC<Props> = () => {
               )} */}
               {navBarLinks.map((link, i) => (
                 <Link key={i} href={link.href} onClick={toggleOpen}>
-                  <Button variant="ghost" className={styles.drawerButton}>
+                  <Button variant='ghost' className={styles.drawerButton}>
                     <span
                       className={
                         pathName === link.href
                           ? styles.drawerActiveLinkText
-                          : ""
+                          : ''
                       }
                     >
                       {link.name}
@@ -90,7 +84,5 @@ const NavbarDrawer: React.FC<Props> = () => {
         </DrawerContent>
       </DrawerPortal>
     </Drawer>
-  );
-};
-
-export { NavbarDrawer };
+  )
+}

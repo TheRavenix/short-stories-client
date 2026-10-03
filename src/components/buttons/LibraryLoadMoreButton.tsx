@@ -6,28 +6,28 @@ import { Button } from "@/components/ui/Button";
 
 import { PAGINATION_DEFAULT_LIMIT } from "@/constants/filter";
 
-interface Props {
-  limit: number;
-  count: number;
+type Props = {
+  limit: number
+  count: number
 }
 
-const LibraryLoadMoreButton: React.FC<Props> = ({ limit, count }) => {
-  const searchParams = useSearchParams();
-  const router = useRouter();
+export function LibraryLoadMoreButton({ limit, count }: Props) {
+  const searchParams = useSearchParams()
+  const router = useRouter()
 
-  function handleOnClick() {
-    const params = new URLSearchParams(searchParams);
-    params.set("limit", (limit + PAGINATION_DEFAULT_LIMIT).toString());
-    router.push(`/s?${params.toString()}`, { scroll: false });
+  const handleOnClick = () => {
+    const params = new URLSearchParams(searchParams)
+    params.set('limit', (limit + PAGINATION_DEFAULT_LIMIT).toString())
+    router.push(`/s?${params.toString()}`, { scroll: false })
   }
 
-  if (limit >= count) return null;
+  if (limit >= count) {
+    return null
+  }
 
   return (
-    <Button size="responsive" onClick={handleOnClick}>
+    <Button size='responsive' onClick={handleOnClick}>
       Load more stories
     </Button>
-  );
-};
-
-export { LibraryLoadMoreButton };
+  )
+}

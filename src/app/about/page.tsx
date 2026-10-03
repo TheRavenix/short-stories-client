@@ -1,8 +1,9 @@
+import Link from "next/link";
+
 import styles from "./page.module.scss";
 
 import { CompactContainer } from "@/components/ui/Container";
 import { H1, H3, P } from "@/components/ui/Typography";
-import Link from "next/link";
 
 export default function About() {
   return (
@@ -10,7 +11,7 @@ export default function About() {
       <CompactContainer withPaddingBlock>
         <H1 className={styles.headline}>About Us</H1>
         <div className={styles.content}>
-          <P size="xl" className={styles.tagline}>
+          <P size='xl' className={styles.tagline}>
             Short Stories is more than just a platform, it’s a haven for
             readers. We’ve built a carefully curated library packed with stories
             from every genre, all designed to give you a unique and immersive
@@ -38,12 +39,12 @@ export default function About() {
             <H3>How it works</H3>
             <div className={styles.descriptions}>
               <P>
-                1.{" "}
-                <Link href="/sign-up" className={styles.link}>
+                1.{' '}
+                <Link href='/sign-up' className={styles.link}>
                   Sign up
-                </Link>{" "}
-                for an account and dive into our{" "}
-                <Link href="/library" className={styles.link}>
+                </Link>{' '}
+                for an account and dive into our{' '}
+                <Link href='/library' className={styles.link}>
                   Library
                 </Link>
                 .
@@ -91,8 +92,8 @@ export default function About() {
                 never share it with third parties.
               </P>
               <P>
-                2. For more details, check out our{" "}
-                <Link href="/terms" className={styles.link}>
+                2. For more details, check out our{' '}
+                <Link href='/terms' className={styles.link}>
                   Terms and Conditions
                 </Link>
                 .
@@ -102,5 +103,5 @@ export default function About() {
         </div>
       </CompactContainer>
     </main>
-  );
+  )
 }

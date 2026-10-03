@@ -8,20 +8,17 @@ import { P } from "../ui/Typography";
 import { Container } from "../ui/Container";
 import { NavbarSearch } from "./NavbarSearch";
 import { NavbarAuthActions } from "./NavbarAuthActions";
-import { ThemeToggle } from "../Theme";
-
+import { ThemeToggle } from "../Theme/ThemeToggle";
 import { navBarLinks } from "@/data/links";
 
-interface Props {}
-
-const Navbar: React.FC<Props> = () => {
+export function Navbar() {
   return (
-    <nav className={styles.nav} data-nav-fixed="true">
+    <nav className={styles.nav} data-nav-fixed='true'>
       <Container className={styles.navContainer}>
         <div className={styles.startContent}>
           <NavbarDrawer />
-          <Link href="/">
-            <P size="lg" weight="bold" className={styles.title}>
+          <Link href='/'>
+            <P size='lg' weight='bold' className={styles.title}>
               Short stories
             </P>
           </Link>
@@ -44,5 +41,3 @@ const Navbar: React.FC<Props> = () => {
     </nav>
   );
 };
-
-export { Navbar, navBarLinks };

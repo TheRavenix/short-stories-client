@@ -2,10 +2,8 @@ import { PropsWithChildren } from "react";
 
 import styles from "./ActionSlot.module.scss";
 
-interface Props extends PropsWithChildren {}
+type Props = PropsWithChildren
 
-const ActionSlot: React.FC<Props> = ({ children }) => {
-  return <div className={styles.slot}>{children}</div>;
-};
-
-export { ActionSlot };
+export function ActionSlot({ children }: Props) {
+  return <div className={styles.slot}>{children}</div>
+}

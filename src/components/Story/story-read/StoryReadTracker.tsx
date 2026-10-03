@@ -3,30 +3,28 @@
 import { useEffect, useRef } from "react";
 import { useMutation } from "@tanstack/react-query";
 
-import { services } from "@/services";
+import { readStory } from "@/services/story";
 import { STORY_READ_TIMEOUT_MS } from "@/constants/story";
 
-interface Props {
-  storyId: string;
+type Props = {
+  storyId: number
 }
 
-const StoryReadTracker: React.FC<Props> = ({ storyId }) => {
-  const storyReadTimeout = useRef<NodeJS.Timeout>(null!);
+export function StoryReadTracker({ storyId }: Props) {
+  const storyReadTimeout = useRef<NodeJS.Timeout>(null!)
 
   const mutation = useMutation({
     mutationKey: ["read-story"],
-    mutationFn: services.story.readStory,
-  });
+    mutationFn: readStory,
+  })
 
   useEffect(() => {
     storyReadTimeout.current = setTimeout(() => {
-      mutation.mutate(storyId);
-    }, STORY_READ_TIMEOUT_MS);
+      mutation.mutate(storyId)
+    }, STORY_READ_TIMEOUT_MS)
 
-    return () => clearTimeout(storyReadTimeout.current);
-  }, []);
+    return () => clearTimeout(storyReadTimeout.current)
+  }, [])
 
-  return null;
-};
-
-export { StoryReadTracker };
+  return null
+}

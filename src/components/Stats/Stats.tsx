@@ -5,16 +5,16 @@ import styles from "./Stats.module.scss";
 import { Span } from "../ui/Typography";
 
 type StatType = {
-  id?: string;
-  icon: JSX.Element;
-  value: number;
-};
-
-interface Props {
-  list: StatType[];
+  id?: string
+  icon: JSX.Element
+  value: number
 }
 
-const Stats: React.FC<Props> = ({ list }) => {
+type Props = {
+  list: StatType[]
+}
+
+export function Stats({ list }: Props) {
   return (
     <div className={styles.stats}>
       {list.map((stat, index) => (
@@ -24,7 +24,5 @@ const Stats: React.FC<Props> = ({ list }) => {
         </div>
       ))}
     </div>
-  );
-};
-
-export { Stats };
+  )
+}

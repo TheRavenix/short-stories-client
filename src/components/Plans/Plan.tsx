@@ -5,68 +5,61 @@ import styles from "./Plans.module.scss";
 import { Card, CardContent, CardHeader } from "../ui/Card";
 import { H2, H3, P, Span } from "../ui/Typography";
 import { Button } from "../ui/Button";
-import { Show } from "../Show";
-
 import { PlanFeature } from "@/data/plans";
 
-type PlanType = "free" | "pro";
+export type PlanType = 'free' | 'pro'
 
-interface Props {
-  type: PlanType;
-  price: number;
-  duration?: string;
-  currentPlan?: boolean;
-  planFeatures: PlanFeature[];
+export type Props = {
+  type: PlanType
+  price: number
+  duration?: string
+  isCurrentPlan?: boolean
+  planFeatures: PlanFeature[]
 }
 
-const Plan: React.FC<Props> = ({
+export function Plan({
   type,
   price,
   duration,
-  currentPlan = false,
-  planFeatures,
-}) => {
+  isCurrentPlan = false,
+  planFeatures
+}: Props) {
   return (
     <Card>
       <CardHeader className={styles.planCardHeader}>
-        <H2 variant="primary" transform="capitalize">
+        <H2 variant='primary' transform='capitalize'>
           {type}
         </H2>
       </CardHeader>
       <CardContent className={styles.planCardContent}>
         <H3>${price.toFixed(2)}</H3>
-        {typeof duration !== "undefined" && <P>{duration}</P>}
+        {typeof duration !== 'undefined' && <P>{duration}</P>}
         {planFeatures.map((feature) => {
           return (
             <div key={feature.name} className={styles.planFeature}>
-              <P size="lg" variant="gray">
+              <P size='lg' variant='gray'>
                 {feature.name}
               </P>
-              <Show
-                when={feature.checked}
-                fallback={<XIcon size={18} className={styles.xIcon} />}
-              >
-                <Show
-                  when={typeof feature.suffix !== "undefined"}
-                  fallback={
+              {
+                !feature.checked && <XIcon size={18} className={styles.xIcon} />
+              }
+              {
+                feature.checked && typeof feature.suffix !== 'undefined' ?
+                 <div className={styles.planSuffixContainer}>
                     <CheckIcon size={18} className={styles.checkIcon} />
-                  }
-                >
-                  <div className={styles.planSuffixContainer}>
-                    <CheckIcon size={18} className={styles.checkIcon} />
-                    <Span variant="primary">{feature.suffix}</Span>
-                  </div>
-                </Show>
-              </Show>
+                    <Span variant='primary'>{feature.suffix}</Span>
+                 </div> :
+                 <CheckIcon size={18} className={styles.checkIcon} />
+              }
             </div>
-          );
+          )
         })}
-        <Show when={!currentPlan} fallback={<P>This is your current plan.</P>}>
-          <Button className={styles.planJoinButton}>Join Now</Button>
-        </Show>
+        {
+          !isCurrentPlan ?
+           <Button className={styles.planJoinButton}>Join Now</Button> :
+           <P>This is your current plan.</P>
+        }
       </CardContent>
     </Card>
-  );
-};
-
-export { Plan, type PlanType };
+  )
+}

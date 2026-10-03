@@ -3,8 +3,6 @@
 import { SearchIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 
-import styles from "./NavbarSearch.module.scss";
-
 import { Button } from "../../ui/Button";
 import {
   Dialog,
@@ -15,15 +13,13 @@ import {
 } from "../../ui/Dialog";
 import { NavbarSearchContent } from "./NavbarSearchContent";
 
-interface Props {}
-
-const NavbarSearchDialog: React.FC<Props> = () => {
-  const [open, setOpen] = useState(false);
+export function NavbarSearchDialog() {
+  const [open, setOpen] = useState(false)
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="inverse" size="icon">
+        <Button variant='inverse' size='icon'>
           <SearchIcon size={20} />
         </Button>
       </DialogTrigger>
@@ -35,7 +31,5 @@ const NavbarSearchDialog: React.FC<Props> = () => {
         </DialogClose>
       </DialogContent>
     </Dialog>
-  );
-};
-
-export { NavbarSearchDialog };
+  )
+}

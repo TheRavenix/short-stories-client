@@ -9,7 +9,7 @@ export default function TermsAndConditions() {
       <CompactContainer withPaddingBlock>
         <H1 className={styles.headline}>Terms and Conditions</H1>
         <div className={styles.content}>
-          <P size="xl" className={styles.tagline}>
+          <P size='xl' className={styles.tagline}>
             By using Short Stories, you agree to these Terms and Conditions. If
             you don’t agree, please don’t use the site.
           </P>
@@ -57,5 +57,5 @@ export default function TermsAndConditions() {
         </div>
       </CompactContainer>
     </main>
-  );
+  )
 }

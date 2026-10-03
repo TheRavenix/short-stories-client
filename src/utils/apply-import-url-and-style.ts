@@ -1,17 +1,17 @@
 export function applyImportUrlAndStyle(data: string[], styleTagId: string) {
-  let css = "";
+  let css = ""
 
   for (const dataItem of data) {
-    css += `@import url("${dataItem}");`;
+    css += `@import url('${dataItem}');`
   }
 
-  let styleTag = document.getElementById(styleTagId);
+  let styleTag = document.getElementById(styleTagId)
 
-  if (!styleTag) {
-    styleTag = document.createElement("style");
-    styleTag.id = styleTagId;
-    document.head.appendChild(styleTag);
+  if (styleTag === null) {
+    styleTag = document.createElement('style')
+    styleTag.id = styleTagId
+    document.head.appendChild(styleTag)
   }
 
-  styleTag.textContent = css;
+  styleTag.textContent = css
 }

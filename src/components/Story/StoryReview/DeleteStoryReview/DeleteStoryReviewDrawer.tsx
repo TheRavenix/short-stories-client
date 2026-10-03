@@ -18,12 +18,12 @@ import {
 } from "@/components/ui/Drawer";
 import { DeleteStoryReviewContent } from "./DeleteStoryReviewContent";
 
-interface Props {
-  reviewId: string;
+type Props = {
+  reviewId: number
 }
 
-const DeleteStoryReviewDrawer: React.FC<Props> = ({ reviewId }) => {
-  const [open, setOpen] = useState(false);
+export function DeleteStoryReviewDrawer({ reviewId }: Props) {
+  const [open, setOpen] = useState(false)
 
   return (
     <Drawer open={open} onOpenChange={setOpen} autoFocus>
@@ -44,7 +44,5 @@ const DeleteStoryReviewDrawer: React.FC<Props> = ({ reviewId }) => {
         </DrawerContent>
       </DrawerPortal>
     </Drawer>
-  );
-};
-
-export { DeleteStoryReviewDrawer };
+  )
+}

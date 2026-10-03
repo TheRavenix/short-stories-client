@@ -17,15 +17,13 @@ import {
 } from "@/components/ui/Drawer";
 import { ChangePasswordContent } from "./ChangePasswordContent";
 
-interface Props {}
-
-const ChangePasswordDrawer: React.FC<Props> = () => {
-  const [open, setOpen] = useState(false);
+export function ChangePasswordDrawer() {
+  const [open, setOpen] = useState(false)
 
   return (
     <Drawer open={open} onOpenChange={setOpen} autoFocus>
       <DrawerTrigger asChild>
-        <Button size="sm" variant="inverse">
+        <Button size='sm' variant='inverse'>
           Change
         </Button>
       </DrawerTrigger>
@@ -41,7 +39,5 @@ const ChangePasswordDrawer: React.FC<Props> = () => {
         </DrawerContent>
       </DrawerPortal>
     </Drawer>
-  );
-};
-
-export { ChangePasswordDrawer };
+  )
+}

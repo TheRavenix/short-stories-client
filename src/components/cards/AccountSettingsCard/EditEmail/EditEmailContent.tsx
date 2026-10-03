@@ -3,59 +3,54 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 
-import styles from "./EditEmail.module.scss";
-
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { ActionSlot } from "@/components/ActionSlot";
 import { Form } from "@/components/Form";
-
 import { useProfile } from "@/hooks/profile";
 import { useToastStore } from "@/stores/toast";
+import { EditEmailData, editUserEmail } from "@/services/user";
 
-import { EditEmailData } from "@/services/user";
-import { services } from "@/services";
-
-interface Props {
+type Props = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const EditEmailContent: React.FC<Props> = ({ setOpen }) => {
+export function EditEmailContent({ setOpen }: Props) {
   const [formData, setFormData] = useState<EditEmailData>({
-    currentEmail: "",
-    newEmail: "",
-  });
-  const { refetch } = useProfile();
-  const addToast = useToastStore((s) => s.addToast);
+    currentEmail: '',
+    newEmail: ''
+  })
+  const { refetch } = useProfile()
+  const addToast = useToastStore((s) => s.addToast)
 
   const mutation = useMutation({
-    mutationFn: services.user.editEmail,
+    mutationFn: editUserEmail,
     onSuccess(data) {
       addToast({
-        title: "Edit email",
-        description: data.message,
-      });
-      setOpen(false);
-      refetch();
+        title: 'Edit email',
+        description: data.message
+      })
+      setOpen(false)
+      refetch()
     },
     onError(error) {
       addToast({
-        title: "Error edit email",
+        title: 'Error edit email',
         description: error.message,
-        variant: "error",
-      });
-    },
-  });
+        variant: 'error'
+      })
+    }
+  })
 
-  function handleEdit(e: React.FormEvent<HTMLFormElement>) {
-    mutation.mutate(formData);
+  const handleEdit = (e: React.FormEvent<HTMLFormElement>) => {
+    mutation.mutate(formData)
   }
 
   return (
-    <Form spacing="md" onSubmit={handleEdit}>
+    <Form spacing='md' onSubmit={handleEdit}>
       <Input
-        type="email"
-        label="Current Email"
+        type='email'
+        label='Current Email'
         required
         value={formData.currentEmail}
         onChange={(e) =>
@@ -63,8 +58,8 @@ const EditEmailContent: React.FC<Props> = ({ setOpen }) => {
         }
       />
       <Input
-        type="email"
-        label="New Email"
+        type='email'
+        label='New Email'
         required
         value={formData.newEmail}
         onChange={(e) =>
@@ -72,12 +67,10 @@ const EditEmailContent: React.FC<Props> = ({ setOpen }) => {
         }
       />
       <ActionSlot>
-        <Button type="submit" disabled={mutation.isPending}>
+        <Button type='submit' disabled={mutation.isPending}>
           Save
         </Button>
       </ActionSlot>
     </Form>
-  );
-};
-
-export { EditEmailContent };
+  )
+}

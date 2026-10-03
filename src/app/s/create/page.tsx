@@ -3,7 +3,7 @@ import styles from "./page.module.scss";
 import { H1 } from "@/components/ui/Typography";
 import { CompactContainer } from "@/components/ui/Container";
 import { AdminPageGuard } from "@/components/guards";
-import { CreateStoryForm } from "@/components/Story";
+import { CreateStoryForm } from "@/components/Story/forms/CreateStoryForm";
 
 export default function CreateStory() {
   return (

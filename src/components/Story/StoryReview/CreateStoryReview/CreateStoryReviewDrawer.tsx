@@ -17,12 +17,12 @@ import {
 } from "@/components/ui/Drawer";
 import { CreateStoryReviewContent } from "./CreateStoryReviewContent";
 
-interface Props {
-  storyId: string;
+type Props = {
+  storyId: number
 }
 
-const CreateStoryReviewDrawer: React.FC<Props> = ({ storyId }) => {
-  const [open, setOpen] = useState(false);
+export function CreateStoryReviewDrawer({ storyId }: Props) {
+  const [open, setOpen] = useState(false)
 
   return (
     <Drawer open={open} onOpenChange={setOpen} autoFocus>
@@ -43,7 +43,5 @@ const CreateStoryReviewDrawer: React.FC<Props> = ({ storyId }) => {
         </DrawerContent>
       </DrawerPortal>
     </Drawer>
-  );
-};
-
-export { CreateStoryReviewDrawer };
+  )
+}

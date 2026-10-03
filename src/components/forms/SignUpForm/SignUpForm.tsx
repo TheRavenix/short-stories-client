@@ -10,56 +10,51 @@ import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { P } from "@/components/ui/Typography";
 import { Form } from "@/components/Form";
-
 import { useToastStore } from "@/stores/toast";
+import { signUp, SignUpData } from "@/services/auth";
 
-import { SignUpData } from "@/services/auth";
-import { services } from "@/services";
-
-interface Props {}
-
-const SignUpForm: React.FC<Props> = () => {
+export function SignUpForm() {
   const [formData, setFormData] = useState<SignUpData>({
     name: undefined,
-    email: "",
-    password: "",
-  });
-  const addToast = useToastStore((s) => s.addToast);
+    email: '',
+    password: ''
+  })
+  const addToast = useToastStore((s) => s.addToast)
 
   const mutation = useMutation({
-    mutationFn: services.auth.signUp,
+    mutationFn: signUp,
     onSuccess(data) {
       addToast({
-        title: "Sign up",
+        title: 'Sign up',
         description: data.message,
-      });
-      window.location.replace("/");
+      })
+      window.location.replace('/')
     },
     onError(error) {
       addToast({
-        title: "Error sign up",
+        title: 'Error sign up',
         description: error.message,
-        variant: "error",
-      });
+        variant: 'error',
+      })
     },
-  });
+  })
 
-  function handleSignUp(e: React.FormEvent<HTMLFormElement>) {
-    mutation.mutate(formData);
+  const handleSignUp = (e: React.FormEvent<HTMLFormElement>) => {
+    mutation.mutate(formData)
   }
 
   return (
-    <Form spacing="md" onSubmit={handleSignUp}>
+    <Form spacing='md' onSubmit={handleSignUp}>
       <Input
-        label="Your Name (Optional)"
+        label='Your Name (Optional)'
         value={formData.name}
         onChange={(e) =>
           setFormData((prev) => ({ ...prev, name: e.target.value }))
         }
       />
       <Input
-        type="email"
-        label="Email"
+        type='email'
+        label='Email'
         required
         value={formData.email}
         onChange={(e) =>
@@ -67,8 +62,8 @@ const SignUpForm: React.FC<Props> = () => {
         }
       />
       <Input
-        type="password"
-        label="Password"
+        type='password'
+        label='Password'
         required
         value={formData.password}
         onChange={(e) =>
@@ -76,26 +71,24 @@ const SignUpForm: React.FC<Props> = () => {
         }
       />
       <div className={styles.endContent}>
-        <Button size="responsive" type="submit" disabled={mutation.isPending}>
-          {mutation.isPending ? "Loading..." : "Sign up"}
+        <Button size='responsive' type='submit' disabled={mutation.isPending}>
+          {mutation.isPending ? 'Loading...' : 'Sign up'}
         </Button>
         <div className={styles.linksContainer}>
-          <P variant="gray">
-            You already have an account?{" "}
-            <Link href="/sign-in" className={styles.signInLink}>
+          <P variant='gray'>
+            You already have an account?{' '}
+            <Link href='/sign-in' className={styles.signInLink}>
               Sign in
             </Link>
           </P>
-          <P variant="gray">
-            By creating an account you agree to our{" "}
-            <Link href="/terms" className={styles.signInLink}>
+          <P variant='gray'>
+            By creating an account you agree to our{' '}
+            <Link href='/terms' className={styles.signInLink}>
               Terms & Conditions
             </Link>
           </P>
         </div>
       </div>
     </Form>
-  );
-};
-
-export { SignUpForm };
+  )
+}

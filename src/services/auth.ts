@@ -1,67 +1,34 @@
-import { NETWORK_ERROR, UNEXPECTED_ERROR } from "@/constants/error";
-import { MessageResponse } from "@/types/response";
 import { axiosClient } from "@/utils/axios-client";
-import { isNetworkError } from "@/utils/error";
+import { MessageResponse } from "@/types/response";
 
-interface SignUpData {
-  name?: string;
-  email: string;
-  password: string;
+export type SignUpData = {
+  name?: string
+  email: string
+  password: string
 }
 
-interface SignInData {
-  email: string;
-  password: string;
+type SignUpResponse = MessageResponse
+
+export async function signUp(data: SignUpData): Promise<SignUpResponse> {
+  const response = await axiosClient.post('auth/sign-up', data)
+  return response.data
 }
 
-class AuthService {
-  async signUp(data: SignUpData): Promise<MessageResponse> {
-    try {
-      const response = await axiosClient.post("auth/sign-up", data);
-      return response.data;
-    } catch (error: any) {
-      if (isNetworkError(error)) {
-        throw new Error(NETWORK_ERROR);
-      }
-      if (error.response) {
-        throw new Error(error.response.data?.message || "Sign up failed");
-      }
-
-      throw new Error(UNEXPECTED_ERROR);
-    }
-  }
-
-  async signIn(data: SignInData): Promise<MessageResponse> {
-    try {
-      const response = await axiosClient.post("auth/sign-in", data);
-      return response.data;
-    } catch (error: any) {
-      if (isNetworkError(error)) {
-        throw new Error(NETWORK_ERROR);
-      }
-      if (error.response) {
-        throw new Error(error.response.data?.message || "Sign in failed");
-      }
-
-      throw new Error(UNEXPECTED_ERROR);
-    }
-  }
-
-  async signOut(): Promise<MessageResponse> {
-    try {
-      const response = await axiosClient.post("auth/sign-out");
-      return response.data;
-    } catch (error: any) {
-      if (isNetworkError(error)) {
-        throw new Error(NETWORK_ERROR);
-      }
-      if (error.response) {
-        throw new Error(error.response.data?.message || "Sign out failed");
-      }
-
-      throw new Error(UNEXPECTED_ERROR);
-    }
-  }
+export type SignInData = {
+  email: string
+  password: string
 }
 
-export { AuthService, type SignUpData, type SignInData };
+type SignInResponse = MessageResponse
+
+export async function signIn(data: SignInData): Promise<SignInResponse> {
+  const response = await axiosClient.post('auth/sign-in', data)
+  return response.data
+}
+
+type SignOutResponse = MessageResponse
+
+export async function signOut(): Promise<SignOutResponse> {
+  const response = await axiosClient.post('auth/sign-out')
+  return response.data
+}

@@ -15,12 +15,12 @@ import {
 } from "../../../ui/Dialog";
 import { CreateStoryReviewContent } from "./CreateStoryReviewContent";
 
-interface Props {
-  storyId: string;
+type Props = {
+  storyId: number
 }
 
-const CreateStoryReviewDialog: React.FC<Props> = ({ storyId }) => {
-  const [open, setOpen] = useState(false);
+export function CreateStoryReviewDialog({ storyId }: Props) {
+  const [open, setOpen] = useState(false)
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -37,7 +37,5 @@ const CreateStoryReviewDialog: React.FC<Props> = ({ storyId }) => {
         </DialogClose>
       </DialogContent>
     </Dialog>
-  );
-};
-
-export { CreateStoryReviewDialog };
+  )
+}

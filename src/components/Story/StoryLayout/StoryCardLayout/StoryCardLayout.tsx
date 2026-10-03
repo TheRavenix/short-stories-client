@@ -1,11 +1,11 @@
 import { Card, CardContent } from "@/components/ui/Card";
 import { StoryContent, StoryContentType } from "../../StoryContent";
 
-interface Props {
-  storyContent: StoryContentType;
+type Props = {
+  storyContent: StoryContentType
 }
 
-const StoryCardLayout: React.FC<Props> = ({ storyContent }) => {
+export function StoryCardLayout({ storyContent }: Props) {
   return (
     <Card>
       <CardContent>
@@ -14,7 +14,5 @@ const StoryCardLayout: React.FC<Props> = ({ storyContent }) => {
         ))}
       </CardContent>
     </Card>
-  );
-};
-
-export { StoryCardLayout };
+  )
+}

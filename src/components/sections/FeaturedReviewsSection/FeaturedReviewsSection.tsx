@@ -3,47 +3,54 @@ import { MessageCircleIcon } from "lucide-react";
 import styles from "./FeaturedReviewsSection.module.scss";
 
 import { H1 } from "@/components/ui/Typography";
-import { Show } from "@/components/Show";
 import { EmptyState } from "@/components/EmptyState";
-import { StoryReview, StoryReviewWithDetails } from "@/components/Story";
 import { Card, CardContent } from "@/components/ui/Card";
+import { StoryReview, StoryReviewDetails, StoryReviewType } from "@/components/Story/StoryReview";
 
-interface Props {
-  reviews: StoryReviewWithDetails[];
+type Props = {
+  reviews: StoryReviewType[]
+  reviewsDetails: StoryReviewDetails[]
 }
 
-const FeaturedReviewsSection: React.FC<Props> = ({ reviews }) => {
+export function FeaturedReviewsSection({
+ reviews,
+ reviewsDetails 
+}: Props) {
   return (
     <div className={styles.reviews}>
-      <H1 transform="capitalize" className={styles.headline}>
+      <H1 transform='capitalize' className={styles.headline}>
         Featured reviews
       </H1>
-      <Show
-        when={reviews.length > 0}
-        fallback={
+      {
+        reviews.length > 0 ?
+          <div className={styles.reviewsList}>
+            {reviews.map((review) => {
+              const reviewDetails = reviewsDetails.find((details) => details.storyId === review.storyId)
+
+              if (reviewDetails === undefined) {
+                return null
+              }
+
+              return (
+                <Card key={review.id}>
+                 <CardContent className={styles.reviewsCardContent}>
+                  <StoryReview
+                    review={review}
+                    reviewDetails={reviewDetails}
+                    isSeparatorShown={false}
+                    isStoryNameBadgeShown={true}
+                    isReadMoreLinkShown={true}
+                  />
+                 </CardContent>
+               </Card>
+              )
+            })}
+          </div> :
           <EmptyState
             icon={<MessageCircleIcon />}
-            message="No featured reviews at the moment."
+            message='No featured reviews at the moment.'
           />
-        }
-      >
-        <div className={styles.reviewsList}>
-          {reviews.map((review) => (
-            <Card key={review._id}>
-              <CardContent className={styles.reviewsCardContent}>
-                <StoryReview
-                  {...review}
-                  shouldShowSeparator={false}
-                  shouldShowStoryNameBadge
-                  shouldShowReadMoreLink
-                />
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </Show>
+      }
     </div>
-  );
-};
-
-export { FeaturedReviewsSection };
+  )
+}

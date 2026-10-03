@@ -3,22 +3,24 @@ import clsx from "clsx";
 
 import styles from "./Form.module.scss";
 
-interface Props extends ComponentProps<"form"> {
-  preventDefault?: boolean;
-  spacing?: "sm" | "md";
-}
+type Props = {
+  preventDefault?: boolean
+  spacing?: 'sm' | 'md'
+} & ComponentProps<'form'>
 
-const Form: React.FC<Props> = ({
+export function Form({
   className,
   preventDefault = true,
-  spacing = "sm",
+  spacing = 'sm',
   onSubmit,
   ...rest
-}) => {
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    if (preventDefault) e.preventDefault();
-    if (typeof onSubmit === "function") {
-      onSubmit(e);
+}: Props) {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (preventDefault) {
+      e.preventDefault()
+    }
+    if (typeof onSubmit === 'function') {
+      onSubmit(e)
     }
   }
 
@@ -28,7 +30,5 @@ const Form: React.FC<Props> = ({
       onSubmit={handleSubmit}
       {...rest}
     />
-  );
-};
-
-export { Form };
+  )
+}

@@ -14,60 +14,56 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/Select";
-
 import { useSearchStore } from "@/stores/search";
-
 import { FILTER_DEFAULT_TIMEOUT } from "@/constants/filter";
 
-interface Props {}
-
-const LibraryFilters: React.FC<Props> = ({}) => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const query = useSearchStore((s) => s.libraryQuery);
-  const setQuery = useSearchStore((s) => s.setLibraryQuery);
-  const [genre, setGenre] = useState(searchParams.get("genre") || "all-genres");
-  const [order, setOrder] = useState(searchParams.get("order") || "random");
-  const filterTimoutRef = useRef<NodeJS.Timeout>(null!);
+export function LibraryFilters() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const query = useSearchStore((s) => s.libraryQuery)
+  const setQuery = useSearchStore((s) => s.setLibraryQuery)
+  const [genre, setGenre] = useState(searchParams.get('genre') || 'all-genres')
+  const [order, setOrder] = useState(searchParams.get('order') || 'random')
+  const filterTimoutRef = useRef<NodeJS.Timeout>(null!)
 
   function updateSearchParams(paramKey: string, paramValue: string) {
-    const params = new URLSearchParams(searchParams);
-    params.set(paramKey, paramValue);
-    router.push(`/s?${params.toString()}`);
+    const params = new URLSearchParams(searchParams)
+    params.set(paramKey, paramValue)
+    router.push(`/s?${params.toString()}`)
   }
 
   function handleQueryFilter(query: string) {
-    clearTimeout(filterTimoutRef.current);
+    clearTimeout(filterTimoutRef.current)
     filterTimoutRef.current = setTimeout(() => {
-      if (query !== searchParams.get("q")) {
-        updateSearchParams("q", query);
+      if (query !== searchParams.get('q')) {
+        updateSearchParams('q', query)
       }
-    }, FILTER_DEFAULT_TIMEOUT);
+    }, FILTER_DEFAULT_TIMEOUT)
   }
 
   function handleOnGenreChange(value: string) {
-    setGenre(value);
+    setGenre(value)
 
-    if (value !== searchParams.get("genre")) {
-      updateSearchParams("genre", value);
+    if (value !== searchParams.get('genre')) {
+      updateSearchParams('genre', value)
     }
   }
 
   function handleOnOrderChange(value: string) {
-    setOrder(value);
+    setOrder(value)
 
-    if (value !== searchParams.get("order")) {
-      updateSearchParams("order", value);
+    if (value !== searchParams.get('order')) {
+      updateSearchParams('order', value)
     }
   }
 
   useEffect(() => {
-    setQuery(searchParams.get("q") || "");
+    setQuery(searchParams.get('q') || '')
 
     return () => {
-      setQuery("");
-    };
-  }, []);
+      setQuery('')
+    }
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -78,9 +74,9 @@ const LibraryFilters: React.FC<Props> = ({}) => {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectItem value="all-genres">All Genres</SelectItem>
-              <SelectItem value="adventure">Adventure</SelectItem>
-              <SelectItem value="mystery">Mystery</SelectItem>
+              <SelectItem value='all-genres'>All Genres</SelectItem>
+              <SelectItem value='adventure'>Adventure</SelectItem>
+              <SelectItem value='mystery'>Mystery</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
@@ -90,27 +86,25 @@ const LibraryFilters: React.FC<Props> = ({}) => {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectItem value="random">Random</SelectItem>
-              <SelectItem value="most-popular">Most Popular</SelectItem>
-              <SelectItem value="highest-rated">Highest Rated</SelectItem>
-              <SelectItem value="newest-first">Newest First</SelectItem>
-              <SelectItem value="oldest-first">Oldest First</SelectItem>
+              <SelectItem value='random'>Random</SelectItem>
+              <SelectItem value='most-popular'>Most Popular</SelectItem>
+              <SelectItem value='highest-rated'>Highest Rated</SelectItem>
+              <SelectItem value='newest-first'>Newest First</SelectItem>
+              <SelectItem value='oldest-first'>Oldest First</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
       </div>
       <div>
         <Input
-          label="Search stories"
+          label='Search stories'
           value={query}
           onChange={(e) => {
-            setQuery(e.target.value);
-            handleQueryFilter(e.target.value);
+            setQuery(e.target.value)
+            handleQueryFilter(e.target.value)
           }}
         />
       </div>
     </div>
-  );
-};
-
-export { LibraryFilters };
+  )
+}

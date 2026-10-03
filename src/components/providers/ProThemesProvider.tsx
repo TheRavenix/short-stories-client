@@ -4,25 +4,23 @@ import { PropsWithChildren, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { applyDataKeyAndStyle } from "@/utils/apply-data-key-and-style";
-import { services } from "@/services";
+import { getAllProThemes } from "@/services/pro-theme";
 
-interface Props extends PropsWithChildren {}
+type Props = PropsWithChildren
 
-const ProThemesProvider: React.FC<Props> = ({ children }) => {
+export function ProThemesProvider({ children }: Props) {
   const { data } = useQuery({
-    queryKey: ["pro-themes"],
-    queryFn: services.proTheme.getAll,
+    queryKey: ['pro-themes'],
+    queryFn: getAllProThemes,
     staleTime: 1000 * 60 * 30,
-    gcTime: 1000 * 60 * 60 * 24,
-  });
+    gcTime: 1000 * 60 * 60 * 24
+  })
 
   useEffect(() => {
-    if (data) {
-      applyDataKeyAndStyle("theme", data, "pro_themes_style");
+    if (data !== undefined) {
+      applyDataKeyAndStyle('theme', data, 'pro_themes_style')
     }
-  }, [data]);
+  }, [data])
 
-  return <>{children}</>;
-};
-
-export { ProThemesProvider };
+  return <>{children}</>
+}

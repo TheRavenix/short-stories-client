@@ -18,15 +18,13 @@ import {
 } from "@/components/ui/Drawer";
 import { NavbarSearchContent } from "./NavbarSearchContent";
 
-interface Props {}
-
-const NavbarSearchDrawer: React.FC<Props> = () => {
-  const [open, setOpen] = useState(false);
+export function NavbarSearchDrawer() {
+  const [open, setOpen] = useState(false)
 
   return (
     <Drawer open={open} onOpenChange={setOpen} autoFocus>
       <DrawerTrigger asChild>
-        <Button variant="inverse" size="icon">
+        <Button variant='inverse' size='icon'>
           <SearchIcon size={20} />
         </Button>
       </DrawerTrigger>
@@ -42,7 +40,5 @@ const NavbarSearchDrawer: React.FC<Props> = () => {
         </DrawerContent>
       </DrawerPortal>
     </Drawer>
-  );
-};
-
-export { NavbarSearchDrawer };
+  )
+}

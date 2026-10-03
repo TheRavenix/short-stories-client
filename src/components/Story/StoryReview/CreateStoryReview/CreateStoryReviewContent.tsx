@@ -11,56 +11,54 @@ import { STAR_RATING_MAX, StarRating } from "@/components/StarRating";
 import { Input } from "@/components/ui/Input";
 import { Form } from "@/components/Form";
 import { ActionSlot } from "@/components/ActionSlot";
-
 import { useToastStore } from "@/stores/toast";
+import { createStoryReview } from "@/services/story-review";
 
-import { services } from "@/services";
-
-interface Props {
-  storyId: string;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+type Props = {
+  storyId: number
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const CreateStoryReviewContent: React.FC<Props> = ({ storyId, setOpen }) => {
-  const router = useRouter();
-  const pathName = usePathname();
-  const searchParams = useSearchParams();
-  const [rating, setRating] = useState(STAR_RATING_MAX);
-  const [comment, setComment] = useState("");
-  const addToast = useToastStore((s) => s.addToast);
+export function CreateStoryReviewContent({ storyId, setOpen }: Props) {
+  const router = useRouter()
+  const pathName = usePathname()
+  const searchParams = useSearchParams()
+  const [rating, setRating] = useState(STAR_RATING_MAX)
+  const [comment, setComment] = useState("")
+  const addToast = useToastStore((s) => s.addToast)
 
   const mutation = useMutation({
-    mutationKey: ["create-story-review"],
-    mutationFn: services.storyReview.createStoryReview,
+    mutationKey: ['create-story-review'],
+    mutationFn: createStoryReview,
     onSuccess(data) {
-      let href = pathName;
+      let href = pathName
 
-      if (searchParams.get("view") === "tabs") {
-        href += `?view=tabs&tab=${searchParams.get("tab")}`;
+      if (searchParams.get('view') === 'tabs') {
+        href += `?view=tabs&tab=${searchParams.get('tab')}`
       }
 
       addToast({
-        title: "Post review",
+        title: 'Post review',
         description: data.message,
-      });
-      setOpen(false);
-      router.push(href, { scroll: false });
+      })
+      setOpen(false)
+      router.push(href, { scroll: false })
     },
     onError(error) {
       addToast({
-        title: "Error post review",
+        title: 'Error post review',
         description: error.message,
-        variant: "error",
-      });
+        variant: 'error',
+      })
     },
-  });
+  })
 
-  function handleReview(e: React.FormEvent<HTMLFormElement>) {
+  const handleReview = (e: React.FormEvent<HTMLFormElement>) => {
     mutation.mutate({
-      stars: rating,
-      comment,
       storyId,
-    });
+      stars: rating,
+      comment
+    })
   }
 
   return (
@@ -68,23 +66,21 @@ const CreateStoryReviewContent: React.FC<Props> = ({ storyId, setOpen }) => {
       <StarRating rating={rating} setRating={setRating} interactive />
       <Form onSubmit={handleReview}>
         <Input
-          label="Your Comment"
+          label='Your Comment'
           required
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         />
         <ActionSlot>
           <Button
-            type="submit"
+            type='submit'
             className={styles.postButton}
             disabled={mutation.isPending}
           >
-            {mutation.isPending ? "Loading..." : "Add"}
+            {mutation.isPending ? 'Loading...' : 'Add'}
           </Button>
         </ActionSlot>
       </Form>
     </div>
-  );
-};
-
-export { CreateStoryReviewContent };
+  )
+}

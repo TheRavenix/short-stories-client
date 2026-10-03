@@ -14,15 +14,13 @@ import {
 } from "../../../ui/Dialog";
 import { DeleteAccountContent } from "./DeleteAccountContent";
 
-interface Props {}
-
-const DeleteAccountDialog: React.FC<Props> = () => {
-  const [open, setOpen] = useState(false);
+export function DeleteAccountDialog() {
+  const [open, setOpen] = useState(false)
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" variant="destructive">
+        <Button size='sm' variant='destructive'>
           Delete
         </Button>
       </DialogTrigger>
@@ -38,7 +36,5 @@ const DeleteAccountDialog: React.FC<Props> = () => {
         </DialogClose>
       </DialogContent>
     </Dialog>
-  );
-};
-
-export { DeleteAccountDialog };
+  )
+}

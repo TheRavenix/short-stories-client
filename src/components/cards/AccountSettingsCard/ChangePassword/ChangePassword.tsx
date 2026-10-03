@@ -2,15 +2,9 @@
 
 import { ChangePasswordDialog } from "./ChangePasswordDialog";
 import { ChangePasswordDrawer } from "./ChangePasswordDrawer";
+import { useIsMobile } from "@/hooks/media/use-media-utils";
 
-import { useIsMobile } from "@/hooks/media";
-
-interface Props {}
-
-const ChangePassword: React.FC<Props> = () => {
-  const isMobile = useIsMobile();
-
-  return isMobile ? <ChangePasswordDrawer /> : <ChangePasswordDialog />;
-};
-
-export { ChangePassword };
+export function ChangePassword()  {
+  const isMobile = useIsMobile()
+  return isMobile ? <ChangePasswordDrawer /> : <ChangePasswordDialog />
+}

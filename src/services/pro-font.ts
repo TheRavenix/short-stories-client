@@ -1,18 +1,14 @@
 import { axiosClient } from "@/utils/axios-client";
 
-type ProFontType = Record<string, Record<string, string>>;
+export type ProFontType = Record<string, Record<string, string>>
 
-interface ProFontResponse {
-  src: string[];
-  ui: ProFontType;
-  reading: ProFontType;
+export type ProFontResponse = {
+  src: string[]
+  ui: ProFontType
+  reading: ProFontType
 }
 
-class ProFontService {
-  async getAll(): Promise<ProFontResponse> {
-    const response = await axiosClient.get("pro-fonts");
-    return response.data;
-  }
+export async function getAllProFonts(): Promise<ProFontResponse> {
+  const response = await axiosClient.get('pro-fonts')
+  return response.data
 }
-
-export { ProFontService, type ProFontType, type ProFontResponse };

@@ -10,48 +10,43 @@ import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { P } from "@/components/ui/Typography";
 import { Form } from "@/components/Form";
-
 import { useToastStore } from "@/stores/toast";
+import { signIn, SignInData } from "@/services/auth";
 
-import { SignInData } from "@/services/auth";
-import { services } from "@/services";
-
-interface Props {}
-
-const SignInForm: React.FC<Props> = () => {
+export function SignInForm() {
   const [formData, setFormData] = useState<SignInData>({
-    email: "",
-    password: "",
-  });
-  const addToast = useToastStore((s) => s.addToast);
+    email: '',
+    password: ''
+  })
+  const addToast = useToastStore((s) => s.addToast)
 
   const mutation = useMutation({
-    mutationFn: services.auth.signIn,
+    mutationFn: signIn,
     onSuccess(data) {
       addToast({
-        title: "Sign in",
-        description: data.message,
-      });
-      window.location.replace("/");
+        title: 'Sign in',
+        description: data.message
+      })
+      window.location.replace('/')
     },
     onError(error) {
       addToast({
-        title: "Error sign in",
+        title: 'Error sign in',
         description: error.message,
-        variant: "error",
-      });
-    },
-  });
+        variant: 'error'
+      })
+    }
+  })
 
-  function handleSignIn(e: React.FormEvent<HTMLFormElement>) {
-    mutation.mutate(formData);
+  const handleSignIn = (e: React.FormEvent<HTMLFormElement>) => {
+    mutation.mutate(formData)
   }
 
   return (
-    <Form spacing="md" onSubmit={handleSignIn}>
+    <Form spacing='md' onSubmit={handleSignIn}>
       <Input
-        type="email"
-        label="Email"
+        type='email'
+        label='Email'
         required
         value={formData.email}
         onChange={(e) =>
@@ -59,8 +54,8 @@ const SignInForm: React.FC<Props> = () => {
         }
       />
       <Input
-        type="password"
-        label="Password"
+        type='password'
+        label='Password'
         required
         value={formData.password}
         onChange={(e) =>
@@ -68,18 +63,16 @@ const SignInForm: React.FC<Props> = () => {
         }
       />
       <div className={styles.endContent}>
-        <Button size="responsive" type="submit" disabled={mutation.isPending}>
-          {mutation.isPending ? "Loading..." : "Sign in"}
+        <Button size='responsive' type='submit' disabled={mutation.isPending}>
+          {mutation.isPending ? 'Loading...' : 'Sign in'}
         </Button>
-        <P variant="gray">
-          You don't have an account?{" "}
-          <Link href="/sign-up" className={styles.signUpLink}>
+        <P variant='gray'>
+          You don't have an account?{' '}
+          <Link href='/sign-up' className={styles.signUpLink}>
             Sign up
           </Link>
         </P>
       </div>
     </Form>
-  );
-};
-
-export { SignInForm };
+  )
+}

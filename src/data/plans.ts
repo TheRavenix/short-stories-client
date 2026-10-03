@@ -1,99 +1,97 @@
 const PLAN_FEATURE_NAMES = [
-  "Access to Stories",
-  "Story Previews",
-  "Premium Stories",
-  "Ad-Free Experience",
-  "Offline Reading",
-  "Early Access to New Stories",
-  "Custom Themes",
-  "Pro Visuals",
-  "Exclusive Fonts",
-] as const;
+  'Access to Stories',
+  'Story Previews',
+  'Premium Stories',
+  'Ad-Free Experience',
+  'Offline Reading',
+  'Early Access to New Stories',
+  'Custom Themes',
+  'Pro Visuals',
+  'Exclusive Fonts'
+] as const
 
-interface PlanFeature {
-  name: (typeof PLAN_FEATURE_NAMES)[number];
-  checked: boolean;
-  suffix?: string;
+export type PlanFeature = {
+  name: (typeof PLAN_FEATURE_NAMES)[number]
+  checked: boolean
+  suffix?: string
 }
 
-const freePlanFeatures: PlanFeature[] = [
+export const freePlanFeatures: PlanFeature[] = [
   {
-    name: "Access to Stories",
+    name: 'Access to Stories',
     checked: true,
-    suffix: "Limited",
+    suffix: 'Limited'
   },
   {
-    name: "Story Previews",
-    checked: true,
+    name: 'Story Previews',
+    checked: true
   },
   {
-    name: "Premium Stories",
-    checked: false,
+    name: 'Premium Stories',
+    checked: false
   },
   {
-    name: "Ad-Free Experience",
-    checked: false,
+    name: 'Ad-Free Experience',
+    checked: false
   },
   {
-    name: "Offline Reading",
-    checked: false,
+    name: 'Offline Reading',
+    checked: false
   },
   {
-    name: "Early Access to New Stories",
-    checked: false,
+    name: 'Early Access to New Stories',
+    checked: false
   },
   {
-    name: "Custom Themes",
-    checked: false,
+    name: 'Custom Themes',
+    checked: false
   },
   {
-    name: "Pro Visuals",
-    checked: false,
+    name: 'Pro Visuals',
+    checked: false
   },
   {
-    name: "Exclusive Fonts",
-    checked: false,
-  },
-];
+    name: 'Exclusive Fonts',
+    checked: false
+  }
+]
 
-const proPlanFeatures: PlanFeature[] = [
+export const proPlanFeatures: PlanFeature[] = [
   {
-    name: "Access to Stories",
+    name: 'Access to Stories',
     checked: true,
-    suffix: "Full Access",
+    suffix: 'Full Access'
   },
   {
-    name: "Story Previews",
-    checked: true,
+    name: 'Story Previews',
+    checked: true
   },
   {
-    name: "Premium Stories",
-    checked: true,
+    name: 'Premium Stories',
+    checked: true
   },
   {
-    name: "Ad-Free Experience",
-    checked: true,
+    name: 'Ad-Free Experience',
+    checked: true
   },
   {
-    name: "Offline Reading",
-    checked: true,
+    name: 'Offline Reading',
+    checked: true
   },
   {
-    name: "Early Access to New Stories",
-    checked: true,
+    name: 'Early Access to New Stories',
+    checked: true
   },
   {
-    name: "Custom Themes",
-    checked: true,
+    name: 'Custom Themes',
+    checked: true
   },
   {
-    name: "Pro Visuals",
-    checked: true,
+    name: 'Pro Visuals',
+    checked: true
   },
   {
-    name: "Exclusive Fonts",
-    checked: true,
-  },
-];
-
-export { freePlanFeatures, proPlanFeatures, type PlanFeature };
+    name: 'Exclusive Fonts',
+    checked: true
+  }
+]

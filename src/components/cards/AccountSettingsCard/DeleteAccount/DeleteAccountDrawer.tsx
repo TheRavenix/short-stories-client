@@ -18,15 +18,13 @@ import {
 } from "@/components/ui/Drawer";
 import { DeleteAccountContent } from "./DeleteAccountContent";
 
-interface Props {}
-
-const DeleteAccountDrawer: React.FC<Props> = () => {
-  const [open, setOpen] = useState(false);
+export function DeleteAccountDrawer() {
+  const [open, setOpen] = useState(false)
 
   return (
     <Drawer open={open} onOpenChange={setOpen} autoFocus>
       <DrawerTrigger asChild>
-        <Button size="sm" variant="destructive">
+        <Button size='sm' variant='destructive'>
           Delete
         </Button>
       </DrawerTrigger>
@@ -46,7 +44,5 @@ const DeleteAccountDrawer: React.FC<Props> = () => {
         </DrawerContent>
       </DrawerPortal>
     </Drawer>
-  );
-};
-
-export { DeleteAccountDrawer };
+  )
+}

@@ -3,30 +3,28 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-interface StoreState {
-  storyView: string;
-  storyLayout: string;
-  setStoryView: (view: string) => void;
-  setStoryLayout: (layout: string) => void;
+type StoreState = {
+  storyView: string
+  storyLayout: string
+  setStoryView: (view: string) => void
+  setStoryLayout: (layout: string) => void
 }
 
-const useStoryStore = create(
+export const useStoryStore = create(
   persist<StoreState>(
     (set) => ({
-      storyView: "grid",
-      storyLayout: "card",
+      storyView: 'grid',
+      storyLayout: 'card',
 
       setStoryView(view) {
-        set((state) => ({ ...state, storyView: view }));
+        set((state) => ({ ...state, storyView: view }))
       },
       setStoryLayout(layout) {
-        set((state) => ({ ...state, storyLayout: layout }));
-      },
+        set((state) => ({ ...state, storyLayout: layout }))
+      }
     }),
     {
-      name: "story_store",
+      name: 'story_store'
     }
   )
-);
-
-export { useStoryStore };
+)

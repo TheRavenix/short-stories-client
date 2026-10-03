@@ -6,29 +6,26 @@ import { Tabs } from "../ui/Tabs";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-interface Props
-  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Tabs> {
-  paramKey?: string;
-}
+type Props = {
+  paramKey?: string
+} & React.ComponentPropsWithoutRef<typeof TabsPrimitive.Tabs>
 
-const SearchParamTabs: React.FC<Props> = ({
+export function SearchParamTabs({
   defaultValue,
-  paramKey = "tab",
+  paramKey = 'tab',
   ...rest
-}) => {
-  const searchParams = useSearchParams();
-  const router = useRouter();
+}: Props) {
+  const searchParams = useSearchParams()
+  const router = useRouter()
   const [currentTab, setCurrentTab] = useState(
-    () => searchParams.get(paramKey) || defaultValue || ""
-  );
+    () => searchParams.get(paramKey) || defaultValue || ''
+  )
 
   useEffect(() => {
-    const params = new URLSearchParams(searchParams);
-    params.set(paramKey, currentTab);
-    router.replace(`?${params.toString()}`, { scroll: false });
-  }, [currentTab, paramKey, router, searchParams]);
+    const params = new URLSearchParams(searchParams)
+    params.set(paramKey, currentTab)
+    router.replace(`?${params.toString()}`, { scroll: false })
+  }, [currentTab, paramKey, router, searchParams])
 
-  return <Tabs value={currentTab} onValueChange={setCurrentTab} {...rest} />;
-};
-
-export { SearchParamTabs };
+  return <Tabs value={currentTab} onValueChange={setCurrentTab} {...rest} />
+}
