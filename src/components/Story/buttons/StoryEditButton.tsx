@@ -3,23 +3,22 @@
 import Link from "next/link";
 
 import { Button } from "@/components/ui/Button";
-
 import { useProfile } from "@/hooks/profile";
 
-interface Props {
-  storySlug: string;
+type Props = {
+  storySlug: string
 }
 
-const StoryEditButton: React.FC<Props> = ({ storySlug }) => {
-  const { profile, isLoading } = useProfile();
+export function StoryEditButton({ storySlug }: Props) {
+  const { profile, isLoading } = useProfile()
 
-  if (isLoading || profile?.role !== "admin") return null;
+  if (isLoading || profile?.role !== 'admin') {
+    return null
+  }
 
   return (
     <Link href={`/s/${storySlug}/edit`}>
       <Button>Edit</Button>
     </Link>
-  );
-};
-
-export { StoryEditButton };
+  )
+}

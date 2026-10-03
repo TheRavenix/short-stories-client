@@ -3,18 +3,19 @@ import Link from "next/link";
 import styles from "./NavbarDrawer.module.scss";
 
 import { Button } from "@/components/ui/Button";
-
 import { authLinks } from "@/data/links";
 import { useAuthStore } from "@/stores/auth";
 
-interface Props {
-  toggleOpen: () => void;
+type Props = {
+  toggleOpen: () => void
 }
 
-const NavbarDrawerAuthLinks: React.FC<Props> = ({ toggleOpen }) => {
-  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+export function NavbarDrawerAuthLinks({ toggleOpen }: Props) {
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
 
-  if (isAuthenticated) return null;
+  if (isAuthenticated) {
+    return null
+  }
 
   return (
     <div className={styles.drawerLinks}>
@@ -30,7 +31,5 @@ const NavbarDrawerAuthLinks: React.FC<Props> = ({ toggleOpen }) => {
         </Link>
       ))}
     </div>
-  );
-};
-
-export { NavbarDrawerAuthLinks };
+  )
+}

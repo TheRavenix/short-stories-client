@@ -15,5 +15,5 @@ export default function Dashboard() {
         </CompactContainer>
       </main>
     </>
-  );
+  )
 }

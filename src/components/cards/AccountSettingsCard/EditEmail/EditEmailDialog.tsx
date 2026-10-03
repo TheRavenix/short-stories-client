@@ -13,15 +13,13 @@ import {
 } from "../../../ui/Dialog";
 import { EditEmailContent } from "./EditEmailContent";
 
-interface Props {}
-
-const EditEmailDialog: React.FC<Props> = () => {
-  const [open, setOpen] = useState(false);
+export function EditEmailDialog() {
+  const [open, setOpen] = useState(false)
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" variant="inverse">
+        <Button size='sm' variant='inverse'>
           Edit
         </Button>
       </DialogTrigger>
@@ -33,7 +31,5 @@ const EditEmailDialog: React.FC<Props> = () => {
         </DialogClose>
       </DialogContent>
     </Dialog>
-  );
-};
-
-export { EditEmailDialog };
+  )
+}

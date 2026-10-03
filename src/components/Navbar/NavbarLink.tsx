@@ -7,10 +7,10 @@ import { usePathname } from "next/navigation";
 
 import styles from "./Navbar.module.scss";
 
-type Props = LinkProps & ComponentProps<"a"> & {};
+type Props = LinkProps & ComponentProps<'a'>
 
-const NavbarLink: React.FC<Props> = ({ className, href, ...rest }) => {
-  const pathName = usePathname();
+export function NavbarLink({ className, href, ...rest }: Props) {
+  const pathName = usePathname()
 
   return (
     <Link
@@ -19,7 +19,5 @@ const NavbarLink: React.FC<Props> = ({ className, href, ...rest }) => {
       data-active={pathName === href}
       {...rest}
     />
-  );
-};
-
-export { NavbarLink };
+  )
+}

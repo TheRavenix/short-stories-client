@@ -1,19 +1,13 @@
-import {
-  StoryContentFontSelect,
-  StoryContentFontSizeSelect,
-} from "../../StoryContent";
+import { StoryContentFontSelect } from "../../StoryContent/StoryContentFontSelect";
+import { StoryContentFontSizeSelect } from "../../StoryContent/StoryContentFontSizeSelect";
 import { StoryLayoutSelect } from "../../StoryLayout";
 
-interface Props {}
-
-const StoryReadTools: React.FC<Props> = () => {
+export function StoryReadTools() {
   return (
     <div>
       <StoryLayoutSelect />
       <StoryContentFontSelect />
       <StoryContentFontSizeSelect />
     </div>
-  );
-};
-
-export { StoryReadTools };
+  )
+}

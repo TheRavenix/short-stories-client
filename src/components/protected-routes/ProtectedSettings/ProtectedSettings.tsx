@@ -9,12 +9,12 @@ import { CompactContainer } from "@/components/ui/Container";
 import { Skeleton } from "@/components/Skeleton";
 import { H1 } from "@/components/ui/Typography";
 
-interface Props extends PropsWithChildren {}
+type Props = PropsWithChildren
 
-const ProtectedSettings: React.FC<Props> = ({ children }) => {
+export function ProtectedSettings({ children }: Props) {
   const { isLoading, isError } = useAuthSession({
-    redirectTo: "/",
-  });
+    redirectTo: '/'
+  })
 
   if (isLoading || isError) {
     return (
@@ -24,14 +24,12 @@ const ProtectedSettings: React.FC<Props> = ({ children }) => {
             <H1>Settings</H1>
           </div>
           <div className={styles.skeletonCards}>
-            <Skeleton type="card" count={5} />
+            <Skeleton type='card' count={5} />
           </div>
         </CompactContainer>
       </main>
-    );
+    )
   }
 
-  return children;
-};
-
-export { ProtectedSettings };
+  return children
+}

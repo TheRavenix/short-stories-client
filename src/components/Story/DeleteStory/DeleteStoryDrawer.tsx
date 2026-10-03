@@ -17,18 +17,18 @@ import {
 } from "@/components/ui/Drawer";
 import { DeleteStoryContent } from "./DeleteStoryContent";
 
-interface Props {
-  storyId: string;
-  storyName: string;
+type Props = {
+  storyId: number
+  storyName: string
 }
 
-const DeleteStoryDrawer: React.FC<Props> = ({ storyId, storyName }) => {
-  const [open, setOpen] = useState(false);
+export function DeleteStoryDrawer({ storyId, storyName }: Props) {
+  const [open, setOpen] = useState(false)
 
   return (
     <Drawer open={open} onOpenChange={setOpen} autoFocus>
       <DrawerTrigger asChild>
-        <Button variant="destructive">Delete</Button>
+        <Button variant='destructive'>Delete</Button>
       </DrawerTrigger>
       <DrawerPortal>
         <DrawerOverlay />
@@ -46,7 +46,5 @@ const DeleteStoryDrawer: React.FC<Props> = ({ storyId, storyName }) => {
         </DrawerContent>
       </DrawerPortal>
     </Drawer>
-  );
-};
-
-export { DeleteStoryDrawer };
+  )
+}

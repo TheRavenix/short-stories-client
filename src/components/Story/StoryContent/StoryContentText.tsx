@@ -5,13 +5,12 @@ import clsx from "clsx";
 import styles from "./StoryContent.module.scss";
 
 import { P, ParagraphProps } from "@/components/ui/Typography";
+import { useStoryReadStore } from "@/stores/story/story-read";
 
-import { useStoryReadStore } from "@/stores/story";
+type Props = ParagraphProps
 
-interface Props extends ParagraphProps {}
-
-const StoryContentText: React.FC<Props> = ({ className, style, ...rest }) => {
-  const fontSize = useStoryReadStore((s) => s.fontSize);
+export function StoryContentText({ className, style, ...rest }: Props) {
+  const fontSize = useStoryReadStore((s) => s.fontSize)
 
   return (
     <P
@@ -19,7 +18,5 @@ const StoryContentText: React.FC<Props> = ({ className, style, ...rest }) => {
       style={{ ...style, fontSize }}
       {...rest}
     />
-  );
-};
-
-export { StoryContentText };
+  )
+}

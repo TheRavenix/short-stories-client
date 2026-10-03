@@ -2,10 +2,8 @@
 
 import { ErrorFallback, ErrorFallbackProps } from "@/components/ErrorFallback";
 
-interface Props extends ErrorFallbackProps {}
+type Props = ErrorFallbackProps
 
-const LibraryStoriesSectionError: React.FC<Props> = (props) => {
-  return <ErrorFallback {...props} />;
-};
-
-export { LibraryStoriesSectionError };
+export function LibraryStoriesSectionError(props: Props) {
+  return <ErrorFallback {...props} />
+}

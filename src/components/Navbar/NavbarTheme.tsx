@@ -2,14 +2,12 @@
 
 import styles from "./Navbar.module.scss";
 
-import { ThemeSelect, ThemeToggle } from "../Theme";
-
+import { ThemeSelect } from "../Theme/ThemeSelect";
+import { ThemeToggle } from "../Theme/ThemeToggle";
 import { useAuthStore } from "@/stores/auth";
 
-interface Props {}
-
-const NavbarTheme: React.FC<Props> = () => {
-  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+export function NavbarTheme() {
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
 
   return isAuthenticated ? (
     <div className={styles.themeSelectContainer}>
@@ -17,7 +15,5 @@ const NavbarTheme: React.FC<Props> = () => {
     </div>
   ) : (
     <ThemeToggle />
-  );
-};
-
-export { NavbarTheme };
+  )
+}

@@ -3,36 +3,36 @@ import styles from "./page.module.scss";
 import { H1 } from "@/components/ui/Typography";
 import { CompactContainer } from "@/components/ui/Container";
 import { AdminPageGuard } from "@/components/guards";
-import { EditStoryForm, StoryBackButton } from "@/components/Story";
+import { StoryBackButton } from "@/components/Story/buttons/StoryBackButton";
+import { EditStoryForm } from "@/components/Story/forms/EditStoryForm";
+import { getStoryBySlug } from "@/lib/story";
+import { getStoryContentByStoryId } from "@/lib/story/story-content";
 
-import { getStoryBySlug, getStoryContentByStoryId } from "@/lib/data/story";
-
-interface Props {
-  params: Promise<{ slug: string }>;
+type Props = {
+  params: Promise<{ slug: string }>
 }
 
 export default async function EditStory(props: Props) {
-  const params = await props.params;
-  const storyResponse = await getStoryBySlug(params.slug);
-  const storyContentResponse = await getStoryContentByStoryId(
-    storyResponse?.data._id
-  );
+  const params = await props.params
+  // Handle not found errors if they are not handeled already
+  const story = await getStoryBySlug(params.slug)
+  const storyContent = await getStoryContentByStoryId(story.id)
 
   return (
     <>
       <AdminPageGuard redirectTo={`/s/${params.slug}`} />
       <main className={styles.main}>
-        <CompactContainer spacing="lg" withPaddingBlock>
+        <CompactContainer spacing='lg' withPaddingBlock>
           <StoryBackButton storySlug={params.slug} />
-          <H1 className={styles.headline} transform="capitalize">
+          <H1 className={styles.headline} transform='capitalize'>
             Edit story
           </H1>
           <EditStoryForm
-            story={storyResponse?.data}
-            storyContent={storyContentResponse?.data}
+            story={story}
+            storyContent={storyContent}
           />
         </CompactContainer>
       </main>
     </>
-  );
+  )
 }

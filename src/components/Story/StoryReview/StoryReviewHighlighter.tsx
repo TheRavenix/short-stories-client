@@ -4,31 +4,30 @@ import { useEffect } from "react";
 
 import { useProfile } from "@/hooks/profile";
 import { useAuthStore } from "@/stores/auth";
+import { GetStoryReviewsByStoryIdResponse } from "@/lib/story/story-review";
 
-import { GetStoryReviewsByStoryIdResponse } from "@/lib/data/story";
-
-interface Props {
-  storyReviewsResponse: GetStoryReviewsByStoryIdResponse;
+type Props = {
+  storyReviews: GetStoryReviewsByStoryIdResponse
 }
 
-const StoryReviewHighlighter: React.FC<Props> = ({ storyReviewsResponse }) => {
-  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
-  const { profile } = useProfile();
+export function StoryReviewHighlighter({ storyReviews }: Props) {
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
+  const { profile } = useProfile()
 
   useEffect(() => {
-    if (!isAuthenticated) return;
+    if (!isAuthenticated) {
+      return
+    }
 
     const reviewUserNameList = document.querySelectorAll(
-      "[data-review-user-id]"
-    );
+      '[data-review-user-id]'
+    )
     reviewUserNameList.forEach((userNameElm) => {
-      if (userNameElm.getAttribute("data-review-user-id") === profile?._id) {
-        userNameElm.setAttribute("data-highlighted", "true");
+      if (userNameElm.getAttribute('data-review-user-id') === profile?.id.toString()) {
+        userNameElm.setAttribute('data-highlighted', 'true')
       }
-    });
-  }, [isAuthenticated, profile, storyReviewsResponse]);
+    })
+  }, [isAuthenticated, profile, storyReviews])
 
-  return null;
-};
-
-export { StoryReviewHighlighter };
+  return null
+}

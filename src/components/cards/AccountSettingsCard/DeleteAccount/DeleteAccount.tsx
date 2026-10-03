@@ -2,15 +2,9 @@
 
 import { DeleteAccountDialog } from "./DeleteAccountDialog";
 import { DeleteAccountDrawer } from "./DeleteAccountDrawer";
+import { useIsMobile } from "@/hooks/media/use-media-utils";
 
-import { useIsMobile } from "@/hooks/media";
-
-interface Props {}
-
-const DeleteAccount: React.FC<Props> = () => {
-  const isMobile = useIsMobile();
-
-  return isMobile ? <DeleteAccountDrawer /> : <DeleteAccountDialog />;
-};
-
-export { DeleteAccount };
+export function DeleteAccount() {
+  const isMobile = useIsMobile()
+  return isMobile ? <DeleteAccountDrawer /> : <DeleteAccountDialog />
+}

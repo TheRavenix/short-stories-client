@@ -13,15 +13,13 @@ import {
 } from "../../../ui/Dialog";
 import { ChangePasswordContent } from "./ChangePasswordContent";
 
-interface Props {}
-
-const ChangePasswordDialog: React.FC<Props> = () => {
-  const [open, setOpen] = useState(false);
+export function ChangePasswordDialog() {
+  const [open, setOpen] = useState(false)
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" variant="inverse">
+        <Button size='sm' variant='inverse'>
           Change
         </Button>
       </DialogTrigger>
@@ -33,7 +31,5 @@ const ChangePasswordDialog: React.FC<Props> = () => {
         </DialogClose>
       </DialogContent>
     </Dialog>
-  );
-};
-
-export { ChangePasswordDialog };
+  )
+}

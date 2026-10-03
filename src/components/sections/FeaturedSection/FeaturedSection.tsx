@@ -1,20 +1,19 @@
 import { FeaturedStoriesSection } from "../FeaturedStoriesSection";
 import { FeaturedReviewsSection } from "../FeaturedReviewsSection";
+import { getFeaturedStories } from "@/lib/story";
+import { getFeaturedReviews } from "@/lib/story/story-review";
 
-import { getFeaturedStories } from "@/lib/data/story";
-
-interface Props {}
-
-const FeaturedSection: React.FC<Props> = async () => {
-  const featuredStoriesResponse = await getFeaturedStories();
-  const { stories, reviews } = featuredStoriesResponse?.data || {};
+export async function FeaturedSection() {
+  const featuredStories = await getFeaturedStories()
+  const featuredReviews = await getFeaturedReviews()
 
   return (
     <>
-      <FeaturedStoriesSection stories={stories} />
-      <FeaturedReviewsSection reviews={reviews} />
+      <FeaturedStoriesSection stories={featuredStories} />
+      <FeaturedReviewsSection 
+        reviews={featuredReviews.reviews}
+        reviewsDetails={featuredReviews.reviewsDetails}
+      />
     </>
-  );
-};
-
-export { FeaturedSection };
+  )
+}

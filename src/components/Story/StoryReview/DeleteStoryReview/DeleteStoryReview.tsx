@@ -2,21 +2,18 @@
 
 import { DeleteStoryReviewDialog } from "./DeleteStoryReviewDialog";
 import { DeleteStoryReviewDrawer } from "./DeleteStoryReviewDrawer";
+import { useIsMobile } from "@/hooks/media/use-media-utils";
 
-import { useIsMobile } from "@/hooks/media";
-
-interface Props {
-  reviewId: string;
+type Props = {
+  reviewId: number
 }
 
-const DeleteStoryReview: React.FC<Props> = ({ reviewId }) => {
-  const isMobile = useIsMobile();
+export function DeleteStoryReview({ reviewId }: Props) {
+  const isMobile = useIsMobile()
 
   return isMobile ? (
     <DeleteStoryReviewDrawer reviewId={reviewId} />
   ) : (
     <DeleteStoryReviewDialog reviewId={reviewId} />
-  );
-};
-
-export { DeleteStoryReview };
+  )
+}

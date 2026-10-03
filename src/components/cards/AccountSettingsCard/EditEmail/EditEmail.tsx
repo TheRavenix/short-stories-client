@@ -2,15 +2,9 @@
 
 import { EditEmailDialog } from "./EditEmailDialog";
 import { EditEmailDrawer } from "./EditEmailDrawer";
+import { useIsMobile } from "@/hooks/media/use-media-utils";
 
-import { useIsMobile } from "@/hooks/media";
-
-interface Props {}
-
-const EditEmail: React.FC<Props> = () => {
-  const isMobile = useIsMobile();
-
-  return isMobile ? <EditEmailDrawer /> : <EditEmailDialog />;
-};
-
-export { EditEmail };
+export function EditEmail() {
+  const isMobile = useIsMobile()
+  return isMobile ? <EditEmailDrawer /> : <EditEmailDialog />
+}

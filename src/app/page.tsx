@@ -16,7 +16,7 @@ import {
   SignUpSection,
 } from "@/components/sections";
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 
 export default async function Home() {
   return (
@@ -25,12 +25,12 @@ export default async function Home() {
         <div className={styles.hero}>
           <HeroCanvas />
           <div className={styles.heroContent}>
-            <H1 transform="capitalize" variant="primary">
+            <H1 transform='capitalize' variant='primary'>
               Discover amazing short stories
             </H1>
             <P>Read, imagine, and escape into worlds beyond your own.</P>
-            <Link href="/s" className={styles.exploreLink}>
-              <Button size="full">Explore Stories</Button>
+            <Link href='/s' className={styles.exploreLink}>
+              <Button size='full'>Explore Stories</Button>
             </Link>
           </div>
         </div>
@@ -45,5 +45,5 @@ export default async function Home() {
         <NewsletterSubSection />
       </CompactContainer>
     </main>
-  );
+  )
 }

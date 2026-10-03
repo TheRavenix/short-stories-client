@@ -3,23 +3,21 @@ import { ArrowLeftIcon } from "lucide-react";
 import styles from "./StoryBackButton.module.scss";
 
 import { Button } from "@/components/ui/Button";
-import { StoryViewLink } from "../../story-view";
+import { StoryViewLink } from "../../story-view/StoryViewLink";
 
-interface Props {
-  storySlug: string | undefined;
+type Props = {
+  storySlug?: string
 }
 
-const StoryBackButton: React.FC<Props> = ({ storySlug }) => {
+export function StoryBackButton({ storySlug }: Props) {
   return (
     <StoryViewLink
-      href={storySlug ? `/s/${storySlug}` : "/s"}
+      href={storySlug !== undefined ? `/s/${storySlug}` : 's'}
       className={styles.backToStory}
     >
-      <Button variant="ghost" size="icon">
+      <Button variant='ghost' size='icon'>
         <ArrowLeftIcon />
       </Button>
     </StoryViewLink>
   );
 };
-
-export { StoryBackButton };

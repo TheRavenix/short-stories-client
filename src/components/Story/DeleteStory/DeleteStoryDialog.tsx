@@ -13,18 +13,18 @@ import {
 } from "@/components/ui/Dialog";
 import { DeleteStoryContent } from "./DeleteStoryContent";
 
-interface Props {
-  storyId: string;
-  storyName: string;
+type Props = {
+  storyId: number
+  storyName: string
 }
 
-const DeleteStoryDialog: React.FC<Props> = ({ storyId, storyName }) => {
-  const [open, setOpen] = useState(false);
+export function DeleteStoryDialog({ storyId, storyName }: Props) {
+  const [open, setOpen] = useState(false)
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="destructive">Delete</Button>
+        <Button variant='destructive'>Delete</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogTitle>Delete Story</DialogTitle>
@@ -38,7 +38,5 @@ const DeleteStoryDialog: React.FC<Props> = ({ storyId, storyName }) => {
         </DialogClose>
       </DialogContent>
     </Dialog>
-  );
-};
-
-export { DeleteStoryDialog };
+  )
+}

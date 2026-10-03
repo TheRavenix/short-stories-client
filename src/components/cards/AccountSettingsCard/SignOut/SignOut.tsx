@@ -3,44 +3,38 @@
 import { useMutation } from "@tanstack/react-query";
 
 import { Button } from "@/components/ui/Button";
-
 import { useToastStore } from "@/stores/toast";
+import { signOut } from "@/services/auth";
 
-import { services } from "@/services";
-
-interface Props {}
-
-const SignOut: React.FC<Props> = () => {
-  const addToast = useToastStore((s) => s.addToast);
+export function SignOut() {
+  const addToast = useToastStore((s) => s.addToast)
 
   const mutation = useMutation({
-    mutationFn: services.auth.signOut,
+    mutationFn: signOut,
     onSuccess(data) {
       addToast({
-        title: "Done",
-        description: data.message,
-      });
-      window.location.replace("/sign-in");
+        title: 'Done',
+        description: data.message
+      })
+      window.location.replace('/sign-in')
     },
     onError(error) {
       addToast({
-        title: "Error sign out",
+        title: 'Error sign out',
         description: error.message,
-        variant: "error",
-      });
-    },
-  });
+        variant: 'error'
+      })
+    }
+  })
 
   return (
     <Button
-      size="sm"
-      variant="destructive"
+      size='sm'
+      variant='destructive'
       onClick={() => mutation.mutate()}
       disabled={mutation.isPending}
     >
       Sign out
     </Button>
-  );
-};
-
-export { SignOut };
+  )
+}

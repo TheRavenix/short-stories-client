@@ -2,46 +2,39 @@
 
 import { useSearchParams } from "next/navigation";
 
-import styles from "./Plans.module.scss";
-
 import { TabsList, TabsTrigger, TabsContent } from "@/components/ui/Tabs";
 import { SearchParamTabs } from "@/components/SearchParamTabs";
 import { Plan } from "./Plan";
-
 import { freePlanFeatures, proPlanFeatures } from "@/data/plans";
 
-interface Props {}
-
-const Plans: React.FC<Props> = () => {
-  const searchParams = useSearchParams();
-  const plan = searchParams.get("plan") || "free";
+export function Plans() {
+  const searchParams = useSearchParams()
+  const plan = searchParams.get('plan') || 'free'
 
   return (
-    <SearchParamTabs defaultValue={plan} paramKey="plan">
+    <SearchParamTabs defaultValue={plan} paramKey='plan'>
       <TabsList fullWidth>
-        <TabsTrigger value="free">Free</TabsTrigger>
-        <TabsTrigger value="pro">Pro</TabsTrigger>
+        <TabsTrigger value='free'>Free</TabsTrigger>
+        <TabsTrigger value='pro'>Pro</TabsTrigger>
       </TabsList>
 
-      <TabsContent value="free">
+      <TabsContent value='free'>
         <Plan
-          type="free"
+          type='free'
           price={0}
-          currentPlan
+          isCurrentPlan={true}
           planFeatures={freePlanFeatures}
         />
       </TabsContent>
 
-      <TabsContent value="pro">
+      <TabsContent value='pro'>
         <Plan
-          type="pro"
+          type='pro'
           price={2.99}
           planFeatures={proPlanFeatures}
-          duration="Monthly"
+          duration='Monthly'
         />
       </TabsContent>
     </SearchParamTabs>
-  );
-};
-
-export { Plans };
+  )
+}

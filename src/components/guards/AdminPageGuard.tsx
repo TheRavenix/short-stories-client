@@ -2,12 +2,9 @@
 
 import { AdminGuardOptions, useAdminGuard } from "@/hooks/auth";
 
-interface Props extends AdminGuardOptions {}
+type Props = AdminGuardOptions
 
-const AdminPageGuard: React.FC<Props> = (props) => {
-  useAdminGuard(props);
-
-  return null;
-};
-
-export { AdminPageGuard };
+export function AdminPageGuard(props: Props) {
+  useAdminGuard(props)
+  return null
+}

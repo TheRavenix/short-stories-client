@@ -8,14 +8,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/Select";
-
 import { useThemeStore } from "@/stores/theme";
 
-interface Props {}
-
-const ThemeSelect: React.FC<Props> = () => {
-  const theme = useThemeStore((s) => s.theme);
-  const setTheme = useThemeStore((s) => s.setTheme);
+export function ThemeSelect() {
+  const theme = useThemeStore((s) => s.theme)
+  const setTheme = useThemeStore((s) => s.setTheme)
 
   return (
     <Select value={theme} onValueChange={setTheme}>
@@ -24,13 +21,11 @@ const ThemeSelect: React.FC<Props> = () => {
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectItem value="light">Light</SelectItem>
-          <SelectItem value="dark">Dark</SelectItem>
-          <SelectItem value="system">System</SelectItem>
+          <SelectItem value='light'>Light</SelectItem>
+          <SelectItem value='dark'>Dark</SelectItem>
+          <SelectItem value='system'>System</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
-  );
-};
-
-export { ThemeSelect };
+  )
+}

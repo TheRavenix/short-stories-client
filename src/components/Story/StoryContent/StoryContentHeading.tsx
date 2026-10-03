@@ -1,22 +1,20 @@
 "use client";
 
 import { H3 } from "@/components/ui/Typography";
-
-import { useStoryReadStore } from "@/stores/story";
-
+import { useStoryReadStore } from "@/stores/story/story-read";
 import { romanize } from "@/utils/romanize";
 
-interface Props {
-  index: number;
+type Props = {
+  index: number
 }
 
-const StoryContentHeading: React.FC<Props> = ({ index }) => {
-  const lineNumeralsActive = useStoryReadStore((s) => s.lineNumeralsActive);
-  const romanNumeralsActive = useStoryReadStore((s) => s.romanNumeralsActive);
+export function StoryContentHeading({ index }: Props) {
+  const lineNumeralsActive = useStoryReadStore((s) => s.lineNumeralsActive)
+  const romanNumeralsActive = useStoryReadStore((s) => s.romanNumeralsActive)
 
-  if (!lineNumeralsActive) return null;
+  if (!lineNumeralsActive) {
+    return null
+  }
 
-  return <H3>{romanNumeralsActive ? romanize(index + 1) : index + 1}</H3>;
-};
-
-export { StoryContentHeading };
+  return <H3>{romanNumeralsActive ? romanize(index + 1) : index + 1}</H3>
+}

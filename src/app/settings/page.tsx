@@ -20,5 +20,5 @@ export default function Settings() {
         </div>
       </CompactContainer>
     </main>
-  );
+  )
 }

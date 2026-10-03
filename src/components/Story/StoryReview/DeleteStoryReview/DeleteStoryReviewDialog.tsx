@@ -13,12 +13,12 @@ import {
 } from "@/components/ui/Dialog";
 import { DeleteStoryReviewContent } from "./DeleteStoryReviewContent";
 
-interface Props {
-  reviewId: string;
+type Props = {
+  reviewId: number
 }
 
-const DeleteStoryReviewDialog: React.FC<Props> = ({ reviewId }) => {
-  const [open, setOpen] = useState(false);
+export function DeleteStoryReviewDialog({ reviewId }: Props) {
+  const [open, setOpen] = useState(false)
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -35,7 +35,5 @@ const DeleteStoryReviewDialog: React.FC<Props> = ({ reviewId }) => {
         </DialogClose>
       </DialogContent>
     </Dialog>
-  );
-};
-
-export { DeleteStoryReviewDialog };
+  )
+}

@@ -3,26 +3,24 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-type Theme = "light" | "dark" | "system";
+export type Theme = "light" | "dark" | "system"
 
-interface StoreState {
-  theme: Theme;
-  setTheme(theme: Theme): void;
+type StoreState = {
+  theme: Theme
+  setTheme(theme: Theme): void
 }
 
-const useThemeStore = create(
+export const useThemeStore = create(
   persist<StoreState>(
     (set) => ({
-      theme: "system",
+      theme: 'system',
 
       setTheme(theme) {
-        set((state) => ({ ...state, theme }));
-      },
+        set((state) => ({ ...state, theme }))
+      }
     }),
     {
-      name: "theme_store",
+      name: 'theme_store'
     }
   )
-);
-
-export { useThemeStore, type Theme };
+)

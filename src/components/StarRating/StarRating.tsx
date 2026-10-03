@@ -5,27 +5,29 @@ import { StarIcon } from "lucide-react";
 import styles from "./StarRating.module.scss";
 import clsx from "clsx";
 
-interface StarRatingProps {
-  rating: number;
-  setRating?: React.Dispatch<React.SetStateAction<number>>;
-  interactive?: boolean;
+export type StarRatingProps = {
+  rating: number
+  setRating?: React.Dispatch<React.SetStateAction<number>>
+  interactive?: boolean
 }
 
-const STAR_RATING_LIST = [1, 2, 3, 4, 5] as const;
-const STAR_RATING_MIN = Math.min(...STAR_RATING_LIST);
-const STAR_RATING_MAX = Math.max(...STAR_RATING_LIST);
+const STAR_RATING_LIST = [1, 2, 3, 4, 5] as const
+export const STAR_RATING_MIN = Math.min(...STAR_RATING_LIST)
+export const STAR_RATING_MAX = Math.max(...STAR_RATING_LIST)
 
-const StarRating: React.FC<StarRatingProps> = ({
+export function StarRating({
   rating,
   setRating,
-  interactive = false,
-}) => {
-  const roundedStars = Math.round(rating);
+  interactive = false
+}: StarRatingProps) {
+  const roundedStars = Math.round(rating)
 
-  function handleInteractivity(starRating: number) {
-    if (!interactive || typeof setRating !== "function") return;
+  const handleInteractivity = (starRating: number) => {
+    if (!interactive || typeof setRating !== "function") {
+      return
+    }
 
-    setRating(starRating);
+    setRating(starRating)
   }
 
   return (
@@ -43,7 +45,5 @@ const StarRating: React.FC<StarRatingProps> = ({
         />
       ))}
     </div>
-  );
-};
-
-export { StarRating, type StarRatingProps, STAR_RATING_MIN, STAR_RATING_MAX };
+  )
+}

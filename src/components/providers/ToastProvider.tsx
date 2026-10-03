@@ -13,14 +13,13 @@ import {
   ToastViewport,
 } from "@/components/ui/Toast";
 import { Button } from "../ui/Button";
-
 import { useToastStore } from "@/stores/toast";
 
-interface Props extends PropsWithChildren {}
+type Props = PropsWithChildren
 
-const ToastProvider: React.FC<Props> = ({ children }) => {
-  const toasts = useToastStore((s) => s.toasts);
-  const removeToast = useToastStore((s) => s.removeToast);
+export function ToastProvider({ children }: Props) {
+  const toasts = useToastStore((s) => s.toasts)
+  const removeToast = useToastStore((s) => s.removeToast)
 
   return (
     <Toast>
@@ -30,7 +29,7 @@ const ToastProvider: React.FC<Props> = ({ children }) => {
           key={toast.id}
           duration={toast.duration ?? 3000}
           onOpenChange={(open) => {
-            if (!open) removeToast(toast);
+            if (!open) removeToast(toast)
           }}
         >
           <ToastTitle>{toast.title}</ToastTitle>
@@ -40,12 +39,12 @@ const ToastProvider: React.FC<Props> = ({ children }) => {
             </ToastDescription>
           ) : null}
           {toast.action ? (
-            <ToastAction altText="Action" asChild>
+            <ToastAction altText='Action' asChild>
               {toast.action}
             </ToastAction>
           ) : (
             <ToastClose asChild>
-              <Button size="icon" variant="ghost" aria-label="Close">
+              <Button size='icon' variant='ghost' aria-label='Close'>
                 <XIcon size={20} />
               </Button>
             </ToastClose>
@@ -54,7 +53,5 @@ const ToastProvider: React.FC<Props> = ({ children }) => {
       ))}
       <ToastViewport />
     </Toast>
-  );
-};
-
-export { ToastProvider };
+  )
+}

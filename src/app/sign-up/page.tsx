@@ -10,11 +10,11 @@ export default function SignIn() {
     <>
       <AuthPageGuard />
       <main className={styles.main}>
-        <CompactContainer spacing="lg" withPaddingBlock>
+        <CompactContainer spacing='lg' withPaddingBlock>
           <H1 className={styles.headline}>Sign Up</H1>
           <SignUpForm />
         </CompactContainer>
       </main>
     </>
-  );
+  )
 }

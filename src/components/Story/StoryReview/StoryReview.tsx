@@ -1,6 +1,5 @@
 import Link from "next/link";
 import clsx from "clsx";
-import { PencilIcon } from "lucide-react";
 import dayjs from "dayjs";
 
 import styles from "./StoryReview.module.scss";
@@ -13,100 +12,92 @@ import { Badge } from "../../ui/Badge";
 import { DeleteStoryReview } from "./DeleteStoryReview";
 import { EditStoryReview } from "./EditStoryReview";
 
-interface StoryReviewType {
-  _id: string;
-  userId: string;
-  storyId: string;
-  storySlug: string;
-  stars: number;
-  comment: string;
-  createdAt: Date;
-  updatedAt: Date;
+export type StoryReviewType = {
+  id: number
+  userId: number
+  storyId: number
+  storySlug: string
+  stars: number
+  comment: string
 }
 
-interface StoryReviewWithDetails extends StoryReviewType {
-  userName: string;
-  storyName: string;
+export type StoryReviewDetails = {
+  storyId: number
+  userName: string
+  storyName: string
 }
 
-interface StoryReviewProps extends StoryReviewWithDetails {
-  className?: string;
-  shouldShowStoryNameBadge?: boolean;
-  shouldShowReadMoreLink?: boolean;
-  shouldShowSeparator?: boolean;
-  shouldShowEditButton?: boolean;
-  shouldShowDeleteButton?: boolean;
-  shouldHighlightUserName?: boolean;
+export type StoryReviewsRating = {
+  storyId: number
+  ratingCount: number
 }
 
-const StoryReview: React.FC<StoryReviewProps> = ({
-  _id,
-  comment,
-  stars,
-  storyId,
-  storySlug,
-  userName,
-  userId,
-  storyName,
-  createdAt,
-  updatedAt,
+type StoryReviewProps = {
+  className?: string
+  isStoryNameBadgeShown?: boolean
+  isReadMoreLinkShown?: boolean
+  isSeparatorShown?: boolean
+  isEditButtonShown?: boolean
+  isDeleteButtonShown?: boolean
+  isUserNameHighlighted?: boolean
+  review: StoryReviewType
+  reviewDetails: StoryReviewDetails
+}
+
+// Add createdAt and updatedAt to db entity
+export function StoryReview({
+  review,
+  reviewDetails,
   className,
-  shouldShowStoryNameBadge = false,
-  shouldShowReadMoreLink = false,
-  shouldShowSeparator = true,
-  shouldShowEditButton = false,
-  shouldShowDeleteButton = false,
-  shouldHighlightUserName = false,
-}) => {
+  isStoryNameBadgeShown = false,
+  isReadMoreLinkShown = false,
+  isSeparatorShown = true,
+  isEditButtonShown = false,
+  isDeleteButtonShown = false,
+  isUserNameHighlighted = false
+}: StoryReviewProps) {
   return (
     <div className={clsx(styles.review, className)}>
       <div className={styles.reviewHeader}>
         <div>
           <Span
-            size="lg"
-            weight="bold"
-            variant={shouldHighlightUserName ? "primary" : "foreground"}
+            size='lg'
+            weight='bold'
+            variant={isUserNameHighlighted ? 'primary' : 'foreground'}
           >
-            {userName || "DELETED USER"}
+            {reviewDetails.userName || 'DELETED USER'}
           </Span>
-          <P size="sm">
-            {dayjs(createdAt).format("DD/MM/YYYY")}
-            {new Date(createdAt).getTime() !== new Date(updatedAt).getTime() &&
-              " (edited)"}
+          <P size='sm'>
+            {dayjs(new Date()).format('DD/MM/YYYY')}
+            {new Date(new Date()).getTime() !== new Date(new Date()).getTime() &&
+              ' (edited)'}
           </P>
         </div>
         <div className={styles.reviewHeaderEndContent}>
-          {shouldShowEditButton && (
+          {isEditButtonShown && (
             <EditStoryReview
-              reviewId={_id}
-              reviewRating={stars}
-              reviewComment={comment}
+              reviewId={review.id}
+              reviewRatingCount={review.stars}
+              reviewComment={review.comment}
             />
           )}
-          {shouldShowDeleteButton && <DeleteStoryReview reviewId={_id} />}
-          {shouldShowStoryNameBadge && <Badge>{storyName}</Badge>}
+          {isDeleteButtonShown && <DeleteStoryReview reviewId={review.id} />}
+          {isStoryNameBadgeShown && <Badge>{reviewDetails.userName}</Badge>}
         </div>
       </div>
-      <StarRating rating={stars} />
-      <P>{comment}</P>
-      {shouldShowReadMoreLink && (
+      <StarRating rating={review.stars} />
+      <P>{review.comment}</P>
+      {isReadMoreLinkShown && (
         <Link
-          href={`/s/${storySlug}?view=tabs&tab=reviews`}
+          href={`/s/${review.storySlug}?view=tabs&tab=reviews`}
           className={styles.reviewLink}
         >
-          <Button size="sm" variant="inverse">
+          <Button size='sm' variant='inverse'>
             Read more
           </Button>
         </Link>
       )}
-      {shouldShowSeparator && <Separator />}
+      {isSeparatorShown && <Separator />}
     </div>
-  );
-};
-
-export {
-  StoryReview,
-  type StoryReviewType,
-  type StoryReviewWithDetails,
-  type StoryReviewProps,
-};
+  )
+}

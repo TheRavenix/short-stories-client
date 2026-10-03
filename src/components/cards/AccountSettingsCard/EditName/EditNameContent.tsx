@@ -3,65 +3,59 @@
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 
-import styles from "./EditName.module.scss";
-
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { ActionSlot } from "@/components/ActionSlot";
-
 import { useProfile } from "@/hooks/profile";
 import { useToastStore } from "@/stores/toast";
-
-import { services } from "@/services";
 import { Form } from "@/components/Form";
+import { editUserName } from "@/services/user";
 
-interface Props {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+type Props = {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const EditNameContent: React.FC<Props> = ({ setOpen }) => {
-  const [name, setName] = useState("");
-  const { refetch } = useProfile();
-  const addToast = useToastStore((s) => s.addToast);
+export function EditNameContent({ setOpen }: Props) {
+  const [name, setName] = useState("")
+  const { refetch } = useProfile()
+  const addToast = useToastStore((s) => s.addToast)
 
   const mutation = useMutation({
-    mutationFn: services.user.editName,
+    mutationFn: editUserName,
     onSuccess(data) {
       addToast({
-        title: "Edit name",
-        description: data.message,
-      });
-      setOpen(false);
-      refetch();
+        title: 'Edit name',
+        description: data.message
+      })
+      setOpen(false)
+      refetch()
     },
     onError(error) {
       addToast({
-        title: "Error edit name",
+        title: 'Error edit name',
         description: error.message,
-        variant: "error",
-      });
-    },
-  });
+        variant: 'error'
+      })
+    }
+  })
 
   function handleEdit(e: React.FormEvent<HTMLFormElement>) {
-    mutation.mutate(name);
+    mutation.mutate(name)
   }
 
   return (
     <Form onSubmit={handleEdit}>
       <Input
-        label="Your New Name"
+        label='Your New Name'
         required
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
       <ActionSlot>
-        <Button type="submit" disabled={mutation.isPending}>
+        <Button type='submit' disabled={mutation.isPending}>
           Save
         </Button>
       </ActionSlot>
     </Form>
-  );
-};
-
-export { EditNameContent };
+  )
+}

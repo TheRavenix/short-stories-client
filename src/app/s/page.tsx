@@ -12,23 +12,20 @@ import {
   LibraryStoriesSectionLoading,
 } from "@/components/sections";
 import { BackTopButton } from "@/components/buttons";
-
 import { PAGINATION_DEFAULT_LIMIT } from "@/constants/filter";
-import { GetLibraryStoriesQuery } from "@/lib/data/story";
+import { GetLibraryStoriesQuery } from "@/lib/story";
 
-interface Props {
-  searchParams: Promise<
-    GetLibraryStoriesQuery & {
-      limit: number;
-    }
-  >;
+type Props = {
+  searchParams: Promise<GetLibraryStoriesQuery & {
+    limit: number
+  }>
 }
 
 export default async function Library(props: Props) {
-  const searchParams = await props.searchParams;
+  const searchParams = await props.searchParams
   const limit = searchParams.limit
     ? Number(searchParams.limit)
-    : PAGINATION_DEFAULT_LIMIT;
+    : PAGINATION_DEFAULT_LIMIT
 
   return (
     <main className={styles.main}>
@@ -53,5 +50,5 @@ export default async function Library(props: Props) {
         <BackTopButton />
       </Container>
     </main>
-  );
+  )
 }

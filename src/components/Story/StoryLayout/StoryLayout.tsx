@@ -1,6 +1,5 @@
 "use client";
 
-import { Show } from "@/components/Show";
 import { StoryBookLayout } from "./StoryBookLayout";
 import { StoryContentType } from "../StoryContent";
 import { StoryCardLayout } from "./StoryCardLayout";
@@ -8,33 +7,28 @@ import { StoryCardLayout } from "./StoryCardLayout";
 import { useProfile } from "@/hooks/profile";
 import { useStoryStore } from "@/stores/story";
 
-interface Props {
-  id: string;
-  storyId: string;
-  storyContent: StoryContentType;
+type Props = {
+  id: number
+  storyId: number
+  storyContent: StoryContentType
 }
 
-const StoryLayout: React.FC<Props> = ({ id, storyId, storyContent }) => {
-  const { profile } = useProfile();
-  const storyLayout = useStoryStore((s) => s.storyLayout);
+export function StoryLayout({ id, storyId, storyContent }: Props) {
+  const { profile } = useProfile()
+  const storyLayout = useStoryStore((s) => s.storyLayout)
 
-  return (
-    <Show
-      when={profile?.plan === "pro"}
-      fallback={<StoryCardLayout storyContent={storyContent} />}
-    >
-      <Show
-        when={storyLayout === "book"}
-        fallback={<StoryCardLayout storyContent={storyContent} />}
-      >
-        <StoryBookLayout
-          id={id}
-          storyId={storyId}
-          storyContent={storyContent}
-        />
-      </Show>
-    </Show>
-  );
-};
+  if (profile?.plan === 'free') {
+    return <StoryCardLayout storyContent={storyContent} />
+  }
+  if (profile?.plan === 'pro' && storyLayout === 'book') {
+    return (
+      <StoryBookLayout
+        id={id}
+        storyId={storyId}
+        storyContent={storyContent}
+      />
+    )
+  }
 
-export { StoryLayout };
+  return <StoryCardLayout storyContent={storyContent} />
+}

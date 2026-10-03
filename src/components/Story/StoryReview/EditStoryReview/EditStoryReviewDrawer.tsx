@@ -18,24 +18,24 @@ import {
 } from "@/components/ui/Drawer";
 import { EditStoryReviewContent } from "./EditStoryReviewContent";
 
-interface Props {
-  reviewId: string;
-  reviewRating: number;
-  reviewComment: string;
+type Props = {
+  reviewId: number
+  reviewRating: number
+  reviewComment: string
 }
 
-const EditStoryReviewDrawer: React.FC<Props> = ({
+export function EditStoryReviewDrawer({
   reviewId,
   reviewRating,
-  reviewComment,
-}) => {
-  const [open, setOpen] = useState(false);
+  reviewComment
+}: Props) {
+  const [open, setOpen] = useState(false)
 
   return (
     <Drawer open={open} onOpenChange={setOpen} autoFocus>
       <div className={styles.triggerWrapper}>
         <DrawerTrigger asChild>
-          <Button variant="inverse" size="icon">
+          <Button variant='inverse' size='icon'>
             <PencilIcon size={20} />
           </Button>
         </DrawerTrigger>
@@ -57,7 +57,5 @@ const EditStoryReviewDrawer: React.FC<Props> = ({
         </DrawerContent>
       </DrawerPortal>
     </Drawer>
-  );
-};
-
-export { EditStoryReviewDrawer };
+  )
+}

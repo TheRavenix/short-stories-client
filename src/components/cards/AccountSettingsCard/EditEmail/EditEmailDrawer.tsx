@@ -17,15 +17,13 @@ import {
 } from "@/components/ui/Drawer";
 import { EditEmailContent } from "./EditEmailContent";
 
-interface Props {}
-
-const EditEmailDrawer: React.FC<Props> = () => {
-  const [open, setOpen] = useState(false);
+export function EditEmailDrawer() {
+  const [open, setOpen] = useState(false)
 
   return (
     <Drawer open={open} onOpenChange={setOpen} autoFocus>
       <DrawerTrigger asChild>
-        <Button size="sm" variant="inverse">
+        <Button size='sm' variant='inverse'>
           Edit
         </Button>
       </DrawerTrigger>
@@ -41,7 +39,5 @@ const EditEmailDrawer: React.FC<Props> = () => {
         </DrawerContent>
       </DrawerPortal>
     </Drawer>
-  );
-};
-
-export { EditEmailDrawer };
+  )
+}
