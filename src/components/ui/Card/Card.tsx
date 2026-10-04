@@ -2,21 +2,22 @@ import { ComponentProps } from "react";
 import clsx from "clsx";
 
 import styles from "./Card.module.css";
+
 import { P, Span } from "../Typography";
 
-type CardVariant = "default" | "primary";
+type CardVariant = 'default' | 'primary'
 
-interface CardProps extends ComponentProps<"div"> {
-  variant?: CardVariant;
-  withPadding?: boolean;
-}
+type CardProps = {
+  variant?: CardVariant
+  withPadding?: boolean
+} & ComponentProps<'div'>
 
-const Card: React.FC<CardProps> = ({
+export function Card({
   className,
-  variant = "default",
+  variant = 'default',
   withPadding = false,
   ...rest
-}) => {
+}: CardProps) {
   return (
     <div
       className={clsx(
@@ -27,61 +28,52 @@ const Card: React.FC<CardProps> = ({
       )}
       {...rest}
     />
-  );
-};
+  )
+}
 
-interface CardTitleProps extends ComponentProps<"span"> {}
+type CardTitleProps = ComponentProps<'span'>
 
-const CardTitle: React.FC<CardTitleProps> = ({ className, ...rest }) => {
+export function CardTitle({ className, ...rest }: CardTitleProps) {
   return (
     <Span
-      size="lg"
-      weight="bold"
-      transform="capitalize"
+      size='lg'
+      weight='bold'
+      transform='capitalize'
       className={clsx(styles.cardTitle, className)}
       {...rest}
     />
-  );
-};
+  )
+}
 
-interface CardDescriptionProps extends ComponentProps<"p"> {}
+type CardDescriptionProps = ComponentProps<'p'>
 
-const CardDescription: React.FC<CardDescriptionProps> = ({
+export function CardDescription({
   className,
   ...rest
-}) => {
+}: CardDescriptionProps) {
   return (
     <P
-      variant="gray"
+      variant='gray'
       className={clsx(styles.cardDescription, className)}
       {...rest}
     />
-  );
-};
+  )
+}
 
-interface CardHeaderProps extends ComponentProps<"div"> {}
+type CardHeaderProps = ComponentProps<'div'>
 
-const CardHeader: React.FC<CardHeaderProps> = ({ className, ...rest }) => {
-  return <div className={clsx(styles.cardHeader, className)} {...rest} />;
-};
+export function CardHeader({ className, ...rest }: CardHeaderProps) {
+  return <div className={clsx(styles.cardHeader, className)} {...rest} />
+}
 
-interface CardContentProps extends ComponentProps<"div"> {}
+type CardContentProps = ComponentProps<'div'>
 
-const CardContent: React.FC<CardContentProps> = ({ className, ...rest }) => {
-  return <div className={clsx(styles.cardContent, className)} {...rest} />;
-};
+export function CardContent({ className, ...rest }: CardContentProps) {
+  return <div className={clsx(styles.cardContent, className)} {...rest} />
+}
 
-interface CardFooterProps extends ComponentProps<"div"> {}
+type CardFooterProps = ComponentProps<'div'>
 
-const CardFooter: React.FC<CardFooterProps> = ({ className, ...rest }) => {
-  return <div className={clsx(styles.cardFooter, className)} {...rest} />;
-};
-
-export {
-  Card,
-  CardTitle,
-  CardDescription,
-  CardHeader,
-  CardContent,
-  CardFooter,
-};
+export function CardFooter({ className, ...rest }: CardFooterProps) {
+  return <div className={clsx(styles.cardFooter, className)} {...rest} />
+}

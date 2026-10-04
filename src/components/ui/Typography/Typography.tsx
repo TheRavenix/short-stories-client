@@ -3,133 +3,141 @@ import clsx from "clsx";
 
 import styles from "./Typography.module.css";
 
-type Transform = "capitalize" | "uppercase";
+type Transform = 'capitalize' | 'uppercase'
 
-interface SharedProps {
-  transform?: Transform;
+type SharedProps = {
+  transform?: Transform
 }
 
-type HeadingVariant = "foreground" | "primary" | "heading";
+type HeadingVariant = 'foreground' | 'primary' | 'heading'
 
-interface H1Props extends ComponentProps<"h1">, SharedProps {
-  variant?: HeadingVariant;
-}
+type H1Props = {
+  variant?: HeadingVariant
+} & ComponentProps<'h1'> & SharedProps
 
-const H1: React.FC<H1Props> = ({
+export function H1({
   className,
   transform,
-  variant = "heading",
+  variant = 'heading',
   ...rest
-}) => (
-  <h1
-    className={clsx(
-      styles.h1,
-      transform && styles[transform],
-      variant === "heading" ? styles.headingForeground : styles[variant],
-      className
-    )}
-    {...rest}
-  />
-);
-
-interface H2Props extends ComponentProps<"h2">, SharedProps {
-  variant?: HeadingVariant;
+}: H1Props) {
+  return (
+    <h1
+      className={clsx(
+        styles.h1,
+        transform && styles[transform],
+        variant === 'heading' ? styles.headingForeground : styles[variant],
+        className
+      )}
+      {...rest}
+    />
+  )
 }
 
-const H2: React.FC<H2Props> = ({
+type H2Props = {
+  variant?: HeadingVariant
+} & ComponentProps<'h2'> & SharedProps
+
+export function H2({
   className,
   transform,
-  variant = "foreground",
+  variant = 'foreground',
   ...rest
-}) => (
-  <h2
-    className={clsx(
-      styles.h2,
-      transform && styles[transform],
-      variant === "heading" ? styles.headingForeground : styles[variant],
-      className
-    )}
-    {...rest}
-  />
-);
-
-interface H3Props extends ComponentProps<"h3">, SharedProps {
-  variant?: HeadingVariant;
+}: H2Props) {
+  return (
+      <h2
+        className={clsx(
+          styles.h2,
+          transform && styles[transform],
+          variant === 'heading' ? styles.headingForeground : styles[variant],
+          className
+        )}
+        {...rest}
+      />
+  )
 }
 
-const H3: React.FC<H3Props> = ({
+type H3Props = {
+  variant?: HeadingVariant
+} & ComponentProps<'h3'> & SharedProps
+
+export function H3({
   className,
   transform,
-  variant = "foreground",
+  variant = 'foreground',
   ...rest
-}) => (
-  <h3
-    className={clsx(
-      styles.h3,
-      transform && styles[transform],
-      variant === "heading" ? styles.headingForeground : styles[variant],
-      className
-    )}
-    {...rest}
-  />
-);
-
-type FontSize = "xs" | "sm" | "base" | "lg" | "xl" | "xxl";
-type FontWeight = "normal" | "medium" | "semi-bold" | "bold";
-type TextVariant = "foreground" | "primary" | "gray";
-
-interface ParagraphProps extends ComponentProps<"p">, SharedProps {
-  size?: FontSize;
-  weight?: FontWeight;
-  variant?: TextVariant;
+}: H3Props) {
+  return (
+      <h3
+        className={clsx(
+          styles.h3,
+          transform && styles[transform],
+          variant === 'heading' ? styles.headingForeground : styles[variant],
+          className
+        )}
+        {...rest}
+      />
+  )
 }
 
-const P: React.FC<ParagraphProps> = ({
+type FontSize = 'xs' | 'sm' | 'base' | 'lg' | 'xl' | 'xxl'
+type FontWeight = 'normal' | 'medium' | 'semi-bold' | 'bold'
+type TextVariant = 'foreground' | 'primary' | 'gray'
+
+export type ParagraphProps = {
+  size?: FontSize
+  weight?: FontWeight
+  variant?: TextVariant
+} & ComponentProps<'p'> & SharedProps
+
+export function P({
   className,
-  size = "base",
-  weight = "normal",
-  variant = "foreground",
+  size = 'base',
+  weight = 'normal',
+  variant = 'foreground',
   transform,
   ...rest
-}) => (
-  <p
-    className={clsx(
-      styles.p,
-      styles[size],
-      styles[weight],
-      styles[variant],
-      transform && styles[transform],
-      className
-    )}
-    {...rest}
-  />
-);
-
-interface SpanProps extends ComponentProps<"span">, SharedProps {
-  size?: FontSize;
-  weight?: FontWeight;
-  variant?: TextVariant;
+}: ParagraphProps) {
+  return (
+      <p
+        className={clsx(
+          styles.p,
+          styles[size],
+          styles[weight],
+          styles[variant],
+          transform && styles[transform],
+          className
+        )}
+        {...rest}
+      />
+  )
 }
 
-const Span: React.FC<SpanProps> = ({
+export type SpanProps = {
+  size?: FontSize
+  weight?: FontWeight
+  variant?: TextVariant
+} & ComponentProps<'span'> & SharedProps
+
+export function Span({
   className,
-  size = "sm",
-  weight = "normal",
-  variant = "foreground",
+  size = 'sm',
+  weight = 'normal',
+  variant = 'foreground',
   transform,
   ...rest
-}) => (
-  <span
-    className={clsx(
-      styles.span,
-      styles[size],
-      styles[weight],
-      styles[variant],
-      transform && styles[transform],
-      className
-    )}
-    {...rest}
-  />
-);
-
-export { H1, H2, H3, P, Span, type ParagraphProps, type SpanProps };
+}: SpanProps) {
+  return (
+      <span
+        className={clsx(
+          styles.span,
+          styles[size],
+          styles[weight],
+          styles[variant],
+          transform && styles[transform],
+          className
+        )}
+        {...rest}
+      />
+  )
+}

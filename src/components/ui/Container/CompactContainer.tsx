@@ -4,15 +4,15 @@ import styles from "./Container.module.css";
 
 import { ContainerProps } from "./Container";
 
-interface Props extends ContainerProps {}
+type Props = ContainerProps
 
-const CompactContainer: React.FC<Props> = ({
+export function CompactContainer({
   className,
   withPaddingBlock = false,
   withContentSpacing = false,
-  spacing = "none",
+  spacing = 'none',
   ...rest
-}) => {
+}: Props) {
   return (
     <div
       className={clsx(
@@ -24,7 +24,5 @@ const CompactContainer: React.FC<Props> = ({
       )}
       {...rest}
     />
-  );
-};
-
-export { CompactContainer };
+  )
+}
