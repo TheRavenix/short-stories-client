@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./Navbar.module.scss";
+import styles from "./Navbar.module.css";
 
 import { ThemeSelect } from "../Theme/ThemeSelect";
 import { ThemeToggle } from "../Theme/ThemeToggle";

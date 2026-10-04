@@ -1,6 +1,6 @@
-import styles from "./page.module.scss";
+import styles from "./page.module.css";
 
-import { CompactContainer } from "@/components/ui/Container";
+import { CompactContainer } from "@/components/ui/Container/CompactContainer";
 import { Skeleton } from "@/components/Skeleton";
 import { H1 } from "@/components/ui/Typography";
 import { StoryBackButton } from "@/components/Story/buttons/StoryBackButton";

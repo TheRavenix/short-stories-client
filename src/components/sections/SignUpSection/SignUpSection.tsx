@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./SignUpSection.module.scss";
+import styles from "./SignUpSection.module.css";
 
 import { SignUpForm } from "../../forms";
 import { H1 } from "../../ui/Typography";

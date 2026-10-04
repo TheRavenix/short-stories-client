@@ -1,6 +1,6 @@
 import { BookmarkIcon } from "lucide-react";
 
-import styles from "./StoryContent.module.scss";
+import styles from "./StoryContent.module.css";
 
 import { ClipboardButton } from "@/components/buttons";
 import { Button } from "@/components/ui/Button";

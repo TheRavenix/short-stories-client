@@ -1,4 +1,4 @@
-import styles from "./FeaturedStoriesSection.module.scss";
+import styles from "./FeaturedStoriesSection.module.css";
 
 import { H1 } from "@/components/ui/Typography";
 import { Skeleton } from "@/components/Skeleton";

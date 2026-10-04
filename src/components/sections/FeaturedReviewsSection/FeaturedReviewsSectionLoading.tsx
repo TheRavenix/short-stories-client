@@ -1,4 +1,4 @@
-import styles from "./FeaturedReviewsSection.module.scss";
+import styles from "./FeaturedReviewsSection.module.css";
 
 import { H1 } from "@/components/ui/Typography";
 import { Skeleton } from "@/components/Skeleton";

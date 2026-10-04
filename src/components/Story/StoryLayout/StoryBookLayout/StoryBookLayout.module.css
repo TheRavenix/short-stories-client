@@ -1,0 +1,52 @@
+.page {
+  display: flex;
+  align-items: center;
+  padding-inline: var(--spacing-xl);
+  padding-block: calc(1.5 * var(--spacing-xl));
+  min-height: 70vh;
+}
+
+.contentList {
+  display: flex;
+  flex-direction: column;
+}
+
+.pageText::first-letter {
+  font-size: 60px;
+  margin-right: 0.5rem;
+}
+
+.pageProgress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.arrowLeftButtonWrapper,
+.arrowRightButtonWrapper {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrowLeftButtonWrapper {
+  left: 0;
+}
+
+.arrowRightButtonWrapper {
+  right: 0;
+}
+
+@keyframes pageTurn {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-180deg);
+  }
+}

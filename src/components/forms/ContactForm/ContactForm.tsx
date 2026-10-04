@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./ContactForm.module.scss";
+import styles from "./ContactForm.module.css";
 
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";

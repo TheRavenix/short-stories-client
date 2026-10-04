@@ -3,7 +3,7 @@ import Image from "next/image";
 import { DownloadIcon, EyeIcon } from "lucide-react";
 import clsx from "clsx";
 
-import styles from "./Story.module.scss";
+import styles from "./Story.module.css";
 
 import { Card, CardDescription, CardTitle } from "../ui/Card";
 import { Button } from "../ui/Button";

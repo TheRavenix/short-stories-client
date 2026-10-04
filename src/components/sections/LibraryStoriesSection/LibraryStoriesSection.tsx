@@ -1,6 +1,6 @@
 import { BookIcon } from "lucide-react";
 
-import styles from "./LibraryStoriesSection.module.scss";
+import styles from "./LibraryStoriesSection.module.css";
 
 import { EmptyState } from "@/components/EmptyState";
 import { Story } from "@/components/Story";

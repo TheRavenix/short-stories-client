@@ -3,7 +3,8 @@
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 
-import { Input, Textarea } from "@/components/ui/Input";
+import { Input } from "@/components/ui/Input";
+import { Textarea } from "@/components/ui/Input/Textarea";
 import {
   Select,
   SelectContent,

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 
-import styles from "./StoryBookLayout.module.scss";
+import styles from "./StoryBookLayout.module.css";
 
 import { StoryContent, StoryContentType } from "../../StoryContent";
 import { Card } from "@/components/ui/Card";

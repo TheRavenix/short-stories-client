@@ -1,6 +1,6 @@
 import { EyeIcon } from "lucide-react";
 
-import styles from "./StoryPreviewCard.module.scss";
+import styles from "./StoryPreviewCard.module.css";
 
 import { EmptyState } from "@/components/EmptyState";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";

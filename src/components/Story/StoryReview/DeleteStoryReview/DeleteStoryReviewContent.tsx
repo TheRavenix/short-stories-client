@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import styles from "./DeleteStoryReview.module.scss";
+import styles from "./DeleteStoryReview.module.css";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";

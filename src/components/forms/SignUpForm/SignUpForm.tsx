@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 
-import styles from "./SignUpForm.module.scss";
+import styles from "./SignUpForm.module.css";
 
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";

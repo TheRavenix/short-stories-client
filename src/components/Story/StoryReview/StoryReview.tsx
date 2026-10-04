@@ -2,7 +2,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import dayjs from "dayjs";
 
-import styles from "./StoryReview.module.scss";
+import styles from "./StoryReview.module.css";
 
 import { StarRating } from "../../StarRating";
 import { Separator } from "../../ui/Separator";

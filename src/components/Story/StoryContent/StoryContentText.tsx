@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 
-import styles from "./StoryContent.module.scss";
+import styles from "./StoryContent.module.css";
 
 import { P, ParagraphProps } from "@/components/ui/Typography";
 import { useStoryReadStore } from "@/stores/story/story-read";

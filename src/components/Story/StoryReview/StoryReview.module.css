@@ -1,0 +1,26 @@
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.25 * var(--spacing-sm));
+  width: 100%;
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reviewHeaderEndContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.reviewUserName[data-highlighted="true"] {
+  color: var(--primary);
+}
+
+.reviewLink {
+  width: fit-content;
+}

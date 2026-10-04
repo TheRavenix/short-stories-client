@@ -1,6 +1,6 @@
 import { ArrowLeftIcon } from "lucide-react";
 
-import styles from "./StoryBackButton.module.scss";
+import styles from "./StoryBackButton.module.css";
 
 import { Button } from "@/components/ui/Button";
 import { StoryViewLink } from "../../story-view/StoryViewLink";

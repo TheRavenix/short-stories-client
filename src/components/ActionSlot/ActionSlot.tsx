@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 
-import styles from "./ActionSlot.module.scss";
+import styles from "./ActionSlot.module.css";
 
 type Props = PropsWithChildren
 

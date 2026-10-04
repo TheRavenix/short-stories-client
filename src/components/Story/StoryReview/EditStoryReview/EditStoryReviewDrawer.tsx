@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { PencilIcon } from "lucide-react";
 
-import styles from "./EditStoryReview.module.scss";
+import styles from "./EditStoryReview.module.css";
 
 import { Button } from "@/components/ui/Button";
 import {

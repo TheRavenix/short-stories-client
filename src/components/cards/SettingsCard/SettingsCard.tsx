@@ -1,4 +1,4 @@
-import styles from "./SettingsCard.module.scss";
+import styles from "./SettingsCard.module.css";
 
 import {
   Card,

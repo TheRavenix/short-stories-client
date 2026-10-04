@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { LayoutPanelTopIcon, TableOfContentsIcon } from "lucide-react";
 
-import styles from "./StoryViewToggle.module.scss";
+import styles from "./StoryViewToggle.module.css";
 
 import { Button } from "../../../ui/Button";
 import { useStoryStore } from "@/stores/story";

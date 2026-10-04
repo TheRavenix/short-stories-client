@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-import styles from "./Container.module.scss";
+import styles from "./Container.module.css";
 
 import { ContainerProps } from "./Container";
 

@@ -3,7 +3,7 @@
 import { SearchIcon } from "lucide-react";
 import { useState } from "react";
 
-import styles from "./NavbarSearch.module.scss";
+import styles from "./NavbarSearch.module.css";
 
 import { Button } from "@/components/ui/Button";
 import {

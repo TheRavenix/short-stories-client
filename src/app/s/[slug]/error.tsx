@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import styles from "./page.module.scss";
+import styles from "./page.module.css";
 
 import { Callout } from "@/components/Callout";
 import { Container } from "@/components/ui/Container";

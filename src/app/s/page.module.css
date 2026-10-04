@@ -1,0 +1,27 @@
+.main {
+  padding-top: var(--navbar-height);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.selects {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-sm);
+}
+
+.stories {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .selects {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

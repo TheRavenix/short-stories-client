@@ -1,7 +1,7 @@
 import { ComponentProps } from "react";
 import clsx from "clsx";
 
-import styles from "./Input.module.scss";
+import styles from "./Input.module.css";
 
 import { InputVariant } from ".";
 

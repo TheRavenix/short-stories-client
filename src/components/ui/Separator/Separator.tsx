@@ -1,6 +1,6 @@
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
 
-import styles from "./Separator.module.scss";
+import styles from "./Separator.module.css";
 
 import clsx from "clsx";
 

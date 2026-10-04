@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-import styles from "./SettingsCard.module.scss";
+import styles from "./SettingsCard.module.css";
 
 import { Label } from "@/components/ui/Label";
 

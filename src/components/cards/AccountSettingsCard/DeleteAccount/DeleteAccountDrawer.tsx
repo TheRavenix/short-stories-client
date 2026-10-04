@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import styles from "./DeleteAccount.module.scss";
+import styles from "./DeleteAccount.module.css";
 
 import { Button } from "@/components/ui/Button";
 import {

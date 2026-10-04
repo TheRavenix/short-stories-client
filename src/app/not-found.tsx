@@ -1,4 +1,4 @@
-import styles from "./not-found.module.scss";
+import styles from "./not-found.module.css";
 
 import { Container } from "@/components/ui/Container";
 import { Callout } from "@/components/Callout";

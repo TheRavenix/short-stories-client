@@ -1,0 +1,41 @@
+.menuButtonContainer {
+  display: block;
+}
+
+.drawerContent {
+  width: 75vw;
+  height: 100dvh;
+}
+
+.drawerBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-inline: var(--spacing-md);
+}
+
+.drawerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.drawerActiveLinkText {
+  color: var(--primary);
+}
+
+.drawerButton {
+  width: 100% !important;
+}
+
+@media (min-width: 768px) {
+  .drawerContent {
+    width: 50vw;
+  }
+}
+
+@media (min-width: 992px) {
+  .menuButtonContainer {
+    display: none;
+  }
+}

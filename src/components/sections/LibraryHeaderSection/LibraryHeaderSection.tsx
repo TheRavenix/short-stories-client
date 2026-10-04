@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import styles from "./LibraryHeaderSection.module.scss";
+import styles from "./LibraryHeaderSection.module.css";
 
 import { H1 } from "@/components/ui/Typography";
 import { Button } from "@/components/ui/Button";

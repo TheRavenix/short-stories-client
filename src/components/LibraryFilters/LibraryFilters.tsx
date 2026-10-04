@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-import styles from "./LibraryFilters.module.scss";
+import styles from "./LibraryFilters.module.css";
 
 import { Input } from "@/components/ui/Input";
 import {

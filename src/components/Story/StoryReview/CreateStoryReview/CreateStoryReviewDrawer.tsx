@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import styles from "./CreateStoryReview.module.scss";
+import styles from "./CreateStoryReview.module.css";
 
 import { Button } from "@/components/ui/Button";
 import {

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { InstagramIcon } from "lucide-react";
 
-import styles from "./Footer.module.scss";
+import styles from "./Footer.module.css";
 
 import { Container } from "../ui/Container";
 import { H3, P } from "../ui/Typography";

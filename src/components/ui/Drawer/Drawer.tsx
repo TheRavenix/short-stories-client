@@ -4,7 +4,7 @@ import * as React from "react";
 import { Drawer as DrawerPrimitive } from "vaul";
 import clsx from "clsx";
 
-import styles from "./Drawer.module.scss";
+import styles from "./Drawer.module.css";
 
 const Drawer = ({
   shouldScaleBackground = true,

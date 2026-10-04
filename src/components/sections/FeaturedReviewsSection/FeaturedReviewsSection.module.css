@@ -1,0 +1,27 @@
+.headline {
+  text-align: center;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.reviewsList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+.reviewsCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.5 * var(--spacing-sm));
+}
+
+@media (min-width: 768px) {
+  .reviewsList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

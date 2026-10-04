@@ -3,7 +3,7 @@
 import { ArrowUpIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-import styles from "./BackTopButton.module.scss";
+import styles from "./BackTopButton.module.css";
 
 import { Button } from "@/components/ui/Button";
 

@@ -3,7 +3,7 @@
 import { XIcon } from "lucide-react";
 import { useState } from "react";
 
-import styles from "./CreateStoryReview.module.scss";
+import styles from "./CreateStoryReview.module.css";
 
 import { Button } from "../../../ui/Button";
 import {

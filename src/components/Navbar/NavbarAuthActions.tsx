@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import styles from "./Navbar.module.scss";
+import styles from "./Navbar.module.css";
 
 import { Button } from "../ui/Button";
 import { Skeleton } from "../Skeleton";

@@ -1,4 +1,4 @@
-import styles from "./page.module.scss";
+import styles from "./page.module.css";
 
 import { Container } from "@/components/ui/Container";
 import { Story } from "@/components/Story";

@@ -1,6 +1,6 @@
 import { MessageCircleIcon } from "lucide-react";
 
-import styles from "./FeaturedReviewsSection.module.scss";
+import styles from "./FeaturedReviewsSection.module.css";
 
 import { H1 } from "@/components/ui/Typography";
 import { EmptyState } from "@/components/EmptyState";
