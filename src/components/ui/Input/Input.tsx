@@ -3,40 +3,38 @@ import clsx from "clsx";
 
 import styles from "./Input.module.css";
 
-type InputVariant = "default" | "destructive";
+export type InputVariant = 'default' | 'destructive'
 
-interface Props extends Omit<ComponentProps<"input">, "size"> {
-  label: string;
-  variant?: InputVariant;
-}
+type Props = {
+  label: string
+  variant?: InputVariant
+} & Omit<ComponentProps<'input'>, 'size'>
 
-const Input: React.FC<Props> = ({
+export function Input({
   className,
   label,
-  variant = "default",
+  variant = 'default',
   ...rest
-}) => {
+}: Props) {
   return (
     <div className={styles.inputContainer}>
       <input
         className={clsx(
           styles.input,
-          variant === "destructive" && styles.inputDestructive,
+          variant === 'destructive' && styles.inputDestructive,
           className
         )}
-        placeholder=" "
+        placeholder=' '
         {...rest}
       />
       <label
         className={clsx(
           styles.label,
-          variant === "destructive" && styles.labelDestructive
+          variant === 'destructive' && styles.labelDestructive
         )}
       >
         {label}
       </label>
     </div>
-  );
-};
-
-export { Input, type InputVariant };
+  )
+}

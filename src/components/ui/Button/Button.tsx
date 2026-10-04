@@ -4,30 +4,28 @@ import clsx from "clsx";
 import styles from "./Button.module.css";
 
 type ButtonVariant =
-  | "primary"
-  | "secondary"
-  | "page"
-  | "inverse"
-  | "ghost"
-  | "destructive";
+  | 'primary'
+  | 'secondary'
+  | 'page'
+  | 'inverse'
+  | 'ghost'
+  | 'destructive'
+type ButtonSize = 'sm' | 'md' | 'lg' | 'icon' | 'full' | 'responsive'
+type ButtonShape = 'rounded' | 'squared' | 'circle'
 
-type ButtonSize = "sm" | "md" | "lg" | "icon" | "full" | "responsive";
+type Props = {
+  variant?: ButtonVariant
+  size?: ButtonSize
+  shape?: ButtonShape
+} & ComponentProps<'button'>
 
-type ButtonShape = "rounded" | "squared" | "circle";
-
-interface Props extends ComponentProps<"button"> {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  shape?: ButtonShape;
-}
-
-const Button: React.FC<Props> = ({
+export function Button({
   className,
-  variant = "primary",
-  size = "md",
-  shape = "rounded",
+  variant = 'primary',
+  size = 'md',
+  shape = 'rounded',
   ...rest
-}) => {
+}: Props) {
   return (
     <button
       className={clsx(
@@ -39,7 +37,5 @@ const Button: React.FC<Props> = ({
       )}
       {...rest}
     />
-  );
-};
-
-export { Button };
+  )
+}
