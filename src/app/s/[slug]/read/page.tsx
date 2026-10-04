@@ -1,6 +1,6 @@
-import styles from "./page.module.scss";
+import styles from "./page.module.css";
 
-import { CompactContainer } from "@/components/ui/Container";
+import { CompactContainer } from "@/components/ui/Container/CompactContainer";
 import { H1 } from "@/components/ui/Typography";
 import { EmptyState } from "@/components/EmptyState";
 import { SeparatorHighlighter } from "@/components/SeparatorHighlighter";

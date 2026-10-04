@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./EditName.module.scss";
+import styles from "./EditName.module.css";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/Button";

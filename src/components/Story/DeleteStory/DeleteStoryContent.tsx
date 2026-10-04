@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 
-import styles from "./DeleteStory.module.scss";
+import styles from "./DeleteStory.module.css";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";

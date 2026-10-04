@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./FeaturedSectionError.module.scss";
+import styles from "./FeaturedSectionError.module.css";
 
 import { ErrorFallback, ErrorFallbackProps } from "@/components/ErrorFallback";
 import { H1 } from "@/components/ui/Typography";

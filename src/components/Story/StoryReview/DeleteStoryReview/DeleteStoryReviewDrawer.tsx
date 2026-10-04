@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { TrashIcon } from "lucide-react";
 
-import styles from "./DeleteStoryReview.module.scss";
+import styles from "./DeleteStoryReview.module.css";
 
 import { Button } from "@/components/ui/Button";
 import {

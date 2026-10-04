@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 
-import styles from "./page.module.scss";
+import styles from "./page.module.css";
 
 import { Container } from "@/components/ui/Container";
 import { LibraryFilters } from "@/components/LibraryFilters";

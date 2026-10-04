@@ -2,12 +2,13 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 
-import styles from "./page.module.scss";
+import styles from "./page.module.css";
 
 import { Button } from "@/components/ui/Button";
 import { HeroCanvas } from "@/components/HeroCanvas";
 import { H1, P } from "@/components/ui/Typography";
-import { Container, CompactContainer } from "@/components/ui/Container";
+import { Container } from "@/components/ui/Container";
+import { CompactContainer } from "@/components/ui/Container/CompactContainer";
 import {
   FeaturedSection,
   FeaturedSectionError,

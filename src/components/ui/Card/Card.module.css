@@ -1,0 +1,53 @@
+.card {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-rounded);
+  border: 1px solid var(--border);
+}
+
+.default {
+  background-color: var(--card);
+  color: var(--card-foreground);
+}
+
+.primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.withPadding {
+  padding: var(--spacing-md);
+}
+
+.cardTitle {
+  font-family: var(--ui-font);
+}
+
+.cardDescription {
+}
+
+.fontSizeXl {
+  font-size: var(--font-size-xl);
+}
+
+.fontWeightBold {
+  font-weight: 700;
+}
+
+.fontWeightSemiBold {
+  font-weight: 600;
+}
+
+.cardHeader {
+  padding-inline: var(--spacing-md);
+  padding-top: var(--spacing-md);
+}
+
+.cardContent {
+  padding: var(--spacing-md);
+}
+
+.cardFooter {
+  padding-inline: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+}

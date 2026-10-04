@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import styles from "./ChangePassword.module.scss";
+import styles from "./ChangePassword.module.css";
 
 import { Button } from "@/components/ui/Button";
 import {

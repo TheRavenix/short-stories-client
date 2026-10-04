@@ -3,7 +3,7 @@
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import clsx from "clsx";
-import styles from "./Dialog.module.scss";
+import styles from "./Dialog.module.css";
 
 const Dialog = DialogPrimitive.Root;
 

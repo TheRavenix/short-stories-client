@@ -2,7 +2,7 @@
 
 import { StarIcon } from "lucide-react";
 
-import styles from "./StarRating.module.scss";
+import styles from "./StarRating.module.css";
 import clsx from "clsx";
 
 export type StarRatingProps = {

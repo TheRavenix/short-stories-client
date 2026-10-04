@@ -1,0 +1,31 @@
+.endContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.signInLink {
+  color: var(--primary);
+}
+
+.linksContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-sm);
+}
+
+@media (min-width: 576px) {
+  .endContent {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .linksContainer {
+    align-items: flex-end;
+    text-align: end;
+  }
+}

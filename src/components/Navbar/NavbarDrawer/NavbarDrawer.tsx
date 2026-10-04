@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-import styles from "./NavbarDrawer.module.scss";
+import styles from "./NavbarDrawer.module.css";
 
 import { Button } from "@/components/ui/Button";
 import {

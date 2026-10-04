@@ -3,7 +3,7 @@
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import clsx from "clsx";
-import styles from "./Tabs.module.scss";
+import styles from "./Tabs.module.css";
 
 const Tabs = TabsPrimitive.Root;
 

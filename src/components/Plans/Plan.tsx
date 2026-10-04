@@ -1,6 +1,6 @@
 import { CheckIcon, XIcon } from "lucide-react";
 
-import styles from "./Plans.module.scss";
+import styles from "./Plans.module.css";
 
 import { Card, CardContent, CardHeader } from "../ui/Card";
 import { H2, H3, P, Span } from "../ui/Typography";

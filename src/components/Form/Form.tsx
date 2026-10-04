@@ -1,7 +1,7 @@
 import { ComponentProps } from "react";
 import clsx from "clsx";
 
-import styles from "./Form.module.scss";
+import styles from "./Form.module.css";
 
 type Props = {
   preventDefault?: boolean

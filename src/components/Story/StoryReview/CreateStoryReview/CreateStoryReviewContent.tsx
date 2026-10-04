@@ -4,7 +4,7 @@ import { useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 
-import styles from "./CreateStoryReview.module.scss";
+import styles from "./CreateStoryReview.module.css";
 
 import { Button } from "@/components/ui/Button";
 import { STAR_RATING_MAX, StarRating } from "@/components/StarRating";

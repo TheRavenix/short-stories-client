@@ -1,7 +1,7 @@
-import styles from "./page.module.scss";
+import styles from "./page.module.css";
 
 import { H1 } from "@/components/ui/Typography";
-import { CompactContainer } from "@/components/ui/Container";
+import { CompactContainer } from "@/components/ui/Container/CompactContainer";
 import { AdminPageGuard } from "@/components/guards";
 import { CreateStoryForm } from "@/components/Story/forms/CreateStoryForm";
 

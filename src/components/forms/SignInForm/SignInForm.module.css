@@ -1,0 +1,19 @@
+.endContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.signUpLink {
+  color: var(--primary);
+}
+
+@media (min-width: 576px) {
+  .endContent {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+  }
+}

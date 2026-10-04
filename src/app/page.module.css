@@ -1,0 +1,31 @@
+.hero {
+  height: 80dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-md);
+  z-index: 2;
+}
+
+.headline {
+  text-align: center;
+}
+
+.exploreLink {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .exploreLink {
+    width: 150px;
+  }
+}

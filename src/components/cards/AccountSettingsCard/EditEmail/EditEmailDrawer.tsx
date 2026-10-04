@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import styles from "./EditEmail.module.scss";
+import styles from "./EditEmail.module.css";
 
 import { Button } from "@/components/ui/Button";
 import {

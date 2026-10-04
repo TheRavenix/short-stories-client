@@ -1,0 +1,45 @@
+.main {
+  padding-top: var(--navbar-height);
+}
+
+.headline {
+  text-align: center;
+}
+
+.content {
+  margin-top: var(--spacing-lg);
+}
+
+.tagline {
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section h3 {
+  text-transform: capitalize;
+}
+
+.descriptions {
+  margin-top: var(--spacing-md);
+}
+
+.descriptions p {
+  margin-bottom: var(--spacing-md);
+  color: var(--gray-foreground);
+}
+
+.descriptions p:last-child {
+  margin-bottom: 0;
+}
+
+.link {
+  color: var(--primary);
+}

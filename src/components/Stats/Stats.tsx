@@ -1,6 +1,6 @@
 import { JSX } from "react";
 
-import styles from "./Stats.module.scss";
+import styles from "./Stats.module.css";
 
 import { Span } from "../ui/Typography";
 

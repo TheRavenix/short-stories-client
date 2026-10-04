@@ -1,7 +1,7 @@
 import { ComponentProps } from "react";
 import clsx from "clsx";
 
-import styles from "./Typography.module.scss";
+import styles from "./Typography.module.css";
 
 type Transform = "capitalize" | "uppercase";
 

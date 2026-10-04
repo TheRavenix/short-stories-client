@@ -3,7 +3,7 @@
 import { Input } from "@/components/ui/Input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import styles from "./NavbarSearch.module.scss";
+import styles from "./NavbarSearch.module.css";
 
 import { Button } from "@/components/ui/Button";
 

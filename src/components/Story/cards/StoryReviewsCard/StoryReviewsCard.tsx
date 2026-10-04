@@ -2,7 +2,7 @@
 
 import { MessageCircleIcon } from "lucide-react";
 
-import styles from "./StoryReviewsCard.module.scss";
+import styles from "./StoryReviewsCard.module.css";
 
 import { EmptyState } from "@/components/EmptyState";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";

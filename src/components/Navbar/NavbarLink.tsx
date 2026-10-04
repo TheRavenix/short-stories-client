@@ -5,7 +5,7 @@ import { ComponentProps } from "react";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 
-import styles from "./Navbar.module.scss";
+import styles from "./Navbar.module.css";
 
 type Props = LinkProps & ComponentProps<'a'>
 

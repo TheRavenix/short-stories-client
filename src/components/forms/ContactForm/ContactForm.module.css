@@ -1,0 +1,11 @@
+.nameAndEmail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .nameAndEmail {
+    flex-direction: row;
+  }
+}

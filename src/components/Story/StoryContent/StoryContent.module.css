@@ -1,0 +1,46 @@
+/* Apply fade-in animation */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.content:hover {
+  background: var(--secondary);
+
+  .contentHeader .contentHeaderTools {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.content[role="separator"] > div {
+  transition-duration: 0.3s;
+}
+
+.content[role="separator"][data-highlighted="true"] > div {
+  background-color: var(--primary);
+}
+
+.contentHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contentHeaderTools {
+  display: flex;
+  align-items: center;
+  gap: calc(0.5 * var(--spacing-sm));
+  opacity: 0;
+  pointer-events: none;
+}
+
+.contentText {
+  line-height: 1.7;
+  font-size: 1.1rem;
+  color: var(--foreground);
+  max-width: 65ch;
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}

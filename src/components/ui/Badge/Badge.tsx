@@ -1,7 +1,7 @@
 import { ComponentProps } from "react";
 import clsx from "clsx";
 
-import styles from "./Badge.module.scss";
+import styles from "./Badge.module.css";
 
 type BadgeVariant = "primary" | "secondary" | "page" | "inverse";
 

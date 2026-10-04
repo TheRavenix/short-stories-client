@@ -1,7 +1,7 @@
 import { ComponentProps } from "react";
 import clsx from "clsx";
 
-import styles from "./Button.module.scss";
+import styles from "./Button.module.css";
 
 type ButtonVariant =
   | "primary"

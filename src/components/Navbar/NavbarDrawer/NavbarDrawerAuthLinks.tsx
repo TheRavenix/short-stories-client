@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import styles from "./NavbarDrawer.module.scss";
+import styles from "./NavbarDrawer.module.css";
 
 import { Button } from "@/components/ui/Button";
 import { authLinks } from "@/data/links";

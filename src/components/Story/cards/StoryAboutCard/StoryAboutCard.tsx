@@ -1,6 +1,6 @@
 import { InfoIcon } from "lucide-react";
 
-import styles from "./StoryAboutCard.module.scss";
+import styles from "./StoryAboutCard.module.css";
 
 import { EmptyState } from "@/components/EmptyState";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";
