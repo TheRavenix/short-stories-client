@@ -16,13 +16,13 @@ export type StoryReviewType = {
   id: number
   userId: number
   storyId: number
-  storySlug: string
   stars: number
   comment: string
 }
 
 export type StoryReviewDetails = {
-  storyId: number
+  storyReviewId: number
+  storySlug: string
   userName: string
   storyName: string
 }
@@ -89,7 +89,7 @@ export function StoryReview({
       <P>{review.comment}</P>
       {isReadMoreLinkShown && (
         <Link
-          href={`/s/${review.storySlug}?view=tabs&tab=reviews`}
+          href={`/s/${reviewDetails.storySlug}?view=tabs&tab=reviews`}
           className={styles.reviewLink}
         >
           <Button size='sm' variant='inverse'>

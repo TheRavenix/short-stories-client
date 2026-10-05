@@ -1,12 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
-
 import styles from "./page.module.css";
 
 import { Callout } from "@/components/Callout";
 import { Container } from "@/components/ui/Container";
-import { useToastStore } from "@/stores/toast";
 
 type Props = {
   error: Error
@@ -14,16 +11,6 @@ type Props = {
 }
 
 export default function StoryPageError(props: Props) {
-  const addToast = useToastStore((s) => s.addToast)
-
-  useEffect(() => {
-    addToast({
-      title: 'Error loading story',
-      description: props.error.message,
-      variant: 'error'
-    })
-  }, [])
-
   return (
     <main className={styles.noStoryMain}>
       <Container withPaddingBlock>

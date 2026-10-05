@@ -23,8 +23,8 @@ type Props = {
 
 export function StoryReviewsCard({ id, name, reviews, reviewsDetails }: Props) {
   const { profile, isLoading } = useProfile()
-  const userReview = reviews.find((review) => review.userId === profile?.id)
-  const reviewDetails = reviewsDetails.find((details) => details.storyId === userReview?.storyId)
+  const userReview = reviews?.find((review) => review.userId === profile?.id)
+  const userReviewDetails = reviewsDetails?.find((details) => details.storyReviewId === userReview?.id)
 
   if (isLoading) {
     return (
@@ -63,7 +63,7 @@ export function StoryReviewsCard({ id, name, reviews, reviewsDetails }: Props) {
               {
                 icon: <MessageCircleIcon size={16} />,
                 value: reviews.length,
-              },
+              }
             ]}
           />
         )}
@@ -73,23 +73,31 @@ export function StoryReviewsCard({ id, name, reviews, reviewsDetails }: Props) {
         {
           reviews.length > 0 ?
             <div className={styles.reviewsCardList}>
-              {userReview !== undefined && (
+              {userReview !== undefined && userReviewDetails !== undefined && (
                 <StoryReview
                   review={userReview}
-                  reviewDetails={reviewDetails!} // Remove ! symbol
+                  reviewDetails={userReviewDetails}
                   isEditButtonShown={true}
                   isDeleteButtonShown={true}
                   isUserNameHighlighted={true}
                 />
               )}
-              {reviews.filter((r) => r.userId !== profile?.id).map((review) => (
-                <StoryReview
-                  key={review.id}
-                  review={review}
-                  reviewDetails={reviewDetails!} // Remove ! symbol
-                  isDeleteButtonShown={profile?.role === 'admin'}
-                />
-              ))}
+              {reviews.filter((r) => r.userId !== profile?.id).map((review) => {
+                const reviewDetails = reviewsDetails?.find((details) => details.storyReviewId === review.id)
+
+                if (reviewDetails === undefined) {
+                  return null
+                }
+
+                return (
+                  <StoryReview
+                    key={review.id}
+                    review={review}
+                    reviewDetails={reviewDetails}
+                    isDeleteButtonShown={profile?.role === 'admin'}
+                  />
+                )
+              })}
             </div> :
             <EmptyState
               icon={<MessageCircleIcon />}

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 import styles from "./CreateStoryReview.module.css";
 
@@ -12,7 +13,7 @@ import { Input } from "@/components/ui/Input";
 import { Form } from "@/components/Form";
 import { ActionSlot } from "@/components/ActionSlot";
 import { useToastStore } from "@/stores/toast";
-import { createStoryReview } from "@/services/story-review";
+import { createStoryReview, CreateStoryReviewData } from "@/services/story-review";
 
 type Props = {
   storyId: number
@@ -29,7 +30,9 @@ export function CreateStoryReviewContent({ storyId, setOpen }: Props) {
 
   const mutation = useMutation({
     mutationKey: ['create-story-review'],
-    mutationFn: createStoryReview,
+    mutationFn: (data: CreateStoryReviewData) => {
+      return createStoryReview(storyId, data)
+    },
     onSuccess(data) {
       let href = pathName
 
@@ -45,17 +48,18 @@ export function CreateStoryReviewContent({ storyId, setOpen }: Props) {
       router.push(href, { scroll: false })
     },
     onError(error) {
-      addToast({
-        title: 'Error post review',
-        description: error.message,
-        variant: 'error',
-      })
-    },
+      if (axios.isAxiosError(error)) {
+        addToast({
+          title: 'Error post review',
+          description: error.response?.data.message,
+          variant: 'error'
+        })
+      }
+    }
   })
 
   const handleReview = (e: React.FormEvent<HTMLFormElement>) => {
     mutation.mutate({
-      storyId,
       stars: rating,
       comment
     })

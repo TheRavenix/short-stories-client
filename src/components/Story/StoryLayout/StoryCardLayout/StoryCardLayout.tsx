@@ -1,15 +1,16 @@
 import { Card, CardContent } from "@/components/ui/Card";
-import { StoryContent, StoryContentType } from "../../StoryContent";
+import { StoryContent } from "../../StoryContent";
+import { StoryType } from "../../Story";
 
 type Props = {
-  storyContent: StoryContentType
+  story: StoryType
 }
 
-export function StoryCardLayout({ storyContent }: Props) {
+export function StoryCardLayout({ story }: Props) {
   return (
     <Card>
       <CardContent>
-        {storyContent.content.map((contentText, index) => (
+        {story.content.map((contentText, index) => (
           <StoryContent contentText={contentText} index={index} />
         ))}
       </CardContent>

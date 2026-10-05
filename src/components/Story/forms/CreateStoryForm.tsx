@@ -2,6 +2,7 @@
 
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
+import axios from "axios";
 
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Input/Textarea";
@@ -46,11 +47,13 @@ export function CreateStoryForm() {
       window.location.replace(`/s?q=${formData.name}`)
     },
     onError(error) {
-      addToast({
-        title: 'Error create story',
-        description: error.message,
-        variant: 'error'
-      })
+      if (axios.isAxiosError(error)) {
+        addToast({
+          title: 'Error create story',
+          description: error.response?.data.message,
+          variant: 'error'
+        })
+      }
     }
   })
 

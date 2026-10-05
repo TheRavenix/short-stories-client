@@ -8,12 +8,6 @@ import { Separator } from "@/components/ui/Separator";
 import { StoryContentHeading } from "./StoryContentHeading";
 import { StoryContentText } from "./StoryContentText";
 
-export type StoryContentType = {
-  id: number
-  storyId: number
-  content: string[]
-}
-
 type Props = {
   isHeaderToolsShown?: boolean
   isHeaderSaveToolShown?: boolean

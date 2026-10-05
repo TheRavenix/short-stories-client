@@ -1,7 +1,7 @@
 type LinkType = {
-  name: string;
-  href: string;
-};
+  name: string
+  href: string
+}
 
 export const navBarLinks: LinkType[] = [
   {

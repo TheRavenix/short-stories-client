@@ -25,7 +25,7 @@ export function FeaturedReviewsSection({
         reviews.length > 0 ?
           <div className={styles.reviewsList}>
             {reviews.map((review) => {
-              const reviewDetails = reviewsDetails.find((details) => details.storyId === review.storyId)
+              const reviewDetails = reviewsDetails.find((details) => details.storyReviewId === review.id)
 
               if (reviewDetails === undefined) {
                 return null

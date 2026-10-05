@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -34,11 +35,13 @@ export function EditEmailContent({ setOpen }: Props) {
       refetch()
     },
     onError(error) {
-      addToast({
-        title: 'Error edit email',
-        description: error.message,
-        variant: 'error'
-      })
+      if (axios.isAxiosError(error)) {
+        addToast({
+          title: 'Error edit email',
+          description: error.response?.data.message,
+          variant: 'error'
+        })
+      }
     }
   })
 

@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 import { Button } from "@/components/ui/Button";
 import { useAuthStore } from "@/stores/auth";
@@ -28,11 +29,13 @@ export function StoryDownloadButton({ storyId, storyName }: Props) {
       window.URL.revokeObjectURL(url)
     },
     onError(error) {
-      addToast({
-        title: 'Error download story',
-        description: error.message,
-        variant: 'error'
-      })
+      if (axios.isAxiosError(error)) {
+        addToast({
+          title: 'Error download story',
+          description: error.response?.data.message,
+          variant: 'error'
+        })
+      }
     }
   })
 

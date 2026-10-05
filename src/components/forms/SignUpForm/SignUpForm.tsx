@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 import styles from "./SignUpForm.module.css";
 
@@ -31,11 +32,13 @@ export function SignUpForm() {
       window.location.replace('/')
     },
     onError(error) {
-      addToast({
-        title: 'Error sign up',
-        description: error.message,
-        variant: 'error',
-      })
+      if (axios.isAxiosError(error)) {
+        addToast({
+          title: 'Error sign up',
+          description: error.response?.data.message,
+          variant: 'error'
+        })
+      }
     },
   })
 

@@ -67,7 +67,7 @@ export function Story({
       </div>
       <Image
         className={styles.coverImage}
-        src={`${process.env.NEXT_PUBLIC_SERVER_URL}/images/${story.coverImage}`}
+        src='/short-story-cover.jpeg'
         alt={`${story.name} Cover`}
         width={178.5}
         height={200}
