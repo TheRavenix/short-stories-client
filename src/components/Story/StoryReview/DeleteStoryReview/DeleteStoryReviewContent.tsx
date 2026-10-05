@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import axios from "axios";
 
 import styles from "./DeleteStoryReview.module.css";
 
@@ -18,7 +19,7 @@ type Props = {
   reviewId: number
 }
 
-const CONFIRM = "CONFIRM"
+const CONFIRM = 'CONFIRM'
 
 export function DeleteStoryReviewContent({ setOpen, reviewId }: Props) {
   const [confirmMessage, setConfirmMessage] = useState("")
@@ -29,28 +30,30 @@ export function DeleteStoryReviewContent({ setOpen, reviewId }: Props) {
   const confirmed = confirmMessage.toLowerCase() === CONFIRM.toLowerCase()
 
   const mutation = useMutation({
-    mutationKey: ["delete-story-review"],
+    mutationKey: ['delete-story-review'],
     mutationFn: deleteStoryReview,
     onSuccess(data) {
       let href = pathName
 
-      if (searchParams.get("view") === "tabs") {
-        href += `?view=tabs&tab=${searchParams.get("tab")}`
+      if (searchParams.get('view') === 'tabs') {
+        href += `?view=tabs&tab=${searchParams.get('tab')}`
       }
 
       addToast({
-        title: "Done",
+        title: 'Done',
         description: data.message,
       })
       router.push(href, { scroll: false })
     },
     onError(error) {
-      addToast({
-        title: "Error delete story review",
-        description: error.message,
-        variant: "error",
-      })
-    },
+      if (axios.isAxiosError(error)) {
+        addToast({
+          title: 'Error delete story review',
+          description: error.response?.data.message,
+          variant: 'error'
+        })
+      }
+    }
   })
 
   const handleDelete = (e: React.FormEvent<HTMLFormElement>) => {
@@ -63,17 +66,17 @@ export function DeleteStoryReviewContent({ setOpen, reviewId }: Props) {
 
   return (
     <form className={styles.form} onSubmit={handleDelete}>
-      <P size="lg">Type {CONFIRM}</P>
+      <P size='lg'>Type {CONFIRM}</P>
       <Input
-        label="Type here"
+        label='Type here'
         required
         value={confirmMessage}
         onChange={(e) => setConfirmMessage(e.target.value)}
       />
       <ActionSlot>
         <Button
-          type="submit"
-          variant="destructive"
+          type='submit'
+          variant='destructive'
           disabled={!confirmed || mutation.isPending}
         >
           Delete

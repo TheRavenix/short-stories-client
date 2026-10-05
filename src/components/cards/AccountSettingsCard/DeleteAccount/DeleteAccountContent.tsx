@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -34,11 +35,13 @@ export function DeleteAccountContent({ setOpen }: Props) {
       window.location.replace('/sign-in')
     },
     onError(error) {
-      addToast({
-        title: 'Error delete account',
-        description: error.message,
-        variant: 'error'
-      })
+      if (axios.isAxiosError(error)) {
+        addToast({
+          title: 'Error delete account',
+          description: error.response?.data.message,
+          variant: 'error'
+        })
+      }
     }
   })
 

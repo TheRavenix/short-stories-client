@@ -2,6 +2,7 @@
 
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
+import axios from "axios";
 
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Input/Textarea";
@@ -19,23 +20,21 @@ import { Form } from "@/components/Form";
 import { useProfile } from "@/hooks/profile";
 import { useToastStore } from "@/stores/toast";
 import { joinByNewLine, splitByNewLine } from "@/utils/text";
-import { StoryType } from "../Story";
-import { StoryContentType } from "../StoryContent";
 import { editStory, EditStoryData } from "@/services/story";
+import { StoryType } from "../Story";
 
 type Props = {
   story: StoryType
-  storyContent: StoryContentType
 }
 
-export function EditStoryForm({ story, storyContent }: Props) {
+export function EditStoryForm({ story }: Props) {
   const { isLoading, profile } = useProfile()
   const [formData, setFormData] = useState<EditStoryData>({
     name: story.name || '',
     description: story.description || '',
     preview: story.preview || [],
     about: story.about || [],
-    content: storyContent.content || [],
+    content: story.content || [],
     genre: story.genre || ['adventure'],
     plan: story.plan || 'free',
     coverImage: story.coverImage || 'short-story-cover.jpeg'
@@ -55,11 +54,13 @@ export function EditStoryForm({ story, storyContent }: Props) {
       window.location.replace(`/s/${data.slug}`)
     },
     onError(error) {
-      addToast({
-        title: 'Error edit story',
-        description: error.message,
-        variant: 'error'
-      })
+      if (axios.isAxiosError(error)) {
+        addToast({
+          title: 'Error edit story',
+          description: error.response?.data.message,
+          variant: 'error'
+        })
+      }
     }
   })
 

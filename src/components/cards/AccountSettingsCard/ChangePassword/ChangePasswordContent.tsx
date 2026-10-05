@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -31,11 +32,13 @@ export function ChangePasswordContent({ setOpen }: Props) {
       setFormData({ currentPassword: '', newPassword: '' })
     },
     onError(error) {
-      addToast({
-        title: 'Error change password',
-        description: error.message,
-        variant: 'error'
-      })
+      if (axios.isAxiosError(error)) {
+        addToast({
+          title: 'Error change password',
+          description: error.response?.data.message,
+          variant: 'error'
+        })
+      }
     }
   })
 

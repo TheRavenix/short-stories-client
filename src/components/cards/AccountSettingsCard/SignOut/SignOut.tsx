@@ -1,6 +1,7 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 import { Button } from "@/components/ui/Button";
 import { useToastStore } from "@/stores/toast";
@@ -19,11 +20,13 @@ export function SignOut() {
       window.location.replace('/sign-in')
     },
     onError(error) {
-      addToast({
-        title: 'Error sign out',
-        description: error.message,
-        variant: 'error'
-      })
+      if (axios.isAxiosError(error)) {
+        addToast({
+          title: 'Error sign out',
+          description: error.response?.data.message,
+          variant: 'error'
+        })
+      }
     }
   })
 

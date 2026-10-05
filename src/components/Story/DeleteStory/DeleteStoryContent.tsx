@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 import styles from "./DeleteStory.module.css";
 
@@ -37,11 +38,13 @@ export function DeleteStoryContent({
       window.location.replace('/s')
     },
     onError(error) {
-      addToast({
-        title: 'Error delete story',
-        description: error.message,
-        variant: 'error'
-      })
+      if (axios.isAxiosError(error)) {
+        addToast({
+          title: 'Error delete story',
+          description: error.response?.data.message,
+          variant: 'error'
+        })
+      }
     }
   })
 

@@ -85,12 +85,12 @@ export default async function StoryPage(props: Props) {
                   name={story.name}
                   about={story.about}
                 />
-               <StoryPreviewCard
+                <StoryPreviewCard
                   id={story.id}
                   name={story.name}
                   preview={story.preview}
                 />
-               <StoryReviewsCard
+                <StoryReviewsCard
                   id={story.id}
                   name={story.name}
                   reviews={storyReviews.reviews}

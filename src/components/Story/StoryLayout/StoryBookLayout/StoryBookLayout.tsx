@@ -5,7 +5,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 
 import styles from "./StoryBookLayout.module.css";
 
-import { StoryContent, StoryContentType } from "../../StoryContent";
+import { StoryContent } from "../../StoryContent";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { P } from "@/components/ui/Typography";
@@ -16,16 +16,16 @@ import {
   SliderTrack,
 } from "@/components/ui/Slider";
 import { chunkArray } from "@/utils/chunk-array";
+import { StoryType } from "../../Story";
 
 type Props = {
   id: number
-  storyId: number
-  storyContent: StoryContentType
+  story: StoryType
 }
 
-export function StoryBookLayout({ id, storyId, storyContent }: Props) {
+export function StoryBookLayout({ id, story }: Props) {
   const [page, setPage] = useState(0)
-  const contentList = chunkArray(storyContent.content, 3)
+  const contentList = chunkArray(story.content, 3)
 
   const moveTo = (p: number) => {
     if (p >= 0 && p < contentList.length) {

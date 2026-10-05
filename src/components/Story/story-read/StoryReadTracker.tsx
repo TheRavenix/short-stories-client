@@ -14,7 +14,7 @@ export function StoryReadTracker({ storyId }: Props) {
   const storyReadTimeout = useRef<NodeJS.Timeout>(null!)
 
   const mutation = useMutation({
-    mutationKey: ["read-story"],
+    mutationKey: ['read-story'],
     mutationFn: readStory,
   })
 

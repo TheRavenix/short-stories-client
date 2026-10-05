@@ -10,7 +10,6 @@ import { ToggleNavbarFixed } from "@/components/Navbar/ToggleNavbarFixed";
 import { StoryBackButton } from "@/components/Story/buttons/StoryBackButton";
 import { StoryContent } from "@/components/Story/StoryContent";
 import { getStoryBySlug } from "@/lib/story";
-import { getStoryContentByStoryId } from "@/lib/story/story-content";
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -19,7 +18,6 @@ type Props = {
 export default async function ReadStory(props: Props) {
   const params = await props.params
   const story = await getStoryBySlug(params.slug)
-  const storyContent = await getStoryContentByStoryId(story.id)
 
   return (
     <>
@@ -37,10 +35,14 @@ export default async function ReadStory(props: Props) {
             {story.name}
           </H1>
           {
-            storyContent.content.length > 0 ?
+            story.content.length > 0 ?
               <div className={styles.storyContentList}>
-                {storyContent.content.map((contentText, index) => (
-                  <StoryContent contentText={contentText} index={index} />
+                {story.content.map((contentText, index) => (
+                  <StoryContent 
+                    key={index} 
+                    contentText={contentText} 
+                    index={index}
+                  />
                 ))}
               </div> :
               <EmptyState message='A story was supposed to be here... Perhaps the author is still writing?' />

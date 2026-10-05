@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
+import axios from 'axios'
 
 import styles from "./EditStoryReview.module.css";
 
@@ -54,11 +55,13 @@ export function EditStoryReviewContent({
       router.push(href, { scroll: false })
     },
     onError(error) {
-      addToast({
-        title: 'Error edit review',
-        description: error.message,
-        variant: 'error'
-      })
+      if (axios.isAxiosError(error)) {
+        addToast({
+          title: 'Error edit review',
+          description: error.response?.data.message,
+          variant: 'error'
+        })
+      }
     }
   })
 

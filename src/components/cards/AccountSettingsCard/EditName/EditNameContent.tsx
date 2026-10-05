@@ -2,6 +2,7 @@
 
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
+import axios from "axios";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -31,11 +32,13 @@ export function EditNameContent({ setOpen }: Props) {
       refetch()
     },
     onError(error) {
-      addToast({
-        title: 'Error edit name',
-        description: error.message,
-        variant: 'error'
-      })
+      if (axios.isAxiosError(error)) {
+        addToast({
+          title: 'Error edit name',
+          description: error.response?.data.message,
+          variant: 'error'
+        })
+      }
     }
   })
 
