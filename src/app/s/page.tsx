@@ -4,14 +4,10 @@ import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import styles from "./page.module.css";
 
 import { Container } from "@/components/ui/Container";
-import { LibraryFilters } from "@/components/LibraryFilters";
-import {
-  LibraryHeaderSection,
-  LibraryStoriesSection,
-  LibraryStoriesSectionError,
-  LibraryStoriesSectionLoading,
-} from "@/components/sections";
-import { BackTopButton } from "@/components/buttons";
+import { LibraryFilters } from "@/components/library/LibraryFilters";
+import { LibraryHeaderSection } from "@/components/library/LibraryHeaderSection";
+import { LibraryStoriesSection, LibraryStoriesSectionError, LibraryStoriesSectionLoading } from "@/components/library/LibraryStoriesSection";
+import { BackTopButton } from "@/components/buttons/BackTopButton";
 import { PAGINATION_DEFAULT_LIMIT } from "@/constants/filter";
 import { GetLibraryStoriesQuery } from "@/lib/story";
 

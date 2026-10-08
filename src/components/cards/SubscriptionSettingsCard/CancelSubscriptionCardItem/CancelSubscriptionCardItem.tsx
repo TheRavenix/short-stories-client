@@ -1,13 +1,13 @@
 "use client";
 
-import { SettingsCardItem } from "@/components/cards/SettingsCard";
 import { Button } from "@/components/ui/Button";
+import { SettingsCardItem } from "../../SettingsCard/SettingsCardItem";
 import { useProfile } from "@/hooks/profile";
 
 export function CancelSubscriptionCardItem() {
   const { profile } = useProfile()
 
-  if (profile?.plan !== "pro") {
+  if (profile?.plan !== 'pro') {
     return null
   }
 

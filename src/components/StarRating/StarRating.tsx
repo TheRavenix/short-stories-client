@@ -3,6 +3,7 @@
 import { StarIcon } from "lucide-react";
 
 import styles from "./StarRating.module.css";
+
 import clsx from "clsx";
 
 export type StarRatingProps = {
@@ -23,7 +24,7 @@ export function StarRating({
   const roundedStars = Math.round(rating)
 
   const handleInteractivity = (starRating: number) => {
-    if (!interactive || typeof setRating !== "function") {
+    if (!interactive || setRating === undefined) {
       return
     }
 

@@ -1,6 +1,7 @@
 "use client";
 
-import { SettingsCard, SettingsCardItem } from "../SettingsCard";
+import { SettingsCard } from "../SettingsCard";
+import { SettingsCardItem } from "../SettingsCard/SettingsCardItem";
 import { EditName } from "./EditName";
 import { EditEmail } from "./EditEmail";
 import { ChangePassword } from "./ChangePassword";

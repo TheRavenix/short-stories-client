@@ -2,9 +2,9 @@
 
 import styles from "./SignUpSection.module.css";
 
-import { SignUpForm } from "../../forms";
 import { H1 } from "../../ui/Typography";
 import { Skeleton } from "@/components/Skeleton";
+import { SignUpForm } from "../SignUpForm";
 import { useAuthStore } from "@/stores/auth";
 import { useProfile } from "@/hooks/profile";
 

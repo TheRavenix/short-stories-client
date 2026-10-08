@@ -1,5 +1,6 @@
-import { SettingsCard, SettingsCardItem } from "../SettingsCard";
-import { ThemeSelect } from "@/components/Theme/ThemeSelect";
+import { SettingsCard } from "../SettingsCard";
+import { ThemeSelect } from "@/components/theme/ThemeSelect";
+import { SettingsCardItem } from "../SettingsCard/SettingsCardItem";
 
 export function SitePreferencesCard() {
   return (

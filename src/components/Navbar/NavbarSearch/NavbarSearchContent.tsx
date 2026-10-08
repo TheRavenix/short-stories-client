@@ -6,7 +6,6 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import styles from "./NavbarSearch.module.css";
 
 import { Button } from "@/components/ui/Button";
-
 import { useSearchStore } from "@/stores/search";
 import { ActionSlot } from "@/components/ActionSlot";
 

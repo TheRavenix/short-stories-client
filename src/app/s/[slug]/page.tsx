@@ -5,7 +5,7 @@ import { Story } from "@/components/Story";
 import { H1 } from "@/components/ui/Typography";
 import { SearchParamTabs } from "@/components/SearchParamTabs";
 import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
-import { BackTopButton } from "@/components/buttons";
+import { BackTopButton } from "@/components/buttons/BackTopButton";
 import { StoryViewToggle } from "@/components/Story/story-view/StoryViewToggle";
 import { StoryAboutCard } from "@/components/Story/cards/StoryAboutCard";
 import { StoryPreviewCard } from "@/components/Story/cards/StoryPreviewCard";

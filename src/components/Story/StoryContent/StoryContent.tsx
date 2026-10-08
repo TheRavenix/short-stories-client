@@ -2,7 +2,7 @@ import { BookmarkIcon } from "lucide-react";
 
 import styles from "./StoryContent.module.css";
 
-import { ClipboardButton } from "@/components/buttons";
+import { ClipboardButton } from "@/components/buttons/ClipboardButton";
 import { Button } from "@/components/ui/Button";
 import { Separator } from "@/components/ui/Separator";
 import { StoryContentHeading } from "./StoryContentHeading";

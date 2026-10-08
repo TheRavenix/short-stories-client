@@ -2,8 +2,8 @@ import styles from "./page.module.css";
 
 import { H1 } from "@/components/ui/Typography";
 import { CompactContainer } from "@/components/ui/Container/CompactContainer";
-import { SignInForm } from "@/components/forms";
-import { AuthPageGuard } from "@/components/guards";
+import { SignInForm } from "@/components/auth/SignInForm";
+import { AuthPageGuard } from "@/components/guards/AuthPageGuard";
 
 export default function SignIn() {
   return (
