@@ -40,7 +40,7 @@
   width: fit-content;
 }
 
-.genre {
+.badges {
   position: relative;
   display: flex;
   align-items: center;
@@ -70,7 +70,7 @@
     text-align: start;
   }
 
-  .genre {
+  .badges {
     position: absolute;
     right: var(--spacing-md);
     top: var(--spacing-md);

@@ -60,7 +60,8 @@ export function Story({
 }: Props) {
   return (
     <Card withPadding className={clsx(styles.story, className)}>
-      <div className={styles.genre}>
+      <div className={styles.badges}>
+        <Badge variant='inverse'>{story.plan}</Badge>
         {story.genre.map((item) => (
           <Badge key={item}>{item}</Badge>
         ))}
@@ -76,7 +77,7 @@ export function Story({
         {isStarRatingShown && ratingCount > 0 ? (
           <StarRating rating={ratingCount} />
         ) : (
-          <Badge variant="inverse">Not Rated</Badge>
+          <Badge variant='inverse'>Not Rated</Badge>
         )}
         {isTitleShown && <CardTitle>{story.name}</CardTitle>}
         <CardDescription>{story.description}</CardDescription>
