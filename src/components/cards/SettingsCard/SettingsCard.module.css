@@ -3,26 +3,3 @@
   flex-direction: column;
   gap: var(--spacing-md);
 }
-
-.cardItem {
-  display: flex;
-}
-
-.cardItemRow {
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.cardItemRow > div {
-  width: 120px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  flex-shrink: 0;
-}
-
-.cardItemCol {
-  flex-direction: column;
-  gap: var(--spacing-sm);
-}

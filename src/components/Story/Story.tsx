@@ -1,20 +1,20 @@
-import Link from "next/link";
-import Image from "next/image";
-import { DownloadIcon, EyeIcon } from "lucide-react";
-import clsx from "clsx";
+import Link from 'next/link'
+import Image from 'next/image'
+import { DownloadIcon, EyeIcon } from 'lucide-react'
+import clsx from 'clsx'
 
-import styles from "./Story.module.css";
+import styles from './Story.module.css'
 
-import { Card, CardDescription, CardTitle } from "../ui/Card";
-import { Button } from "../ui/Button";
-import { Badge } from "../ui/Badge";
-import { StoryDownloadButton } from "./buttons/StoryDownloadButton";
-import { StoryEditButton } from "./buttons/StoryEditButton";
-import { StarRating } from "../StarRating";
-import { Stats } from "../Stats";
-import { StoryViewLink } from "./story-view/StoryViewLink";
-import { PlanType } from "../Plans";
-import { DeleteStory } from "./DeleteStory";
+import { Card, CardDescription, CardTitle } from '../ui/Card'
+import { Button } from '../ui/Button'
+import { Badge } from '../ui/Badge'
+import { StoryDownloadButton } from './buttons/StoryDownloadButton'
+import { StoryEditButton } from './buttons/StoryEditButton'
+import { StarRating } from '../StarRating'
+import { Stats } from '../Stats'
+import { StoryViewLink } from './story-view/StoryViewLink'
+import { PlanType } from '../Plans'
+import { DeleteStory } from './DeleteStory'
 
 export type StoryType = {
   id: number
@@ -29,6 +29,7 @@ export type StoryType = {
   views: number
   downloads: number
   plan: PlanType
+  featured: boolean
 }
 
 type Props = {
