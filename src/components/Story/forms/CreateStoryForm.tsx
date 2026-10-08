@@ -1,26 +1,20 @@
-"use client";
+'use client'
 
-import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
-import axios from "axios";
+import { useMutation } from '@tanstack/react-query'
+import { useState } from 'react'
+import axios from 'axios'
 
-import { Input } from "@/components/ui/Input";
-import { Textarea } from "@/components/ui/Input/Textarea";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/Select";
-import { Button } from "@/components/ui/Button";
-import { Skeleton } from "@/components/Skeleton";
-import { Form } from "@/components/Form";
-import { useProfile } from "@/hooks/profile";
-import { useToastStore } from "@/stores/toast";
-import { createStory, CreateStoryData } from "@/services/story";
-import { splitByNewLine } from "@/utils/text";
+import { Input } from '@/components/ui/Input'
+import { Textarea } from '@/components/ui/Input/Textarea'
+import { Button } from '@/components/ui/Button'
+import { Skeleton } from '@/components/Skeleton'
+import { Form } from '@/components/Form'
+import { LabelRowSwitch } from '@/components/LabelRow/LabelRowSwitch'
+import { LabelRowSelect } from '@/components/LabelRow/LabelRowSelect'
+import { useProfile } from '@/hooks/profile'
+import { useToastStore } from '@/stores/toast'
+import { createStory, CreateStoryData } from '@/services/story'
+import { splitByNewLine } from '@/utils/text'
 
 export function CreateStoryForm() {
   const { isLoading, profile } = useProfile()
@@ -32,6 +26,7 @@ export function CreateStoryForm() {
     content: [],
     genre: ['adventure'],
     plan: 'free',
+    featured: false,
     coverImage: 'short-story-cover.jpeg'
   })
   const addToast = useToastStore((s) => s.addToast)
@@ -107,34 +102,33 @@ export function CreateStoryForm() {
           updateFormDataProp('content', splitByNewLine(e.target.value))
         }
       />
-      <Select
-        value={formData.genre[0]}
+      <LabelRowSelect 
+        label='Genre'
+        defaultValue={formData.genre[0]}
         onValueChange={(v) => updateFormDataProp('genre', [v])}
-      >
-        <SelectTrigger>
-          <SelectValue placeholder='Select story genre' />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            <SelectItem value='adventure'>Adventure</SelectItem>
-            <SelectItem value='mystery'>Mystery</SelectItem>
-          </SelectGroup>
-        </SelectContent>
-      </Select>
-      <Select
-        value={formData.plan}
+        selectItems={
+          [
+            { value: 'adventure', children: 'Adventure' },
+            { value: 'mystery', children: 'Mystery' }
+          ]
+        }
+      />
+      <LabelRowSelect 
+        label='Plan'
+        defaultValue={formData.plan}
         onValueChange={(v) => updateFormDataProp('plan', v)}
-      >
-        <SelectTrigger>
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            <SelectItem value='free'>Free</SelectItem>
-            <SelectItem value='pro'>Pro</SelectItem>
-          </SelectGroup>
-        </SelectContent>
-      </Select>
+        selectItems={
+          [
+            { value: 'free', children: 'Free' },
+            { value: 'pro', children: 'Pro' }
+          ]
+        }
+      />
+      <LabelRowSwitch
+        label='Featured'
+        checked={formData.featured}
+        onCheckedChange={(checked) => updateFormDataProp('featured', checked)}
+      />
       <Input label='Cover Image' type='file' />
       <Button type='submit' size='responsive'>
         Create

@@ -1,6 +1,6 @@
-import { SettingsCard } from "../SettingsCard";
-import { ThemeSelect } from "@/components/theme/ThemeSelect";
-import { SettingsCardItem } from "../SettingsCard/SettingsCardItem";
+import { LabelRow } from '@/components/LabelRow'
+import { SettingsCard } from '../SettingsCard'
+import { ThemeSelect } from '@/components/theme/ThemeSelect'
 
 export function SitePreferencesCard() {
   return (
@@ -8,9 +8,9 @@ export function SitePreferencesCard() {
       title='Site Preferences'
       description='Here you can change the site preferences'
     >
-      <SettingsCardItem label='Preferred theme'>
+      <LabelRow label='Preferred theme'>
         <ThemeSelect />
-      </SettingsCardItem>
+      </LabelRow>
     </SettingsCard>
   )
 }

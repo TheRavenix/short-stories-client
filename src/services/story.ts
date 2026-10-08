@@ -9,6 +9,7 @@ export type CreateStoryData = {
   content: string[]
   genre: string[]
   plan: string
+  featured: boolean
   coverImage: string
 }
 
