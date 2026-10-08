@@ -23,6 +23,7 @@ export function LibraryFilters() {
   const query = useSearchStore((s) => s.libraryQuery)
   const setQuery = useSearchStore((s) => s.setLibraryQuery)
   const [genre, setGenre] = useState(searchParams.get('genre') || 'all-genres')
+  const [plan, setPlan] = useState(searchParams.get('plan') || 'all-plans')
   const [order, setOrder] = useState(searchParams.get('order') || 'random')
   const filterTimoutRef = useRef<NodeJS.Timeout>(null!)
 
@@ -41,19 +42,27 @@ export function LibraryFilters() {
     }, FILTER_DEFAULT_TIMEOUT)
   }
 
-  const handleOnGenreChange = (value: string) => {
-    setGenre(value)
+  const handleOnGenreChange = (onChangeGenre: string) => {
+    setGenre(onChangeGenre)
 
-    if (value !== searchParams.get('genre')) {
-      updateSearchParams('genre', value)
+    if (onChangeGenre !== searchParams.get('genre')) {
+      updateSearchParams('genre', onChangeGenre)
     }
   }
 
-  const handleOnOrderChange = (value: string) => {
-    setOrder(value)
+  const handleOnPlanChange = (onChangePlan: string) => {
+    setPlan(onChangePlan)
 
-    if (value !== searchParams.get('order')) {
-      updateSearchParams('order', value)
+    if (onChangePlan !== searchParams.get('plan')) {
+      updateSearchParams('plan', onChangePlan)
+    }
+  }
+
+  const handleOnOrderChange = (onChangeOrder: string) => {
+    setOrder(onChangeOrder)
+
+    if (onChangeOrder !== searchParams.get('order')) {
+      updateSearchParams('order', onChangeOrder)
     }
   }
 
@@ -77,6 +86,18 @@ export function LibraryFilters() {
               <SelectItem value='all-genres'>All Genres</SelectItem>
               <SelectItem value='adventure'>Adventure</SelectItem>
               <SelectItem value='mystery'>Mystery</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+        <Select value={plan} onValueChange={handleOnPlanChange}>
+          <SelectTrigger>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectItem value='all-plans'>All Plans</SelectItem>
+              <SelectItem value='free'>Free</SelectItem>
+              <SelectItem value='pro'>Pro</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
