@@ -2,8 +2,8 @@
 
 import styles from "./Navbar.module.css";
 
-import { ThemeSelect } from "../Theme/ThemeSelect";
-import { ThemeToggle } from "../Theme/ThemeToggle";
+import { ThemeSelect } from "../theme/ThemeSelect";
+import { ThemeToggle } from "../theme/ThemeToggle";
 import { useAuthStore } from "@/stores/auth";
 
 export function NavbarTheme() {

@@ -1,6 +1,6 @@
 "use client";
 
-import { SettingsCardItem } from "@/components/cards/SettingsCard";
+import { SettingsCardItem } from "@/components/cards/SettingsCard/SettingsCardItem";
 import { StoryLayoutSelect } from "@/components/Story/StoryLayout/StoryLayoutSelect";
 import { useProfile } from "@/hooks/profile";
 

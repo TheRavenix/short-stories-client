@@ -1,7 +1,8 @@
-import { SettingsCard, SettingsCardItem } from "../SettingsCard";
+import { SettingsCard } from "../SettingsCard";
 import { RomanNumeralsSwitch } from "./RomanNumeralsSwitch";
 import { LineNumeralsSwitch } from "./LineNumberingSwitch";
 import { StoryContentFontSizeSelect } from "@/components/Story/StoryContent/StoryContentFontSizeSelect";
+import { SettingsCardItem } from "../SettingsCard/SettingsCardItem";
 
 export function ReadingPreferencesCard() {
   return (

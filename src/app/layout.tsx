@@ -4,13 +4,11 @@ import "./globals.css";
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ThemeProvider } from "@/components/Theme/ThemeProvider";
-import {
-  QueryProvider,
-  AuthProvider,
-  ToastProvider,
-} from "@/components/providers";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { Toast, ToastViewport } from "@/components/ui/Toast";
+import { QueryProvider } from "@/components/providers/QueryProvider";
+import { ToastProvider } from "@/components/providers/ToastProvider";
+import { AuthProvider } from "@/components/auth/AuthProvider";
 
 export const metadata: Metadata = {
   title: 'Create Next App',

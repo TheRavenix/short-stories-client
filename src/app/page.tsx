@@ -9,13 +9,11 @@ import { HeroCanvas } from "@/components/HeroCanvas";
 import { H1, P } from "@/components/ui/Typography";
 import { Container } from "@/components/ui/Container";
 import { CompactContainer } from "@/components/ui/Container/CompactContainer";
-import {
-  FeaturedSection,
-  FeaturedSectionError,
-  FeaturedSectionLoading,
-  NewsletterSubSection,
-  SignUpSection,
-} from "@/components/sections";
+import { SignUpSection } from "@/components/auth/SignUpSection";
+import { FeaturedSectionError } from "@/components/featured/FeaturedSection/FeaturedSectionError";
+import { FeaturedSectionLoading } from "@/components/featured/FeaturedSection/FeaturedSectionLoading";
+import { FeaturedSection } from "@/components/featured/FeaturedSection";
+import { NewsletterSubSection } from "@/components/newsletter/NewsletterSubSection";
 
 export const dynamic = 'force-dynamic'
 

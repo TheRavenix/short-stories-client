@@ -20,7 +20,7 @@ export function Stats({ list }: Props) {
       {list.map((stat, index) => (
         <div key={index} className={styles.stat}>
           <div className={styles.iconWrapper}>{stat.icon}</div>
-          <Span weight="bold">{stat.value}</Span>
+          <Span weight='bold'>{stat.value}</Span>
         </div>
       ))}
     </div>

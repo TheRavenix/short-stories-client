@@ -4,7 +4,7 @@ import styles from "./LibraryStoriesSection.module.css";
 
 import { EmptyState } from "@/components/EmptyState";
 import { Story } from "@/components/Story";
-import { LibraryLoadMoreButton } from "@/components/buttons";
+import { LibraryLoadMoreButton } from "../LibraryLoadMoreButton";
 import { getLibraryStories, GetLibraryStoriesQuery } from "@/lib/story";
 import { getStoryReviewsByStoryId } from "@/lib/story/story-review";
 

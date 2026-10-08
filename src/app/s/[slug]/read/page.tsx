@@ -4,7 +4,7 @@ import { CompactContainer } from "@/components/ui/Container/CompactContainer";
 import { H1 } from "@/components/ui/Typography";
 import { EmptyState } from "@/components/EmptyState";
 import { SeparatorHighlighter } from "@/components/SeparatorHighlighter";
-import { BackTopButton } from "@/components/buttons";
+import { BackTopButton } from "@/components/buttons/BackTopButton";
 import { StoryReadTracker } from "@/components/Story/story-read/StoryReadTracker";
 import { ToggleNavbarFixed } from "@/components/Navbar/ToggleNavbarFixed";
 import { StoryBackButton } from "@/components/Story/buttons/StoryBackButton";

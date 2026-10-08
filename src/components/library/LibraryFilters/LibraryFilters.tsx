@@ -26,13 +26,13 @@ export function LibraryFilters() {
   const [order, setOrder] = useState(searchParams.get('order') || 'random')
   const filterTimoutRef = useRef<NodeJS.Timeout>(null!)
 
-  function updateSearchParams(paramKey: string, paramValue: string) {
+  const updateSearchParams = (paramKey: string, paramValue: string) => {
     const params = new URLSearchParams(searchParams)
     params.set(paramKey, paramValue)
     router.push(`/s?${params.toString()}`)
   }
 
-  function handleQueryFilter(query: string) {
+  const handleQueryFilter = (query: string) => {
     clearTimeout(filterTimoutRef.current)
     filterTimoutRef.current = setTimeout(() => {
       if (query !== searchParams.get('q')) {
@@ -41,7 +41,7 @@ export function LibraryFilters() {
     }, FILTER_DEFAULT_TIMEOUT)
   }
 
-  function handleOnGenreChange(value: string) {
+  const handleOnGenreChange = (value: string) => {
     setGenre(value)
 
     if (value !== searchParams.get('genre')) {
@@ -49,7 +49,7 @@ export function LibraryFilters() {
     }
   }
 
-  function handleOnOrderChange(value: string) {
+  const handleOnOrderChange = (value: string) => {
     setOrder(value)
 
     if (value !== searchParams.get('order')) {

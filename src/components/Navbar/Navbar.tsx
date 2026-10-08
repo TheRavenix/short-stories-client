@@ -8,7 +8,7 @@ import { P } from "../ui/Typography";
 import { Container } from "../ui/Container";
 import { NavbarSearch } from "./NavbarSearch";
 import { NavbarAuthActions } from "./NavbarAuthActions";
-import { ThemeToggle } from "../Theme/ThemeToggle";
+import { ThemeToggle } from "../theme/ThemeToggle";
 import { navBarLinks } from "@/data/links";
 
 export function Navbar() {

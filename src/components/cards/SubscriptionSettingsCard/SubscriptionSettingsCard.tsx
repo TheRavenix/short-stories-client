@@ -1,6 +1,7 @@
-import { SettingsCard, SettingsCardItem } from "../SettingsCard";
+import { SettingsCard } from "../SettingsCard";
 import { SubscriptionPlanBadge } from "./SubscriptionPlanBadge";
 import { CancelSubscriptionCardItem } from "./CancelSubscriptionCardItem";
+import { SettingsCardItem } from "../SettingsCard/SettingsCardItem";
 
 export function SubscriptionSettingsCard() {
   return (
