@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import { StarIcon } from "lucide-react";
+import { StarIcon } from 'lucide-react'
 
-import styles from "./StarRating.module.css";
+import styles from './StarRating.module.css'
 
-import clsx from "clsx";
+import clsx from 'clsx'
 
 export type StarRatingProps = {
   rating: number

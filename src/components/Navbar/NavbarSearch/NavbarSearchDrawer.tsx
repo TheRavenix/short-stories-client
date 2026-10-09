@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { SearchIcon } from "lucide-react";
-import { useState } from "react";
+import { SearchIcon } from 'lucide-react'
+import { useState } from 'react'
 
-import styles from "./NavbarSearch.module.css";
+import styles from './NavbarSearch.module.css'
 
-import { Button } from "@/components/ui/Button";
+import { Button } from '@/components/ui/Button'
 import {
   Drawer,
   DrawerBody,
@@ -15,8 +15,8 @@ import {
   DrawerPortal,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/Drawer";
-import { NavbarSearchContent } from "./NavbarSearchContent";
+} from '@/components/ui/Drawer'
+import { NavbarSearchContent } from './NavbarSearchContent'
 
 export function NavbarSearchDrawer() {
   const [open, setOpen] = useState(false)

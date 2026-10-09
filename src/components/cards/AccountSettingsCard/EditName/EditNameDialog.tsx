@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
-import { XIcon } from "lucide-react";
-import { useState } from "react";
+import { XIcon } from 'lucide-react'
+import { useState } from 'react'
 
-import { Button } from "../../../ui/Button";
+import { Button } from '../../../ui/Button'
 import {
   Dialog,
   DialogClose,
   DialogContent,
   DialogTitle,
   DialogTrigger,
-} from "../../../ui/Dialog";
-import { EditNameContent } from "./EditNameContent";
+} from '../../../ui/Dialog'
+import { EditNameContent } from './EditNameContent'
 
 export function EditNameDialog() {
   const [open, setOpen] = useState(false)

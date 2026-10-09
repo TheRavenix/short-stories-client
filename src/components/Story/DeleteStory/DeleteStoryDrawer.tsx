@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import { useState } from "react";
+import { useState } from 'react'
 
-import styles from "./DeleteStory.module.css";
+import styles from './DeleteStory.module.css'
 
-import { Button } from "@/components/ui/Button";
+import { Button } from '@/components/ui/Button'
 import {
   Drawer,
   DrawerBody,
@@ -14,8 +14,8 @@ import {
   DrawerPortal,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/Drawer";
-import { DeleteStoryContent } from "./DeleteStoryContent";
+} from '@/components/ui/Drawer'
+import { DeleteStoryContent } from './DeleteStoryContent'
 
 type Props = {
   storyId: number

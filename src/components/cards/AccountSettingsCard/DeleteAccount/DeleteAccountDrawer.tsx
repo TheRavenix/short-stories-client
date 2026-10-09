@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import { useState } from "react";
+import { useState } from 'react'
 
-import styles from "./DeleteAccount.module.css";
+import styles from './DeleteAccount.module.css'
 
-import { Button } from "@/components/ui/Button";
+import { Button } from '@/components/ui/Button'
 import {
   Drawer,
   DrawerBody,
@@ -15,8 +15,8 @@ import {
   DrawerPortal,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/Drawer";
-import { DeleteAccountContent } from "./DeleteAccountContent";
+} from '@/components/ui/Drawer'
+import { DeleteAccountContent } from './DeleteAccountContent'
 
 export function DeleteAccountDrawer() {
   const [open, setOpen] = useState(false)

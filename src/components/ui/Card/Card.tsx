@@ -1,9 +1,9 @@
-import { ComponentProps } from "react";
-import clsx from "clsx";
+import { ComponentProps } from 'react'
+import clsx from 'clsx'
 
-import styles from "./Card.module.css";
+import styles from './Card.module.css'
 
-import { P, Span } from "../Typography";
+import { P, Span } from '../Typography'
 
 type CardVariant = 'default' | 'primary'
 

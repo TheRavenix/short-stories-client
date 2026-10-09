@@ -1,8 +1,8 @@
-"use client";
+'use client'
 
-import { BugIcon } from "lucide-react";
+import { BugIcon } from 'lucide-react'
 
-import { EmptyState } from "../EmptyState";
+import { EmptyState } from '../EmptyState'
 
 export type ErrorFallbackProps = {
   error: Error

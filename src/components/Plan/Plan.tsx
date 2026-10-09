@@ -1,11 +1,11 @@
-import { CheckIcon, XIcon } from "lucide-react";
+import { CheckIcon, XIcon } from 'lucide-react'
 
-import styles from "./Plans.module.css";
+import styles from './Plan.module.css'
 
-import { Card, CardContent, CardHeader } from "../ui/Card";
-import { H2, H3, P, Span } from "../ui/Typography";
-import { Button } from "../ui/Button";
-import { PlanFeature } from "@/data/plans";
+import { Card, CardContent, CardHeader } from '../ui/Card'
+import { H2, H3, P, Span } from '../ui/Typography'
+import { Button } from '../ui/Button'
+import { PlanFeature } from '@/data/plans'
 
 export type PlanType = 'free' | 'pro'
 
@@ -33,7 +33,7 @@ export function Plan({
       </CardHeader>
       <CardContent className={styles.planCardContent}>
         <H3>${price.toFixed(2)}</H3>
-        {typeof duration !== 'undefined' && <P>{duration}</P>}
+        {duration !== undefined && <P>{duration}</P>}
         {planFeatures.map((feature) => {
           return (
             <div key={feature.name} className={styles.planFeature}>
@@ -44,7 +44,7 @@ export function Plan({
                 !feature.checked && <XIcon size={18} className={styles.xIcon} />
               }
               {
-                feature.checked && typeof feature.suffix !== 'undefined' ?
+                feature.checked && feature.suffix !== undefined ?
                  <div className={styles.planSuffixContainer}>
                     <CheckIcon size={18} className={styles.checkIcon} />
                     <Span variant='primary'>{feature.suffix}</Span>

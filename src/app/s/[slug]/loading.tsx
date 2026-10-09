@@ -1,7 +1,7 @@
-import styles from "./page.module.css";
+import styles from './page.module.css'
 
-import { Container } from "@/components/ui/Container";
-import { Skeleton } from "@/components/Skeleton";
+import { Container } from '@/components/ui/Container'
+import { Skeleton } from '@/components/Skeleton'
 
 export default function StoryPageLoading() {
   return (

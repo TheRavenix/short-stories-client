@@ -1,1 +1,1 @@
-export * from "./FeaturedSectionError";
+export * from './FeaturedSectionError'

@@ -1,1 +1,1 @@
-export * from "./AccountSettingsCard";
+export * from './AccountSettingsCard'

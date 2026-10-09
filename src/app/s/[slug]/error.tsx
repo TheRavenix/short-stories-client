@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import styles from "./page.module.css";
+import styles from './page.module.css'
 
-import { Callout } from "@/components/Callout";
-import { Container } from "@/components/ui/Container";
+import { Callout } from '@/components/Callout'
+import { Container } from '@/components/ui/Container'
 
 type Props = {
   error: Error

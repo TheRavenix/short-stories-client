@@ -1,12 +1,12 @@
-"use client";
+'use client'
 
-import { useRouter } from "next/navigation";
-import { LayoutPanelTopIcon, TableOfContentsIcon } from "lucide-react";
+import { useRouter } from 'next/navigation'
+import { LayoutPanelTopIcon, TableOfContentsIcon } from 'lucide-react'
 
-import styles from "./StoryViewToggle.module.css";
+import styles from './StoryViewToggle.module.css'
 
-import { Button } from "../../../ui/Button";
-import { useStoryStore } from "@/stores/story";
+import { Button } from '../../../ui/Button'
+import { useStoryStore } from '@/stores/story'
 
 type Props =  {
   slug: string

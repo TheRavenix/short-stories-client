@@ -1,7 +1,7 @@
-import styles from "./page.module.css";
+import styles from './page.module.css'
 
-import { CompactContainer } from "@/components/ui/Container/CompactContainer";
-import { H1, H3, P } from "@/components/ui/Typography";
+import { CompactContainer } from '@/components/ui/Container/CompactContainer'
+import { H1, H3, P } from '@/components/ui/Typography'
 
 export default function TermsAndConditions() {
   return (

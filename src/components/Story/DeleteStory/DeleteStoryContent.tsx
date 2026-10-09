@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import { useState } from 'react'
+import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
 
-import styles from "./DeleteStory.module.css";
+import styles from './DeleteStory.module.css'
 
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { P, Span } from "@/components/ui/Typography";
-import { ActionSlot } from "@/components/ActionSlot";
-import { useToastStore } from "@/stores/toast";
-import { deleteStory } from "@/services/story";
+import { Button } from '@/components/ui/Button'
+import { Input } from '@/components/ui/Input'
+import { P, Span } from '@/components/ui/Typography'
+import { ActionSlot } from '@/components/ActionSlot'
+import { useToastStore } from '@/stores/toast'
+import { deleteStory } from '@/services/story'
 
 type Props = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -24,7 +24,7 @@ export function DeleteStoryContent({
   storyId,
   storyName
 }: Props) {
-  const [confirmMessage, setConfirmMessage] = useState("")
+  const [confirmMessage, setConfirmMessage] = useState('')
   const addToast = useToastStore((s) => s.addToast)
   const confirmed = confirmMessage.toLowerCase() === storyName.toLowerCase()
 

@@ -1,1 +1,1 @@
-export * from "./StoryLayoutSelect";
+export * from './StoryLayoutSelect'

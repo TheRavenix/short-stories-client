@@ -1,14 +1,14 @@
-"use client";
+'use client'
 
-import Link from "next/link";
+import Link from 'next/link'
 
-import styles from "./Navbar.module.css";
+import styles from './Navbar.module.css'
 
-import { Button } from "../ui/Button";
-import { Skeleton } from "../Skeleton";
-import { useAuthStore } from "@/stores/auth";
-import { useProfile } from "@/hooks/profile";
-import { authLinks } from "@/data/links";
+import { Button } from '../ui/Button'
+import { Skeleton } from '../Skeleton'
+import { useAuthStore } from '@/stores/auth'
+import { useProfile } from '@/hooks/profile'
+import { authLinks } from '@/data/links'
 
 export function NavbarAuthActions() {
   const { isLoading } = useProfile()

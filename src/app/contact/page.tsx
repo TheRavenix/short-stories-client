@@ -1,8 +1,8 @@
-import styles from "./page.module.css";
+import styles from './page.module.css'
 
-import { H1 } from "@/components/ui/Typography";
-import { ContactForm } from "@/components/forms/ContactForm";
-import { CompactContainer } from "@/components/ui/Container/CompactContainer";
+import { H1 } from '@/components/ui/Typography'
+import { ContactForm } from '@/components/forms/ContactForm'
+import { CompactContainer } from '@/components/ui/Container/CompactContainer'
 
 export default function ContactPage() {
   return (

@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import { CopyCheckIcon, CopyIcon } from "lucide-react";
+import { CopyCheckIcon, CopyIcon } from 'lucide-react'
 
-import { Button } from "../ui/Button";
-import { CopyTextOptions, useClipboard } from "@/hooks/use-clipboard";
+import { Button } from '../ui/Button'
+import { CopyTextOptions, useClipboard } from '@/hooks/use-clipboard'
 
 type Props = {
   text: string

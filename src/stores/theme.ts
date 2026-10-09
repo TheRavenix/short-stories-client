@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
-export type Theme = "light" | "dark" | "system"
+export type Theme = 'light' | 'dark' | 'system'
 
 type StoreState = {
   theme: Theme

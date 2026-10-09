@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
-import { TrashIcon, XIcon } from "lucide-react";
-import { useState } from "react";
+import { TrashIcon, XIcon } from 'lucide-react'
+import { useState } from 'react'
 
-import { Button } from "@/components/ui/Button";
+import { Button } from '@/components/ui/Button'
 import {
   Dialog,
   DialogClose,
   DialogContent,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/Dialog";
-import { DeleteStoryReviewContent } from "./DeleteStoryReviewContent";
+} from '@/components/ui/Dialog'
+import { DeleteStoryReviewContent } from './DeleteStoryReviewContent'
 
 type Props = {
   reviewId: number
@@ -23,7 +23,7 @@ export function DeleteStoryReviewDialog({ reviewId }: Props) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="destructive" size="icon">
+        <Button variant='destructive' size='icon'>
           <TrashIcon size={20} />
         </Button>
       </DialogTrigger>

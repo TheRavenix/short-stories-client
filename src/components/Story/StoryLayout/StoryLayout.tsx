@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import { StoryBookLayout } from "./StoryBookLayout";
-import { StoryCardLayout } from "./StoryCardLayout";
-import { useProfile } from "@/hooks/profile";
-import { useStoryStore } from "@/stores/story";
-import { StoryType } from "../Story";
+import { StoryBookLayout } from './StoryBookLayout'
+import { StoryCardLayout } from './StoryCardLayout'
+import { useProfile } from '@/hooks/profile'
+import { useStoryStore } from '@/stores/story'
+import { StoryType } from '../Story'
 
 type Props = {
   id: number

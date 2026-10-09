@@ -1,13 +1,13 @@
-"use client";
+'use client'
 
-import { useEffect } from "react";
+import { useEffect } from 'react'
 
-import { useProfile } from "@/hooks/profile";
-import { useAuthStore } from "@/stores/auth";
-import { GetStoryReviewsByStoryIdResponse } from "@/lib/story/story-review";
+import { useProfile } from '@/hooks/profile'
+import { useAuthStore } from '@/stores/auth'
+import { GetReviewsByStoryIdResponse } from '@/lib/story/story-review'
 
 type Props = {
-  storyReviews: GetStoryReviewsByStoryIdResponse
+  storyReviews: GetReviewsByStoryIdResponse
 }
 
 export function StoryReviewHighlighter({ storyReviews }: Props) {

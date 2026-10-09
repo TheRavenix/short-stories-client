@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { TrashIcon } from "lucide-react";
+import { useState } from 'react'
+import { TrashIcon } from 'lucide-react'
 
-import styles from "./DeleteStoryReview.module.css";
+import styles from './DeleteStoryReview.module.css'
 
-import { Button } from "@/components/ui/Button";
+import { Button } from '@/components/ui/Button'
 import {
   Drawer,
   DrawerBody,
@@ -15,8 +15,8 @@ import {
   DrawerPortal,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/Drawer";
-import { DeleteStoryReviewContent } from "./DeleteStoryReviewContent";
+} from '@/components/ui/Drawer'
+import { DeleteStoryReviewContent } from './DeleteStoryReviewContent'
 
 type Props = {
   reviewId: number
@@ -28,7 +28,7 @@ export function DeleteStoryReviewDrawer({ reviewId }: Props) {
   return (
     <Drawer open={open} onOpenChange={setOpen} autoFocus>
       <DrawerTrigger asChild>
-        <Button variant="destructive" size="icon">
+        <Button variant='destructive' size='icon'>
           <TrashIcon size={20} />
         </Button>
       </DrawerTrigger>

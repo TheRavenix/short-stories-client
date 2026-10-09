@@ -1,19 +1,19 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import { useState } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
 
-import styles from "./CreateStoryReview.module.css";
+import styles from './CreateStoryReview.module.css'
 
-import { Button } from "@/components/ui/Button";
-import { STAR_RATING_MAX, StarRating } from "@/components/StarRating";
-import { Input } from "@/components/ui/Input";
-import { Form } from "@/components/Form";
-import { ActionSlot } from "@/components/ActionSlot";
-import { useToastStore } from "@/stores/toast";
-import { createStoryReview, CreateStoryReviewData } from "@/services/story-review";
+import { Button } from '@/components/ui/Button'
+import { STAR_RATING_MAX, StarRating } from '@/components/StarRating'
+import { Input } from '@/components/ui/Input'
+import { Form } from '@/components/Form'
+import { ActionSlot } from '@/components/ActionSlot'
+import { useToastStore } from '@/stores/toast'
+import { createStoryReview, CreateStoryReviewData } from '@/services/story-review'
 
 type Props = {
   storyId: number
@@ -25,7 +25,7 @@ export function CreateStoryReviewContent({ storyId, setOpen }: Props) {
   const pathName = usePathname()
   const searchParams = useSearchParams()
   const [rating, setRating] = useState(STAR_RATING_MAX)
-  const [comment, setComment] = useState("")
+  const [comment, setComment] = useState('')
   const addToast = useToastStore((s) => s.addToast)
 
   const mutation = useMutation({

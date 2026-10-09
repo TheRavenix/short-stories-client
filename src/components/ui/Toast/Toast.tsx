@@ -1,99 +1,79 @@
-"use client";
+'use client'
 
-import * as React from "react";
-import * as ToastPrimitive from "@radix-ui/react-toast";
-import clsx from "clsx";
+import { ComponentProps } from 'react'
+import * as ToastPrimitive from '@radix-ui/react-toast'
+import clsx from 'clsx'
 
-import styles from "./Toast.module.css";
+import styles from './Toast.module.css'
 
-import { ToastVariant } from "@/stores/toast";
+import { ToastVariant } from '@/stores/toast'
 
-const ToastProvider = ToastPrimitive.Provider;
-ToastProvider.displayName = ToastPrimitive.Provider.displayName;
+export const Toast = ToastPrimitive.Provider
 
-const ToastViewport = React.forwardRef<
-  React.ElementRef<typeof ToastPrimitive.Viewport>,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitive.Viewport>
->(({ className, ...props }, ref) => (
-  <ToastPrimitive.Viewport
-    ref={ref}
-    className={clsx(styles.toastViewport, className)}
-    {...props}
-  />
-));
-ToastViewport.displayName = ToastPrimitive.Viewport.displayName;
+type ToastViewportProps = ComponentProps<typeof ToastPrimitive.ToastViewport>
 
-const ToastRoot = React.forwardRef<
-  React.ElementRef<typeof ToastPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitive.Root>
->(({ className, ...props }, ref) => (
-  <ToastPrimitive.Root
-    ref={ref}
-    className={clsx(styles.toastRoot, className)}
-    {...props}
-  />
-));
-ToastRoot.displayName = ToastPrimitive.Root.displayName;
-
-const ToastTitle = React.forwardRef<
-  React.ElementRef<typeof ToastPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitive.Title>
->(({ className, ...props }, ref) => (
-  <ToastPrimitive.Title
-    ref={ref}
-    className={clsx(styles.toastTitle, className)}
-    {...props}
-  />
-));
-ToastTitle.displayName = ToastPrimitive.Title.displayName;
-
-interface ToastDescriptionProps
-  extends React.ComponentPropsWithoutRef<typeof ToastPrimitive.Description> {
-  variant?: ToastVariant;
+export function ToastViewport({ className, ...rest }: ToastViewportProps) {
+  return (
+    <ToastPrimitive.Viewport
+      className={clsx(styles.toastViewport, className)}
+      {...rest}
+    />
+  )
 }
 
-const ToastDescription = React.forwardRef<
-  React.ElementRef<typeof ToastPrimitive.Description>,
-  ToastDescriptionProps
->(({ className, variant = "default", ...props }, ref) => (
-  <ToastPrimitive.Description
-    ref={ref}
-    className={clsx(styles.toastDescription, styles[variant], className)}
-    {...props}
-  />
-));
-ToastDescription.displayName = ToastPrimitive.Description.displayName;
+type ToastRootProps = ComponentProps<typeof ToastPrimitive.Root>
 
-const ToastAction = React.forwardRef<
-  React.ElementRef<typeof ToastPrimitive.Action>,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitive.Action>
->(({ className, ...props }, ref) => (
-  <ToastPrimitive.Action
-    ref={ref}
-    className={clsx(styles.toastAction, className)}
-    {...props}
-  />
-));
-ToastAction.displayName = ToastPrimitive.Action.displayName;
+export function ToastRoot({ className, ...rest }: ToastRootProps) {
+  return (
+    <ToastPrimitive.Root
+      className={clsx(styles.toastRoot, className)}
+      {...rest}
+    />
+  )
+}
 
-const ToastClose = React.forwardRef<
-  React.ElementRef<typeof ToastPrimitive.Close>,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitive.Close>
->(({ className, ...props }, ref) => (
-  <ToastPrimitive.Close
-    ref={ref}
-    className={clsx(styles.toastClose, className)}
-    {...props}
-  />
-));
-ToastClose.displayName = ToastPrimitive.Close.displayName;
+type ToastTitleProps = ComponentProps<typeof ToastPrimitive.Title>
 
-export {
-  ToastProvider as Toast,
-  ToastViewport,
-  ToastRoot,
-  ToastTitle,
-  ToastDescription,
-  ToastAction,
-  ToastClose,
-};
+export function ToastTitle({ className, ...rest }: ToastTitleProps) {
+  return (
+    <ToastPrimitive.Title
+      className={clsx(styles.toastTitle, className)}
+      {...rest}
+    />
+  )
+}
+
+type ToastDescriptionProps = {
+  variant?: ToastVariant
+} & ComponentProps<typeof ToastPrimitive.Description>
+
+export function ToastDescription({ className, variant = 'default', ...rest }: ToastDescriptionProps) {
+  return (
+    <ToastPrimitive.Description
+      className={clsx(styles.toastDescription, styles[variant], className)}
+      {...rest}
+    />
+  )
+}
+
+type ToastActionProps = ComponentProps<typeof ToastPrimitive.Action>
+
+export function ToastAction({ className, ...rest }: ToastActionProps) {
+  return (
+    <ToastPrimitive.Action
+      className={clsx(styles.toastAction, className)}
+      {...rest}
+    />
+  )
+}
+
+type ToastCloseProps = ComponentProps<typeof ToastPrimitive.Close>
+
+export function ToastClose({ className, ...rest }: ToastCloseProps) {
+  return (
+    <ToastPrimitive.Close
+      className={clsx(styles.toastClose, className)}
+      {...rest}
+    />
+  )
+}

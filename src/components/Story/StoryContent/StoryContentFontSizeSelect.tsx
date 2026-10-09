@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   Select,
@@ -7,8 +7,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/Select";
-import { useStoryReadStore } from "@/stores/story/story-read";
+} from '@/components/ui/Select'
+import { useStoryReadStore } from '@/stores/story/story-read'
 
 export function StoryContentFontSizeSelect() {
   const fontSize = useStoryReadStore((s) => s.fontSize)

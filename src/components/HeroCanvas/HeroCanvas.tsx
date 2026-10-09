@@ -1,8 +1,8 @@
-"use client";
+'use client'
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react'
 
-import styles from "./HeroCanvas.module.css";
+import styles from './HeroCanvas.module.css'
 
 type Orb = {
   x: number

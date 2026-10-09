@@ -1,8 +1,8 @@
-"use client";
+'use client'
 
-import React from "react";
+import React from 'react'
 
-import styles from "./Skeleton.module.css";
+import styles from './Skeleton.module.css'
 
 type SkeletonType = 'card' | 'text' | 'image' | 'circle' | 'button'
 

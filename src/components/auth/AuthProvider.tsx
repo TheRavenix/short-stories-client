@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import { PropsWithChildren, useEffect } from "react";
+import { PropsWithChildren, useEffect } from 'react'
 
-import { useAuthStore } from "@/stores/auth";
-import { useProfile } from "@/hooks/profile";
+import { useAuthStore } from '@/stores/auth'
+import { useProfile } from '@/hooks/profile'
 
 type Props = PropsWithChildren
 

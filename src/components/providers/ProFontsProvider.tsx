@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { PropsWithChildren, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { PropsWithChildren, useEffect } from 'react'
+import { useQuery } from '@tanstack/react-query'
 
-import { applyImportUrlAndStyle } from "@/utils/apply-import-url-and-style";
-import { applyDataKeyAndStyle } from "@/utils/apply-data-key-and-style";
-import { getAllProFonts } from "@/services/pro-font";
+import { applyImportUrlAndStyle } from '@/utils/apply-import-url-and-style'
+import { applyDataKeyAndStyle } from '@/utils/apply-data-key-and-style'
+import { getAllProFonts } from '@/services/pro-font'
 
 type Props = PropsWithChildren
 
@@ -19,8 +19,8 @@ export function ProFontsProvider({ children }: Props) {
 
   useEffect(() => {
     if (data !== undefined) {
-      applyImportUrlAndStyle(data.src, 'pro_fonts_src');
-      applyDataKeyAndStyle('ui-font', data.ui, 'pro_ui_font_style');
+      applyImportUrlAndStyle(data.src, 'pro_fonts_src')
+      applyDataKeyAndStyle('ui-font', data.ui, 'pro_ui_font_style')
       applyDataKeyAndStyle(
         'reading-font',
         data.reading,

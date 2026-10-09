@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { XIcon } from "lucide-react";
-import { PropsWithChildren } from "react";
+import { XIcon } from 'lucide-react'
+import { PropsWithChildren } from 'react'
 
 import {
   Toast,
@@ -11,9 +11,9 @@ import {
   ToastRoot,
   ToastTitle,
   ToastViewport,
-} from "@/components/ui/Toast";
-import { Button } from "../ui/Button";
-import { useToastStore } from "@/stores/toast";
+} from '@/components/ui/Toast'
+import { Button } from '../ui/Button'
+import { useToastStore } from '@/stores/toast'
 
 type Props = PropsWithChildren
 

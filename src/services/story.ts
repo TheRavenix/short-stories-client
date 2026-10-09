@@ -1,5 +1,5 @@
-import { axiosClient } from "@/utils/axios-client";
-import { MessageResponse } from "@/types/response";
+import { axiosClient } from '@/utils/axios-client'
+import { MessageResponse } from '@/types/response'
 
 export type CreateStoryData = {
   name: string

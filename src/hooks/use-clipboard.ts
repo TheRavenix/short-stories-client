@@ -1,8 +1,8 @@
-"use client";
+'use client'
 
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react'
 
-import { useToastStore } from "@/stores/toast";
+import { useToastStore } from '@/stores/toast'
 
 const CLIPBOARD_DURATION_MS = 2000
 

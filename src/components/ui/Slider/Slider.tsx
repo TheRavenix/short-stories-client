@@ -1,56 +1,51 @@
-"use client";
+'use client'
 
-import * as React from "react";
-import * as SliderPrimitive from "@radix-ui/react-slider";
-import clsx from "clsx";
-import styles from "./Slider.module.css";
+import { ComponentProps } from 'react'
+import * as SliderPrimitive from '@radix-ui/react-slider'
+import clsx from 'clsx'
 
-const Slider = React.forwardRef<
-  React.ElementRef<typeof SliderPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
->(({ className, ...props }, ref) => (
-  <SliderPrimitive.Root
-    ref={ref}
-    className={clsx(styles.sliderRoot, className)}
-    {...props}
-  />
-));
-Slider.displayName = SliderPrimitive.Root.displayName;
+import styles from './Slider.module.css'
 
-const SliderTrack = React.forwardRef<
-  React.ElementRef<typeof SliderPrimitive.Track>,
-  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Track>
->(({ className, ...props }, ref) => (
-  <SliderPrimitive.Track
-    ref={ref}
-    className={clsx(styles.sliderTrack, className)}
-    {...props}
-  />
-));
-SliderTrack.displayName = SliderPrimitive.Track.displayName;
+type SliderProps = ComponentProps<typeof SliderPrimitive.Root>
 
-const SliderRange = React.forwardRef<
-  React.ElementRef<typeof SliderPrimitive.Range>,
-  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Range>
->(({ className, ...props }, ref) => (
-  <SliderPrimitive.Range
-    ref={ref}
-    className={clsx(styles.sliderRange, className)}
-    {...props}
-  />
-));
-SliderRange.displayName = SliderPrimitive.Range.displayName;
+export function Slider({ className, ...rest }: SliderProps) {
+  return (
+    <SliderPrimitive.Root
+      className={clsx(styles.sliderRoot, className)}
+      {...rest}
+    />
+  )
+}
 
-const SliderThumb = React.forwardRef<
-  React.ElementRef<typeof SliderPrimitive.Thumb>,
-  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Thumb>
->(({ className, ...props }, ref) => (
-  <SliderPrimitive.Thumb
-    ref={ref}
-    className={clsx(styles.sliderThumb, className)}
-    {...props}
-  />
-));
-SliderThumb.displayName = SliderPrimitive.Thumb.displayName;
+type SliderTrackProps = ComponentProps<typeof SliderPrimitive.Track>
 
-export { Slider, SliderTrack, SliderRange, SliderThumb };
+export function SliderTrack({ className, ...rest }: SliderTrackProps) {
+  return (
+    <SliderPrimitive.Track
+      className={clsx(styles.sliderTrack, className)}
+      {...rest}
+    />
+  )
+}
+
+type SliderRangeProps = ComponentProps<typeof SliderPrimitive.Range>
+
+export function SliderRange({ className, ...rest }: SliderRangeProps) {
+  return (
+    <SliderPrimitive.Range
+      className={clsx(styles.sliderRange, className)}
+      {...rest}
+    />
+  )
+}
+
+type SliderThumbProps = ComponentProps<typeof SliderPrimitive.Thumb>
+
+export function SliderThumb({ className, ...rest }: SliderThumbProps) {
+  return (
+    <SliderPrimitive.Thumb
+      className={clsx(styles.sliderThumb, className)}
+      {...rest}
+    />
+  )
+}

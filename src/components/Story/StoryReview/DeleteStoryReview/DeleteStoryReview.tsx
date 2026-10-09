@@ -1,8 +1,8 @@
-"use client";
+'use client'
 
-import { DeleteStoryReviewDialog } from "./DeleteStoryReviewDialog";
-import { DeleteStoryReviewDrawer } from "./DeleteStoryReviewDrawer";
-import { useIsMobile } from "@/hooks/media/use-media-utils";
+import { DeleteStoryReviewDialog } from './DeleteStoryReviewDialog'
+import { DeleteStoryReviewDrawer } from './DeleteStoryReviewDrawer'
+import { useIsMobile } from '@/hooks/media/use-media-utils'
 
 type Props = {
   reviewId: number

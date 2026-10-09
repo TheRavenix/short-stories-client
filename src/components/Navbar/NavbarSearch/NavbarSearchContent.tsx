@@ -1,13 +1,13 @@
-"use client";
+'use client'
 
-import { Input } from "@/components/ui/Input";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Input } from '@/components/ui/Input'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-import styles from "./NavbarSearch.module.css";
+import styles from './NavbarSearch.module.css'
 
-import { Button } from "@/components/ui/Button";
-import { useSearchStore } from "@/stores/search";
-import { ActionSlot } from "@/components/ActionSlot";
+import { Button } from '@/components/ui/Button'
+import { ActionSlot } from '@/components/ActionSlot'
+import { useSearchStore } from '@/stores/search'
 
 type Props = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>

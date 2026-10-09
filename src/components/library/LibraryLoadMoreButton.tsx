@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from 'next/navigation'
 
-import { Button } from "@/components/ui/Button";
-import { PAGINATION_DEFAULT_LIMIT } from "@/constants/filter";
+import { Button } from '@/components/ui/Button'
+import { PAGINATION_DEFAULT_LIMIT } from '@/constants/filter'
 
 type Props = {
   limit: number

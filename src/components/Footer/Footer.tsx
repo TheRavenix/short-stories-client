@@ -1,13 +1,13 @@
-import Link from "next/link";
-import { InstagramIcon } from "lucide-react";
+import Link from 'next/link'
+import { InstagramIcon } from 'lucide-react'
 
-import styles from "./Footer.module.css";
+import styles from './Footer.module.css'
 
-import { Container } from "../ui/Container";
-import { H3, P } from "../ui/Typography";
-import { Button } from "../ui/Button";
-import { NavbarLink } from "../Navbar/NavbarLink";
-import { footerLinks } from "@/data/links";
+import { Container } from '../ui/Container'
+import { H3, P } from '../ui/Typography'
+import { Button } from '../ui/Button'
+import { NavbarLink } from '../Navbar/NavbarLink'
+import { footerLinks } from '@/data/links'
 
 export function Footer() {
   return (

@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import { EditStoryReviewDrawer } from "./EditStoryReviewDrawer";
-import { EditStoryReviewDialog } from "./EditStoryReviewDialog";
-import { useAuthStore } from "@/stores/auth";
-import { useIsMobile } from "@/hooks/media/use-media-utils";
+import { EditStoryReviewDrawer } from './EditStoryReviewDrawer'
+import { EditStoryReviewDialog } from './EditStoryReviewDialog'
+import { useAuthStore } from '@/stores/auth'
+import { useIsMobile } from '@/hooks/media/use-media-utils'
 
 type Props = {
   reviewId: number

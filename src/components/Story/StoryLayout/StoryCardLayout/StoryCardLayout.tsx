@@ -1,6 +1,6 @@
-import { Card, CardContent } from "@/components/ui/Card";
-import { StoryContent } from "../../StoryContent";
-import { StoryType } from "../../Story";
+import { Card, CardContent } from '@/components/ui/Card'
+import { StoryContent } from '../../StoryContent'
+import { StoryType } from '../../Story'
 
 type Props = {
   story: StoryType

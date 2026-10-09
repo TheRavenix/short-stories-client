@@ -1,13 +1,13 @@
-"use client";
+'use client'
 
-import { PropsWithChildren } from "react";
+import { PropsWithChildren } from 'react'
 
-import styles from "./ProtectedSettings.module.css";
+import styles from './ProtectedSettings.module.css'
 
-import { useAuthSession } from "@/hooks/auth";
-import { CompactContainer } from "@/components/ui/Container/CompactContainer";
-import { Skeleton } from "@/components/Skeleton";
-import { H1 } from "@/components/ui/Typography";
+import { useAuthSession } from '@/hooks/auth'
+import { CompactContainer } from '@/components/ui/Container/CompactContainer'
+import { Skeleton } from '@/components/Skeleton'
+import { H1 } from '@/components/ui/Typography'
 
 type Props = PropsWithChildren
 

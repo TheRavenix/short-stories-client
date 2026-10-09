@@ -1,13 +1,13 @@
-"use client";
+'use client'
 
-import { MenuIcon } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { MenuIcon } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useState } from 'react'
 
-import styles from "./NavbarDrawer.module.css";
+import styles from './NavbarDrawer.module.css'
 
-import { Button } from "@/components/ui/Button";
+import { Button } from '@/components/ui/Button'
 import {
   Drawer,
   DrawerBody,
@@ -17,9 +17,9 @@ import {
   DrawerPortal,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/Drawer";
-import { NavbarDrawerAuthLinks } from "./NavbarDrawerAuthLinks";
-import { navBarLinks } from "@/data/links";
+} from '@/components/ui/Drawer'
+import { NavbarDrawerAuthLinks } from './NavbarDrawerAuthLinks'
+import { navBarLinks } from '@/data/links'
 
 export function NavbarDrawer() {
   const pathName = usePathname()

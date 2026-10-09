@@ -1,7 +1,7 @@
-import styles from "./NewsletterSubSection.module.css";
+import styles from './NewsletterSubSection.module.css'
 
-import { H1 } from "@/components/ui/Typography";
-import { NewsletterSubForm } from "../NewsletterSubForm";
+import { H1 } from '@/components/ui/Typography'
+import { NewsletterSubForm } from '../NewsletterSubForm'
 
 export function NewsletterSubSection() {
   return (

@@ -1,1 +1,1 @@
-export * from "./EditStoryReview";
+export * from './EditStoryReview'

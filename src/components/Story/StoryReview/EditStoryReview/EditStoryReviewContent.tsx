@@ -1,19 +1,19 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
+import { useState } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 
-import styles from "./EditStoryReview.module.css";
+import styles from './EditStoryReview.module.css'
 
-import { Button } from "@/components/ui/Button";
-import { StarRating } from "@/components/StarRating";
-import { Input } from "@/components/ui/Input";
-import { Form } from "@/components/Form";
-import { ActionSlot } from "@/components/ActionSlot";
-import { useToastStore } from "@/stores/toast";
-import { editStoryReview, EditStoryReviewData } from "@/services/story-review";
+import { Button } from '@/components/ui/Button'
+import { StarRating } from '@/components/StarRating'
+import { Input } from '@/components/ui/Input'
+import { Form } from '@/components/Form'
+import { ActionSlot } from '@/components/ActionSlot'
+import { useToastStore } from '@/stores/toast'
+import { editStoryReview, EditStoryReviewData } from '@/services/story-review'
 
 type Props = {
   reviewId: number

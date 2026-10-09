@@ -1,12 +1,12 @@
-"use client";
+'use client'
 
-import Link from "next/link";
+import Link from 'next/link'
 
-import styles from "./LibraryHeaderSection.module.css";
+import styles from './LibraryHeaderSection.module.css'
 
-import { H1 } from "@/components/ui/Typography";
-import { Button } from "@/components/ui/Button";
-import { useProfile } from "@/hooks/profile";
+import { H1 } from '@/components/ui/Typography'
+import { Button } from '@/components/ui/Button'
+import { useProfile } from '@/hooks/profile'
 
 export function LibraryHeaderSection() {
   const { isLoading, profile } = useProfile()

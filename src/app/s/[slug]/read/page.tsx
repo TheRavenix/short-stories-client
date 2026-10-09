@@ -1,15 +1,15 @@
-import styles from "./page.module.css";
+import styles from './page.module.css'
 
-import { CompactContainer } from "@/components/ui/Container/CompactContainer";
-import { H1 } from "@/components/ui/Typography";
-import { EmptyState } from "@/components/EmptyState";
-import { SeparatorHighlighter } from "@/components/SeparatorHighlighter";
-import { BackTopButton } from "@/components/buttons/BackTopButton";
-import { StoryReadTracker } from "@/components/Story/story-read/StoryReadTracker";
-import { ToggleNavbarFixed } from "@/components/Navbar/ToggleNavbarFixed";
-import { StoryBackButton } from "@/components/Story/buttons/StoryBackButton";
-import { StoryContent } from "@/components/Story/StoryContent";
-import { getStoryBySlug } from "@/lib/story";
+import { CompactContainer } from '@/components/ui/Container/CompactContainer'
+import { H1 } from '@/components/ui/Typography'
+import { EmptyState } from '@/components/EmptyState'
+import { SeparatorHighlighter } from '@/components/SeparatorHighlighter'
+import { BackTopButton } from '@/components/buttons/BackTopButton'
+import { StoryReadTracker } from '@/components/Story/story-read/StoryReadTracker'
+import { ToggleNavbarFixed } from '@/components/Navbar/ToggleNavbarFixed'
+import { StoryBackButton } from '@/components/Story/buttons/StoryBackButton'
+import { StoryContent } from '@/components/Story/StoryContent'
+import { getStoryBySlug } from '@/lib/story'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -51,5 +51,5 @@ export default async function ReadStory(props: Props) {
         </CompactContainer>
       </main>
     </>
-  );
+  )
 }

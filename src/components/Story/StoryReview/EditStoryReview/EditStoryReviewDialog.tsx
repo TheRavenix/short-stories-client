@@ -1,19 +1,19 @@
-"use client";
+'use client'
 
-import { PencilIcon, XIcon } from "lucide-react";
-import { useState } from "react";
+import { PencilIcon, XIcon } from 'lucide-react'
+import { useState } from 'react'
 
-import styles from "./EditStoryReview.module.css";
+import styles from './EditStoryReview.module.css'
 
-import { Button } from "../../../ui/Button";
+import { Button } from '../../../ui/Button'
 import {
   Dialog,
   DialogClose,
   DialogContent,
   DialogTitle,
   DialogTrigger,
-} from "../../../ui/Dialog";
-import { EditStoryReviewContent } from "./EditStoryReviewContent";
+} from '../../../ui/Dialog'
+import { EditStoryReviewContent } from './EditStoryReviewContent'
 
 type Props = {
   reviewId: number

@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import Link, { LinkProps } from "next/link";
-import { ComponentProps } from "react";
-import clsx from "clsx";
-import { usePathname } from "next/navigation";
+import Link, { LinkProps } from 'next/link'
+import { ComponentProps } from 'react'
+import clsx from 'clsx'
+import { usePathname } from 'next/navigation'
 
-import styles from "./Navbar.module.css";
+import styles from './Navbar.module.css'
 
 type Props = LinkProps & ComponentProps<'a'>
 

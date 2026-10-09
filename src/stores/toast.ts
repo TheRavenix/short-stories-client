@@ -1,8 +1,8 @@
-"use client";
+'use client'
 
-import { create } from "zustand";
+import { create } from 'zustand'
 
-export type ToastVariant = "default" | "success" | "error" | "warning" | "info"
+export type ToastVariant = 'default' | 'success' | 'error' | 'warning' | 'info'
 
 interface Toast {
   id: string

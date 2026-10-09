@@ -1,1 +1,1 @@
-export * from "./SeparatorHighlighter";
+export * from './SeparatorHighlighter'

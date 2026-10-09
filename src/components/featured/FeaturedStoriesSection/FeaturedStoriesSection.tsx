@@ -1,13 +1,13 @@
-import Link from "next/link";
-import { BookIcon } from "lucide-react";
+import Link from 'next/link'
+import { BookIcon } from 'lucide-react'
 
-import styles from "./FeaturedStoriesSection.module.css";
+import styles from './FeaturedStoriesSection.module.css'
 
-import { H1 } from "@/components/ui/Typography";
-import { EmptyState } from "@/components/EmptyState";
-import { Story, StoryType } from "@/components/Story";
-import { Button } from "@/components/ui/Button";
-import { getStoryReviewsByStoryId } from "@/lib/story/story-review";
+import { H1 } from '@/components/ui/Typography'
+import { EmptyState } from '@/components/EmptyState'
+import { Story, StoryType } from '@/components/Story'
+import { Button } from '@/components/ui/Button'
+import { getStoryReviewsByStoryId } from '@/lib/story/story-review'
 
 type Props = {
   stories: StoryType[]

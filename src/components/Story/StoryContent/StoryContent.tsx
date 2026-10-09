@@ -1,12 +1,12 @@
-import { BookmarkIcon } from "lucide-react";
+import { BookmarkIcon } from 'lucide-react'
 
-import styles from "./StoryContent.module.css";
+import styles from './StoryContent.module.css'
 
-import { ClipboardButton } from "@/components/buttons/ClipboardButton";
-import { Button } from "@/components/ui/Button";
-import { Separator } from "@/components/ui/Separator";
-import { StoryContentHeading } from "./StoryContentHeading";
-import { StoryContentText } from "./StoryContentText";
+import { ClipboardButton } from '@/components/buttons/ClipboardButton'
+import { Button } from '@/components/ui/Button'
+import { Separator } from '@/components/ui/Separator'
+import { StoryContentHeading } from './StoryContentHeading'
+import { StoryContentText } from './StoryContentText'
 
 type Props = {
   isHeaderToolsShown?: boolean
@@ -31,10 +31,10 @@ export function StoryContent({
           <div className={styles.contentHeaderTools}>
             <ClipboardButton
               text={contentText}
-              message="Story line copied to clipboard."
+              message='Story line copied to clipboard.'
             />
             {isHeaderSaveToolShown && (
-              <Button variant="ghost" size="icon">
+              <Button variant='ghost' size='icon'>
                 <BookmarkIcon size={20} />
               </Button>
             )}

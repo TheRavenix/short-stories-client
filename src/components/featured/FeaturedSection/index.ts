@@ -1,1 +1,1 @@
-export * from "./FeaturedSection";
+export * from './FeaturedSection'

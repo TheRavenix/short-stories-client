@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import { useState } from 'react'
+import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
 
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { P, Span } from "@/components/ui/Typography";
-import { ActionSlot } from "@/components/ActionSlot";
-import { Form } from "@/components/Form";
-import { useProfile } from "@/hooks/profile";
-import { useToastStore } from "@/stores/toast";
-import { deleteUser } from "@/services/user";
+import { Button } from '@/components/ui/Button'
+import { Input } from '@/components/ui/Input'
+import { P, Span } from '@/components/ui/Typography'
+import { ActionSlot } from '@/components/ActionSlot'
+import { Form } from '@/components/Form'
+import { useProfile } from '@/hooks/profile'
+import { useToastStore } from '@/stores/toast'
+import { deleteUser } from '@/services/user'
 
 type Props = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>

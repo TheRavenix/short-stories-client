@@ -13,7 +13,7 @@ import { StoryEditButton } from './buttons/StoryEditButton'
 import { StarRating } from '../StarRating'
 import { Stats } from '../Stats'
 import { StoryViewLink } from './story-view/StoryViewLink'
-import { PlanType } from '../Plans'
+import { PlanType } from '../Plan'
 import { DeleteStory } from './DeleteStory'
 
 export type StoryType = {

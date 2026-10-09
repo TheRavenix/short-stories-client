@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useRef, useState } from 'react'
 
-import styles from "./LibraryFilters.module.css";
+import styles from './LibraryFilters.module.css'
 
-import { Input } from "@/components/ui/Input";
+import { Input } from '@/components/ui/Input'
 import {
   Select,
   SelectContent,
@@ -13,9 +13,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/Select";
-import { useSearchStore } from "@/stores/search";
-import { FILTER_DEFAULT_TIMEOUT } from "@/constants/filter";
+} from '@/components/ui/Select'
+import { useSearchStore } from '@/stores/search'
+import { FILTER_DEFAULT_TIMEOUT } from '@/constants/filter'
 
 export function LibraryFilters() {
   const router = useRouter()

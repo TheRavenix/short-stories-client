@@ -1,22 +1,22 @@
-import styles from "./page.module.css";
+import styles from './page.module.css'
 
-import { H1 } from "@/components/ui/Typography";
-import { CompactContainer } from "@/components/ui/Container/CompactContainer";
-import { AdminPageGuard } from "@/components/guards/AdminPageGuard";
-import { CreateStoryForm } from "@/components/Story/forms/CreateStoryForm";
+import { H1 } from '@/components/ui/Typography'
+import { CompactContainer } from '@/components/ui/Container/CompactContainer'
+import { AdminPageGuard } from '@/components/guards/AdminPageGuard'
+import { CreateStoryForm } from '@/components/Story/forms/CreateStoryForm'
 
 export default function CreateStory() {
   return (
     <>
-      <AdminPageGuard redirectTo="/s" />
+      <AdminPageGuard redirectTo='/s' />
       <main className={styles.main}>
-        <CompactContainer spacing="lg" withPaddingBlock>
-          <H1 className={styles.headline} transform="capitalize">
+        <CompactContainer spacing='lg' withPaddingBlock>
+          <H1 className={styles.headline} transform='capitalize'>
             Create story
           </H1>
           <CreateStoryForm />
         </CompactContainer>
       </main>
     </>
-  );
+  )
 }

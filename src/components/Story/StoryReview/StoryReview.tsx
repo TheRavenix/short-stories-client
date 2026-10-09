@@ -1,16 +1,16 @@
-import Link from "next/link";
-import clsx from "clsx";
-import dayjs from "dayjs";
+import Link from 'next/link'
+import clsx from 'clsx'
+import dayjs from 'dayjs'
 
-import styles from "./StoryReview.module.css";
+import styles from './StoryReview.module.css'
 
-import { StarRating } from "../../StarRating";
-import { Separator } from "../../ui/Separator";
-import { P, Span } from "../../ui/Typography";
-import { Button } from "../../ui/Button";
-import { Badge } from "../../ui/Badge";
-import { DeleteStoryReview } from "./DeleteStoryReview";
-import { EditStoryReview } from "./EditStoryReview";
+import { StarRating } from '../../StarRating'
+import { Separator } from '../../ui/Separator'
+import { P, Span } from '../../ui/Typography'
+import { Button } from '../../ui/Button'
+import { Badge } from '../../ui/Badge'
+import { DeleteStoryReview } from './DeleteStoryReview'
+import { EditStoryReview } from './EditStoryReview'
 
 export type StoryReviewType = {
   id: number

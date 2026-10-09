@@ -1,4 +1,4 @@
-import { StoryReviewDetails, StoryReviewsRating, StoryReviewType } from "@/components/Story/StoryReview"
+import { StoryReviewDetails, StoryReviewsRating, StoryReviewType } from '@/components/Story/StoryReview'
 
 type GetFeaturedReviewsResponse = {
   reviews: StoryReviewType[]
@@ -13,7 +13,7 @@ export async function getFeaturedReviews(): Promise<GetFeaturedReviewsResponse> 
   return await response.json()
 }
 
-export type GetStoryReviewsByStoryIdResponse = {
+export type GetReviewsByStoryIdResponse = {
   reviews: StoryReviewType[]
   reviewsDetails: StoryReviewDetails[]
   ratingCount: number
@@ -21,7 +21,7 @@ export type GetStoryReviewsByStoryIdResponse = {
 
 export async function getStoryReviewsByStoryId(
   storyId: number
-): Promise<GetStoryReviewsByStoryIdResponse> {
+): Promise<GetReviewsByStoryIdResponse> {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/api/story-reviews/story/${storyId}`
   )
