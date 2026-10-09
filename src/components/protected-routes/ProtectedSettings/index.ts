@@ -1,1 +1,1 @@
-export * from "./ProtectedSettings";
+export * from './ProtectedSettings'

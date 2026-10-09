@@ -1,15 +1,15 @@
-import Link from "next/link";
+import Link from 'next/link'
 
-import styles from "./Navbar.module.css";
+import styles from './Navbar.module.css'
 
-import { NavbarLink } from "./NavbarLink";
-import { NavbarDrawer } from "./NavbarDrawer";
-import { P } from "../ui/Typography";
-import { Container } from "../ui/Container";
-import { NavbarSearch } from "./NavbarSearch";
-import { NavbarAuthActions } from "./NavbarAuthActions";
-import { ThemeToggle } from "../theme/ThemeToggle";
-import { navBarLinks } from "@/data/links";
+import { NavbarLink } from './NavbarLink'
+import { NavbarDrawer } from './NavbarDrawer'
+import { P } from '../ui/Typography'
+import { Container } from '../ui/Container'
+import { NavbarSearch } from './NavbarSearch'
+import { NavbarAuthActions } from './NavbarAuthActions'
+import { ThemeToggle } from '../theme/ThemeToggle'
+import { navBarLinks } from '@/data/links'
 
 export function Navbar() {
   return (
@@ -39,5 +39,5 @@ export function Navbar() {
         </div>
       </Container>
     </nav>
-  );
-};
+  )
+}

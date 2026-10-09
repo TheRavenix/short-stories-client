@@ -1,101 +1,93 @@
-"use client";
+'use client'
 
-import * as React from "react";
-import * as DialogPrimitive from "@radix-ui/react-dialog";
-import clsx from "clsx";
-import styles from "./Dialog.module.css";
+import { ComponentProps } from 'react'
+import * as DialogPrimitive from '@radix-ui/react-dialog'
+import clsx from 'clsx'
 
-const Dialog = DialogPrimitive.Root;
+import styles from './Dialog.module.css'
 
-const DialogTrigger = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <DialogPrimitive.Trigger
-    ref={ref}
-    className={clsx(styles.dialogTrigger, className)}
-    {...props}
-  >
-    {children}
-  </DialogPrimitive.Trigger>
-));
-DialogTrigger.displayName = DialogPrimitive.Trigger.displayName;
+export const Dialog = DialogPrimitive.Root
 
-const DialogPortal = DialogPrimitive.Portal;
+type DialogTriggerProps = ComponentProps<typeof DialogPrimitive.Trigger>
 
-const DialogOverlay = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
->(({ className, ...props }, ref) => (
-  <DialogPrimitive.Overlay
-    ref={ref}
-    className={clsx(styles.dialogOverlay, className)}
-    {...props}
-  />
-));
-DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
+export function DialogTrigger({ className, children, ...rest }: DialogTriggerProps) {
+  return (
+    <DialogPrimitive.Trigger
+      className={clsx(styles.dialogTrigger, className)}
+      {...rest}
+    >
+      {children}
+    </DialogPrimitive.Trigger>
+  )
+}
 
-const DialogContent = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, ...props }, ref) => (
-  <DialogPortal>
-    <DialogOverlay>
-      <DialogPrimitive.Content
-        ref={ref}
-        className={clsx(styles.dialogContent, className)}
-        {...props}
-      >
-        {children}
-      </DialogPrimitive.Content>
-    </DialogOverlay>
-  </DialogPortal>
-));
-DialogContent.displayName = DialogPrimitive.Content.displayName;
+export const DialogPortal = DialogPrimitive.Portal
 
-const DialogTitle = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
->(({ className, ...props }, ref) => (
-  <DialogPrimitive.Title
-    ref={ref}
-    className={clsx(styles.dialogTitle, className)}
-    {...props}
-  />
-));
-DialogTitle.displayName = DialogPrimitive.Title.displayName;
+type DialogOverlayProps = ComponentProps<typeof DialogPrimitive.Overlay>
 
-const DialogDescription = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
->(({ className, ...props }, ref) => (
-  <DialogPrimitive.Description
-    ref={ref}
-    className={clsx(styles.dialogDescription, className)}
-    {...props}
-  />
-));
-DialogDescription.displayName = DialogPrimitive.Description.displayName;
+export function DialogOverlay({ className, children, ...rest }: DialogOverlayProps) {
+  return (
+    <DialogPrimitive.Overlay
+      className={clsx(styles.dialogOverlay, className)}
+      {...rest}
+    >
+      {children}
+    </DialogPrimitive.Overlay>
+  )
+}
 
-const DialogClose = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Close>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close>
->(({ className, ...props }, ref) => (
-  <DialogPrimitive.Close
-    ref={ref}
-    className={clsx(styles.dialogClose, className)}
-    {...props}
-  />
-));
-DialogClose.displayName = DialogPrimitive.Close.displayName;
+type DialogContentProps = ComponentProps<typeof DialogPrimitive.Content>
 
-export {
-  Dialog,
-  DialogTrigger,
-  DialogPortal,
-  DialogOverlay,
-  DialogContent,
-  DialogTitle,
-  DialogDescription,
-  DialogClose,
-};
+export function DialogContent({ className, children, ...rest }: DialogContentProps) {
+  return (
+    <DialogPortal>
+      <DialogOverlay>
+        <DialogPrimitive.Content
+          className={clsx(styles.dialogContent, className)}
+          {...rest}
+        >
+          {children}
+        </DialogPrimitive.Content>
+      </DialogOverlay>
+    </DialogPortal>
+  )
+}
+
+type DialogTitleProps = ComponentProps<typeof DialogPrimitive.Title>
+
+export function DialogTitle({ className, children, ...rest }: DialogTitleProps) {
+  return (
+    <DialogPrimitive.Title
+      className={clsx(styles.dialogTitle, className)}
+      {...rest}
+    >
+      {children}
+    </DialogPrimitive.Title>
+  )
+}
+
+type DialogDescriptionProps = ComponentProps<typeof DialogPrimitive.Description>
+
+export function DialogDescription({ className, children, ...rest }: DialogDescriptionProps) {
+  return (
+    <DialogPrimitive.Description
+      className={clsx(styles.dialogDescription, className)}
+      {...rest}
+    >
+      {children}
+    </DialogPrimitive.Description>
+  )
+}
+
+type DialogCloseProps = ComponentProps<typeof DialogPrimitive.Close>
+
+export function DialogClose({ className, children, ...rest }: DialogCloseProps) {
+  return (
+    <DialogPrimitive.Close
+      className={clsx(styles.dialogClose, className)}
+      {...rest}
+    >
+      {children}
+    </DialogPrimitive.Close>
+  )
+}

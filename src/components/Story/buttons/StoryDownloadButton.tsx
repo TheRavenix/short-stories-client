@@ -1,14 +1,14 @@
-"use client";
+'use client'
 
-import { useRouter } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import { useRouter } from 'next/navigation'
+import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
 
-import { Button } from "@/components/ui/Button";
-import { useAuthStore } from "@/stores/auth";
-import { useToastStore } from "@/stores/toast";
-import { downloadStory } from "@/services/story";
-import { downloadFile } from "@/utils/download-file";
+import { Button } from '@/components/ui/Button'
+import { useAuthStore } from '@/stores/auth'
+import { useToastStore } from '@/stores/toast'
+import { downloadStory } from '@/services/story'
+import { downloadFile } from '@/utils/download-file'
 
 type Props = {
   storyId: number
@@ -54,7 +54,7 @@ export function StoryDownloadButton({ storyId, storyName }: Props) {
       onClick={handleDownload}
       disabled={mutation.isPending}
     >
-      {mutation.isPending ? 'Loading...' : "Download"}
+      {mutation.isPending ? 'Loading...' : 'Download'}
     </Button>
   )
 }

@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   Select,
@@ -7,9 +7,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/Select";
-import { useProfile } from "@/hooks/profile";
-import { useStoryStore } from "@/stores/story";
+} from '@/components/ui/Select'
+import { useProfile } from '@/hooks/profile'
+import { useStoryStore } from '@/stores/story'
 
 export function StoryLayoutSelect() {
   const storyLayout = useStoryStore((s) => s.storyLayout)

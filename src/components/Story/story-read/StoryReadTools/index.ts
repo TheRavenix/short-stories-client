@@ -1,1 +1,1 @@
-export * from "./StoryReadTools";
+export * from './StoryReadTools'

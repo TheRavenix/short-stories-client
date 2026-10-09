@@ -1,22 +1,22 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
+import { useState } from 'react'
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 
-import styles from "./StoryBookLayout.module.css";
+import styles from './StoryBookLayout.module.css'
 
-import { StoryContent } from "../../StoryContent";
-import { Card } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
-import { P } from "@/components/ui/Typography";
+import { StoryContent } from '../../StoryContent'
+import { Card } from '@/components/ui/Card'
+import { Button } from '@/components/ui/Button'
+import { P } from '@/components/ui/Typography'
 import {
   Slider,
   SliderRange,
   SliderThumb,
   SliderTrack,
-} from "@/components/ui/Slider";
-import { chunkArray } from "@/utils/chunk-array";
-import { StoryType } from "../../Story";
+} from '@/components/ui/Slider'
+import { chunkArray } from '@/utils/chunk-array'
+import { StoryType } from '../../Story'
 
 type Props = {
   id: number

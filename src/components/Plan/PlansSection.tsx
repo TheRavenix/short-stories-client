@@ -1,13 +1,13 @@
-"use client";
+'use client'
 
-import { useSearchParams } from "next/navigation";
+import { useSearchParams } from 'next/navigation'
 
-import { TabsList, TabsTrigger, TabsContent } from "@/components/ui/Tabs";
-import { SearchParamTabs } from "@/components/SearchParamTabs";
-import { Plan } from "./Plan";
-import { freePlanFeatures, proPlanFeatures } from "@/data/plans";
+import { TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs'
+import { SearchParamTabs } from '@/components/SearchParamTabs'
+import { Plan } from './Plan'
+import { freePlanFeatures, proPlanFeatures } from '@/data/plans'
 
-export function Plans() {
+export function PlansSection() {
   const searchParams = useSearchParams()
   const plan = searchParams.get('plan') || 'free'
 

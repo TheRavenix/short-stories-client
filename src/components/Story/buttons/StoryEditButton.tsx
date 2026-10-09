@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import Link from "next/link";
+import Link from 'next/link'
 
-import { Button } from "@/components/ui/Button";
-import { useProfile } from "@/hooks/profile";
+import { Button } from '@/components/ui/Button'
+import { useProfile } from '@/hooks/profile'
 
 type Props = {
   storySlug: string

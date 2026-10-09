@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 type StoreState = {
   uiFont: string

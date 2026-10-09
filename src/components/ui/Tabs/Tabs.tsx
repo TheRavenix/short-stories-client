@@ -1,51 +1,44 @@
-"use client";
+'use client'
 
-import * as React from "react";
-import * as TabsPrimitive from "@radix-ui/react-tabs";
-import clsx from "clsx";
-import styles from "./Tabs.module.css";
+import { ComponentProps } from 'react'
+import * as TabsPrimitive from '@radix-ui/react-tabs'
+import clsx from 'clsx'
 
-const Tabs = TabsPrimitive.Root;
+import styles from './Tabs.module.css'
 
-interface TabsListProps
-  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.TabsList> {
-  fullWidth?: boolean;
+export const Tabs = TabsPrimitive.Root
+
+type TabsListProps = {
+  fullWidth?: boolean
+} & ComponentProps<typeof TabsPrimitive.TabsList>
+
+export function TabsList({ className, fullWidth = false, ...rest }: TabsListProps) {
+  return (
+    <TabsPrimitive.List
+      className={clsx(styles.tabsList, fullWidth && styles.fullWidth, className)}
+      {...rest}
+    />
+  )
 }
 
-const TabsList = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.List>,
-  TabsListProps
->(({ className, fullWidth = false, ...props }, ref) => (
-  <TabsPrimitive.List
-    ref={ref}
-    className={clsx(styles.tabsList, fullWidth && styles.fullWidth, className)}
-    {...props}
-  />
-));
-TabsList.displayName = TabsPrimitive.List.displayName;
+type TabsTriggerProps = ComponentProps<typeof TabsPrimitive.TabsTrigger>
 
-const TabsTrigger = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.TabsTrigger>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.Trigger
-    ref={ref}
-    className={clsx(styles.tabsTrigger, className)}
-    {...props}
-  />
-));
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+export function TabsTrigger({ className, ...rest }: TabsTriggerProps) {
+  return (
+    <TabsPrimitive.Trigger
+      className={clsx(styles.tabsTrigger, className)}
+      {...rest}
+    />
+  )
+}
 
-const TabsContent = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.Content
-    ref={ref}
-    className={clsx(styles.tabsContent, className)}
-    {...props}
-  />
-));
-TabsContent.displayName = TabsPrimitive.Content.displayName;
+type TabsContentProps = ComponentProps<typeof TabsPrimitive.TabsContent>
 
-export { Tabs, TabsList, TabsTrigger, TabsContent };
+export function TabsContent({ className, ...rest }: TabsContentProps) {
+  return (
+    <TabsPrimitive.Content
+      className={clsx(styles.tabsContent, className)}
+      {...rest}
+    />
+  )
+}

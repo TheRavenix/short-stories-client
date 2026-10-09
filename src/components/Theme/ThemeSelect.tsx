@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   Select,
@@ -7,8 +7,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/Select";
-import { useThemeStore } from "@/stores/theme";
+} from '../ui/Select'
+import { useThemeStore } from '@/stores/theme'
 
 export function ThemeSelect() {
   const theme = useThemeStore((s) => s.theme)

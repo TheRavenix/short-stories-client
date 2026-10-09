@@ -1,11 +1,11 @@
-import styles from "./page.module.css";
+import styles from './page.module.css'
 
-import { H1 } from "@/components/ui/Typography";
-import { CompactContainer } from "@/components/ui/Container/CompactContainer";
-import { AdminPageGuard } from "@/components/guards/AdminPageGuard";
-import { StoryBackButton } from "@/components/Story/buttons/StoryBackButton";
-import { EditStoryForm } from "@/components/Story/forms/EditStoryForm";
-import { getStoryBySlug } from "@/lib/story";
+import { H1 } from '@/components/ui/Typography'
+import { CompactContainer } from '@/components/ui/Container/CompactContainer'
+import { AdminPageGuard } from '@/components/guards/AdminPageGuard'
+import { StoryBackButton } from '@/components/Story/buttons/StoryBackButton'
+import { EditStoryForm } from '@/components/Story/forms/EditStoryForm'
+import { getStoryBySlug } from '@/lib/story'
 
 type Props = {
   params: Promise<{ slug: string }>

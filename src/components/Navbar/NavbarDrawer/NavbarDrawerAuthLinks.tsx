@@ -1,10 +1,10 @@
-import Link from "next/link";
+import Link from 'next/link'
 
-import styles from "./NavbarDrawer.module.css";
+import styles from './NavbarDrawer.module.css'
 
-import { Button } from "@/components/ui/Button";
-import { authLinks } from "@/data/links";
-import { useAuthStore } from "@/stores/auth";
+import { Button } from '@/components/ui/Button'
+import { authLinks } from '@/data/links'
+import { useAuthStore } from '@/stores/auth'
 
 type Props = {
   toggleOpen: () => void
@@ -22,8 +22,8 @@ export function NavbarDrawerAuthLinks({ toggleOpen }: Props) {
       {authLinks.map((link, i) => (
         <Link key={i} href={link.href} onClick={toggleOpen}>
           <Button
-            variant={link.href === "/sign-up" ? "inverse" : "primary"}
-            size="sm"
+            variant={link.href === '/sign-up' ? 'inverse' : 'primary'}
+            size='sm'
             className={styles.drawerButton}
           >
             {link.name}

@@ -1,9 +1,9 @@
-import { ArrowLeftIcon } from "lucide-react";
+import { ArrowLeftIcon } from 'lucide-react'
 
-import styles from "./StoryBackButton.module.css";
+import styles from './StoryBackButton.module.css'
 
-import { Button } from "@/components/ui/Button";
-import { StoryViewLink } from "../../story-view/StoryViewLink";
+import { Button } from '@/components/ui/Button'
+import { StoryViewLink } from '../../story-view/StoryViewLink'
 
 type Props = {
   storySlug?: string
@@ -19,5 +19,5 @@ export function StoryBackButton({ storySlug }: Props) {
         <ArrowLeftIcon />
       </Button>
     </StoryViewLink>
-  );
-};
+  )
+}

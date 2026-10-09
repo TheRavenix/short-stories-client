@@ -1,5 +1,4 @@
-import { StoryType } from "@/components/Story";
-import { StoryReviewType } from "@/components/Story/StoryReview";
+import { StoryType } from '@/components/Story'
 
 export type GetLibraryStoriesQuery = {
   skip: number

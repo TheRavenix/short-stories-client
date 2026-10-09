@@ -1,7 +1,8 @@
-"use client";
+'use client'
 
-import { PropsWithChildren, useEffect } from "react";
-import { useFontStore } from "@/stores/font";
+import { PropsWithChildren, useEffect } from 'react'
+
+import { useFontStore } from '@/stores/font'
 
 type Props = PropsWithChildren
 

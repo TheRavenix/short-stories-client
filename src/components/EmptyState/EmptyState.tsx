@@ -1,8 +1,8 @@
-import clsx from "clsx";
+import clsx from 'clsx'
 
-import styles from "./EmptyState.module.css";
+import styles from './EmptyState.module.css'
 
-import { P } from "../ui/Typography";
+import { P } from '../ui/Typography'
 
 type Props = {
   message?: string

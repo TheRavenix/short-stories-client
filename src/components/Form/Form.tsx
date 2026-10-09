@@ -1,7 +1,7 @@
-import { ComponentProps } from "react";
-import clsx from "clsx";
+import { ComponentProps } from 'react'
+import clsx from 'clsx'
 
-import styles from "./Form.module.css";
+import styles from './Form.module.css'
 
 type Props = {
   preventDefault?: boolean
@@ -19,7 +19,7 @@ export function Form({
     if (preventDefault) {
       e.preventDefault()
     }
-    if (typeof onSubmit === 'function') {
+    if (onSubmit !== undefined) {
       onSubmit(e)
     }
   }

@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { LinkProps } from "next/link";
-import { ComponentProps } from "react";
-import { usePathname } from "next/navigation";
+import { LinkProps } from 'next/link'
+import { ComponentProps } from 'react'
+import { usePathname } from 'next/navigation'
 
-import { NavbarLink } from "./NavbarLink";
-import { useAuthStore } from "@/stores/auth";
+import { NavbarLink } from './NavbarLink'
+import { useAuthStore } from '@/stores/auth'
 
 type Props = Omit<LinkProps, 'href'> &
   Omit<ComponentProps<'a'>, 'children'>

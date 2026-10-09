@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import * as TabsPrimitive from "@radix-ui/react-tabs";
+import * as TabsPrimitive from '@radix-ui/react-tabs'
+import { useEffect, useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 
-import { Tabs } from "../ui/Tabs";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Tabs } from '../ui/Tabs'
 
 type Props = {
   paramKey?: string

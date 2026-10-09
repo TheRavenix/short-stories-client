@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import { CreateStoryReviewDrawer } from "./CreateStoryReviewDrawer";
-import { CreateStoryReviewDialog } from "./CreateStoryReviewDialog";
-import { useAuthStore } from "@/stores/auth";
-import { useIsMobile } from "@/hooks/media/use-media-utils";
+import { CreateStoryReviewDrawer } from './CreateStoryReviewDrawer'
+import { CreateStoryReviewDialog } from './CreateStoryReviewDialog'
+import { useAuthStore } from '@/stores/auth'
+import { useIsMobile } from '@/hooks/media/use-media-utils'
 
 type Props = {
   storyId: number

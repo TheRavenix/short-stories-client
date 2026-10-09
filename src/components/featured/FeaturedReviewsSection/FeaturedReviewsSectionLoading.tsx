@@ -1,7 +1,7 @@
-import styles from "./FeaturedReviewsSection.module.css";
+import styles from './FeaturedReviewsSection.module.css'
 
-import { H1 } from "@/components/ui/Typography";
-import { Skeleton } from "@/components/Skeleton";
+import { H1 } from '@/components/ui/Typography'
+import { Skeleton } from '@/components/Skeleton'
 
 export function FeaturedReviewsSectionLoading() {
   return (

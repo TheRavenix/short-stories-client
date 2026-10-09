@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
 
-import { Button } from "@/components/ui/Button";
-import { useToastStore } from "@/stores/toast";
-import { signOut } from "@/services/auth";
+import { Button } from '@/components/ui/Button'
+import { useToastStore } from '@/stores/toast'
+import { signOut } from '@/services/auth'
 
 export function SignOut() {
   const addToast = useToastStore((s) => s.addToast)

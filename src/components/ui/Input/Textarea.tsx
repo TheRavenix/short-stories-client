@@ -1,9 +1,9 @@
-import { ComponentProps } from "react";
-import clsx from "clsx";
+import { ComponentProps } from 'react'
+import clsx from 'clsx'
 
-import styles from "./Input.module.css";
+import styles from './Input.module.css'
 
-import { InputVariant } from "./Input";
+import { InputVariant } from './Input'
 
 type Props = {
   label: string

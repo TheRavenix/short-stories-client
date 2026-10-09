@@ -1,18 +1,18 @@
-"use client";
+'use client'
 
-import { MessageCircleIcon } from "lucide-react";
+import { MessageCircleIcon } from 'lucide-react'
 
-import styles from "./StoryReviewsCard.module.css";
+import styles from './StoryReviewsCard.module.css'
 
-import { EmptyState } from "@/components/EmptyState";
-import { Card, CardContent, CardHeader } from "@/components/ui/Card";
-import { P } from "@/components/ui/Typography";
-import { Stats } from "@/components/Stats";
-import { StoryReviewDetails, StoryReviewType } from "../../StoryReview";
-import { StoryReview } from "../../StoryReview";
-import { Skeleton } from "@/components/Skeleton";
-import { CreateStoryReview } from "../../StoryReview/CreateStoryReview";
-import { useProfile } from "@/hooks/profile";
+import { EmptyState } from '@/components/EmptyState'
+import { Card, CardContent, CardHeader } from '@/components/ui/Card'
+import { P } from '@/components/ui/Typography'
+import { Stats } from '@/components/Stats'
+import { StoryReviewDetails, StoryReviewType } from '../../StoryReview'
+import { StoryReview } from '../../StoryReview'
+import { Skeleton } from '@/components/Skeleton'
+import { CreateStoryReview } from '../../StoryReview/CreateStoryReview'
+import { useProfile } from '@/hooks/profile'
 
 type Props = {
   id: number

@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { create } from "zustand";
+import { create } from 'zustand'
 
 type StoreState = {
   libraryQuery: string
@@ -8,7 +8,7 @@ type StoreState = {
 }
 
 export const useSearchStore = create<StoreState>((set) => ({
-  libraryQuery: "",
+  libraryQuery: '',
 
   setLibraryQuery(q) {
     set((state) => ({ ...state, libraryQuery: q }))

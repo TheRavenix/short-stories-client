@@ -1,4 +1,4 @@
-import styles from "./SettingsCard.module.css";
+import styles from './SettingsCard.module.css'
 
 import {
   Card,
@@ -6,7 +6,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/Card";
+} from '@/components/ui/Card'
 
 type Props = {
   title: string

@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import { PropsWithChildren, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { PropsWithChildren, useEffect } from 'react'
+import { useQuery } from '@tanstack/react-query'
 
-import { applyDataKeyAndStyle } from "@/utils/apply-data-key-and-style";
-import { getAllProThemes } from "@/services/pro-theme";
+import { applyDataKeyAndStyle } from '@/utils/apply-data-key-and-style'
+import { getAllProThemes } from '@/services/pro-theme'
 
 type Props = PropsWithChildren
 

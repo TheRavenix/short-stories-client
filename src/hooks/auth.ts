@@ -1,7 +1,7 @@
-import { useRouter } from "next/navigation"
-import { useEffect } from "react"
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
-import { useProfileStatus } from "./profile"
+import { useProfileStatus } from './profile'
 
 export type AdminGuardOptions = {
   redirectTo?: string
@@ -15,9 +15,9 @@ export function useAdminGuard(options?: AdminGuardOptions) {
   useEffect(() => {
     if (
       profileStatus.isError ||
-      (profileStatus.isSuccess && profileStatus.status?.role !== "admin")
+      (profileStatus.isSuccess && profileStatus.status?.role !== 'admin')
     ) {
-      options?.onError?.() || router.replace(options?.redirectTo || "/");
+      options?.onError?.() || router.replace(options?.redirectTo || '/');
     }
   }, [profileStatus.status, profileStatus.isError, profileStatus.isSuccess]
   )
@@ -36,7 +36,7 @@ export function useAuthSession(options?: AuthSessionOptions) {
 
   useEffect(() => {
     if (profileStatus.isError) {
-      options?.onError?.() || router.replace(options?.redirectTo || "/sign-in")
+      options?.onError?.() || router.replace(options?.redirectTo || '/sign-in')
     }
   }, [profileStatus.isError])
 
@@ -54,7 +54,7 @@ export function useRedirectIfAuthenticated(options?: RedirectIfAuthenticatedOpti
 
   useEffect(() => {
     if (profileStatus.isSuccess) {
-      options?.onSuccess?.() || router.replace(options?.redirectTo || "/")
+      options?.onSuccess?.() || router.replace(options?.redirectTo || '/')
     }
   }, [profileStatus.isSuccess])
 

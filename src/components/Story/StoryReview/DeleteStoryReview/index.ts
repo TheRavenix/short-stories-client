@@ -1,1 +1,1 @@
-export * from "./DeleteStoryReview";
+export * from './DeleteStoryReview'

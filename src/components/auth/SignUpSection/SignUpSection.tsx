@@ -1,12 +1,12 @@
-"use client";
+'use client'
 
-import styles from "./SignUpSection.module.css";
+import styles from './SignUpSection.module.css'
 
-import { H1 } from "../../ui/Typography";
-import { Skeleton } from "@/components/Skeleton";
-import { SignUpForm } from "../SignUpForm";
-import { useAuthStore } from "@/stores/auth";
-import { useProfile } from "@/hooks/profile";
+import { H1 } from '../../ui/Typography'
+import { Skeleton } from '@/components/Skeleton'
+import { SignUpForm } from '../SignUpForm'
+import { useAuthStore } from '@/stores/auth'
+import { useProfile } from '@/hooks/profile'
 
 export function SignUpSection() {
   const { isLoading } = useProfile()

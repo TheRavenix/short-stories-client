@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { ArrowUpIcon } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { ArrowUpIcon } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 
-import styles from "./BackTopButton.module.css";
+import styles from './BackTopButton.module.css'
 
-import { Button } from "@/components/ui/Button";
+import { Button } from '@/components/ui/Button'
 
 type Props = {
   maxScrollY?: number

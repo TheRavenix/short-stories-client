@@ -1,8 +1,8 @@
-import { JSX } from "react";
+import { JSX } from 'react'
 
-import styles from "./Stats.module.css";
+import styles from './Stats.module.css'
 
-import { Span } from "../ui/Typography";
+import { Span } from '../ui/Typography'
 
 type StatType = {
   id?: string

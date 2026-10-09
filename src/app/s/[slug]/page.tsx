@@ -1,17 +1,17 @@
-import styles from "./page.module.css";
+import styles from './page.module.css'
 
-import { Container } from "@/components/ui/Container";
-import { Story } from "@/components/Story";
-import { H1 } from "@/components/ui/Typography";
-import { SearchParamTabs } from "@/components/SearchParamTabs";
-import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
-import { BackTopButton } from "@/components/buttons/BackTopButton";
-import { StoryViewToggle } from "@/components/Story/story-view/StoryViewToggle";
-import { StoryAboutCard } from "@/components/Story/cards/StoryAboutCard";
-import { StoryPreviewCard } from "@/components/Story/cards/StoryPreviewCard";
-import { StoryReviewsCard } from "@/components/Story/cards/StoryReviewsCard";
-import { getStoryBySlug } from "@/lib/story";
-import { getStoryReviewsByStoryId } from "@/lib/story/story-review";
+import { Container } from '@/components/ui/Container'
+import { Story } from '@/components/Story'
+import { H1 } from '@/components/ui/Typography'
+import { SearchParamTabs } from '@/components/SearchParamTabs'
+import { TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
+import { BackTopButton } from '@/components/buttons/BackTopButton'
+import { StoryViewToggle } from '@/components/Story/story-view/StoryViewToggle'
+import { StoryAboutCard } from '@/components/Story/cards/StoryAboutCard'
+import { StoryPreviewCard } from '@/components/Story/cards/StoryPreviewCard'
+import { StoryReviewsCard } from '@/components/Story/cards/StoryReviewsCard'
+import { getStoryBySlug } from '@/lib/story'
+import { getStoryReviewsByStoryId } from '@/lib/story/story-review'
 
 type Props = {
   params: Promise<{ slug: string }>

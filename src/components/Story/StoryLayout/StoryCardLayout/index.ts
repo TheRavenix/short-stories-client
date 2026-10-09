@@ -1,1 +1,1 @@
-export * from "./StoryCardLayout";
+export * from './StoryCardLayout'

@@ -1,11 +1,11 @@
-import { EyeIcon } from "lucide-react";
+import { EyeIcon } from 'lucide-react'
 
-import styles from "./StoryPreviewCard.module.css";
+import styles from './StoryPreviewCard.module.css'
 
-import { EmptyState } from "@/components/EmptyState";
-import { Card, CardContent, CardHeader } from "@/components/ui/Card";
-import { P } from "@/components/ui/Typography";
-import { StoryContent } from "../../StoryContent";
+import { EmptyState } from '@/components/EmptyState'
+import { Card, CardContent, CardHeader } from '@/components/ui/Card'
+import { P } from '@/components/ui/Typography'
+import { StoryContent } from '../../StoryContent'
 
 type Props = {
   id: number

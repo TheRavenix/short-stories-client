@@ -1,9 +1,9 @@
-import styles from "./page.module.css";
+import styles from './page.module.css'
 
-import { H1 } from "@/components/ui/Typography";
-import { SignUpForm } from "@/components/auth/SignUpForm";
-import { CompactContainer } from "@/components/ui/Container/CompactContainer";
-import { AuthPageGuard } from "@/components/guards/AuthPageGuard";
+import { H1 } from '@/components/ui/Typography'
+import { SignUpForm } from '@/components/auth/SignUpForm'
+import { CompactContainer } from '@/components/ui/Container/CompactContainer'
+import { AuthPageGuard } from '@/components/auth/AuthPageGuard'
 
 export default function SignIn() {
   return (

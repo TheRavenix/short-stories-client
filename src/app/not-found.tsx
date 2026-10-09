@@ -1,7 +1,7 @@
-import styles from "./not-found.module.css";
+import styles from './not-found.module.css'
 
-import { Container } from "@/components/ui/Container";
-import { Callout } from "@/components/Callout";
+import { Container } from '@/components/ui/Container'
+import { Callout } from '@/components/Callout'
 
 export default function NotFound() {
   return (

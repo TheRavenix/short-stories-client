@@ -1,11 +1,11 @@
-import { MessageCircleIcon } from "lucide-react";
+import { MessageCircleIcon } from 'lucide-react'
 
-import styles from "./FeaturedReviewsSection.module.css";
+import styles from './FeaturedReviewsSection.module.css'
 
-import { H1 } from "@/components/ui/Typography";
-import { EmptyState } from "@/components/EmptyState";
-import { Card, CardContent } from "@/components/ui/Card";
-import { StoryReview, StoryReviewDetails, StoryReviewType } from "@/components/Story/StoryReview";
+import { H1 } from '@/components/ui/Typography'
+import { EmptyState } from '@/components/EmptyState'
+import { Card, CardContent } from '@/components/ui/Card'
+import { StoryReview, StoryReviewDetails, StoryReviewType } from '@/components/Story/StoryReview'
 
 type Props = {
   reviews: StoryReviewType[]

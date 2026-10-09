@@ -1,23 +1,23 @@
-"use client";
+'use client'
 
-import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
-import axios from "axios";
+import { useMutation } from '@tanstack/react-query'
+import { useState } from 'react'
+import axios from 'axios'
 
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { ActionSlot } from "@/components/ActionSlot";
-import { useProfile } from "@/hooks/profile";
-import { useToastStore } from "@/stores/toast";
-import { Form } from "@/components/Form";
-import { editUserName } from "@/services/user";
+import { Button } from '@/components/ui/Button'
+import { Input } from '@/components/ui/Input'
+import { ActionSlot } from '@/components/ActionSlot'
+import { useProfile } from '@/hooks/profile'
+import { useToastStore } from '@/stores/toast'
+import { Form } from '@/components/Form'
+import { editUserName } from '@/services/user'
 
 type Props = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export function EditNameContent({ setOpen }: Props) {
-  const [name, setName] = useState("")
+  const [name, setName] = useState('')
   const { refetch } = useProfile()
   const addToast = useToastStore((s) => s.addToast)
 

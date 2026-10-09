@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import clsx from "clsx";
+import clsx from 'clsx'
 
-import styles from "./StoryContent.module.css";
+import styles from './StoryContent.module.css'
 
-import { P, ParagraphProps } from "@/components/ui/Typography";
-import { useStoryReadStore } from "@/stores/story/story-read";
+import { P, ParagraphProps } from '@/components/ui/Typography'
+import { useStoryReadStore } from '@/stores/story/story-read'
 
 type Props = ParagraphProps
 

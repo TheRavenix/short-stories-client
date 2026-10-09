@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { ErrorFallback, ErrorFallbackProps } from "@/components/ErrorFallback";
+import { ErrorFallback, ErrorFallbackProps } from '@/components/ErrorFallback'
 
 type Props = ErrorFallbackProps
 

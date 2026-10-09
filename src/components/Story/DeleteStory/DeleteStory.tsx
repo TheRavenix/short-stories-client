@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import { DeleteStoryDialog } from "./DeleteStoryDialog";
-import { DeleteStoryDrawer } from "./DeleteStoryDrawer";
-import { useIsMobile } from "@/hooks/media/use-media-utils";
-import { useProfile } from "@/hooks/profile";
+import { DeleteStoryDialog } from './DeleteStoryDialog'
+import { DeleteStoryDrawer } from './DeleteStoryDrawer'
+import { useIsMobile } from '@/hooks/media/use-media-utils'
+import { useProfile } from '@/hooks/profile'
 
 type Props = {
   storyId: number

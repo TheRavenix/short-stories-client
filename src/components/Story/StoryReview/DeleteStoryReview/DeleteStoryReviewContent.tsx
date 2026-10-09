@@ -1,18 +1,18 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import axios from "axios";
+import { useState } from 'react'
+import { useMutation } from '@tanstack/react-query'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import axios from 'axios'
 
-import styles from "./DeleteStoryReview.module.css";
+import styles from './DeleteStoryReview.module.css'
 
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { P } from "@/components/ui/Typography";
-import { ActionSlot } from "@/components/ActionSlot";
-import { useToastStore } from "@/stores/toast";
-import { deleteStoryReview } from "@/services/story-review";
+import { Button } from '@/components/ui/Button'
+import { Input } from '@/components/ui/Input'
+import { P } from '@/components/ui/Typography'
+import { ActionSlot } from '@/components/ActionSlot'
+import { useToastStore } from '@/stores/toast'
+import { deleteStoryReview } from '@/services/story-review'
 
 type Props = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -22,7 +22,7 @@ type Props = {
 const CONFIRM = 'CONFIRM'
 
 export function DeleteStoryReviewContent({ setOpen, reviewId }: Props) {
-  const [confirmMessage, setConfirmMessage] = useState("")
+  const [confirmMessage, setConfirmMessage] = useState('')
   const router = useRouter()
   const pathName = usePathname()
   const searchParams = useSearchParams()

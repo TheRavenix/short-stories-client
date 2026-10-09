@@ -1,10 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from '@tanstack/react-query'
 
-import { getUserProfile, getUserStatus } from "@/services/user";
+import { getUserProfile, getUserStatus } from '@/services/user'
 
 export function useProfileStatus() {
   const { data, isSuccess, isPending, isError, refetch } = useQuery({
-    queryKey: ["profile-status"],
+    queryKey: ['profile-status'],
     queryFn: getUserStatus,
     staleTime: 1000 * 60 * 15, // 15 minutes fresh
     gcTime: 1000 * 60 * 60 * 12 // 12 hours cache
@@ -21,7 +21,7 @@ export function useProfileStatus() {
 
 export function useProfile() {
   const { data, isPending, refetch, isSuccess } = useQuery({
-    queryKey: ["profile"],
+    queryKey: ['profile'],
     queryFn: getUserProfile,
     staleTime: 1000 * 60 * 30, // 30 minutes fresh
     gcTime: 1000 * 60 * 60 * 24 // 24 hours cache

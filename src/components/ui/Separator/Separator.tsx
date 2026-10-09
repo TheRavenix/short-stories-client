@@ -1,8 +1,8 @@
-import * as SeparatorPrimitive from "@radix-ui/react-separator";
+import * as SeparatorPrimitive from '@radix-ui/react-separator'
+import clsx from 'clsx'
 
-import styles from "./Separator.module.css";
+import styles from './Separator.module.css'
 
-import clsx from "clsx";
 
 type SeparatorWeight = 'normal' | 'medium' | 'semi-bold' | ''
 type SeparatorVariant = 'default' | 'primary'

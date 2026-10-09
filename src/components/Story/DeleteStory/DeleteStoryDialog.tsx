@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
-import { XIcon } from "lucide-react";
-import { useState } from "react";
+import { XIcon } from 'lucide-react'
+import { useState } from 'react'
 
-import { Button } from "@/components/ui/Button";
+import { Button } from '@/components/ui/Button'
 import {
   Dialog,
   DialogClose,
   DialogContent,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/Dialog";
-import { DeleteStoryContent } from "./DeleteStoryContent";
+} from '@/components/ui/Dialog'
+import { DeleteStoryContent } from './DeleteStoryContent'
 
 type Props = {
   storyId: number

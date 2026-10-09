@@ -1,1 +1,1 @@
-export * from "./ActionSlot";
+export * from './ActionSlot'

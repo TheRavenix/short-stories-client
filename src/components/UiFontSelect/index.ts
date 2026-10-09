@@ -1,1 +1,1 @@
-export * from "./UiFontSelect";
+export * from './UiFontSelect'

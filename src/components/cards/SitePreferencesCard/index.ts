@@ -1,1 +1,1 @@
-export * from "./SitePreferencesCard";
+export * from './SitePreferencesCard'

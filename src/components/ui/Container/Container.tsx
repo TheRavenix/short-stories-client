@@ -1,7 +1,7 @@
-import { ComponentProps } from "react";
-import clsx from "clsx";
+import { ComponentProps } from 'react'
+import clsx from 'clsx'
 
-import styles from "./Container.module.css";
+import styles from './Container.module.css'
 
 export type ContainerProps = {
   withPaddingBlock?: boolean

@@ -1,8 +1,8 @@
-import clsx from "clsx";
+import clsx from 'clsx'
 
-import styles from "./Container.module.css";
+import styles from './Container.module.css'
 
-import { ContainerProps } from "./Container";
+import { ContainerProps } from './Container'
 
 type Props = ContainerProps
 

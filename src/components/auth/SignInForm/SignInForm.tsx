@@ -1,18 +1,18 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import Link from 'next/link'
+import { useState } from 'react'
+import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
 
-import styles from "./SignInForm.module.css";
+import styles from './SignInForm.module.css'
 
-import { Input } from "@/components/ui/Input";
-import { Button } from "@/components/ui/Button";
-import { P } from "@/components/ui/Typography";
-import { Form } from "@/components/Form";
-import { useToastStore } from "@/stores/toast";
-import { signIn, SignInData } from "@/services/auth";
+import { Input } from '@/components/ui/Input'
+import { Button } from '@/components/ui/Button'
+import { P } from '@/components/ui/Typography'
+import { Form } from '@/components/Form'
+import { useToastStore } from '@/stores/toast'
+import { signIn, SignInData } from '@/services/auth'
 
 export function SignInForm() {
   const [formData, setFormData] = useState<SignInData>({

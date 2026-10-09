@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { SelectProps } from "@radix-ui/react-select";
-import { useQuery } from "@tanstack/react-query";
+import { SelectProps } from '@radix-ui/react-select'
+import { useQuery } from '@tanstack/react-query'
 
 import {
   Select,
@@ -11,11 +11,11 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/Select";
-import { useFontStore } from "@/stores/font";
-import { useProfile } from "@/hooks/profile";
-import { removeHyphen, capitalize } from "@/utils/text";
-import { getAllProFonts } from "@/services/pro-font";
+} from '@/components/ui/Select'
+import { useFontStore } from '@/stores/font'
+import { useProfile } from '@/hooks/profile'
+import { removeHyphen, capitalize } from '@/utils/text'
+import { getAllProFonts } from '@/services/pro-font'
 
 type Props = SelectProps
 

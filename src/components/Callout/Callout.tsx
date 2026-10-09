@@ -1,9 +1,9 @@
-import Link from "next/link";
+import Link from 'next/link'
 
-import styles from "./Callout.module.css";
+import styles from './Callout.module.css'
 
-import { P } from "../ui/Typography";
-import { Button } from "../ui/Button";
+import { P } from '../ui/Typography'
+import { Button } from '../ui/Button'
 
 type Props = {
   message?: string

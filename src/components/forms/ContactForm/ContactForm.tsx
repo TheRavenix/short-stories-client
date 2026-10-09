@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import styles from "./ContactForm.module.css";
+import styles from './ContactForm.module.css'
 
-import { Input } from "@/components/ui/Input";
-import { Button } from "@/components/ui/Button";
-import { Form } from "@/components/Form";
+import { Input } from '@/components/ui/Input'
+import { Button } from '@/components/ui/Button'
+import { Form } from '@/components/Form'
 
 export function ContactForm() {
   return (

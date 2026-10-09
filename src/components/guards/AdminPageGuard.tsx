@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { AdminGuardOptions, useAdminGuard } from "@/hooks/auth";
+import { AdminGuardOptions, useAdminGuard } from '@/hooks/auth'
 
 type Props = AdminGuardOptions
 

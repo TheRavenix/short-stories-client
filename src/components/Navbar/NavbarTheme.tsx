@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import styles from "./Navbar.module.css";
+import styles from './Navbar.module.css'
 
-import { ThemeSelect } from "../theme/ThemeSelect";
-import { ThemeToggle } from "../theme/ThemeToggle";
-import { useAuthStore } from "@/stores/auth";
+import { ThemeSelect } from '../theme/ThemeSelect'
+import { ThemeToggle } from '../theme/ThemeToggle'
+import { useAuthStore } from '@/stores/auth'
 
 export function NavbarTheme() {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated)

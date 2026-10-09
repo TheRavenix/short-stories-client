@@ -1,127 +1,108 @@
-"use client";
+'use client'
 
-import * as React from "react";
-import { Drawer as DrawerPrimitive } from "vaul";
-import clsx from "clsx";
+import { ComponentProps, HTMLAttributes } from 'react'
+import { Drawer as DrawerPrimitive } from 'vaul'
+import clsx from 'clsx'
 
-import styles from "./Drawer.module.css";
+import styles from './Drawer.module.css'
 
-const Drawer = ({
-  shouldScaleBackground = true,
-  ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Root>) => (
-  <DrawerPrimitive.Root
-    shouldScaleBackground={shouldScaleBackground}
-    {...props}
-  />
-);
-Drawer.displayName = "Drawer";
+type DrawerProps = ComponentProps<typeof DrawerPrimitive.Root>
 
-const DrawerTrigger = DrawerPrimitive.Trigger;
+export function Drawer({ shouldScaleBackground = true, ...rest }: DrawerProps) {
+  return (
+    <DrawerPrimitive.Root
+      shouldScaleBackground={shouldScaleBackground}
+      {...rest}
+    />
+  )
+}
 
-const DrawerPortal = DrawerPrimitive.Portal;
+export const DrawerTrigger = DrawerPrimitive.Trigger
 
-const DrawerClose = DrawerPrimitive.Close;
+export const DrawerPortal = DrawerPrimitive.Portal
 
-const DrawerOverlay = React.forwardRef<
-  React.ComponentRef<typeof DrawerPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Overlay>
->(({ className, ...props }, ref) => (
-  <DrawerPrimitive.Overlay
-    ref={ref}
-    className={clsx(styles.overlay, className)}
-    {...props}
-  />
-));
-DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
+export const DrawerClose = DrawerPrimitive.Close
 
-const DrawerContent = React.forwardRef<
-  React.ComponentRef<typeof DrawerPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>
->(({ className, children, draggable, ...props }, ref) => (
-  <DrawerPortal>
-    <DrawerOverlay />
-    <DrawerPrimitive.Content
-      ref={ref}
-      className={clsx(styles.drawerContent, className)}
-      {...props}
-    >
-      {children}
-    </DrawerPrimitive.Content>
-  </DrawerPortal>
-));
-DrawerContent.displayName = "DrawerContent";
+type DrawerOverlayProps = ComponentProps<typeof DrawerPrimitive.Overlay>
 
-const DrawerHandle = React.forwardRef<
-  React.ComponentRef<typeof DrawerPrimitive.Handle>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Handle>
->(({ className, ...props }, ref) => (
-  <DrawerPrimitive.Handle
-    ref={ref}
-    className={clsx(styles.drawerHandle, className)}
-    {...props}
-  />
-));
-DrawerHandle.displayName = DrawerPrimitive.Handle.displayName;
+export function DrawerOverlay({ className, ...rest }: DrawerOverlayProps) {
+  return (
+    <DrawerPrimitive.Overlay
+      className={clsx(styles.overlay, className)}
+      {...rest}
+    />
+  )
+}
 
-const DrawerHeader = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={clsx(styles.drawerHeader, className)} {...props} />
-);
-DrawerHeader.displayName = "DrawerHeader";
+type DrawerContentProps = ComponentProps<typeof DrawerPrimitive.Content>
 
-const DrawerBody = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={clsx(styles.drawerBody, className)} {...props} />
-);
+export function DrawerContent({ className, children, ...rest }: DrawerContentProps) {
+  return (
+    <DrawerPortal>
+      <DrawerOverlay />
+      <DrawerPrimitive.Content
+        className={clsx(styles.drawerContent, className)}
+        {...rest}
+      >
+        {children}
+      </DrawerPrimitive.Content>
+    </DrawerPortal>
+  )
+}
 
-const DrawerFooter = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={clsx(styles.drawerFooter, className)} {...props} />
-);
-DrawerFooter.displayName = "DrawerFooter";
+type DrawerHandleProps = ComponentProps<typeof DrawerPrimitive.Handle>
 
-const DrawerTitle = React.forwardRef<
-  React.ComponentRef<typeof DrawerPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Title>
->(({ className, ...props }, ref) => (
-  <DrawerPrimitive.Title
-    ref={ref}
-    className={clsx(styles.drawerTitle, className)}
-    {...props}
-  />
-));
-DrawerTitle.displayName = DrawerPrimitive.Title.displayName;
+export function DrawerHandle({ className, ...rest }: DrawerHandleProps) {
+  return (
+    <DrawerPrimitive.Handle
+      className={clsx(styles.drawerHandle, className)}
+      {...rest}
+    />
+  )
+}
 
-const DrawerDescription = React.forwardRef<
-  React.ComponentRef<typeof DrawerPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Description>
->(({ className, ...props }, ref) => (
-  <DrawerPrimitive.Description
-    ref={ref}
-    className={clsx(styles.drawerDescription, className)}
-    {...props}
-  />
-));
-DrawerDescription.displayName = DrawerPrimitive.Description.displayName;
+type DrawerHeaderProps = HTMLAttributes<HTMLDivElement>
 
-export {
-  Drawer,
-  DrawerPortal,
-  DrawerOverlay,
-  DrawerTrigger,
-  DrawerClose,
-  DrawerContent,
-  DrawerHandle,
-  DrawerHeader,
-  DrawerBody,
-  DrawerFooter,
-  DrawerTitle,
-  DrawerDescription,
-};
+export function DrawerHeader({ className, ...rest }: DrawerHeaderProps) {
+  return (
+    <div className={clsx(styles.drawerHeader, className)} {...rest} />
+  )
+}
+
+type DrawerBodyProps = HTMLAttributes<HTMLDivElement>
+
+export function DrawerBody({ className, ...rest }: DrawerBodyProps) {
+  return (
+    <div className={clsx(styles.drawerBody, className)} {...rest} />
+  )
+}
+
+type DrawerFooterProps = HTMLAttributes<HTMLDivElement>
+
+export function DrawerFooter({ className, ...rest }: DrawerFooterProps) {
+  return (
+    <div className={clsx(styles.drawerFooter, className)} {...rest} />
+  )
+}
+
+type DrawerTitleProps = ComponentProps<typeof DrawerPrimitive.Title>
+
+export function DrawerTitle({ className, ...rest }: DrawerTitleProps) {
+  return (
+    <DrawerPrimitive.Title
+      className={clsx(styles.drawerTitle, className)}
+      {...rest}
+    />
+  )
+}
+
+type DrawerDescriptionProps = ComponentProps<typeof DrawerPrimitive.Description>
+
+export function DrawerDescription({ className, ...rest }: DrawerDescriptionProps) {
+  return (
+    <DrawerPrimitive.Description
+      className={clsx(styles.drawerDescription, className)}
+      {...rest}
+    />
+  )
+}

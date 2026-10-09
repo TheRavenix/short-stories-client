@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { PencilIcon } from "lucide-react";
+import { useState } from 'react'
+import { PencilIcon } from 'lucide-react'
 
-import styles from "./EditStoryReview.module.css";
+import styles from './EditStoryReview.module.css'
 
-import { Button } from "@/components/ui/Button";
+import { Button } from '@/components/ui/Button'
 import {
   Drawer,
   DrawerBody,
@@ -15,8 +15,8 @@ import {
   DrawerPortal,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/Drawer";
-import { EditStoryReviewContent } from "./EditStoryReviewContent";
+} from '@/components/ui/Drawer'
+import { EditStoryReviewContent } from './EditStoryReviewContent'
 
 type Props = {
   reviewId: number

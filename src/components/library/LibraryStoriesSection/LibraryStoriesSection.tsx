@@ -1,12 +1,12 @@
-import { BookIcon } from "lucide-react";
+import { BookIcon } from 'lucide-react'
 
-import styles from "./LibraryStoriesSection.module.css";
+import styles from './LibraryStoriesSection.module.css'
 
-import { EmptyState } from "@/components/EmptyState";
-import { Story } from "@/components/Story";
-import { LibraryLoadMoreButton } from "../LibraryLoadMoreButton";
-import { getLibraryStories, GetLibraryStoriesQuery } from "@/lib/story";
-import { getStoryReviewsByStoryId } from "@/lib/story/story-review";
+import { EmptyState } from '@/components/EmptyState'
+import { Story } from '@/components/Story'
+import { LibraryLoadMoreButton } from '../LibraryLoadMoreButton'
+import { getLibraryStories, GetLibraryStoriesQuery } from '@/lib/story'
+import { getStoryReviewsByStoryId } from '@/lib/story/story-review'
 
 type Props = GetLibraryStoriesQuery
 
@@ -14,7 +14,7 @@ export async function LibraryStoriesSection(props: Props) {
   const libraryStories = await getLibraryStories({
     skip: props.skip,
     limit: props.limit,
-    q: props.q ?? "",
+    q: props.q ?? '',
     plan: props.plan ?? 'all-plans',
     genre: props.genre ?? 'all-genres'
   })

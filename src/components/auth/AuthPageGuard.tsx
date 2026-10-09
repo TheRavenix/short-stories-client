@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { useRedirectIfAuthenticated } from "@/hooks/auth";
+import { useRedirectIfAuthenticated } from '@/hooks/auth'
 
 export function AuthPageGuard() {
   useRedirectIfAuthenticated()

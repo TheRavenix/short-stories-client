@@ -1,1 +1,1 @@
-export * from "./ReadingPreferencesCard";
+export * from './ReadingPreferencesCard'

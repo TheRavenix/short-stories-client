@@ -1,10 +1,10 @@
-import { InfoIcon } from "lucide-react";
+import { InfoIcon } from 'lucide-react'
 
-import styles from "./StoryAboutCard.module.css";
+import styles from './StoryAboutCard.module.css'
 
-import { EmptyState } from "@/components/EmptyState";
-import { Card, CardContent, CardHeader } from "@/components/ui/Card";
-import { P } from "@/components/ui/Typography";
+import { EmptyState } from '@/components/EmptyState'
+import { Card, CardContent, CardHeader } from '@/components/ui/Card'
+import { P } from '@/components/ui/Typography'
 
 type Props = {
   name: string
@@ -39,5 +39,5 @@ export function StoryAboutCard({ name, about }: Props) {
         }
       </CardContent>
     </Card>
-  );
-};
+  )
+}

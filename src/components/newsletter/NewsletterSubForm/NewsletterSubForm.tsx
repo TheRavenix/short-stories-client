@@ -1,8 +1,8 @@
-"use client";
+'use client'
 
-import { Input } from "@/components/ui/Input";
-import { Button } from "@/components/ui/Button";
-import { Form } from "@/components/Form";
+import { Input } from '@/components/ui/Input'
+import { Button } from '@/components/ui/Button'
+import { Form } from '@/components/Form'
 
 export function NewsletterSubForm() {
   return (

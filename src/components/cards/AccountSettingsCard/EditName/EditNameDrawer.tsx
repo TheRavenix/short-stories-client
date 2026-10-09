@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import styles from "./EditName.module.css";
-import { useState } from "react";
+import styles from './EditName.module.css'
+import { useState } from 'react'
 
-import { Button } from "@/components/ui/Button";
+import { Button } from '@/components/ui/Button'
 import {
   Drawer,
   DrawerBody,
@@ -13,8 +13,8 @@ import {
   DrawerPortal,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/Drawer";
-import { EditNameContent } from "./EditNameContent";
+} from '@/components/ui/Drawer'
+import { EditNameContent } from './EditNameContent'
 
 export function EditNameDrawer() {
   const [open, setOpen] = useState(false)

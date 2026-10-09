@@ -1,8 +1,8 @@
-import { PlanType } from "@/components/Plans";
-import { axiosClient } from "@/utils/axios-client";
-import { MessageResponse } from "@/types/response";
+import { axiosClient } from '@/utils/axios-client'
+import { MessageResponse } from '@/types/response'
+import { PlanType } from '@/components/Plan'
 
-export type ProfileRoleType = "user" | "admin"
+export type ProfileRoleType = 'user' | 'admin'
 
 export type ProfileType = {
   id: number

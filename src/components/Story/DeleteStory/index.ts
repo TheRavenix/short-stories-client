@@ -1,1 +1,1 @@
-export * from "./DeleteStory";
+export * from './DeleteStory'
