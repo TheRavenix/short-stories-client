@@ -1,11 +1,12 @@
 import { StoryType } from '@/components/Story'
 
 export type GetLibraryStoriesQuery = {
-  skip: number
-  limit: number
-  q: string
-  plan: string
-  genre: string
+  skip?: number
+  limit?: number
+  q?: string
+  plan?: string
+  genre?: string
+  order?: string
 }
 
 type GetLibraryStoriesResponse = {
@@ -17,7 +18,7 @@ export async function getLibraryStories(
   query: GetLibraryStoriesQuery
 ): Promise<GetLibraryStoriesResponse> {
   const response = await fetch(
-  `${process.env.NEXT_PUBLIC_SERVER_URL}/api/stories/library?skip=${query.skip}&limit=${query.limit}&q=${query.q}&plan=${query.plan}&genre=${query.genre}`
+  `${process.env.NEXT_PUBLIC_SERVER_URL}/api/stories/library?skip=${query.skip}&limit=${query.limit}&q=${query.q}&plan=${query.plan}&genre=${query.genre}&order=${query.order}`
   )
   return await response.json()
 }

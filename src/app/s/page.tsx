@@ -14,14 +14,12 @@ import { PAGINATION_DEFAULT_LIMIT } from '@/constants/filter'
 import { GetLibraryStoriesQuery } from '@/lib/story'
 
 type Props = {
-  searchParams: Promise<GetLibraryStoriesQuery & {
-    limit: number
-  }>
+  searchParams: Promise<GetLibraryStoriesQuery>
 }
 
 export default async function Library(props: Props) {
   const searchParams = await props.searchParams
-  const limit = searchParams.limit
+  const limit = searchParams.limit !== undefined
     ? Number(searchParams.limit)
     : PAGINATION_DEFAULT_LIMIT
 
@@ -41,6 +39,7 @@ export default async function Library(props: Props) {
                 q={searchParams.q}
                 plan={searchParams.plan}
                 genre={searchParams.genre}
+                order={searchParams.order}
               />
             </Suspense>
           </ErrorBoundary>

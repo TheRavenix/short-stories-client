@@ -30,12 +30,12 @@ export type StoryType = {
   downloads: number
   plan: PlanType
   featured: boolean
+  rating: number
 }
 
 type Props = {
   className?: string
   story: StoryType
-  ratingCount: number
   isStarRatingShown?: boolean
   isTitleShown?: boolean
   isExploreLinkShown?: boolean
@@ -49,7 +49,6 @@ type Props = {
 export function Story({
   className,
   story,
-  ratingCount,
   isStarRatingShown = true,
   isTitleShown = true,
   isExploreLinkShown = true,
@@ -75,8 +74,8 @@ export function Story({
         height={200}
       />
       <div className={styles.content}>
-        {isStarRatingShown && ratingCount > 0 ? (
-          <StarRating rating={ratingCount} />
+        {isStarRatingShown && story.rating > 0 ? (
+          <StarRating rating={story.rating} />
         ) : (
           <Badge variant='inverse'>Not Rated</Badge>
         )}

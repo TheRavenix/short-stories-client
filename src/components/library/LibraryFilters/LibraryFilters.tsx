@@ -25,7 +25,7 @@ export function LibraryFilters() {
   const [genre, setGenre] = useState(searchParams.get('genre') || 'all-genres')
   const [plan, setPlan] = useState(searchParams.get('plan') || 'all-plans')
   const [order, setOrder] = useState(searchParams.get('order') || 'random')
-  const filterTimoutRef = useRef<NodeJS.Timeout>(null!)
+  const filterTimoutRef = useRef<NodeJS.Timeout>(undefined)
 
   const updateSearchParams = (paramKey: string, paramValue: string) => {
     const params = new URLSearchParams(searchParams)

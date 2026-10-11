@@ -13,7 +13,11 @@ export type CreateStoryData = {
   coverImage: string
 }
 
-export async function createStory(data: CreateStoryData): Promise<MessageResponse> {
+type CreateStoryResponse = {
+  slug: string
+} & MessageResponse
+
+export async function createStory(data: CreateStoryData): Promise<CreateStoryResponse> {
   const response = await axiosClient.post('/stories', data)
   return response.data
 }

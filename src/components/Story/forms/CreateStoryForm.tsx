@@ -17,7 +17,7 @@ import { createStory, CreateStoryData } from '@/services/story'
 import { splitByNewLine } from '@/utils/text'
 
 export function CreateStoryForm() {
-  const { isLoading, profile } = useProfile()
+  const { isLoading: isProfileLoading, profile } = useProfile()
   const [formData, setFormData] = useState<CreateStoryData>({
     name: '',
     description: '',
@@ -29,17 +29,22 @@ export function CreateStoryForm() {
     featured: false,
     coverImage: 'short-story-cover.jpeg'
   })
+  const [isLoading, setIsLoading] = useState(false)
   const addToast = useToastStore((s) => s.addToast)
 
   const mutation = useMutation({
     mutationKey: ['create-story'],
     mutationFn: createStory,
+    onMutate() {
+      setIsLoading(true)
+    },
     onSuccess(data) {
       addToast({
         title: 'Create story',
-        description: data.message,
+        description: data.message
       })
-      window.location.replace(`/s?q=${formData.name}`)
+      window.location.replace(`/s/${data.slug}`)
+      setIsLoading(false)
     },
     onError(error) {
       if (axios.isAxiosError(error)) {
@@ -49,6 +54,7 @@ export function CreateStoryForm() {
           variant: 'error'
         })
       }
+      setIsLoading(false)
     }
   })
 
@@ -63,12 +69,12 @@ export function CreateStoryForm() {
     mutation.mutate(formData)
   }
 
-  if (isLoading || profile?.role !== 'admin') {
+  if (isProfileLoading || profile?.role !== 'admin') {
     return <Skeleton type='card' />
   }
 
   return (
-    <Form spacing='md' onSubmit={handleSubmit}>
+    <Form spacing='md' onSubmit={handleSubmit} aria-disabled={true}>
       <Input
         label='Name'
         defaultValue={formData.name}
@@ -130,8 +136,8 @@ export function CreateStoryForm() {
         onCheckedChange={(checked) => updateFormDataProp('featured', checked)}
       />
       <Input label='Cover Image' type='file' />
-      <Button type='submit' size='responsive'>
-        Create
+      <Button type='submit' size='responsive' disabled={isLoading}>
+        {isLoading ? 'Loading...' : 'Create'}
       </Button>
     </Form>
   )
