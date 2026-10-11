@@ -11,7 +11,7 @@ import { StoryAboutCard } from '@/components/Story/cards/StoryAboutCard'
 import { StoryPreviewCard } from '@/components/Story/cards/StoryPreviewCard'
 import { StoryReviewsCard } from '@/components/Story/cards/StoryReviewsCard'
 import { getStoryBySlug } from '@/lib/story'
-import { getStoryReviewsByStoryId } from '@/lib/story/story-review'
+import { getReviewsByStoryId } from '@/lib/story/story-review'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -24,7 +24,7 @@ export default async function StoryPage(props: Props) {
   const view = searchParams.view || 'grid'
   const tab = searchParams.tab || 'about'
   const story = await getStoryBySlug(params.slug)
-  const storyReviews = await getStoryReviewsByStoryId(story.id)
+  const storyReviews = await getReviewsByStoryId(story.id)
 
   return (
     <main className={styles.main}>
@@ -39,7 +39,6 @@ export default async function StoryPage(props: Props) {
         <div className={styles.storyContainer}>
           <Story
             story={story}
-            ratingCount={storyReviews.ratingCount}
             isTitleShown={false}
             isExploreLinkShown={false}
             isReadButtonShown={true}

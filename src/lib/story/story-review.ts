@@ -19,7 +19,7 @@ export type GetReviewsByStoryIdResponse = {
   ratingCount: number
 }
 
-export async function getStoryReviewsByStoryId(
+export async function getReviewsByStoryId(
   storyId: number
 ): Promise<GetReviewsByStoryIdResponse> {
   const response = await fetch(

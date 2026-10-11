@@ -6,11 +6,11 @@ import { Button } from '@/components/ui/Button'
 import { PAGINATION_DEFAULT_LIMIT } from '@/constants/filter'
 
 type Props = {
-  limit: number
+  limit?: number
   count: number
 }
 
-export function LibraryLoadMoreButton({ limit, count }: Props) {
+export function LibraryLoadMoreButton({ limit = 0, count }: Props) {
   const searchParams = useSearchParams()
   const router = useRouter()
 
