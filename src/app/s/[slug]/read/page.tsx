@@ -9,7 +9,7 @@ import { StoryReadTracker } from '@/components/Story/story-read/StoryReadTracker
 import { ToggleNavbarFixed } from '@/components/Navbar/ToggleNavbarFixed'
 import { StoryBackButton } from '@/components/Story/buttons/StoryBackButton'
 import { StoryContent } from '@/components/Story/StoryContent'
-import { getStoryBySlug } from '@/lib/story'
+import { findStoryBySlug } from '@/lib/story'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -17,7 +17,7 @@ type Props = {
 
 export default async function ReadStory(props: Props) {
   const params = await props.params
-  const story = await getStoryBySlug(params.slug)
+  const story = await findStoryBySlug(params.slug)
 
   return (
     <>
@@ -36,16 +36,22 @@ export default async function ReadStory(props: Props) {
           </H1>
           {
             story.content.length > 0 ?
-              <div className={styles.storyContentList}>
-                {story.content.map((contentText, index) => (
-                  <StoryContent 
-                    key={index} 
-                    contentText={contentText} 
-                    index={index}
-                  />
-                ))}
-              </div> :
-              <EmptyState message='A story was supposed to be here... Perhaps the author is still writing?' />
+              (
+                <div className={styles.storyContentList}>
+                  {story.content.map((contentText, index) => (
+                    <StoryContent 
+                      key={index} 
+                      contentText={contentText} 
+                      index={index}
+                    />
+                  ))}
+                </div>
+              ) :
+              (
+                <EmptyState 
+                  message='A story was supposed to be here... Perhaps the author is still writing?' 
+                />
+              )
           }
           <BackTopButton />
         </CompactContainer>

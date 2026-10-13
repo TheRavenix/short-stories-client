@@ -12,6 +12,7 @@ import { P, Span } from '@/components/ui/Typography'
 import { ActionSlot } from '@/components/ActionSlot'
 import { useToastStore } from '@/stores/toast'
 import { deleteStory } from '@/services/story'
+import { deleteReviewsByStoryId } from '@/services/story-review'
 
 type Props = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -29,7 +30,11 @@ export function DeleteStoryContent({
   const confirmed = confirmMessage.toLowerCase() === storyName.toLowerCase()
 
   const mutation = useMutation({
-    mutationFn: deleteStory,
+    mutationFn: async (storyId: number) => {
+      const storyResponse = await deleteStory(storyId)
+      await deleteReviewsByStoryId(storyId)
+      return storyResponse
+    },
     onSuccess(data) {
       addToast({
         title: 'Done',

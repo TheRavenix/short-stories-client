@@ -5,12 +5,12 @@ import styles from './LibraryStoriesSection.module.css'
 import { EmptyState } from '@/components/EmptyState'
 import { Story } from '@/components/Story'
 import { LibraryLoadMoreButton } from '../LibraryLoadMoreButton'
-import { getLibraryStories, GetLibraryStoriesQuery } from '@/lib/story'
+import { findLibraryStories, FindLibraryStoriesQuery } from '@/lib/story'
 
-type Props = GetLibraryStoriesQuery
+type Props = FindLibraryStoriesQuery
 
 export async function LibraryStoriesSection(props: Props) {
-  const libraryStories = await getLibraryStories({
+  const libraryStories = await findLibraryStories({
     skip: props.skip,
     limit: props.limit,
     q: props.q ?? '',

@@ -18,6 +18,8 @@ export type StoryReviewType = {
   storyId: number
   stars: number
   comment: string
+  createdAt: Date
+  updatedAt: Date
 }
 
 export type StoryReviewDetails = {
@@ -68,8 +70,8 @@ export function StoryReview({
             {reviewDetails.userName || 'DELETED USER'}
           </Span>
           <P size='sm'>
-            {dayjs(new Date()).format('DD/MM/YYYY')}
-            {new Date(new Date()).getTime() !== new Date(new Date()).getTime() &&
+            {dayjs(review.createdAt).format('DD/MM/YYYY')}
+            {new Date(review.createdAt).getTime() !== new Date(review.updatedAt).getTime() &&
               ' (edited)'}
           </P>
         </div>
@@ -82,7 +84,7 @@ export function StoryReview({
             />
           )}
           {isDeleteButtonShown && <DeleteStoryReview reviewId={review.id} />}
-          {isStoryNameBadgeShown && <Badge>{reviewDetails.userName}</Badge>}
+          {isStoryNameBadgeShown && <Badge>{reviewDetails.storyName}</Badge>}
         </div>
       </div>
       <StarRating rating={review.stars} />

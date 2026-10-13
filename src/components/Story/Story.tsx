@@ -15,6 +15,7 @@ import { Stats } from '../Stats'
 import { StoryViewLink } from './story-view/StoryViewLink'
 import { PlanType } from '../Plan'
 import { DeleteStory } from './DeleteStory'
+import { P } from '../ui/Typography'
 
 export type StoryType = {
   id: number
@@ -31,6 +32,8 @@ export type StoryType = {
   plan: PlanType
   featured: boolean
   rating: number
+  createdAt: Date
+  updatedAt: Date
 }
 
 type Props = {
@@ -61,18 +64,22 @@ export function Story({
   return (
     <Card withPadding className={clsx(styles.story, className)}>
       <div className={styles.badges}>
+        {story.featured && <Badge variant='inverse'>Featured</Badge>}
         <Badge variant='inverse'>{story.plan}</Badge>
         {story.genre.map((item) => (
           <Badge key={item}>{item}</Badge>
         ))}
       </div>
-      <Image
+      <div className={styles.coverImagePlaceholder}>
+        <P size='xs'>Cover Image</P>
+      </div>
+      {/*<Image
         className={styles.coverImage}
         src='/short-story-cover.jpeg'
         alt={`${story.name} Cover`}
         width={178.5}
         height={200}
-      />
+      />*/}
       <div className={styles.content}>
         {isStarRatingShown && story.rating > 0 ? (
           <StarRating rating={story.rating} />

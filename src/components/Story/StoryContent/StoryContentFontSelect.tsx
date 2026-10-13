@@ -15,7 +15,7 @@ import {
 import { useFontStore } from '@/stores/font'
 import { useProfile } from '@/hooks/profile'
 import { removeHyphen, capitalize } from '@/utils/text'
-import { getAllProFonts } from '@/services/pro-font'
+import { findProFonts } from '@/services/pro-font'
 
 type Props = SelectProps
 
@@ -25,7 +25,7 @@ export function StoryContentFontSelect(props: Props) {
   const { profile } = useProfile()
   const { data: proFonts } = useQuery({
     queryKey: ['pro-fonts'],
-    queryFn: getAllProFonts,
+    queryFn: findProFonts
   })
 
   return (
