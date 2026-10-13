@@ -14,18 +14,18 @@ export type ProfileType = {
   updatedAt: number
 }
 
-export async function getUserProfile(): Promise<ProfileType> {
+export async function findUserProfile(): Promise<ProfileType> {
   const response = await axiosClient.get('users/profile')
   return response.data
 }
 
-type GetStatusResponse = {
+type FindStatusResponse = {
   plan: PlanType
   role: ProfileRoleType
 }
 
 // Is this still needed?
-export async function getUserStatus(): Promise<GetStatusResponse> {
+export async function findUserStatus(): Promise<FindStatusResponse> {
   const response = await axiosClient.get('users/status')
   return response.data
 }

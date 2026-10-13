@@ -30,7 +30,7 @@ export function Footer() {
             ))}
           </div>
         </div>
-        <div className={styles.followLinks}>
+        {/*<div className={styles.followLinks}>
           <a
             href='https://www.instagram.com'
             target='_blank'
@@ -40,7 +40,7 @@ export function Footer() {
               <InstagramIcon size={18} />
             </Button>
           </a>
-        </div>
+        </div>*/}
       </Container>
     </footer>
   )

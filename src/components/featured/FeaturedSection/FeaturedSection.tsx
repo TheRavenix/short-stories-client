@@ -1,11 +1,11 @@
 import { FeaturedStoriesSection } from '../FeaturedStoriesSection'
 import { FeaturedReviewsSection } from '../FeaturedReviewsSection'
-import { getFeaturedStories } from '@/lib/story'
-import { getFeaturedReviews } from '@/lib/story/story-review'
+import { findFeaturedStories } from '@/lib/story'
+import { findFeaturedReviews } from '@/lib/story/story-review'
 
 export async function FeaturedSection() {
-  const featuredStories = await getFeaturedStories()
-  const featuredReviews = await getFeaturedReviews()
+  const featuredStories = await findFeaturedStories()
+  const featuredReviews = await findFeaturedReviews()
 
   return (
     <>

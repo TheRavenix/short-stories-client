@@ -4,10 +4,10 @@ import { useEffect } from 'react'
 
 import { useProfile } from '@/hooks/profile'
 import { useAuthStore } from '@/stores/auth'
-import { GetReviewsByStoryIdResponse } from '@/lib/story/story-review'
+import { FindReviewsByStoryIdResponse } from '@/lib/story/story-review'
 
 type Props = {
-  storyReviews: GetReviewsByStoryIdResponse
+  storyReviews: FindReviewsByStoryIdResponse
 }
 
 export function StoryReviewHighlighter({ storyReviews }: Props) {

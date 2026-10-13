@@ -25,3 +25,8 @@ export async function deleteStoryReview(reviewId: number): Promise<MessageRespon
   const response = await axiosClient.delete(`/story-reviews/${reviewId}`)
   return response.data
 }
+
+export async function deleteReviewsByStoryId(storyId: number): Promise<MessageResponse> {
+  const response = await axiosClient.delete(`/story-reviews/story/${storyId}`)
+  return response.data
+}

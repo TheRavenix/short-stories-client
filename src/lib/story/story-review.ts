@@ -1,41 +1,45 @@
-import { StoryReviewDetails, StoryReviewsRating, StoryReviewType } from '@/components/Story/StoryReview'
+import { 
+  StoryReviewDetails,
+  StoryReviewsRating,
+  StoryReviewType 
+} from '@/components/Story/StoryReview'
 
-type GetFeaturedReviewsResponse = {
+type FindFeaturedReviewsResponse = {
   reviews: StoryReviewType[]
   reviewsDetails: StoryReviewDetails[]
   reviewsRatings: StoryReviewsRating[]
 }
 
-export async function getFeaturedReviews(): Promise<GetFeaturedReviewsResponse> {
+export async function findFeaturedReviews(): Promise<FindFeaturedReviewsResponse> {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/api/story-reviews/featured`
   )
   return await response.json()
 }
 
-export type GetReviewsByStoryIdResponse = {
+export type FindReviewsByStoryIdResponse = {
   reviews: StoryReviewType[]
   reviewsDetails: StoryReviewDetails[]
   ratingCount: number
 }
 
-export async function getReviewsByStoryId(
+export async function findReviewsByStoryId(
   storyId: number
-): Promise<GetReviewsByStoryIdResponse> {
+): Promise<FindReviewsByStoryIdResponse> {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/api/story-reviews/story/${storyId}`
   )
   return await response.json()
 }
 
-type GetStoryReviewByIdResponse = {
+type FindStoryReviewByIdResponse = {
   review: StoryReviewType
   details: StoryReviewDetails
 }
 
-export async function getStoryReviewById(
+export async function findStoryReviewById(
   reviewId: string
-): Promise<GetStoryReviewByIdResponse> {
+): Promise<FindStoryReviewByIdResponse> {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/api/story-reviews/${reviewId}`
   )

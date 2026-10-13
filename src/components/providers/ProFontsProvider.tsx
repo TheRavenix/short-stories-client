@@ -5,14 +5,14 @@ import { useQuery } from '@tanstack/react-query'
 
 import { applyImportUrlAndStyle } from '@/utils/apply-import-url-and-style'
 import { applyDataKeyAndStyle } from '@/utils/apply-data-key-and-style'
-import { getAllProFonts } from '@/services/pro-font'
+import { findProFonts } from '@/services/pro-font'
 
 type Props = PropsWithChildren
 
 export function ProFontsProvider({ children }: Props) {
   const { data } = useQuery({
     queryKey: ['pro-fonts'],
-    queryFn: getAllProFonts,
+    queryFn: findProFonts,
     staleTime: 1000 * 60 * 30,
     gcTime: 1000 * 60 * 60 * 24
   })

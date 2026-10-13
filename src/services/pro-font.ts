@@ -8,7 +8,7 @@ export type ProFontResponse = {
   reading: ProFontType
 }
 
-export async function getAllProFonts(): Promise<ProFontResponse> {
+export async function findProFonts(): Promise<ProFontResponse> {
   const response = await axiosClient.get('pro-fonts')
   return response.data
 }

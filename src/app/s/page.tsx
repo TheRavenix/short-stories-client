@@ -11,10 +11,10 @@ import { LibraryStoriesSectionError } from '@/components/library/LibraryStoriesS
 import { LibraryStoriesSectionLoading } from '@/components/library/LibraryStoriesSection/LibraryStoriesSectionLoading'
 import { LibraryStoriesSection } from '@/components/library/LibraryStoriesSection'
 import { PAGINATION_DEFAULT_LIMIT } from '@/constants/filter'
-import { GetLibraryStoriesQuery } from '@/lib/story'
+import { FindLibraryStoriesQuery } from '@/lib/story'
 
 type Props = {
-  searchParams: Promise<GetLibraryStoriesQuery>
+  searchParams: Promise<FindLibraryStoriesQuery>
 }
 
 export default async function Library(props: Props) {

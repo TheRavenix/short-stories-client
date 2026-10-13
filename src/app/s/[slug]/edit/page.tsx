@@ -5,7 +5,7 @@ import { CompactContainer } from '@/components/ui/Container/CompactContainer'
 import { AdminPageGuard } from '@/components/guards/AdminPageGuard'
 import { StoryBackButton } from '@/components/Story/buttons/StoryBackButton'
 import { EditStoryForm } from '@/components/Story/forms/EditStoryForm'
-import { getStoryBySlug } from '@/lib/story'
+import { findStoryBySlug } from '@/lib/story'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -14,7 +14,7 @@ type Props = {
 export default async function EditStory(props: Props) {
   const params = await props.params
   // Handle not found errors if they are not handeled already
-  const story = await getStoryBySlug(params.slug)
+  const story = await findStoryBySlug(params.slug)
 
   return (
     <>
